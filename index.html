@@ -1,6 +1,6 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>BI Executivo de Hidrovias v35.4 — DPP/SNHN</title><style>
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>BI Executivo de Hidrovias v35.5 — DPP/SNHN</title><style>
 *{box-sizing:border-box}body{margin:0;background:#eef4f5;color:#17324d;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}header{background:#173d63;color:#fff;padding:28px 20px;border-bottom:7px solid #35a66f}header h1{margin:0;font-size:28px}header p{margin:10px 0 0;font-size:16px;line-height:1.4}.wrap{max-width:1100px;margin:auto;padding:18px}.box{background:#fff;border:1px solid #cbd9dd;border-radius:14px;padding:18px;margin-bottom:16px}.box h2{margin:0 0 16px}.filters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}label{font-weight:800;font-size:14px}select{width:100%;margin-top:6px;padding:13px;border:2px solid #9fbdb6;border-radius:10px;background:#fff;font-size:17px}.wide{grid-column:1/-1}.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.kpi{background:#e8f1f2;padding:13px;border-radius:10px;text-align:center}.kpi b{display:block;font-size:24px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border:1px solid #d8e2e5;border-radius:10px;overflow:hidden}.field{padding:14px;border-bottom:1px solid #e0e7e9;white-space:pre-wrap}.field b{display:block;color:#49677c;font-size:12px;text-transform:uppercase;margin-bottom:6px}.field.w{grid-column:1/-1}.warn{background:#fff8e5}.src{background:#eef7ff}.actions{display:flex;gap:10px;flex-wrap:wrap}button{padding:13px 16px;border:0;border-radius:9px;background:#173d63;color:#fff;font-weight:800;font-size:15px}.doc{display:none;white-space:pre-wrap;background:#fff;border:1px solid #ccd9dd;border-radius:12px;padding:18px;margin-top:14px}@media(max-width:650px){.filters,.grid{grid-template-columns:1fr}.wide,.field.w{grid-column:1}.kpis{grid-template-columns:repeat(2,1fr)}header h1{font-size:24px}}
-.nav{display:flex;gap:8px;overflow:auto;margin-bottom:16px}.nav button{white-space:nowrap;background:#e8f1f2;color:#173d63;border:1px solid #9fbdb6}.badge{display:inline-block;padding:5px 9px;border-radius:999px;background:#e8f1f2;margin:3px;font-size:12px;font-weight:800}.control{border-left:5px solid #7b5aa6}.contract{border-left:5px solid #173d63}.concession{border-left:5px solid #35a66f}</style></head><body><header><h1>BI Executivo de Hidrovias — DPP/SNHN · v35.4</h1><p>Assessoria executiva · backend estruturado · 19 investimentos · corte 27/09/2026</p></header><main class="wrap"><nav class="nav"><button onclick="goTo('filtros')">Carteira / Filtros</button><button onclick="showContracts()">Contratos e Valores</button><button onclick="showConcessions()">Concessões</button><button onclick="showControl()">Auditorias e Controle</button><button onclick="goTo('docs')">Relatórios / Briefing</button></nav>
+.nav{display:flex;gap:8px;overflow:auto;margin-bottom:16px}.nav button{white-space:nowrap;background:#e8f1f2;color:#173d63;border:1px solid #9fbdb6}.badge{display:inline-block;padding:5px 9px;border-radius:999px;background:#e8f1f2;margin:3px;font-size:12px;font-weight:800}.control{border-left:5px solid #7b5aa6}.contract{border-left:5px solid #173d63}.concession{border-left:5px solid #35a66f}</style></head><body><header><h1>BI Executivo de Hidrovias — DPP/SNHN · v35.5</h1><p>Assessoria executiva · backend estruturado · 19 investimentos · corte 27/09/2026</p></header><main class="wrap"><nav class="nav"><button onclick="goTo('filtros')">Carteira / Filtros</button><button onclick="showContracts()">Contratos e Valores</button><button onclick="showConcessions()">Concessões</button><button onclick="showControl()">Auditorias e Controle</button><button onclick="goTo('docs')">Relatórios / Briefing</button></nav>
 <section class="box" id="filtros"><h2>Filtros em cascata</h2><div class="filters"><label class="">REGIÃO<select id="regiao"><option value="TODOS">TODOS</option></select></label><label class="">UF<select id="uf"><option value="TODOS">TODOS</option></select></label><label class="">MUNICÍPIO / ABRANGÊNCIA<select id="municipio"><option value="TODOS">TODOS</option></select></label><label class="">HIDROVIA / RIO<select id="hidrovia"><option value="TODOS">TODOS</option></select></label><label class="">TIPO<select id="tipo"><option value="TODOS">TODOS</option></select></label><label class="wide">EMPREENDIMENTO<select id="empreendimento"><option value="TODOS">TODOS</option></select></label></div></section>
 <section class="box"><div class="kpis"><div class="kpi"><b id="kc">0</b>investimentos</div><div class="kpi"><b id="ku">0</b>UFs</div><div class="kpi"><b id="km">0</b>localidades</div><div class="kpi"><b id="kp">0</b>problemas confirmados</div></div></section>
 <section class="box"><h2 id="pt">Painel executivo consolidado</h2><div id="panel" class="grid"></div></section>
@@ -22,7 +22,7 @@ p.innerHTML=h}
 function doc(t){var rs=set(),z=(t==="brief"?"BRIEFING PARA AUTORIDADE":"RELATÓRIO EXECUTIVO")+"\nData de corte: 27/09/2026\nRecorte: "+ORD.map(function(k){return k.toUpperCase()+": "+v(k)}).join(" | ")+"\n\n";for(var i=0;i<rs.length;i++){var r=rs[i];z+=(i+1)+". "+r.nome+"\nSituação: "+safe(r.situacao)+"\nContrato / instrumento: "+safe(r.instrumento)+"\nEmpresa / executor: "+safe(r.executor)+"\nValor do contrato / investimento: "+safe(r.valor)+"\nLocal: "+safe(r.localExato)+"\nValor: "+safe(r.valor)+"\nPróximo marco: "+safe(r.proximoMarco)+"\nRisco/gargalo: "+safe(r.gargalo)+"\nProvidência DPP: "+safe(r.providencia)+"\nPendência: "+safe(r.pendencia)+"\nLOA / PLOA / PPA: "+safe(r.loa)+"\nExecução física: "+safe(r.execFisica)+"\nExecução financeira: "+safe(r.execFinanceira)+"\nEmpenhado / pago: "+safe(r.empenhadoPago)+"\nFonte/corte: "+safe(r.fonte)+" — "+safe(r.dataFonte)+"\n\n"}var d=document.getElementById("doc");d.textContent=z;d.style.display="block";d.scrollIntoView()}
 for(var i=0;i<ORD.length;i++)(function(k){E[k].onchange=function(){cascade(k)}})(ORD[i]);fill("regiao",false);for(var j=1;j<ORD.length;j++)fill(ORD[j],false);render();
 
-// === ENRIQUECIMENTO OFICIAL v35.4 — corte 27/09/2026 ===
+// === ENRIQUECIMENTO OFICIAL v35.5 — corte 27/09/2026 ===
 (function(){
  const E={
  "Operação e manutenção de 54 IP4":{valor:"R$ 572.600.000,00",situacao:"Contrato de operação e manutenção em execução — 730 dias",executor:"DNIT / contratada: validar razão social no PNCP/Compras.gov.br antes de uso externo",objeto:"Operação contínua e manutenção preventiva/corretiva de 54 IP4 no AM, RO e RR",fonte:"MPOR, notícia oficial de 24/02/2026; DNIT/PNCP para dados contratuais detalhados",dataFonte:"27/09/2026",localExato:"51 IP4 no Amazonas; Cai n’Água e Guajará-Mirim/RO; Caracaraí/RR",precisaoLocal:"Abrangência oficial confirmada; detalhamento por IP4 deve vir da aba específica do backend"},
@@ -37,7 +37,7 @@ for(var i=0;i<ORD.length;i++)(function(k){E[k].onchange=function(){cascade(k)}})
 })();
 
 
-// === AUDITORIA DE CONSISTÊNCIA v35.4 ===
+// === AUDITORIA DE CONSISTÊNCIA v35.5 ===
 (function(){
  const by=function(n){return DATA.find(function(r){return r.nome===n})};
  let r=by("Concessão Hidrovia do Rio Madeira");
@@ -53,7 +53,7 @@ for(var i=0;i<ORD.length;i++)(function(k){E[k].onchange=function(){cascade(k)}})
 })();
 
 
-// === CONTRATOS / EXECUÇÃO v35.4 ===
+// === CONTRATOS / EXECUÇÃO v35.5 ===
 (function(){
  function g(n){return DATA.find(function(x){return x.nome===n})}
  let r=g("Operação e manutenção de 54 IP4");
@@ -63,13 +63,34 @@ for(var i=0;i<ORD.length;i++)(function(k){E[k].onchange=function(){cascade(k)}})
 })();
 
 
-// === AMARÓPOLIS v35.4 — CONTRATADA CONFIRMADA ===
+// === AMARÓPOLIS v35.5 — CONTRATADA CONFIRMADA ===
 (function(){
  function g(n){return DATA.find(function(x){return x.nome===n})}
  let r=g("Barragem de Amarópolis — Hidrovia do Rio Jacuí");
  if(r){Object.assign(r,{instrumento:"Contrato nº 00 00321/2024 — Processo DNIT 50610.001510/2023-99",executor:"CONSÓRCIO AMARÓPOLIS — TEMA INFRAESTRUTURA LTDA + AFONSO MINERAÇÃO E LOGÍSTICA LTDA",valor:"R$ 153.912.630,21 — valor registrado na base DNIT recebida; confirmar valor contratual vigente/aditivos no Portal da Transparência antes de expediente externo",objeto:"Elaboração de projetos executivos e execução das obras de reforma, recuperação e modernização da Barragem/Eclusa de Amarópolis",localExato:"Rio Jacuí — Santo Amaro do Sul / General Câmara-RS, entre General Câmara e Butiá",situacao:"Contrato ativo na base DNIT; operação de eclusagem teve suspensão temporária informada em 02/04/2026 para manutenção corretiva",fonte:"DNIT — Boletim Administrativo nº 241/2024; páginas oficiais da Eclusa e alerta de 02/04/2026; base DNIT recebida",dataFonte:"27/09/2026",pendencia:"Confirmar situação operacional atual após o alerta de 02/04/2026; validar aditivos, medição física, execução financeira, empenhado e pago."})}
  let s=g("Supervisão — Barragem de Amarópolis / Rio Jacuí");
  if(s){Object.assign(s,{instrumento:"Contrato nº 489/2024 — supervisão; dados detalhados a validar no Portal da Transparência/DNIT",valor:"R$ 5.667.357,41 — base DNIT recebida",situacao:"ATIVO na base DNIT recebida; término consolidado 01/07/2028",localExato:"Barragem/Eclusa de Amarópolis — Rio Jacuí/RS",fonte:"Base DNIT recebida + portal oficial de contratos DNIT para validação",dataFonte:"27/09/2026",pendencia:"Confirmar razão social da supervisora, processo, aditivos, execução física/financeira, empenhado e pago."})}
+})();
+
+
+// === PADMA v35.5 — SITUAÇÃO CONTRATUAL/OPERACIONAL ===
+(function(){
+ const r=DATA.find(function(x){return x.nome==="Dragagens Amazonas, Madeira e Solimões"});
+ if(r){Object.assign(r,{
+ instrumento:"PADMA — Contratos DNIT 605/2024, 616/2024, 617/2024 e 638/2024",
+ objeto:"Dragagem, levantamentos hidrográficos, sinalização náutica e monitoramento ambiental em trechos das hidrovias dos rios Amazonas e Solimões",
+ situacao:"605/2024 Manaus–Itacoatiara: em andamento; 617/2024 Coari–Codajás: em andamento; 638/2024 Benjamin Constant–São Paulo de Olivença: em andamento; 616/2024 Tabatinga–Benjamin Constant: dragagem temporariamente paralisada por tratativas com o Peru, com levantamentos hidrográficos ativos",
+ valor:"605/2024 R$ 92.860.000,00; 616/2024 R$ 104.899.099,57; 617/2024 R$ 90.394.328,89; 638/2024 R$ 84.259.236,71 — valores da base DNIT recebida",
+ executor:"DNIT / contratadas individuais: DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO documental no PNCP/Compras.gov/DNIT",
+ marco:"Execução PADMA confirmada pelo Relatório de Gestão DNIT 2025 nos quatro trechos, com ressalva operacional no 616/2024",
+ proximoMarco:"Acompanhar retomada da dragagem do 616/2024 e evolução das medições dos contratos ativos",
+ gargalo:"Contrato 616/2024: paralisação temporária da dragagem por tratativas internacionais com a República do Peru",
+ problema:"SIM — especificamente no trecho Tabatinga–Benjamin Constant (616/2024), conforme fonte oficial consultada",
+ providencia:"DPP: acompanhar DNIT/MPOR quanto à solução das tratativas com o Peru; exigir atualização de medição física/financeira e cronograma dos quatro contratos antes do briefing decisório.",
+ pendencia:"Razões sociais/CNPJs das contratadas; aditivos; execução física e financeira atual; empenhado, pago e RAP por contrato.",
+ fonte:"DNIT — Relatório de Gestão 2025; base contratual DNIT recebida",
+ dataFonte:"27/09/2026"
+ })}
 })();
 
 function goTo(id){document.getElementById(id).scrollIntoView({behavior:"smooth",block:"start"})}
