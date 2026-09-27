@@ -1,6 +1,6 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>BI Executivo de Hidrovias v36.1 — DPP/SNHN</title><style>
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>BI Executivo de Hidrovias v37 TESTE — DPP/SNHN</title><style>
 *{box-sizing:border-box}body{margin:0;background:#eef4f5;color:#17324d;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}header{background:#173d63;color:#fff;padding:28px 20px;border-bottom:7px solid #35a66f}header h1{margin:0;font-size:28px}header p{margin:10px 0 0;font-size:16px;line-height:1.4}.wrap{max-width:1100px;margin:auto;padding:18px}.box{background:#fff;border:1px solid #cbd9dd;border-radius:14px;padding:18px;margin-bottom:16px}.box h2{margin:0 0 16px}.filters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}label{font-weight:800;font-size:14px}select{width:100%;margin-top:6px;padding:13px;border:2px solid #9fbdb6;border-radius:10px;background:#fff;font-size:17px}.wide{grid-column:1/-1}.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.kpi{background:#e8f1f2;padding:13px;border-radius:10px;text-align:center}.kpi b{display:block;font-size:24px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border:1px solid #d8e2e5;border-radius:10px;overflow:hidden}.field{padding:14px;border-bottom:1px solid #e0e7e9;white-space:pre-wrap}.field b{display:block;color:#49677c;font-size:12px;text-transform:uppercase;margin-bottom:6px}.field.w{grid-column:1/-1}.warn{background:#fff8e5}.src{background:#eef7ff}.actions{display:flex;gap:10px;flex-wrap:wrap}button{padding:13px 16px;border:0;border-radius:9px;background:#173d63;color:#fff;font-weight:800;font-size:15px}.doc{display:none;white-space:pre-wrap;background:#fff;border:1px solid #ccd9dd;border-radius:12px;padding:18px;margin-top:14px}@media(max-width:650px){.filters,.grid{grid-template-columns:1fr}.wide,.field.w{grid-column:1}.kpis{grid-template-columns:repeat(2,1fr)}header h1{font-size:24px}}
-.nav{display:flex;gap:8px;overflow:auto;margin-bottom:16px}.nav button{white-space:nowrap;background:#e8f1f2;color:#173d63;border:1px solid #9fbdb6}.badge{display:inline-block;padding:5px 9px;border-radius:999px;background:#e8f1f2;margin:3px;font-size:12px;font-weight:800}.control{border-left:5px solid #7b5aa6}.contract{border-left:5px solid #173d63}.concession{border-left:5px solid #35a66f}.sourcebar{margin-top:10px;padding:10px 12px;background:#eef7ff;border-radius:9px;font-size:13px}.sourcebar a{font-weight:800;color:#173d63}.sourcebtn{display:inline-block;margin:4px 5px 0 0;padding:7px 9px;border:1px solid #9fbdb6;border-radius:8px;text-decoration:none;background:#fff;color:#173d63}</style></head><body><header><h1>BI Executivo de Hidrovias — DPP/SNHN · v36.1</h1><p>Assessoria executiva · backend estruturado · 19 investimentos · corte 27/09/2026</p></header><main class="wrap"><nav class="nav"><button onclick="goTo('filtros')">Carteira / Filtros</button><button onclick="showContracts()">Contratos e Valores</button><button onclick="showConcessions()">Concessões</button><button onclick="showControl()">Auditorias e Controle</button><button onclick="goTo('docs')">Relatórios / Briefing</button></nav>
+.nav{display:flex;gap:8px;overflow:auto;margin-bottom:16px}.nav button{white-space:nowrap;background:#e8f1f2;color:#173d63;border:1px solid #9fbdb6}.badge{display:inline-block;padding:5px 9px;border-radius:999px;background:#e8f1f2;margin:3px;font-size:12px;font-weight:800}.control{border-left:5px solid #7b5aa6}.contract{border-left:5px solid #173d63}.concession{border-left:5px solid #35a66f}.sourcebar{margin-top:10px;padding:10px 12px;background:#eef7ff;border-radius:9px;font-size:13px}.sourcebar a{font-weight:800;color:#173d63}.sourcebtn{display:inline-block;margin:4px 5px 0 0;padding:7px 9px;border:1px solid #9fbdb6;border-radius:8px;text-decoration:none;background:#fff;color:#173d63}</style></head><body><header><h1>BI Executivo de Hidrovias — DPP/SNHN · v37 TESTE</h1><p>Assessoria executiva · backend estruturado · 21 registros · corte 27/09/2026</p></header><main class="wrap"><nav class="nav"><button onclick="goTo('filtros')">Carteira / Filtros</button><button onclick="showContracts()">Contratos e Valores</button><button onclick="showConcessions()">Concessões</button><button onclick="showControl()">Auditorias e Controle</button><button onclick="goTo('docs')">Relatórios / Briefing</button></nav>
 <section class="box" id="filtros"><h2>Filtros em cascata</h2><div class="filters"><label class="">REGIÃO<select id="regiao"><option value="TODOS">TODOS</option></select></label><label class="">UF<select id="uf"><option value="TODOS">TODOS</option></select></label><label class="">MUNICÍPIO / ABRANGÊNCIA<select id="municipio"><option value="TODOS">TODOS</option></select></label><label class="">HIDROVIA / RIO<select id="hidrovia"><option value="TODOS">TODOS</option></select></label><label class="">TIPO<select id="tipo"><option value="TODOS">TODOS</option></select></label><label class="wide">EMPREENDIMENTO<select id="empreendimento"><option value="TODOS">TODOS</option></select></label></div></section>
 <section class="box"><div class="kpis"><div class="kpi"><b id="kc">0</b>investimentos</div><div class="kpi"><b id="ku">0</b>UFs</div><div class="kpi"><b id="km">0</b>localidades</div><div class="kpi"><b id="kp">0</b>problemas confirmados</div></div></section>
 <section class="box"><h2 id="pt">Painel executivo consolidado</h2><div id="panel" class="grid"></div></section>
@@ -22,7 +22,7 @@ p.innerHTML=h}
 function doc(t){var rs=set(),z=(t==="brief"?"BRIEFING PARA AUTORIDADE":"RELATÓRIO EXECUTIVO")+"\nData de corte: 27/09/2026\nRecorte: "+ORD.map(function(k){return k.toUpperCase()+": "+v(k)}).join(" | ")+"\n\n";for(var i=0;i<rs.length;i++){var r=rs[i];z+=(i+1)+". "+r.nome+"\nSituação: "+safe(r.situacao)+"\nContrato / instrumento: "+safe(r.instrumento)+"\nEmpresa / executor: "+safe(r.executor)+"\nValor do contrato / investimento: "+safe(r.valor)+"\nLocal: "+safe(r.localExato)+"\nValor: "+safe(r.valor)+"\nPróximo marco: "+safe(r.proximoMarco)+"\nRisco/gargalo: "+safe(r.gargalo)+"\nProvidência DPP: "+safe(r.providencia)+"\nPendência: "+safe(r.pendencia)+"\nLOA / PLOA / PPA: "+safe(r.loa)+"\nExecução física: "+safe(r.execFisica)+"\nExecução financeira: "+safe(r.execFinanceira)+"\nEmpenhado / pago: "+safe(r.empenhadoPago)+"\nFonte/corte: "+safe(r.fonte)+" — "+safe(r.dataFonte)+"\n\n"}var d=document.getElementById("doc");d.textContent=z;d.style.display="block";d.scrollIntoView()}
 for(var i=0;i<ORD.length;i++)(function(k){E[k].onchange=function(){cascade(k)}})(ORD[i]);fill("regiao",false);for(var j=1;j<ORD.length;j++)fill(ORD[j],false);render();
 
-// === ENRIQUECIMENTO OFICIAL v36.1 — corte 27/09/2026 ===
+// === ENRIQUECIMENTO OFICIAL v37 TESTE — corte 27/09/2026 ===
 (function(){
  const E={
  "Operação e manutenção de 54 IP4":{valor:"R$ 572.600.000,00",situacao:"Contrato de operação e manutenção em execução — 730 dias",executor:"DNIT / contratada: validar razão social no PNCP/Compras.gov.br antes de uso externo",objeto:"Operação contínua e manutenção preventiva/corretiva de 54 IP4 no AM, RO e RR",fonte:"MPOR, notícia oficial de 24/02/2026; DNIT/PNCP para dados contratuais detalhados",dataFonte:"27/09/2026",localExato:"51 IP4 no Amazonas; Cai n’Água e Guajará-Mirim/RO; Caracaraí/RR",precisaoLocal:"Abrangência oficial confirmada; detalhamento por IP4 deve vir da aba específica do backend"},
@@ -37,7 +37,7 @@ for(var i=0;i<ORD.length;i++)(function(k){E[k].onchange=function(){cascade(k)}})
 })();
 
 
-// === AUDITORIA DE CONSISTÊNCIA v36.1 ===
+// === AUDITORIA DE CONSISTÊNCIA v37 TESTE ===
 (function(){
  const by=function(n){return DATA.find(function(r){return r.nome===n})};
  let r=by("Concessão Hidrovia do Rio Madeira");
@@ -53,7 +53,7 @@ for(var i=0;i<ORD.length;i++)(function(k){E[k].onchange=function(){cascade(k)}})
 })();
 
 
-// === CONTRATOS / EXECUÇÃO v36.1 ===
+// === CONTRATOS / EXECUÇÃO v37 TESTE ===
 (function(){
  function g(n){return DATA.find(function(x){return x.nome===n})}
  let r=g("Operação e manutenção de 54 IP4");
@@ -63,7 +63,7 @@ for(var i=0;i<ORD.length;i++)(function(k){E[k].onchange=function(){cascade(k)}})
 })();
 
 
-// === AMARÓPOLIS v36.1 — CONTRATADA CONFIRMADA ===
+// === AMARÓPOLIS v37 TESTE — CONTRATADA CONFIRMADA ===
 (function(){
  function g(n){return DATA.find(function(x){return x.nome===n})}
  let r=g("Barragem de Amarópolis — Hidrovia do Rio Jacuí");
@@ -73,7 +73,7 @@ for(var i=0;i<ORD.length;i++)(function(k){E[k].onchange=function(){cascade(k)}})
 })();
 
 
-// === PADMA v36.1 — SITUAÇÃO CONTRATUAL/OPERACIONAL ===
+// === PADMA v37 TESTE — SITUAÇÃO CONTRATUAL/OPERACIONAL ===
 (function(){
  const r=DATA.find(function(x){return x.nome==="Dragagens Amazonas, Madeira e Solimões"});
  if(r){Object.assign(r,{
@@ -94,7 +94,7 @@ for(var i=0;i<ORD.length;i++)(function(k){E[k].onchange=function(){cascade(k)}})
 })();
 
 
-// === PADMA SUPERVISÃO / QUALIDADE DA EVIDÊNCIA v36.1 ===
+// === PADMA SUPERVISÃO / QUALIDADE DA EVIDÊNCIA v37 TESTE ===
 (function(){
  const r=DATA.find(function(x){return x.nome==="Dragagens Amazonas, Madeira e Solimões"});
  if(r){Object.assign(r,{
@@ -105,7 +105,7 @@ for(var i=0;i<ORD.length;i++)(function(k){E[k].onchange=function(){cascade(k)}})
 })();
 
 
-// === ORÇAMENTO / PLANEJAMENTO v36.1 ===
+// === ORÇAMENTO / PLANEJAMENTO v37 TESTE ===
 (function(){
  const r=DATA.find(function(x){return x.nome==="Dragagens Amazonas, Madeira e Solimões"});
  if(r){Object.assign(r,{
@@ -118,7 +118,7 @@ for(var i=0;i<ORD.length;i++)(function(k){E[k].onchange=function(){cascade(k)}})
 })();
 
 
-// === CONTROLE / GOVERNANÇA v36.1 ===
+// === CONTROLE / GOVERNANÇA v37 TESTE ===
 (function(){
  const pad=DATA.find(function(x){return x.nome==="Dragagens Amazonas, Madeira e Solimões"});
  if(pad){pad.pendencia=(pad.pendencia||"")+" | Controle: IN DNIT 10/2026 passou a exigir supervisão independente para auxiliar fiscalização, quantificação e validação dos serviços de dragagem; registrar no BI eventual processo/acórdão específico somente após confirmação documental."}
@@ -129,7 +129,7 @@ for(var i=0;i<ORD.length;i++)(function(k){E[k].onchange=function(){cascade(k)}})
 })();
 
 
-// === CONTROLE E CRONOGRAMA DE CONCESSÕES v36.1 ===
+// === CONTROLE E CRONOGRAMA DE CONCESSÕES v37 TESTE ===
 (function(){
  function g(n){return DATA.find(function(x){return x.nome===n})}
  let r=g("Concessão Hidrovia do Rio Paraguai");
@@ -143,7 +143,7 @@ for(var i=0;i<ORD.length;i++)(function(k){E[k].onchange=function(){cascade(k)}})
 })();
 
 
-// === FONTES CLICÁVEIS E RASTREABILIDADE v36.1 ===
+// === FONTES CLICÁVEIS E RASTREABILIDADE v37 TESTE ===
 const OFFICIAL_SOURCES=[
  ["DNIT — Infraestrutura Aquaviária","https://www.gov.br/dnit/pt-br/assuntos/aquaviario"],
  ["DNIT — Atlas Aquaviário","https://www.gov.br/dnit/pt-br/assuntos/aquaviario/atlas-aquaviario"],
@@ -170,7 +170,7 @@ const OFFICIAL_SOURCES=[
 })();
 
 
-// === SANEAMENTO TRANSVERSAL v36.1 ===
+// === SANEAMENTO TRANSVERSAL v37 TESTE ===
 (function(){
  function g(n){return DATA.find(function(x){return x.nome===n})}
  let r=g("Terminal Manaus Moderna");
@@ -180,6 +180,18 @@ const OFFICIAL_SOURCES=[
  r=g("Modernização da IP4 de Parintins");
  if(r) Object.assign(r,{localExato:"Parintins/AM — instalação portuária pública de pequeno porte",objeto:"Modernização/infraestrutura da IP4 de Parintins",situacao:"Ações de infraestrutura confirmadas pelo MPOR em junho/2026; contrato/escopo executivo corrente necessita validação",fonte:"MPOR 24/06/2026 + DNIT PROIP4/Atlas Aquaviário",dataFonte:"27/09/2026",pendencia:"Confirmar contrato vigente da modernização, empresa, valor, cronograma e execução."});
  DATA.forEach(function(x){x.fonte=x.fonte||"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO";x.dataFonte=x.dataFonte||"27/09/2026";});
+})();
+
+
+// === VERSÃO DE TESTE v37 — CONCESSÕES + INTEGRIDADE DO BACKEND ===
+(function(){
+ const EXTRA=[
+ {id:101,nome:"Concessão Hidrovia da Lagoa Mirim",regioes:["Sul"],ufs:["RS"],municipios:["Lagoa Mirim / Canal de São Gonçalo"],hidrovias:["Lagoa Mirim"],tipo:"Concessão hidroviária — modelagem",situacao:"Projeto de concessão em estruturação/modelagem",objeto:"Concessão da Hidrovia da Lagoa Mirim e Canal de São Gonçalo",fase:"Modelagem / participação social",instrumento:"Processo ANTAQ 50300.017676/2023-21",valor:"Estudo R$ 877.000,00; CAPEX R$ 43.546.635,03; OPEX R$ 185.372.000,00; receita bruta global R$ 334.046.000,00",execFisica:"Não se aplica — concessão ainda não contratada",execFinanceira:"Não se aplica — concessão ainda não contratada",empenhadoPago:"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO",executor:"ANTAQ / MPOR — estruturação; concessionária inexistente/não contratada",unidade:"ANTAQ / MPOR",sistema:"Processo ANTAQ / participação social",marco:"Tomada de Subsídios nº 01/2025-DG",proximoMarco:"Validar estágio atual da modelagem e integração com SAIP Sul-Mirim",gargalo:"Modelagem e participação social em evolução",problema:"NÃO CARACTERIZADO COMO IRREGULARIDADE",providencia:"DPP: acompanhar modelagem, participação social, controle externo, edital e leilão.",pendencia:"Validar eventual substituição/integração do desenho Lagoa Mirim pelo SAIP Sul-Mirim e atualizar CAPEX/OPEX da modelagem vigente.",fonte:"ANTAQ — Hidrovia da Lagoa Mirim",dataFonte:"27/09/2026",localExato:"Lagoa Mirim e Canal de São Gonçalo/RS — 140 km",precisaoLocal:"Trecho oficial ANTAQ",loa:"Concessão em estruturação — orçamento público/contraprestações em discussão na fonte",origem:"PESQUISA OFICIAL ANTAQ",refConsulta:"https://www.gov.br/antaq/pt-br/assuntos/projetos-de-concessao/novas-concessoes-hidroviarias/lagoa_mirim"},
+ {id:102,nome:"Concessão Barra Norte",regioes:["Norte"],ufs:["PA","AP"],municipios:["Foz do Amazonas / Barra Norte"],hidrovias:["Barra Norte / Rio Amazonas"],tipo:"Concessão hidroviária — modelagem",situacao:"Projeto prioritário de concessão; estágio detalhado necessita validação documental atual",objeto:"Estruturação de concessão hidroviária da Barra Norte",fase:"Estudos / modelagem",instrumento:"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO",valor:"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO",execFisica:"Não se aplica — concessão ainda não contratada",execFinanceira:"Não se aplica — concessão ainda não contratada",empenhadoPago:"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO",executor:"ANTAQ / MPOR — estruturação",unidade:"ANTAQ / MPOR",sistema:"ANTAQ",marco:"ANTAQ inclui Barra Norte entre as novas concessões hidroviárias prioritárias",proximoMarco:"Confirmar estudo/modelagem vigente, processo, participação social e cronograma",gargalo:"Dados executivos atuais ainda precisam de consolidação documental",problema:"NECESSITA VALIDAÇÃO",providencia:"DPP: localizar processo e cronograma atual, distinguindo estudo, participação social, controle, edital e leilão.",pendencia:"Processo, CAPEX/OPEX, prazo, estudos, BNDES, TCU, edital e leilão.",fonte:"ANTAQ — Novas Concessões Hidroviárias",dataFonte:"27/09/2026",localExato:"Barra Norte / foz do Amazonas — PA/AP; delimitação final necessita validação",precisaoLocal:"Abrangência de referência",loa:"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO",origem:"PESQUISA OFICIAL ANTAQ",refConsulta:"https://www.gov.br/antaq/pt-br/assuntos/projetos-de-concessao/novas-concessoes-hidroviarias"}
+ ];
+ EXTRA.forEach(function(x){if(!DATA.some(function(r){return r.nome===x.nome}))DATA.push(x)});
+ const saip=DATA.find(function(x){return x.nome==="Concessão SAI Sul–Lagoa Mirim"});
+ if(saip){Object.assign(saip,{instrumento:"Processo ANTAQ 50300.004564/2026-52 — Audiência Pública nº 06/2026",fase:"Participação social / modelagem",situacao:"Consulta Pública aberta até 14/10/2026; audiência virtual realizada em 11/08/2026; audiência presencial marcada para 07/10/2026 em Rio Grande/RS",marco:"Audiência virtual realizada em 11/08/2026",proximoMarco:"Audiência Pública Presencial em 07/10/2026 e encerramento da consulta em 14/10/2026",fonte:"ANTAQ — Audiência Pública nº 06/2026, página atualizada em 04/09/2026",dataFonte:"27/09/2026",refConsulta:"https://www.gov.br/antaq/pt-br/acesso-a-informacao/participacao-social/audiencias-e-consultas-publicas/audiencias/audiencia-publica-no-06-2026-antaq"})}
 })();
 
 function goTo(id){document.getElementById(id).scrollIntoView({behavior:"smooth",block:"start"})}
