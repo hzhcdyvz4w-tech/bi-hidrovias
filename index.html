@@ -1,6 +1,8 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>BI Executivo de Hidrovias v41 — DPP/SNHN</title><style>
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>BI Executivo de Hidrovias v42 — DPP/SNHN</title><style>
 *{box-sizing:border-box}body{margin:0;background:#eef4f5;color:#17324d;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}header{background:#173d63;color:#fff;padding:28px 20px;border-bottom:7px solid #35a66f}header h1{margin:0;font-size:28px}header p{margin:10px 0 0;font-size:16px;line-height:1.4}.wrap{max-width:1100px;margin:auto;padding:18px}.box{background:#fff;border:1px solid #cbd9dd;border-radius:14px;padding:18px;margin-bottom:16px}.box h2{margin:0 0 16px}.filters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}label{font-weight:800;font-size:14px}select{width:100%;margin-top:6px;padding:13px;border:2px solid #9fbdb6;border-radius:10px;background:#fff;font-size:17px}.wide{grid-column:1/-1}.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.kpi{background:#e8f1f2;padding:13px;border-radius:10px;text-align:center}.kpi b{display:block;font-size:24px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border:1px solid #d8e2e5;border-radius:10px;overflow:hidden}.field{padding:14px;border-bottom:1px solid #e0e7e9;white-space:pre-wrap}.field b{display:block;color:#49677c;font-size:12px;text-transform:uppercase;margin-bottom:6px}.field.w{grid-column:1/-1}.warn{background:#fff8e5}.src{background:#eef7ff}.actions{display:flex;gap:10px;flex-wrap:wrap}button{padding:13px 16px;border:0;border-radius:9px;background:#173d63;color:#fff;font-weight:800;font-size:15px}.doc{display:none;white-space:pre-wrap;background:#fff;border:1px solid #ccd9dd;border-radius:12px;padding:18px;margin-top:14px}@media(max-width:650px){.filters,.grid{grid-template-columns:1fr}.wide,.field.w{grid-column:1}.kpis{grid-template-columns:repeat(2,1fr)}header h1{font-size:24px}}
-.nav{display:flex;gap:8px;overflow:auto;margin-bottom:16px}.nav button{white-space:nowrap;background:#e8f1f2;color:#173d63;border:1px solid #9fbdb6}.badge{display:inline-block;padding:5px 9px;border-radius:999px;background:#e8f1f2;margin:3px;font-size:12px;font-weight:800}.control{border-left:5px solid #7b5aa6}.contract{border-left:5px solid #173d63}.concession{border-left:5px solid #35a66f}.sourcebar{margin-top:10px;padding:10px 12px;background:#eef7ff;border-radius:9px;font-size:13px}.sourcebar a{font-weight:800;color:#173d63}.sourcebtn{display:inline-block;margin:4px 5px 0 0;padding:7px 9px;border:1px solid #9fbdb6;border-radius:8px;text-decoration:none;background:#fff;color:#173d63}</style></head><body><header><h1>BI Executivo de Hidrovias — DPP/SNHN · v41</h1><p>Assessoria executiva · backend estruturado · 21 registros · corte 27/09/2026 · filtros validados no iPhone</p></header><main class="wrap"><nav class="nav"><button onclick="goTo('filtros')">Carteira / Filtros</button><button onclick="showContracts()">Contratos e Valores</button><button onclick="showConcessions()">Concessões</button><button onclick="showControl()">Auditorias e Controle</button><button onclick="goTo('docs')">Relatórios / Briefing</button></nav>
+.nav{display:flex;gap:8px;overflow:auto;margin-bottom:16px}.nav button{white-space:nowrap;background:#e8f1f2;color:#173d63;border:1px solid #9fbdb6}.badge{display:inline-block;padding:5px 9px;border-radius:999px;background:#e8f1f2;margin:3px;font-size:12px;font-weight:800}.control{border-left:5px solid #7b5aa6}.contract{border-left:5px solid #173d63}.concession{border-left:5px solid #35a66f}.sourcebar{margin-top:10px;padding:10px 12px;background:#eef7ff;border-radius:9px;font-size:13px}.sourcebar a{font-weight:800;color:#173d63}.sourcebtn{display:inline-block;margin:4px 5px 0 0;padding:7px 9px;border:1px solid #9fbdb6;border-radius:8px;text-decoration:none;background:#fff;color:#173d63}
+.reporthead{border-bottom:3px solid #173d63;padding-bottom:10px;margin-bottom:14px}.reportmeta{font-size:12px;color:#49677c}.decision{background:#eef7ff;border-left:5px solid #173d63;padding:12px;margin:12px 0}.alertbox{background:#fff8e5;border-left:5px solid #d49b24;padding:12px;margin:12px 0}.rtable{width:100%;border-collapse:collapse;margin:12px 0}.rtable th,.rtable td{border:1px solid #ccd9dd;padding:8px;text-align:left;vertical-align:top}.rtable th{background:#e8f1f2}.reportsection{margin:18px 0}.reportsection h3{margin:0 0 8px;color:#173d63}.report-actions{position:sticky;bottom:8px;background:#fff;padding:8px 0}@media print{header,.nav,#filtros,.kpis,#especial,#sourceLinks,.actions,.report-actions{display:none!important}.box{border:0;padding:0}.doc{display:block!important;border:0}.wrap{max-width:none;padding:0}body{background:#fff;color:#111}.rtable{font-size:10pt}}
+</style></head><body><header><h1>BI Executivo de Hidrovias — DPP/SNHN · v42</h1><p>Assessoria executiva · backend estruturado · 21 registros · corte 27/09/2026 · filtros validados no iPhone</p></header><main class="wrap"><nav class="nav"><button onclick="goTo('filtros')">Carteira / Filtros</button><button onclick="showContracts()">Contratos e Valores</button><button onclick="showConcessions()">Concessões</button><button onclick="showControl()">Auditorias e Controle</button><button onclick="goTo('docs')">Relatórios / Briefing</button></nav>
 <section class="box" id="filtros"><h2>Filtros em cascata</h2><div class="filters"><label class="">REGIÃO<select id="regiao"><option value="TODOS">TODOS</option></select></label><label class="">UF<select id="uf"><option value="TODOS">TODOS</option></select></label><label class="">MUNICÍPIO / ABRANGÊNCIA<select id="municipio"><option value="TODOS">TODOS</option></select></label><label class="">HIDROVIA / RIO<select id="hidrovia"><option value="TODOS">TODOS</option></select></label><label class="">TIPO<select id="tipo"><option value="TODOS">TODOS</option></select></label><label class="wide">EMPREENDIMENTO<select id="empreendimento"><option value="TODOS">TODOS</option></select></label></div></section>
 <section class="box"><div class="kpis"><div class="kpi"><b id="kc">0</b>investimentos</div><div class="kpi"><b id="ku">0</b>UFs</div><div class="kpi"><b id="km">0</b>localidades</div><div class="kpi"><b id="kp">—</b><span id="kplabel">problemas: em validação</span></div></div></section>
 <section class="box"><h2 id="pt">Painel executivo consolidado</h2><div id="panel" class="grid"></div></section>
@@ -19,407 +21,38 @@ function render(){var rs=set(),p=document.getElementById("panel");document.getEl
 if(rs.length===1){var r=rs[0];document.getElementById("pt").textContent="Ficha individual — "+r.nome;h+=F("Nome",r.nome,1)+F("Região",r.regioes.join(", "))+F("UF",r.ufs.join(", "))+F("Município / abrangência",r.municipios.join(" • "),1)+F("LOCAL EXATO DO INVESTIMENTO",r.localExato,1)+F("Precisão da localização",r.precisaoLocal)+F("Hidrovia / rio",r.hidrovias.join(", "))+F("Tipo",r.tipo)+F("Situação",r.situacao)+F("Objeto",r.objeto,1)+F("Fase",r.fase,1)+F("Instrumento / contrato",r.instrumento,1)+F("Valor",r.valor,1)+F("LOA / PLOA / PPA",r.loa,1,"warn")+F("Execução física",r.execFisica,1,"warn")+F("Execução financeira",r.execFinanceira,1,"warn")+F("Empenhado / pago",r.empenhadoPago,1,"warn")+F("Executor",r.executor)+F("Unidade responsável",r.unidade)+F("Sistema de acompanhamento",r.sistema,1)+F("Marco alcançado",r.marco,1)+F("Próximo marco",r.proximoMarco,1)+F("Riscos / gargalos",r.gargalo,1)+F("Problema confirmado?",r.problema,1)+F("Providência DPP",r.providencia,1)+F("Evidência pendente",r.pendencia,1,"warn")+F("Origem/categoria",r.origem,1)+F("Fonte",r.fonte,1,"src")+F("Data da fonte/corte",r.dataFonte,1)}
 else{document.getElementById("pt").textContent="Painel consolidado — "+rs.length+" investimentos";h+=F("Investimentos",rs.map(function(r){return"• "+r.nome}).join("\n"),1)+F("UFs",ag(rs,"uf"))+F("Municípios / abrangências",ag(rs,"municipio"),1)+F("Hidrovias / rios",ag(rs,"hidrovia"))+F("Tipos",ag(rs,"tipo"))+F("Situações",u(rs.map(function(r){return r.situacao})).join(" • "),1)+F("Próximos marcos",rs.map(function(r){return"• "+r.nome+": "+safe(r.proximoMarco)}).join("\n"),1)+F("Riscos / gargalos",rs.map(function(r){return"• "+r.nome+": "+safe(r.gargalo)}).join("\n"),1)+F("Providências DPP",rs.map(function(r){return"• "+r.nome+": "+safe(r.providencia)}).join("\n"),1)+F("Pendências",rs.map(function(r){return"• "+r.nome+": "+safe(r.pendencia)}).join("\n"),1,"warn")}
 p.innerHTML=h}
-function doc(t){var rs=set(),z=(t==="brief"?"BRIEFING PARA AUTORIDADE":"RELATÓRIO EXECUTIVO")+"\nData de corte: 27/09/2026\nRecorte: "+ORD.map(function(k){return k.toUpperCase()+": "+v(k)}).join(" | ")+"\n\n";for(var i=0;i<rs.length;i++){var r=rs[i];z+=(i+1)+". "+r.nome+"\nSituação: "+safe(r.situacao)+"\nContrato / instrumento: "+safe(r.instrumento)+"\nEmpresa / executor: "+safe(r.executor)+"\nValor do contrato / investimento: "+safe(r.valor)+"\nLocal: "+safe(r.localExato)+"\nValor: "+safe(r.valor)+"\nPróximo marco: "+safe(r.proximoMarco)+"\nRisco/gargalo: "+safe(r.gargalo)+"\nProvidência DPP: "+safe(r.providencia)+"\nPendência: "+safe(r.pendencia)+"\nLOA / PLOA / PPA: "+safe(r.loa)+"\nExecução física: "+safe(r.execFisica)+"\nExecução financeira: "+safe(r.execFinanceira)+"\nEmpenhado / pago: "+safe(r.empenhadoPago)+"\nFonte/corte: "+safe(r.fonte)+" — "+safe(r.dataFonte)+"\n\n"}var d=document.getElementById("doc");d.textContent=z;d.style.display="block";d.scrollIntoView()}
-for(var i=0;i<ORD.length;i++)(function(k){E[k].onchange=function(){cascade(k)}})(ORD[i]);fill("regiao",false);for(var j=1;j<ORD.length;j++)fill(ORD[j],false);render();
-
-// === ENRIQUECIMENTO OFICIAL v37 TESTE — corte 27/09/2026 ===
-(function(){
- const E={
- "Operação e manutenção de 54 IP4":{valor:"R$ 572.600.000,00",situacao:"Contrato de operação e manutenção em execução — 730 dias",executor:"DNIT / contratada: validar razão social no PNCP/Compras.gov.br antes de uso externo",objeto:"Operação contínua e manutenção preventiva/corretiva de 54 IP4 no AM, RO e RR",fonte:"MPOR, notícia oficial de 24/02/2026; DNIT/PNCP para dados contratuais detalhados",dataFonte:"27/09/2026",localExato:"51 IP4 no Amazonas; Cai n’Água e Guajará-Mirim/RO; Caracaraí/RR",precisaoLocal:"Abrangência oficial confirmada; detalhamento por IP4 deve vir da aba específica do backend"},
- "Concessão Hidrovia do Rio Madeira":{instrumento:"Processo ANTAQ 50300.017021/2023-52 — concessão em estruturação",valor:"CAPEX R$ 109.035.320,84; OPEX R$ 38.680.479,69/ano; receita bruta global estimada R$ 697.791.000,00",situacao:"Estruturação de concessão; documentos técnicos e minuta disponíveis; sem concessionária contratada confirmada",executor:"ANTAQ / MPOR / PPI / Infra S.A. — estruturação",objeto:"Concessão da Hidrovia do Rio Madeira e infraestruturas relacionadas",localExato:"Porto Velho/RO à Itacoatiara/AM — aprox. 1.075 km",precisaoLocal:"Trecho oficial ANTAQ",fonte:"ANTAQ — Hidrovia do Rio Madeira, atualizada em 24/09/2026",dataFonte:"27/09/2026",proximoMarco:"Validar cronograma vigente de participação social/leilão antes de assessoramento"},
- "Concessão Hidrovia do Rio Paraguai":{instrumento:"Processo ANTAQ 50300.024732/2024-64 — concessão em estruturação",valor:"CAPEX R$ 63,7 milhões até o 5º ano; OPEX R$ 14,1 milhões/ano",situacao:"Estruturação de concessão; audiência pública realizada; leilão indicado como 'em breve' na página oficial consultada",executor:"ANTAQ / MPOR — estruturação; concessionária ainda não confirmada",objeto:"Concessão da Hidrovia do Rio Paraguai",localExato:"Corumbá/MS à foz do rio Apa — 600 km",precisaoLocal:"Trecho oficial ANTAQ",fonte:"ANTAQ — Hidrovia do Paraguai, atualizada em 05/05/2026",dataFonte:"27/09/2026"},
- "Concessão Hidrovia do Rio Tapajós":{instrumento:"Concessão em estudos — número do processo: DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO",valor:"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO",situacao:"Estudos em elaboração na página oficial ANTAQ consultada",executor:"ANTAQ / MPOR — estruturação",objeto:"Estruturação da concessão da Hidrovia do Tapajós",localExato:"Trecho comercial associado a Itaituba/PA–Santarém/PA; validar delimitação final nos estudos",precisaoLocal:"Trecho de referência; delimitação da concessão pendente de validação",fonte:"ANTAQ — Hidrovia do Tapajós; estudos em elaboração",dataFonte:"27/09/2026"},
- "Concessão Hidrovia do Rio Tocantins":{instrumento:"Concessão em estudos — processo: DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO",valor:"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO",situacao:"Estudos em elaboração na página oficial; PGA 2026 prevê etapas de EVTEA, participação social, análise jurídica e ajustes de controle",executor:"ANTAQ / MPOR / Infra S.A. — estruturação",objeto:"Estruturação da concessão da Hidrovia do Tocantins",localExato:"Rio Tocantins — navegação comercial referenciada entre Marabá/PA e Barcarena/PA; delimitação final pendente",precisaoLocal:"Referência oficial; área final da concessão pendente",fonte:"ANTAQ — Hidrovia do Tocantins + PGA 2026",dataFonte:"27/09/2026"},
- "Concessão SAI Sul–Lagoa Mirim":{instrumento:"Processo ANTAQ 50300.004564/2026-52 — Audiência Pública 06/2026",situacao:"Consulta pública prorrogada até 14/10/2026; audiência pública realizada em 11/08/2026; sessão adicional presencial aprovada",executor:"ANTAQ / MPOR — estruturação",objeto:"Concessão do Sistema Aquaviário Integrado do Sul e Lagoa Mirim",localExato:"Acessos a Rio Grande, Pelotas e Porto Alegre; Lagoa dos Patos, Lago Guaíba e rios Jacuí, Caí, dos Sinos e Gravataí",precisaoLocal:"Abrangência oficial da AP 06/2026",fonte:"ANTAQ — AP 06/2026 e notícia de 19/08/2026",dataFonte:"27/09/2026",proximoMarco:"Encerramento da consulta pública em 14/10/2026, salvo nova alteração oficial"},
- "Dragagens Amazonas, Madeira e Solimões":{instrumento:"PADMA — contratos 605/2024, 616/2024, 617/2024 e 638/2024 (trechos AM confirmados)",valor:"605/2024: R$ 92,86 mi; 616/2024: R$ 104,899 mi; 617/2024: R$ 90,394 mi; 638/2024: R$ 84,259 mi — valores da base/consulta DNIT",situacao:"DNIT: 605/2024, 617/2024 e 638/2024 em andamento no relatório de gestão; 616/2024 com dragagem temporariamente paralisada e levantamentos hidrográficos ativos",executor:"DNIT / empresas contratadas: validar razão social individual no PNCP/Compras.gov.br",objeto:"Dragagem, levantamentos hidrográficos, sinalização náutica e monitoramento ambiental",fonte:"DNIT — Relatório de Gestão 2025 e notícias oficiais PADMA",dataFonte:"27/09/2026"}
- };
- DATA.forEach(function(r){if(E[r.nome])Object.assign(r,E[r.nome])});
-})();
-
-
-// === AUDITORIA DE CONSISTÊNCIA v37 TESTE ===
-(function(){
- const by=function(n){return DATA.find(function(r){return r.nome===n})};
- let r=by("Concessão Hidrovia do Rio Madeira");
- if(r){r.localExato="Porto Velho/RO à Itacoatiara/AM — 1.075 km";r.proximoMarco="Audiência pública e leilão constam como 'em breve' na página oficial ANTAQ consultada";r.pendencia="Confirmar cronograma executivo posterior à tomada de subsídios e eventual encaminhamento ao TCU";}
- r=by("Concessão Hidrovia do Rio Paraguai");
- if(r){r.proximoMarco="Leilão consta como 'em breve' na página oficial ANTAQ atualizada em 05/05/2026";r.marco="Audiências públicas realizadas em 06/02/2025 e 10/04/2025";r.pendencia="Confirmar cronograma do leilão e eventual tramitação de controle externo";}
- r=by("Concessão Hidrovia do Rio Tapajós");
- if(r){r.instrumento="Estruturação: ANTAQ informa estudos em elaboração; contratação de consultoria Tocantins/Tapajós vinculada ao processo 50300.011175/2024-11";r.proximoMarco="Conclusão/validação dos estudos e definição do cenário de modelagem";r.pendencia="Confirmar processo específico da concessão, CAPEX/OPEX, cronograma e encaminhamentos de controle";}
- r=by("Concessão Hidrovia do Rio Tocantins");
- if(r){r.instrumento="Estruturação: ANTAQ informa estudos em elaboração; consultoria Tocantins/Tapajós vinculada ao processo 50300.011175/2024-11";r.proximoMarco="Conclusão dos estudos e definição da modelagem";r.pendencia="Confirmar processo específico da concessão, CAPEX/OPEX, cronograma e controle externo";}
- r=by("Concessão SAI Sul–Lagoa Mirim");
- if(r){r.instrumento="Audiência Pública ANTAQ nº 06/2026 — concessão em estruturação";r.valor="Investimentos/valor contratual: validar na modelagem oficial vigente antes de uso decisório";r.pendencia="Confirmar resultado final da consulta, consolidação das contribuições, modelagem final e eventual encaminhamento ao TCU";}
-})();
-
-
-// === CONTRATOS / EXECUÇÃO v37 TESTE ===
-(function(){
- function g(n){return DATA.find(function(x){return x.nome===n})}
- let r=g("Operação e manutenção de 54 IP4");
- if(r){Object.assign(r,{instrumento:"Contrato nº 12/2026",valor:"R$ 572.600.000,00",executor:"DNIT / contratada: ANTONELLY CONSTRUÇÕES E SERVIÇOS LTDA. — validar CNPJ e composição dos lotes no instrumento antes de expediente externo",situacao:"Operação e manutenção de 54 IP4 — prazo global divulgado de 730 dias",objeto:"Operação contínua e manutenção preventiva e corretiva de 54 IP4 no Amazonas, Rondônia e Roraima",localExato:"51 IP4/AM; Cai n’Água e Guajará-Mirim/RO; Caracaraí/RR",fonte:"MPOR 24/02/2026 + apresentação oficial do biênio SNHN + Atlas Aquaviário DNIT abr/2026",dataFonte:"27/09/2026",pendencia:"Confirmar CNPJ, lotes, datas de início/término, empenhado, pago e execução física/financeira do Contrato 12/2026 no instrumento/PNCP/SIAFI."})}
- r=g("Supervisão das 54 IP4");
- if(r){Object.assign(r,{instrumento:"Licitação de supervisão — contratação ainda em andamento na apresentação oficial SNHN consultada",valor:"R$ 83.300.000,00 — valor indicado para o serviço de supervisão",executor:"Empresa supervisora: DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO",situacao:"Licitação em andamento na fonte oficial consultada",objeto:"Supervisão dos serviços de operação e manutenção das 54 IP4",fonte:"MPOR/SNHN — Balanço do primeiro biênio, maio/2026",dataFonte:"27/09/2026",pendencia:"Confirmar resultado da licitação, contrato, empresa, valor adjudicado, vigência e situação corrente."})}
-})();
-
-
-// === AMARÓPOLIS v37 TESTE — CONTRATADA CONFIRMADA ===
-(function(){
- function g(n){return DATA.find(function(x){return x.nome===n})}
- let r=g("Barragem de Amarópolis — Hidrovia do Rio Jacuí");
- if(r){Object.assign(r,{instrumento:"Contrato nº 00 00321/2024 — Processo DNIT 50610.001510/2023-99",executor:"CONSÓRCIO AMARÓPOLIS — TEMA INFRAESTRUTURA LTDA + AFONSO MINERAÇÃO E LOGÍSTICA LTDA",valor:"R$ 153.912.630,21 — valor registrado na base DNIT recebida; confirmar valor contratual vigente/aditivos no Portal da Transparência antes de expediente externo",objeto:"Elaboração de projetos executivos e execução das obras de reforma, recuperação e modernização da Barragem/Eclusa de Amarópolis",localExato:"Rio Jacuí — Santo Amaro do Sul / General Câmara-RS, entre General Câmara e Butiá",situacao:"Contrato ativo na base DNIT; operação de eclusagem teve suspensão temporária informada em 02/04/2026 para manutenção corretiva",fonte:"DNIT — Boletim Administrativo nº 241/2024; páginas oficiais da Eclusa e alerta de 02/04/2026; base DNIT recebida",dataFonte:"27/09/2026",pendencia:"Confirmar situação operacional atual após o alerta de 02/04/2026; validar aditivos, medição física, execução financeira, empenhado e pago."})}
- let s=g("Supervisão — Barragem de Amarópolis / Rio Jacuí");
- if(s){Object.assign(s,{instrumento:"Contrato nº 489/2024 — supervisão; dados detalhados a validar no Portal da Transparência/DNIT",valor:"R$ 5.667.357,41 — base DNIT recebida",situacao:"ATIVO na base DNIT recebida; término consolidado 01/07/2028",localExato:"Barragem/Eclusa de Amarópolis — Rio Jacuí/RS",fonte:"Base DNIT recebida + portal oficial de contratos DNIT para validação",dataFonte:"27/09/2026",pendencia:"Confirmar razão social da supervisora, processo, aditivos, execução física/financeira, empenhado e pago."})}
-})();
-
-
-// === PADMA v37 TESTE — SITUAÇÃO CONTRATUAL/OPERACIONAL ===
-(function(){
- const r=DATA.find(function(x){return x.nome==="Dragagens Amazonas, Madeira e Solimões"});
- if(r){Object.assign(r,{
- instrumento:"PADMA — Contratos DNIT 605/2024, 616/2024, 617/2024 e 638/2024",
- objeto:"Dragagem, levantamentos hidrográficos, sinalização náutica e monitoramento ambiental em trechos das hidrovias dos rios Amazonas e Solimões",
- situacao:"605/2024 Manaus–Itacoatiara: em andamento; 617/2024 Coari–Codajás: em andamento; 638/2024 Benjamin Constant–São Paulo de Olivença: em andamento; 616/2024 Tabatinga–Benjamin Constant: dragagem temporariamente paralisada por tratativas com o Peru, com levantamentos hidrográficos ativos",
- valor:"605/2024 R$ 92.860.000,00; 616/2024 R$ 104.899.099,57; 617/2024 R$ 90.394.328,89; 638/2024 R$ 84.259.236,71 — valores da base DNIT recebida",
- executor:"DNIT / contratadas individuais: DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO documental no PNCP/Compras.gov/DNIT",
- marco:"Execução PADMA confirmada pelo Relatório de Gestão DNIT 2025 nos quatro trechos, com ressalva operacional no 616/2024",
- proximoMarco:"Acompanhar retomada da dragagem do 616/2024 e evolução das medições dos contratos ativos",
- gargalo:"Contrato 616/2024: paralisação temporária da dragagem por tratativas internacionais com a República do Peru",
- problema:"SIM — especificamente no trecho Tabatinga–Benjamin Constant (616/2024), conforme fonte oficial consultada",
- providencia:"DPP: acompanhar DNIT/MPOR quanto à solução das tratativas com o Peru; exigir atualização de medição física/financeira e cronograma dos quatro contratos antes do briefing decisório.",
- pendencia:"Razões sociais/CNPJs das contratadas; aditivos; execução física e financeira atual; empenhado, pago e RAP por contrato.",
- fonte:"DNIT — Relatório de Gestão 2025; base contratual DNIT recebida",
- dataFonte:"27/09/2026"
- })}
-})();
-
-
-// === PADMA SUPERVISÃO / QUALIDADE DA EVIDÊNCIA v37 TESTE ===
-(function(){
- const r=DATA.find(function(x){return x.nome==="Dragagens Amazonas, Madeira e Solimões"});
- if(r){Object.assign(r,{
- pendencia:"Execução: confirmar razões sociais/CNPJs das contratadas 605/2024, 616/2024, 617/2024 e 638/2024 diretamente no DNIT/PNCP. Supervisão confirmada documentalmente por contrato/valor: 927/2024 R$ 2.868.455,81 (Manaus–Itacoatiara); 928/2024 R$ 3.114.655,62 (Coari–Codajás); 929/2024 R$ 2.850.018,08 (Benjamin Constant–São Paulo de Olivença). Faltam empenhado, pago, RAP e execução física/financeira atual por contrato.",
- fonte:"DNIT — Relatório de Gestão 2025; base contratual DNIT recebida; resposta oficial MPOR/DNIT à Câmara (RIC 6542/2025) para contratos de supervisão",
- dataFonte:"27/09/2026"
- })}
-})();
-
-
-// === ORÇAMENTO / PLANEJAMENTO v37 TESTE ===
-(function(){
- const r=DATA.find(function(x){return x.nome==="Dragagens Amazonas, Madeira e Solimões"});
- if(r){Object.assign(r,{
- loa:"LOA 2026: vinculação específica por contrato/PO ainda NÃO confirmada. Consultar SIOP/SIAFI e relatórios orçamentários 2026. PNMH/IN 11/2026 determina ajuste do plano após aprovação da LOA e monitoramento técnico-orçamentário contínuo.",
- providencia:"DPP: acompanhar DNIT/MPOR quanto ao 616/2024 e, para os quatro contratos, cruzar medição física com execução financeira, empenhado/pago/RAP. Usar o PNMH como trilha de planejamento e exigir atualização dos sistemas corporativos nas prorrogações/alterações do PADMA.",
- pendencia:"LOA/PO por contrato; empenhado, liquidado/pago e RAP; execução física/financeira corrente. Razões sociais/CNPJs dos contratos principais ainda requerem confirmação inequívoca no DNIT/PNCP."
- })}
- const t=DATA.find(function(x){return x.nome==="Concessão Hidrovia do Rio Tapajós"});
- if(t){t.pendencia=(t.pendencia||"")+" | PCA DNIT 2026 registra contratação planejada para execução do PADMA Itaituba–Santarém em R$ 160 milhões e supervisão/monitoramento em R$ 15 milhões; NÃO confundir PCA/planejamento com contrato ou empenho efetivamente realizado."}
-})();
-
-
-// === CONTROLE / GOVERNANÇA v37 TESTE ===
-(function(){
- const pad=DATA.find(function(x){return x.nome==="Dragagens Amazonas, Madeira e Solimões"});
- if(pad){pad.pendencia=(pad.pendencia||"")+" | Controle: IN DNIT 10/2026 passou a exigir supervisão independente para auxiliar fiscalização, quantificação e validação dos serviços de dragagem; registrar no BI eventual processo/acórdão específico somente após confirmação documental."}
- const pmh=DATA.find(function(x){return x.nome==="PMH — Programa de Monitoramento Hidroviário"});
- if(pmh){Object.assign(pmh,{instrumento:"IN DNIT nº 1/2026 — Processo 50600.004172/2025-28",situacao:"Programa normatizado e integrante do PNMH",objeto:"Monitoramento hidroviário com padrões de execução, métrica, padronização e fiscalização",fonte:"DNIT — IN nº 1/2026, atualizada em 19/08/2026",dataFonte:"27/09/2026",providencia:"DPP: usar os produtos do PMH como evidência técnica para priorização, dragagem, sinalização e acompanhamento da manutenção hidroviária."})}
- const tap=DATA.find(function(x){return x.nome==="ACT dragagem emergencial Rio Tapajós — Itapaiuna e Amorim"});
- if(tap){Object.assign(tap,{instrumento:"ACT nº 001/2025 DAQ — DNIT/ABANI",objeto:"Dragagem de manutenção aquaviária excepcional/emergencial nos trechos Itapaiuna e Amorim, entre Itaituba e Santarém/PA",situacao:"Acordo de cooperação publicado pelo DNIT; situação executiva corrente requer validação",executor:"DNIT + Associação Brasileira para o Desenvolvimento da Navegação Interior (ABANI)",fonte:"DNIT — Acordo de Cooperação Técnica nº 001/2025 DAQ, página atualizada em 08/04/2026",dataFonte:"27/09/2026",pendencia:"Confirmar execução física, medições/resultados, vigência corrente, custos suportados pelas partes e encerramento/prestação de informações."})}
-})();
-
-
-// === CONTROLE E CRONOGRAMA DE CONCESSÕES v37 TESTE ===
-(function(){
- function g(n){return DATA.find(function(x){return x.nome===n})}
- let r=g("Concessão Hidrovia do Rio Paraguai");
- if(r){r.marco="Audiências públicas realizadas em 06/02/2025 e 10/04/2025; RGI ANTAQ 2025 registra entrega do Plano de Outorga Específico ao MPOR.";r.proximoMarco="Cronograma governamental 2026 indicava edital/leilão no 2º semestre de 2026; página ANTAQ de 05/05/2026 ainda exibe leilão 'em breve'. Validar antes de briefing.";r.pendencia=(r.pendencia||"")+" | Controle: confirmar tramitação/manifestação do TCU vinculada à modelagem; não atribuir achado ou determinação sem processo/acórdão identificado."}
- r=g("Concessão Hidrovia do Rio Madeira");
- if(r){r.marco="Documentos técnicos divulgados pela ANTAQ em 24/09/2026 no processo 50300.017021/2023-52.";r.proximoMarco="Cronograma governamental de 2026 previa envio ao TCU no 1º semestre/2026, edital no 2º semestre/2026 e leilão no 1º semestre/2027; situação efetiva deve ser validada no processo.";r.pendencia=(r.pendencia||"")+" | Controle: localizar processo de controle externo específico antes de registrar auditoria/determinação."}
- r=g("Concessão Hidrovia do Rio Tapajós");
- if(r){r.marco="Estudos em elaboração; ANTAQ/BNDES estruturam Tapajós e Tocantins; contratação de consultoria registrada no processo 50300.011175/2024-11.";r.proximoMarco="Cronograma governamental 2026 previa envio ao TCU no 2º semestre/2026, edital no 2º semestre/2026 e leilão no 1º semestre/2027; página temática ainda registra estudos em elaboração — tratar cronograma como planejamento, não fato consumado."}
- r=g("Concessão Hidrovia do Rio Tocantins");
- if(r){r.marco="Estudos em elaboração com estruturação ANTAQ/BNDES; consultoria vinculada ao processo 50300.011175/2024-11.";r.proximoMarco="Cronograma governamental 2026 previa envio ao TCU no 2º semestre/2026, edital no 2º semestre/2026 e leilão no 1º semestre/2027; validar estágio efetivo no processo."}
-})();
-
-
-// === FONTES CLICÁVEIS E RASTREABILIDADE v37 TESTE ===
-const OFFICIAL_SOURCES=[
- ["DNIT — Infraestrutura Aquaviária","https://www.gov.br/dnit/pt-br/assuntos/aquaviario"],
- ["DNIT — Atlas Aquaviário","https://www.gov.br/dnit/pt-br/assuntos/aquaviario/atlas-aquaviario"],
- ["DNIT — Instruções Normativas 2026","https://www.gov.br/dnit/pt-br/central-de-conteudos/atos-normativos/tipo/instrucao-normativa/2026"],
- ["DNIT — Licitações/Contratos","https://www.gov.br/dnit/pt-br/acesso-a-informacao/licitacoes"],
- ["ANTAQ — Concessões Hidroviárias","https://www.gov.br/antaq/pt-br/assuntos/projetos-de-concessao/novas-concessoes-hidroviarias"],
- ["ANTAQ — Licitações e Contratos","https://www.gov.br/antaq/pt-br/acesso-a-informacao/licitacoes-e-contratos"],
- ["MPOR — Portal institucional","https://www.gov.br/portos-e-aeroportos/pt-br"],
- ["TCU — Pesquisa","https://pesquisa.apps.tcu.gov.br/"],
- ["CGU — Auditorias","https://www.gov.br/cgu/pt-br/acesso-a-informacao/dados-abertos/arquivos/auditorias"],
- ["Portal da Transparência","https://portaldatransparencia.gov.br/"]
-];
-(function(){
- var e=document.getElementById("sourceLinks");
- if(e) e.innerHTML=OFFICIAL_SOURCES.map(function(x){return '<a class="sourcebtn" target="_blank" rel="noopener" href="'+x[1]+'">'+x[0]+'</a>'}).join("");
- DATA.forEach(function(r){
-   r.fonte=r.fonte||"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO";
-   r.dataFonte=r.dataFonte||"27/09/2026";
-   r.refConsulta=r.refConsulta||(
-     /concess|ANTAQ/i.test((r.tipo||"")+" "+r.nome+" "+r.fonte)?OFFICIAL_SOURCES[4][1]:
-     /IP4|drag|PADMA|PMH|Amarópolis|DNIT/i.test(r.nome+" "+r.fonte)?OFFICIAL_SOURCES[0][1]:
-     OFFICIAL_SOURCES[6][1]);
- });
-})();
-
-
-// === SANEAMENTO TRANSVERSAL v37 TESTE ===
-(function(){
- function g(n){return DATA.find(function(x){return x.nome===n})}
- let r=g("Terminal Manaus Moderna");
- if(r) Object.assign(r,{valor:"R$ 875,9 milhões — investimento anunciado pelo MPOR/Novo PAC",objeto:"Reestruturação do Terminal Manaus Moderna com cais flutuantes, pontes móveis, terminais de passageiros e cargas, áreas operacionais, acessibilidade e segurança",situacao:"Projeto anunciado; estágio contratual/executivo deve ser validado no DNIT/SEI antes de briefing",localExato:"Manaus/AM — margem do Rio Negro, região da Manaus Moderna",fonte:"MPOR — notícias oficiais de 27/05/2026 e 02/06/2026; DNIT 19/05/2026",dataFonte:"27/09/2026",pendencia:"Confirmar contratação, empresa/consórcio, contrato, ordem de serviço, cronograma, execução física/financeira, empenhado e pago."});
- r=g("Nova Avanhandava — Rio Tietê");
- if(r) Object.assign(r,{valor:"R$ 293,8 milhões",objeto:"Derrocamento e aprofundamento do canal de Nova Avanhandava em 3,5 m ao longo de 16 km",situacao:"Obra em fase final na fonte MPOR de 15/04/2026, com 97% de execução e conclusão então prevista para 30/06/2026",execFisica:"97% em 15/04/2026 — necessita atualização pós-junho/2026",localExato:"Hidrovia Tietê–Paraná, região de Buritama/SP",fonte:"MPOR — 15/04/2026, obra de ampliação da Hidrovia Tietê-Paraná",dataFonte:"27/09/2026",pendencia:"Confirmar entrega/conclusão após 30/06/2026, execução financeira final, contrato, empresa e aceite."});
- r=g("Modernização da IP4 de Parintins");
- if(r) Object.assign(r,{localExato:"Parintins/AM — instalação portuária pública de pequeno porte",objeto:"Modernização/infraestrutura da IP4 de Parintins",situacao:"Ações de infraestrutura confirmadas pelo MPOR em junho/2026; contrato/escopo executivo corrente necessita validação",fonte:"MPOR 24/06/2026 + DNIT PROIP4/Atlas Aquaviário",dataFonte:"27/09/2026",pendencia:"Confirmar contrato vigente da modernização, empresa, valor, cronograma e execução."});
- DATA.forEach(function(x){x.fonte=x.fonte||"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO";x.dataFonte=x.dataFonte||"27/09/2026";});
-})();
-
-
-// === v38 — CONCESSÕES + INTEGRIDADE DO BACKEND ===
-(function(){
- const EXTRA=[
- {id:101,nome:"Concessão Hidrovia da Lagoa Mirim",regioes:["Sul"],ufs:["RS"],municipios:["Lagoa Mirim / Canal de São Gonçalo"],hidrovias:["Lagoa Mirim"],tipo:"Concessão hidroviária — modelagem",situacao:"Projeto de concessão em estruturação/modelagem",objeto:"Concessão da Hidrovia da Lagoa Mirim e Canal de São Gonçalo",fase:"Modelagem / participação social",instrumento:"Processo ANTAQ 50300.017676/2023-21",valor:"Estudo R$ 877.000,00; CAPEX R$ 43.546.635,03; OPEX R$ 185.372.000,00; receita bruta global R$ 334.046.000,00",execFisica:"Não se aplica — concessão ainda não contratada",execFinanceira:"Não se aplica — concessão ainda não contratada",empenhadoPago:"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO",executor:"ANTAQ / MPOR — estruturação; concessionária inexistente/não contratada",unidade:"ANTAQ / MPOR",sistema:"Processo ANTAQ / participação social",marco:"Tomada de Subsídios nº 01/2025-DG",proximoMarco:"Validar estágio atual da modelagem e integração com SAIP Sul-Mirim",gargalo:"Modelagem e participação social em evolução",problema:"NÃO CARACTERIZADO COMO IRREGULARIDADE",providencia:"DPP: acompanhar modelagem, participação social, controle externo, edital e leilão.",pendencia:"Validar eventual substituição/integração do desenho Lagoa Mirim pelo SAIP Sul-Mirim e atualizar CAPEX/OPEX da modelagem vigente.",fonte:"ANTAQ — Hidrovia da Lagoa Mirim",dataFonte:"27/09/2026",localExato:"Lagoa Mirim e Canal de São Gonçalo/RS — 140 km",precisaoLocal:"Trecho oficial ANTAQ",loa:"Concessão em estruturação — orçamento público/contraprestações em discussão na fonte",origem:"PESQUISA OFICIAL ANTAQ",refConsulta:"https://www.gov.br/antaq/pt-br/assuntos/projetos-de-concessao/novas-concessoes-hidroviarias/lagoa_mirim"},
- {id:102,nome:"Concessão Barra Norte",regioes:["Norte"],ufs:["PA","AP"],municipios:["Foz do Amazonas / Barra Norte"],hidrovias:["Barra Norte / Rio Amazonas"],tipo:"Concessão hidroviária — modelagem",situacao:"Projeto prioritário de concessão; estágio detalhado necessita validação documental atual",objeto:"Estruturação de concessão hidroviária da Barra Norte",fase:"Estudos / modelagem",instrumento:"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO",valor:"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO",execFisica:"Não se aplica — concessão ainda não contratada",execFinanceira:"Não se aplica — concessão ainda não contratada",empenhadoPago:"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO",executor:"ANTAQ / MPOR — estruturação",unidade:"ANTAQ / MPOR",sistema:"ANTAQ",marco:"ANTAQ inclui Barra Norte entre as novas concessões hidroviárias prioritárias",proximoMarco:"Confirmar estudo/modelagem vigente, processo, participação social e cronograma",gargalo:"Dados executivos atuais ainda precisam de consolidação documental",problema:"NECESSITA VALIDAÇÃO",providencia:"DPP: localizar processo e cronograma atual, distinguindo estudo, participação social, controle, edital e leilão.",pendencia:"Processo, CAPEX/OPEX, prazo, estudos, BNDES, TCU, edital e leilão.",fonte:"ANTAQ — Novas Concessões Hidroviárias",dataFonte:"27/09/2026",localExato:"Barra Norte / foz do Amazonas — PA/AP; delimitação final necessita validação",precisaoLocal:"Abrangência de referência",loa:"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO",origem:"PESQUISA OFICIAL ANTAQ",refConsulta:"https://www.gov.br/antaq/pt-br/assuntos/projetos-de-concessao/novas-concessoes-hidroviarias"}
- ];
- EXTRA.forEach(function(x){if(!DATA.some(function(r){return r.nome===x.nome}))DATA.push(x)});
- const saip=DATA.find(function(x){return x.nome==="Concessão SAI Sul–Lagoa Mirim"});
- if(saip){Object.assign(saip,{instrumento:"Processo ANTAQ 50300.004564/2026-52 — Audiência Pública nº 06/2026",fase:"Participação social / modelagem",situacao:"Consulta Pública aberta até 14/10/2026; audiência virtual realizada em 11/08/2026; audiência presencial marcada para 07/10/2026 em Rio Grande/RS",marco:"Audiência virtual realizada em 11/08/2026",proximoMarco:"Audiência Pública Presencial em 07/10/2026 e encerramento da consulta em 14/10/2026",fonte:"ANTAQ — Audiência Pública nº 06/2026, página atualizada em 04/09/2026",dataFonte:"27/09/2026",refConsulta:"https://www.gov.br/antaq/pt-br/acesso-a-informacao/participacao-social/audiencias-e-consultas-publicas/audiencias/audiencia-publica-no-06-2026-antaq"})}
-})();
-
-
-// === v38 — SANEAMENTO BOA VISTA PELAS ÁGUAS + KPI DE PROBLEMAS ===
-(function(){
- const r=DATA.find(function(x){return x.nome==="Boa Vista pelas Águas — Navegabilidade do Rio Branco"});
- if(r){Object.assign(r,{
-   objeto:"Garantir o acesso hidroviário à capital Boa Vista/RR pelo Rio Branco. Escopo informado institucionalmente: EVTEA; cartografia do Rio Branco; implantação de sinalização náutica; projeto de dragagem e derrocamento; fase posterior com dragagem de manutenção e derrocamento.",
-   fase:"Estruturação / estudos e levantamentos — situação executiva corrente a validar",
-   situacao:"Projeto/iniciativa em estruturação. Há contratação planejada no PCA DNIT 2026 para levantamento hidrográfico do Rio Branco; não equivale à contratação global do projeto.",
-   valor:"R$ 50 milhões — investimento inicial para os primeiros 2 anos, conforme informação institucional recebida; R$ 500 milhões — estimativa informada para a segunda fase (3º ao 6º ano). VALORES A VALIDAR EM FONTE OFICIAL. PCA DNIT 2026 registra separadamente R$ 2 milhões para levantamento hidrográfico do Rio Branco/trecho Boa Vista–foz, que NÃO deve ser somado como valor global do projeto.",
-   instrumento:"Projeto/iniciativa em estruturação. PCA DNIT 2026: item de contratação de serviço de engenharia para levantamento hidrográfico do Rio Branco, entre Boa Vista/RR e a foz, integrado a levantamento do Rio Negro; instrumento/contrato global do Boa Vista pelas Águas não localizado.",
-   executor:"DNIT/DAQ–COMAQ para o levantamento hidrográfico planejado; executor do projeto global: NECESSITA VALIDAÇÃO",
-   unidade:"SNHN/DGH — articulação; DNIT/DAQ–COMAQ no levantamento hidrográfico planejado",
-   sistema:"SEI / DNIT / SIOP-SIAFI — validar",
-   marco:"PCA DNIT 2026 registra contratação planejada de levantamento hidrográfico do Rio Branco no trecho Boa Vista/RR–foz, valor estimado de R$ 2.000.000,00.",
-   proximoMarco:"Confirmar no DNIT/SEI a contratação efetiva do levantamento hidrográfico e localizar o instrumento formal, cronograma e fonte orçamentária do projeto Boa Vista pelas Águas.",
-   gargalo:"Instrumento global, fonte orçamentária, executor, cronograma e valores de R$ 50 mi/R$ 500 mi ainda sem confirmação em fonte pública oficial localizada.",
-   problema:"NÃO AVALIADO — EVIDÊNCIA PENDENTE",
-   providencia:"DPP: separar o projeto Boa Vista pelas Águas da IP4 de Caracaraí; confirmar instrumento e fonte orçamentária; verificar contratação do levantamento hidrográfico no DNIT; validar os valores institucionais de R$ 50 mi e R$ 500 mi antes de assessoramento decisório.",
-   pendencia:"Contrato/processo global; fonte LOA/PLOA/PPA e PO; situação da contratação do levantamento hidrográfico; executor global; cronograma; execução física/financeira; empenhado/pago; validação oficial dos R$ 50 mi e R$ 500 mi.",
-   fonte:"Informação institucional recebida pelo usuário + DNIT PCA 2026 (levantamento hidrográfico do Rio Branco; R$ 2 milhões — contratação complementar, não valor global)",
-   dataFonte:"27/09/2026",
-   loa:"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — cruzar SIOP/SIAFI/LOA 2026/PLOA 2027/PPA; não atribuir os R$ 2 milhões do PCA como dotação global do projeto.",
-   origem:"INFORMAÇÃO INSTITUCIONAL RECEBIDA + PESQUISA OFICIAL DNIT",
-   refConsulta:"https://www.gov.br/dnit/pt-br/assuntos/licitacoes/sede/pca_2026_sede_18-12-2025.pdf"
- })}
-})();
-(function(){
- function upd(){
-   var a=currentSet(), confirmed=a.filter(function(r){return /^SIM\b/i.test((r.problema||"").trim())}).length;
-   var pending=a.filter(function(r){return /VALIDA|NÃO AVALIADO|PENDENTE/i.test(r.problema||"")}).length;
-   var n=document.getElementById("kp"),l=document.getElementById("kplabel");
-   if(n)n.textContent=confirmed;
-   if(l)l.textContent=pending?(" confirmados · "+pending+" em validação"):" problemas confirmados";
+function moneyKnown(v){return v&&!/DADO NÃO|NECESSITA|Não informado/i.test(v)}
+function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(ch){return({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"})[ch]})}
+function doc(tipo){
+ var a=currentSet(),d=document.getElementById("doc"),cut="27/09/2026";
+ function row(k,v){return "<tr><th>"+k+"</th><td>"+esc(safe(v))+"</td></tr>"}
+ function ficha(r,brief){
+  var prob=/^SIM\b/i.test((r.problema||"").trim()), pending=/VALIDA|PENDENTE|NÃO AVALIADO/i.test(r.problema||"");
+  if(brief)return '<div class="reporthead"><h2>BRIEFING PARA AUTORIDADE</h2><div class="reportmeta">DPP/SNHN · corte '+cut+' · '+esc(r.nome)+'</div></div>'+
+   '<div class="decision"><strong>ASSUNTO:</strong> '+esc(r.nome)+'<br><strong>LOCAL:</strong> '+esc(safe(r.localExato))+' · '+esc((r.ufs||[]).join(", "))+'<br><strong>OBJETO:</strong> '+esc(safe(r.objeto))+'</div>'+
+   '<table class="rtable">'+row("Contrato / instrumento",r.instrumento)+row("Empresa / executor",r.executor)+row("Valor",r.valor)+row("Situação / fase",safe(r.situacao)+" / "+safe(r.fase))+row("Execução física",r.execFisica)+row("Execução financeira",r.execFinanceira)+row("Empenhado / pago",r.empenhadoPago)+row("LOA / PLOA / PPA",r.loa)+'</table>'+
+   '<div class="'+(prob?"alertbox":"decision")+'"><strong>PONTO DE ATENÇÃO:</strong> '+esc(safe(r.gargalo))+'<br><strong>Problema:</strong> '+esc(safe(r.problema))+'</div>'+
+   '<div class="decision"><strong>PRÓXIMO MARCO:</strong> '+esc(safe(r.proximoMarco))+'<br><strong>PROVIDÊNCIA DPP:</strong> '+esc(safe(r.providencia))+'</div>'+
+   '<p><strong>Pendência de validação:</strong> '+esc(safe(r.pendencia))+'</p><p class="reportmeta"><strong>Fonte:</strong> '+esc(safe(r.fonte))+' · data/corte '+esc(safe(r.dataFonte))+'</p>';
+  return '<div class="reporthead"><h2>RELATÓRIO EXECUTIVO — '+esc(r.nome)+'</h2><div class="reportmeta">DPP/SNHN · corte '+cut+' · origem '+esc(safe(r.origem))+'</div></div>'+
+   '<div class="reportsection"><h3>1. Síntese executiva</h3><p>'+esc(safe(r.objeto))+'</p><p><strong>Situação:</strong> '+esc(safe(r.situacao))+' <strong>Fase:</strong> '+esc(safe(r.fase))+'</p></div>'+
+   '<div class="reportsection"><h3>2. Quadro contratual e financeiro</h3><table class="rtable">'+row("Contrato / instrumento",r.instrumento)+row("Empresa / executor",r.executor)+row("Valor",r.valor)+row("Prazo / próximo marco",r.proximoMarco)+row("Execução física",r.execFisica)+row("Execução financeira",r.execFinanceira)+row("Empenhado / pago",r.empenhadoPago)+row("LOA / PLOA / PPA",r.loa)+'</table></div>'+
+   '<div class="reportsection"><h3>3. Marcos, riscos e controle</h3><p><strong>Marco alcançado:</strong> '+esc(safe(r.marco))+'</p><p><strong>Gargalo/risco:</strong> '+esc(safe(r.gargalo))+'</p><p><strong>Problema confirmado:</strong> '+esc(safe(r.problema))+'</p></div>'+
+   '<div class="reportsection"><h3>4. Providência proposta à DPP</h3><div class="decision">'+esc(safe(r.providencia))+'</div><p><strong>Evidência pendente:</strong> '+esc(safe(r.pendencia))+'</p></div>'+
+   '<div class="reportsection"><h3>5. Fonte e rastreabilidade</h3><p>'+esc(safe(r.fonte))+'</p><p class="reportmeta">Data da fonte/corte: '+esc(safe(r.dataFonte))+'</p></div>';
  }
- document.addEventListener("change",function(){setTimeout(upd,0)});
- setTimeout(upd,0);
-})();
-
-
-// === v39 — SANEAMENTO DOCUMENTAL: MANAUS MODERNA, PARINTINS, NOVA AVANHANDAVA ===
-(function(){
- function g(n){return DATA.find(function(x){return x.nome===n})}
- let r=g("Terminal Manaus Moderna");
- if(r){Object.assign(r,{
-  instrumento:"Concorrência DNIT nº 215/2025-00; processo administrativo 50600.016762/2023-31; contrato das obras assinado em março/2026 (número do contrato: NECESSITA VALIDAÇÃO documental)",
-  executor:"Consórcio Manaus Moderna (CMM) — Juruá Estaleiros e Navegação Ltda. + Construtora ETAM Ltda.",
-  valor:"R$ 875.975.852,49 — valor vencedor/adjudicado; MPOR divulga R$ 875,9 milhões de investimento Novo PAC",
-  objeto:"Elaboração dos projetos básico/executivo e as built e execução das obras e serviços de construção do Porto/IP4 Manaus Moderna",
-  fase:"Contrato assinado / projetos e execução contratual; conclusão divulgada pelo MPOR para 2029",
-  situacao:"Contrato das obras assinado em março/2026. Empreendimento submetido a acompanhamento do TCU no Fiscobras 2026.",
-  localExato:"Manaus/AM — margem do Rio Negro, atrás da Feira Manaus Moderna/Feira da Banana, próximo à foz do igarapé do Educandos",
-  marco:"Licitação homologada/adjudicada em 30/12/2025; contrato assinado em março/2026",
-  proximoMarco:"Acompanhar projetos básico/executivo, execução contratual e determinações do Acórdão TCU 1522/2026-Plenário",
-  gargalo:"TCU registrou falhas de planejamento, processamento da licitação e consistência orçamentária; há determinações e monitoramento.",
-  problema:"SIM — achados de auditoria formalmente registrados pelo TCU; não equivalem, por si, a declaração de nulidade do contrato.",
-  providencia:"DPP: acompanhar DNIT quanto ao Acórdão 1522/2026-Plenário, especialmente política de integridade do CMM e solução de gestão/operação/manutenção; cruzar avanço físico com execução orçamentária e financeira.",
-  pendencia:"Número do contrato assinado; execução física e financeira corrente; empenhado, liquidado/pago e RAP; aditivos; comprovação de atendimento das determinações do TCU.",
-  fonte:"DNIT — Ata da 51ª Reunião Ordinária da Diretoria Colegiada de 29/12/2025; MPOR 27/05/2026; TCU Acórdão 1522/2026-Plenário, TC 018.745/2025-3",
-  dataFonte:"27/09/2026",
-  loa:"PPA 2024-2027: TCU registra R$ 467.695.366,00 no investimento plurianual, sendo R$ 90 milhões para 2026 e R$ 90 milhões para 2027. O contrato é de R$ 875.975.852,49; dotação/execução atual deve ser validada no SIOP/SIAFI.",
-  origem:"PESQUISA OFICIAL DNIT + MPOR + TCU",
-  refConsulta:"https://pesquisa.apps.tcu.gov.br/"
- })}
- r=g("Modernização da IP4 de Parintins");
- if(r){Object.assign(r,{
-  objeto:"Contratação integrada para elaboração dos projetos básico e executivo e execução das obras de recuperação estrutural, ampliação dos cais flutuantes e modernização da IP4 de Parintins/AM",
-  valor:"R$ 51,3 milhões — investimento estimado da licitação divulgado pelo MPOR",
-  fase:"Licitação/avaliação de propostas — fonte MPOR de 01/04/2026; situação posterior necessita validação",
-  situacao:"Licitação iniciada em 01/04/2026; propostas abertas no Compras.gov e submetidas à análise na fonte consultada. Em 24/06/2026 o MPOR ainda descrevia o investimento como planejamento/modernização.",
-  instrumento:"Contratação integrada — edital no Compras.gov; número do edital/contrato vencedor NECESSITA VALIDAÇÃO",
-  executor:"Empresa vencedora/contratada: DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO no Compras.gov/PNCP/DNIT",
-  localExato:"Parintins/AM — IP4 de Parintins, Rio Amazonas",
-  marco:"Abertura das propostas em 01/04/2026",
-  proximoMarco:"Confirmar julgamento/homologação, empresa vencedora, contrato, ordem de serviço e cronograma",
-  gargalo:"Dados pós-abertura das propostas ainda não confirmados na pesquisa oficial realizada.",
-  problema:"NÃO AVALIADO — EVIDÊNCIA PENDENTE",
-  providencia:"DPP: obter no Compras.gov/PNCP/DNIT o resultado final da licitação, empresa, contrato, valor adjudicado e cronograma; separar este projeto de contratos antigos de recuperação/manutenção da IP4.",
-  pendencia:"Número do edital/contrato; vencedora; valor adjudicado; ordem de serviço; execução física/financeira; empenhado/pago; LOA/PO.",
-  fonte:"MPOR — 01/04/2026 e 24/06/2026; DNIT — IP4 Parintins",
-  dataFonte:"27/09/2026",
-  loa:"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — cruzar SIOP/SIAFI/LOA 2026/PLOA 2027/PPA",
-  origem:"PESQUISA OFICIAL MPOR + DNIT",
-  refConsulta:"https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/03-1/licitacao-para-modernizacao-da-ip4-de-parintins-am-tem-investimento-estimado-em-r-51-3-milhoes"
- })}
- r=g("Nova Avanhandava — Rio Tietê");
- if(r){Object.assign(r,{
-  objeto:"Aprofundamento do canal de Nova Avanhandava em 3,5 m ao longo de 16 km, com remoção prevista de 552 mil m³ de material rochoso",
-  valor:"R$ 293,8 milhões — investimento total divulgado pelo DNIT",
-  fase:"Execução de obra / fase final conforme fontes oficiais de 2026",
-  situacao:"DNIT informa avanço das obras e conclusão prevista para o segundo semestre de 2026; confirmar entrega efetiva antes de registrar como concluída.",
-  instrumento:"Termo de Compromisso nº 589/2014 — DNIT/Governo de São Paulo; contrato da retomada assinado em 17/03/2023; número/empresa executora NECESSITA VALIDAÇÃO documental",
-  executor:"DNIT + Governo do Estado de São Paulo; empresa executora: DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO",
-  localExato:"Hidrovia Tietê–Paraná/SP — canal de Nova Avanhandava, trecho de 16 km",
-  marco:"Obra em fase final em 2026; DNIT registrou avanço significativo em 2025/2026",
-  proximoMarco:"Confirmar conclusão, aceite, execução financeira final e condições de operação do canal",
-  gargalo:"Situação pós-previsão de conclusão no 2º semestre/2026 ainda precisa de confirmação oficial.",
-  problema:"NÃO AVALIADO — EVIDÊNCIA PENDENTE",
-  providencia:"DPP: confirmar entrega e aceite; localizar contrato/empresa; consolidar execução física/financeira, empenhado/pago e eventuais saldos.",
-  pendencia:"Contrato e empresa executora; percentual físico atualizado; execução financeira; empenhado/pago; aceite/conclusão.",
-  fonte:"DNIT — notícias oficiais sobre Nova Avanhandava (2025/2026)",
-  dataFonte:"27/09/2026",
-  origem:"PESQUISA OFICIAL DNIT",
-  refConsulta:"https://www.gov.br/dnit/pt-br/assuntos/noticias/obras-no-pedral-de-nova-avanhandava-avancam-e-impulsionam-a-hidrovia-tiete-parana"
- })}
-})();
-
-
-/* v40 — saneamento Pedral do Lourenço, Lagoa Mirim e PADMA */
-(function(){
- function g(n){return DATA.find(function(x){return x.nome===n})}
- let r=g("Pedral do Lourenço — Rio Tocantins");
- if(r)Object.assign(r,{
- instrumento:"Contrato nº 245/2016-DAQ/DNIT — Processo nº 50600.044593/2014-39",
- executor:"Consórcio DTA-O’ MARTIN",
- objeto:"Projetos básicos e executivos, ações ambientais e obras de derrocamento para implantação do Canal de Navegação na região dos Pedrais da Hidrovia do Rio Tocantins/PA — Pedral do Lourenço",
- valor:"Contrato original decorrente de proposta de R$ 520,6 milhões; 13º termo aditivo aprovado em 24/03/2026 com acréscimo de R$ 16.688.420,15. Valor contratual atualizado total: NECESSITA VALIDAÇÃO no DNIT/SIAFI.",
- fase:"Execução contratual / derrocamento; supervisão adicional prevista no PCA 2026",
- situacao:"Contrato em execução com 13º termo aditivo aprovado pela Diretoria Colegiada do DNIT em 24/03/2026.",
- localExato:"Rio Tocantins/PA — região do Pedral do Lourenço, entre Itupiranga, Nova Ipixuna e Marabá",
- marco:"13º termo aditivo aprovado em 24/03/2026",
- proximoMarco:"Confirmar valor contratual consolidado, avanço físico/financeiro, cronograma vigente e contratação da supervisão prevista no PCA 2026",
- gargalo:"Necessidade de conciliar aditivos, cronograma, execução física/financeira e supervisão.",
- problema:"SIM — gestão contratual requer acompanhamento de aditivos e execução; natureza/efeito de eventuais achados de controle deve ser tratada separadamente.",
- providencia:"DPP: obter ficha contratual atualizada do DNIT, consolidar todos os aditivos, avanço físico/financeiro, empenhado/pago/RAP e marcos ambientais; acompanhar supervisão prevista no PCA.",
- pendencia:"Valor atualizado após todos os aditivos; execução física/financeira; empenhado/pago; cronograma vigente; contrato da supervisão.",
- fonte:"DNIT — Ata da 12ª Reunião Ordinária da Diretoria Colegiada de 24/03/2026; PCA 2026; TED 271/2026-00",
- dataFonte:"27/09/2026",origem:"PESQUISA OFICIAL DNIT",
- refConsulta:"https://www.gov.br/dnit/pt-br/composicao/diretoria-colegiada/atas/2026/ata-da-12a-reuniao-ordinaria-da-colegiada-de-24-03-26.pdf"
- });
- r=g("Dragagem Lagoa Mirim");
- if(r)Object.assign(r,{
- instrumento:"Contrato de dragagem com Ordem de Serviço assinada em 23/06/2026; número do contrato NECESSITA VALIDAÇÃO. Supervisão: Concorrência Eletrônica nº 90207/2026, UASG 393012.",
- executor:"Empresa executora da dragagem: NECESSITA VALIDAÇÃO no DNIT/PNCP; supervisora: licitação nº 90207/2026 — resultado/contrato a validar.",
- objeto:"Projetos e execução da dragagem de manutenção da Hidrovia da Lagoa Mirim, com sinalização náutica; trecho entre Porto de Santa Vitória do Palmar e Canal do Sangradouro, conectado ao Canal São Gonçalo.",
- valor:"R$ 51.272.004,68 — contrato de dragagem divulgado pelo DNIT. MPOR informa R$ 57,9 milhões no conjunto dragagem + supervisão, dos quais R$ 6,7 milhões para supervisão.",
- fase:"Ordem de Serviço emitida / execução programada 2026–2028",
- situacao:"Ordem de Serviço assinada em 23/06/2026; início previsto em até 30 dias. Contrato: 23 meses de execução e 29 meses de vigência.",
- localExato:"RS — Lagoa Mirim, do Porto de Santa Vitória do Palmar ao Canal do Sangradouro, com conexão pelo Canal São Gonçalo",
- marco:"Ordem de Serviço assinada em 23/06/2026",
- proximoMarco:"Confirmar mobilização/início efetivo, empresa contratada, medições, avanço físico/financeiro e resultado da contratação da supervisão",
- gargalo:"Profundidade insuficiente do canal navegável é a restrição operacional indicada pelo MPOR.",
- problema:"SIM — restrição operacional de profundidade registrada em fonte oficial; execução contratual deve ser acompanhada.",
- providencia:"DPP: acompanhar mobilização, dragagem, sinalização, supervisão independente, medições e desembolsos; cruzar com concessão SAI Sul–Lagoa Mirim sem confundir obra pública com concessão.",
- pendencia:"Número/empresa do contrato principal; início efetivo; avanço físico/financeiro; empenhado/pago; resultado/contrato da supervisão.",
- fonte:"DNIT 25/06/2026; Compras.gov Concorrência 90207/2026; MPOR consulta SAI Sul–Lagoa Mirim",
- dataFonte:"27/09/2026",origem:"PESQUISA OFICIAL DNIT + COMPRAS.GOV + MPOR",
- refConsulta:"https://www.gov.br/dnit/pt-br/assuntos/noticias/dnit-participa-de-assinatura-da-ordem-de-servico-para-dragagem-de-manutencao-da-hidrovia-da-lagoa-mirim-no-rio-grande-do-sul"
- });
- r=g("PADMA — Programa Anual de Dragagem de Manutenção Aquaviária");
- if(r)Object.assign(r,{
- instrumento:"Instrução Normativa nº 10/DNIT SEDE, de 13/08/2026 — Processo nº 50600.019522/2025-51",
- executor:"DNIT/DAQ; execução por contratos específicos de dragagem e supervisão",
- objeto:"Programa Anual de Dragagem de Manutenção Aquaviária e procedimentos de contratação, execução, supervisão, medição e fiscalização dos contratos de dragagem de manutenção aquaviária",
- fase:"Normatização implantada / aplicação aos contratos de manutenção aquaviária",
- situacao:"IN nº 10/2026 publicada em 17/08/2026 e vigente no âmbito do DNIT.",
- marco:"Publicação da IN nº 10/2026 em 17/08/2026",
- proximoMarco:"Mapear contratos/campanhas submetidos ao PADMA e verificar PED, supervisão, medições, levantamentos hidrográficos e cronogramas",
- gargalo:"Acompanhamento depende da individualização dos contratos e campanhas anuais.",
- problema:"NÃO — norma estruturante identificada; problemas devem ser avaliados por contrato/campanha.",
- providencia:"DPP: usar a IN 10/2026 como checklist de acompanhamento: PADMA, PED, cronograma, batimetria, supervisão independente, medição, fiscalização, prorrogações e registros.",
- pendencia:"Relação consolidada das campanhas/contratos 2026 e respectivos valores, executores e execução.",
- fonte:"DNIT — Instrução Normativa nº 10/2026",
- dataFonte:"27/09/2026",origem:"PESQUISA OFICIAL DNIT",
- refConsulta:"https://www.gov.br/dnit/pt-br/central-de-conteudos/atos-normativos/tipo/instrucao-normativa/2026/instrucao-normativa-no-10-2026"
- });
-})();
-
-/* v41 — saneamento PMH, Nova Avanhandava e Parintins */
-(function(){
- function g(n){return DATA.find(function(x){return x.nome===n})}
- let r=g("PMH — Programa de Monitoramento Hidroviário");
- if(r)Object.assign(r,{
- instrumento:"Instrução Normativa nº 1/DNIT SEDE, de 19/02/2026 — Processo nº 50600.004172/2025-28",
- executor:"DNIT/DAQ — contratos estruturados por corpo d’água monitorado",
- objeto:"Monitoramento contínuo das Hidrovias Federais, com dados hidrográficos/hidrológicos, batimetria, descargas, sedimentos, estações fluviométricas, rede geodésica e modelagem hidrodinâmica.",
- fase:"Programa normatizado e integrado ao PNMH",
- situacao:"IN nº 1/2026 vigente; PMH integra o Plano Nacional de Manutenção Hidroviária.",
- marco:"IN nº 1/2026 publicada em 20/02/2026; PNMH instituído pela IN nº 11/2026.",
- proximoMarco:"Consolidar contratos PMH por hidrovia, valores, vigências, executores e produtos entregues.",
- gargalo:"Dados contratuais são descentralizados por corpo d’água e precisam ser consolidados para visão executiva.",
- problema:"NÃO — programa estruturante identificado; problemas devem ser avaliados por contrato.",
- providencia:"DPP: manter quadro nacional dos contratos PMH por hidrovia, produtos, levantamentos, vigência, execução e aplicação dos dados nas decisões de manutenção.",
- pendencia:"Relação nacional atualizada dos contratos PMH 2026, valores, empresas, execução física/financeira e produtos.",
- fonte:"DNIT — IN nº 1/2026; IN nº 11/2026; página PNMH",
- dataFonte:"27/09/2026",origem:"PESQUISA OFICIAL DNIT",
- refConsulta:"https://www.gov.br/dnit/pt-br/central-de-conteudos/atos-normativos/tipo/instrucao-normativa/2026/instrucao-normativa-no-01-2026"
- });
- r=g("Nova Avanhandava — Rio Tietê");
- if(r)Object.assign(r,{
- instrumento:"TC nº 589/2014 — parceria DNIT/Governo do Estado de São Paulo",
- executor:"DH-SP / Governo do Estado de São Paulo — conforme Atlas Aquaviário DNIT abril/2026",
- objeto:"Derrocamento e ampliação do canal de navegação de Nova Avanhandava, Hidrovia Tietê-Paraná, com aprofundamento para 3,5 m e remoção de cerca de 552 mil m³ de rocha.",
- valor:"R$ 435.220.907 — valor PI+A+R no Atlas Aquaviário DNIT, abril/2026. Divulgação DNIT de 18/06/2025 mencionava investimento total de R$ 293,8 milhões; divergência temporal/documental deve permanecer registrada.",
- fase:"Execução de obra / derrocamento",
- situacao:"ATIVO no Atlas DNIT abril/2026; término cadastrado 30/06/2026. Situação posterior necessita validação.",
- localExato:"SP — Rio Tietê, canal de Nova Avanhandava, Hidrovia Tietê-Paraná",
- marco:"Atlas abril/2026: R$ 152.757.184 executados financeiramente, equivalentes a 35%.",
- proximoMarco:"Confirmar conclusão física após 30/06/2026, aceite, valor final e execução financeira atualizada.",
- gargalo:"Divergência entre valores divulgados em momentos distintos e necessidade de confirmar encerramento/conclusão após junho de 2026.",
- problema:"SIM — divergência documental de valor e necessidade de atualização pós-data de término cadastrada.",
- providencia:"DPP: conciliar TC 589/2014, Atlas DNIT, medições e prestação de contas; confirmar conclusão, valor final e benefícios operacionais.",
- pendencia:"Execução física atual; financeiro após abril/2026; conclusão/aceite; valor final do instrumento.",
- fonte:"DNIT — Atlas Aquaviário abril/2026; notícias DNIT 18/06/2025 e 26/03/2024",
- dataFonte:"27/09/2026",origem:"PESQUISA OFICIAL DNIT",
- refConsulta:"https://www.gov.br/dnit/pt-br/assuntos/aquaviario/atlas-aquaviario/AtlasAquaviario_Abril_2026.pdf"
- });
- r=g("Modernização da IP4 de Parintins");
- if(r)Object.assign(r,{
- instrumento:"Licitação de contratação integrada iniciada em 01/04/2026 — número do edital/contrato necessita validação no DNIT/PNCP",
- executor:"Empresa/consórcio vencedor: NECESSITA VALIDAÇÃO no DNIT/PNCP",
- objeto:"Modernização da IP4 de Parintins/AM: recuperação estrutural, ampliação dos cais flutuantes e melhorias operacionais, incluindo projetos básico e executivo e execução das obras.",
- valor:"R$ 51,3 milhões — investimento estimado divulgado pelo MPOR em 01/04/2026.",
- fase:"Licitação/contratação integrada — situação posterior ao lançamento necessita validação",
- situacao:"Licitação iniciada em 01/04/2026; resultado, contratação e eventual OS necessitam validação.",
- localExato:"Parintins/AM — IP4 no Rio Amazonas",
- marco:"Lançamento da licitação para modernização em 01/04/2026.",
- proximoMarco:"Confirmar edital, vencedor, valor homologado, contrato, assinatura, OS e cronograma.",
- gargalo:"A base ainda não contém o resultado pós-licitação nem eventual contrato/OS.",
- problema:"NÃO CONFIRMADO — pendência é de atualização documental pós-licitação.",
- providencia:"DPP: consultar DNIT/PNCP para consolidar edital, adjudicação, empresa, valor contratado, vigência e execução.",
- pendencia:"Número do edital; resultado; empresa; contrato; valor contratado; OS; execução física/financeira.",
- fonte:"MPOR — notícia de 01/04/2026; DNIT — histórico de melhorias da IP4",
- dataFonte:"27/09/2026",origem:"PESQUISA OFICIAL MPOR + DNIT",
- refConsulta:"https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/03-1/licitacao-para-modernizacao-da-ip4-de-parintins-am-tem-investimento-estimado-em-r-51-3-milhoes"
- });
-})();
+ var html="";
+ if(a.length===1) html=ficha(a[0],tipo==="brief");
+ else{
+  var known=a.filter(function(r){return moneyKnown(r.valor)}).length, probs=a.filter(function(r){return /^SIM\b/i.test((r.problema||"").trim())}).length, pend=a.filter(function(r){return /VALIDA|PENDENTE|NÃO AVALIADO/i.test((r.problema||""))}).length;
+  html='<div class="reporthead"><h2>'+(tipo==="brief"?"BRIEFING CONSOLIDADO":"RELATÓRIO EXECUTIVO CONSOLIDADO")+'</h2><div class="reportmeta">DPP/SNHN · '+a.length+' investimentos · corte '+cut+'</div></div>'+
+  '<div class="decision"><strong>QUADRO EXECUTIVO:</strong> '+a.length+' investimentos no recorte · '+known+' com valor informado/identificado · '+probs+' com problema explicitamente confirmado · '+pend+' com avaliação/validação pendente.</div>'+
+  '<table class="rtable"><thead><tr><th>Investimento</th><th>Contrato/Instrumento</th><th>Empresa/Executor</th><th>Valor</th><th>Situação</th><th>Próximo marco / ação DPP</th></tr></thead><tbody>'+
+  a.map(function(r){return '<tr><td>'+esc(r.nome)+'</td><td>'+esc(safe(r.instrumento))+'</td><td>'+esc(safe(r.executor))+'</td><td>'+esc(safe(r.valor))+'</td><td>'+esc(safe(r.situacao))+'</td><td>'+esc(safe(r.proximoMarco))+'<br><strong>DPP:</strong> '+esc(safe(r.providencia))+'</td></tr>'}).join("")+'</tbody></table>'+
+  '<div class="reportsection"><h3>Pendências críticas de validação</h3>'+a.filter(function(r){return /VALIDA|PENDENTE|DADO NÃO/i.test((r.pendencia||"")+" "+(r.valor||"")+" "+(r.executor||""))}).map(function(r){return '<p><strong>'+esc(r.nome)+':</strong> '+esc(safe(r.pendencia))+'</p>'}).join("")+'</div>';
+ }
+ d.innerHTML=html+'<div class="report-actions"><button onclick="window.print()">Imprimir / Salvar PDF</button></div>';d.style.display="block";d.scrollIntoView({behavior:"smooth",block:"start"});
+}
 function goTo(id){document.getElementById(id).scrollIntoView({behavior:"smooth",block:"start"})}
 function currentSet(){try{return subset("empreendimento")}catch(e){return DATA}}
 function renderSpecial(title,rows,kind){
