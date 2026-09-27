@@ -1,6 +1,6 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>BI Executivo de Hidrovias v39 — DPP/SNHN</title><style>
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>BI Executivo de Hidrovias v40 — DPP/SNHN</title><style>
 *{box-sizing:border-box}body{margin:0;background:#eef4f5;color:#17324d;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}header{background:#173d63;color:#fff;padding:28px 20px;border-bottom:7px solid #35a66f}header h1{margin:0;font-size:28px}header p{margin:10px 0 0;font-size:16px;line-height:1.4}.wrap{max-width:1100px;margin:auto;padding:18px}.box{background:#fff;border:1px solid #cbd9dd;border-radius:14px;padding:18px;margin-bottom:16px}.box h2{margin:0 0 16px}.filters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}label{font-weight:800;font-size:14px}select{width:100%;margin-top:6px;padding:13px;border:2px solid #9fbdb6;border-radius:10px;background:#fff;font-size:17px}.wide{grid-column:1/-1}.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.kpi{background:#e8f1f2;padding:13px;border-radius:10px;text-align:center}.kpi b{display:block;font-size:24px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border:1px solid #d8e2e5;border-radius:10px;overflow:hidden}.field{padding:14px;border-bottom:1px solid #e0e7e9;white-space:pre-wrap}.field b{display:block;color:#49677c;font-size:12px;text-transform:uppercase;margin-bottom:6px}.field.w{grid-column:1/-1}.warn{background:#fff8e5}.src{background:#eef7ff}.actions{display:flex;gap:10px;flex-wrap:wrap}button{padding:13px 16px;border:0;border-radius:9px;background:#173d63;color:#fff;font-weight:800;font-size:15px}.doc{display:none;white-space:pre-wrap;background:#fff;border:1px solid #ccd9dd;border-radius:12px;padding:18px;margin-top:14px}@media(max-width:650px){.filters,.grid{grid-template-columns:1fr}.wide,.field.w{grid-column:1}.kpis{grid-template-columns:repeat(2,1fr)}header h1{font-size:24px}}
-.nav{display:flex;gap:8px;overflow:auto;margin-bottom:16px}.nav button{white-space:nowrap;background:#e8f1f2;color:#173d63;border:1px solid #9fbdb6}.badge{display:inline-block;padding:5px 9px;border-radius:999px;background:#e8f1f2;margin:3px;font-size:12px;font-weight:800}.control{border-left:5px solid #7b5aa6}.contract{border-left:5px solid #173d63}.concession{border-left:5px solid #35a66f}.sourcebar{margin-top:10px;padding:10px 12px;background:#eef7ff;border-radius:9px;font-size:13px}.sourcebar a{font-weight:800;color:#173d63}.sourcebtn{display:inline-block;margin:4px 5px 0 0;padding:7px 9px;border:1px solid #9fbdb6;border-radius:8px;text-decoration:none;background:#fff;color:#173d63}</style></head><body><header><h1>BI Executivo de Hidrovias — DPP/SNHN · v39</h1><p>Assessoria executiva · backend estruturado · 21 registros · corte 27/09/2026 · filtros validados no iPhone</p></header><main class="wrap"><nav class="nav"><button onclick="goTo('filtros')">Carteira / Filtros</button><button onclick="showContracts()">Contratos e Valores</button><button onclick="showConcessions()">Concessões</button><button onclick="showControl()">Auditorias e Controle</button><button onclick="goTo('docs')">Relatórios / Briefing</button></nav>
+.nav{display:flex;gap:8px;overflow:auto;margin-bottom:16px}.nav button{white-space:nowrap;background:#e8f1f2;color:#173d63;border:1px solid #9fbdb6}.badge{display:inline-block;padding:5px 9px;border-radius:999px;background:#e8f1f2;margin:3px;font-size:12px;font-weight:800}.control{border-left:5px solid #7b5aa6}.contract{border-left:5px solid #173d63}.concession{border-left:5px solid #35a66f}.sourcebar{margin-top:10px;padding:10px 12px;background:#eef7ff;border-radius:9px;font-size:13px}.sourcebar a{font-weight:800;color:#173d63}.sourcebtn{display:inline-block;margin:4px 5px 0 0;padding:7px 9px;border:1px solid #9fbdb6;border-radius:8px;text-decoration:none;background:#fff;color:#173d63}</style></head><body><header><h1>BI Executivo de Hidrovias — DPP/SNHN · v40</h1><p>Assessoria executiva · backend estruturado · 21 registros · corte 27/09/2026 · filtros validados no iPhone</p></header><main class="wrap"><nav class="nav"><button onclick="goTo('filtros')">Carteira / Filtros</button><button onclick="showContracts()">Contratos e Valores</button><button onclick="showConcessions()">Concessões</button><button onclick="showControl()">Auditorias e Controle</button><button onclick="goTo('docs')">Relatórios / Briefing</button></nav>
 <section class="box" id="filtros"><h2>Filtros em cascata</h2><div class="filters"><label class="">REGIÃO<select id="regiao"><option value="TODOS">TODOS</option></select></label><label class="">UF<select id="uf"><option value="TODOS">TODOS</option></select></label><label class="">MUNICÍPIO / ABRANGÊNCIA<select id="municipio"><option value="TODOS">TODOS</option></select></label><label class="">HIDROVIA / RIO<select id="hidrovia"><option value="TODOS">TODOS</option></select></label><label class="">TIPO<select id="tipo"><option value="TODOS">TODOS</option></select></label><label class="wide">EMPREENDIMENTO<select id="empreendimento"><option value="TODOS">TODOS</option></select></label></div></section>
 <section class="box"><div class="kpis"><div class="kpi"><b id="kc">0</b>investimentos</div><div class="kpi"><b id="ku">0</b>UFs</div><div class="kpi"><b id="km">0</b>localidades</div><div class="kpi"><b id="kp">—</b><span id="kplabel">problemas: em validação</span></div></div></section>
 <section class="box"><h2 id="pt">Painel executivo consolidado</h2><div id="panel" class="grid"></div></section>
@@ -300,6 +300,66 @@ const OFFICIAL_SOURCES=[
  })}
 })();
 
+
+/* v40 — saneamento Pedral do Lourenço, Lagoa Mirim e PADMA */
+(function(){
+ function g(n){return DATA.find(function(x){return x.nome===n})}
+ let r=g("Pedral do Lourenço — Rio Tocantins");
+ if(r)Object.assign(r,{
+ instrumento:"Contrato nº 245/2016-DAQ/DNIT — Processo nº 50600.044593/2014-39",
+ executor:"Consórcio DTA-O’ MARTIN",
+ objeto:"Projetos básicos e executivos, ações ambientais e obras de derrocamento para implantação do Canal de Navegação na região dos Pedrais da Hidrovia do Rio Tocantins/PA — Pedral do Lourenço",
+ valor:"Contrato original decorrente de proposta de R$ 520,6 milhões; 13º termo aditivo aprovado em 24/03/2026 com acréscimo de R$ 16.688.420,15. Valor contratual atualizado total: NECESSITA VALIDAÇÃO no DNIT/SIAFI.",
+ fase:"Execução contratual / derrocamento; supervisão adicional prevista no PCA 2026",
+ situacao:"Contrato em execução com 13º termo aditivo aprovado pela Diretoria Colegiada do DNIT em 24/03/2026.",
+ localExato:"Rio Tocantins/PA — região do Pedral do Lourenço, entre Itupiranga, Nova Ipixuna e Marabá",
+ marco:"13º termo aditivo aprovado em 24/03/2026",
+ proximoMarco:"Confirmar valor contratual consolidado, avanço físico/financeiro, cronograma vigente e contratação da supervisão prevista no PCA 2026",
+ gargalo:"Necessidade de conciliar aditivos, cronograma, execução física/financeira e supervisão.",
+ problema:"SIM — gestão contratual requer acompanhamento de aditivos e execução; natureza/efeito de eventuais achados de controle deve ser tratada separadamente.",
+ providencia:"DPP: obter ficha contratual atualizada do DNIT, consolidar todos os aditivos, avanço físico/financeiro, empenhado/pago/RAP e marcos ambientais; acompanhar supervisão prevista no PCA.",
+ pendencia:"Valor atualizado após todos os aditivos; execução física/financeira; empenhado/pago; cronograma vigente; contrato da supervisão.",
+ fonte:"DNIT — Ata da 12ª Reunião Ordinária da Diretoria Colegiada de 24/03/2026; PCA 2026; TED 271/2026-00",
+ dataFonte:"27/09/2026",origem:"PESQUISA OFICIAL DNIT",
+ refConsulta:"https://www.gov.br/dnit/pt-br/composicao/diretoria-colegiada/atas/2026/ata-da-12a-reuniao-ordinaria-da-colegiada-de-24-03-26.pdf"
+ });
+ r=g("Dragagem Lagoa Mirim");
+ if(r)Object.assign(r,{
+ instrumento:"Contrato de dragagem com Ordem de Serviço assinada em 23/06/2026; número do contrato NECESSITA VALIDAÇÃO. Supervisão: Concorrência Eletrônica nº 90207/2026, UASG 393012.",
+ executor:"Empresa executora da dragagem: NECESSITA VALIDAÇÃO no DNIT/PNCP; supervisora: licitação nº 90207/2026 — resultado/contrato a validar.",
+ objeto:"Projetos e execução da dragagem de manutenção da Hidrovia da Lagoa Mirim, com sinalização náutica; trecho entre Porto de Santa Vitória do Palmar e Canal do Sangradouro, conectado ao Canal São Gonçalo.",
+ valor:"R$ 51.272.004,68 — contrato de dragagem divulgado pelo DNIT. MPOR informa R$ 57,9 milhões no conjunto dragagem + supervisão, dos quais R$ 6,7 milhões para supervisão.",
+ fase:"Ordem de Serviço emitida / execução programada 2026–2028",
+ situacao:"Ordem de Serviço assinada em 23/06/2026; início previsto em até 30 dias. Contrato: 23 meses de execução e 29 meses de vigência.",
+ localExato:"RS — Lagoa Mirim, do Porto de Santa Vitória do Palmar ao Canal do Sangradouro, com conexão pelo Canal São Gonçalo",
+ marco:"Ordem de Serviço assinada em 23/06/2026",
+ proximoMarco:"Confirmar mobilização/início efetivo, empresa contratada, medições, avanço físico/financeiro e resultado da contratação da supervisão",
+ gargalo:"Profundidade insuficiente do canal navegável é a restrição operacional indicada pelo MPOR.",
+ problema:"SIM — restrição operacional de profundidade registrada em fonte oficial; execução contratual deve ser acompanhada.",
+ providencia:"DPP: acompanhar mobilização, dragagem, sinalização, supervisão independente, medições e desembolsos; cruzar com concessão SAI Sul–Lagoa Mirim sem confundir obra pública com concessão.",
+ pendencia:"Número/empresa do contrato principal; início efetivo; avanço físico/financeiro; empenhado/pago; resultado/contrato da supervisão.",
+ fonte:"DNIT 25/06/2026; Compras.gov Concorrência 90207/2026; MPOR consulta SAI Sul–Lagoa Mirim",
+ dataFonte:"27/09/2026",origem:"PESQUISA OFICIAL DNIT + COMPRAS.GOV + MPOR",
+ refConsulta:"https://www.gov.br/dnit/pt-br/assuntos/noticias/dnit-participa-de-assinatura-da-ordem-de-servico-para-dragagem-de-manutencao-da-hidrovia-da-lagoa-mirim-no-rio-grande-do-sul"
+ });
+ r=g("PADMA — Programa Anual de Dragagem de Manutenção Aquaviária");
+ if(r)Object.assign(r,{
+ instrumento:"Instrução Normativa nº 10/DNIT SEDE, de 13/08/2026 — Processo nº 50600.019522/2025-51",
+ executor:"DNIT/DAQ; execução por contratos específicos de dragagem e supervisão",
+ objeto:"Programa Anual de Dragagem de Manutenção Aquaviária e procedimentos de contratação, execução, supervisão, medição e fiscalização dos contratos de dragagem de manutenção aquaviária",
+ fase:"Normatização implantada / aplicação aos contratos de manutenção aquaviária",
+ situacao:"IN nº 10/2026 publicada em 17/08/2026 e vigente no âmbito do DNIT.",
+ marco:"Publicação da IN nº 10/2026 em 17/08/2026",
+ proximoMarco:"Mapear contratos/campanhas submetidos ao PADMA e verificar PED, supervisão, medições, levantamentos hidrográficos e cronogramas",
+ gargalo:"Acompanhamento depende da individualização dos contratos e campanhas anuais.",
+ problema:"NÃO — norma estruturante identificada; problemas devem ser avaliados por contrato/campanha.",
+ providencia:"DPP: usar a IN 10/2026 como checklist de acompanhamento: PADMA, PED, cronograma, batimetria, supervisão independente, medição, fiscalização, prorrogações e registros.",
+ pendencia:"Relação consolidada das campanhas/contratos 2026 e respectivos valores, executores e execução.",
+ fonte:"DNIT — Instrução Normativa nº 10/2026",
+ dataFonte:"27/09/2026",origem:"PESQUISA OFICIAL DNIT",
+ refConsulta:"https://www.gov.br/dnit/pt-br/central-de-conteudos/atos-normativos/tipo/instrucao-normativa/2026/instrucao-normativa-no-10-2026"
+ });
+})();
 function goTo(id){document.getElementById(id).scrollIntoView({behavior:"smooth",block:"start"})}
 function currentSet(){try{return subset("empreendimento")}catch(e){return DATA}}
 function renderSpecial(title,rows,kind){
