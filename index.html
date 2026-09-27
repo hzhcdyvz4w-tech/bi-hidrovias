@@ -6,8 +6,23 @@
 .command-center{margin:16px 0 22px}.command-title{font-size:20px;font-weight:900;margin:0 0 4px}.command-sub{opacity:.78;margin-bottom:12px}
 .command-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.cmd{appearance:none;border:1px solid #d7dee8;background:#fff;border-radius:16px;padding:15px 10px;min-height:104px;text-align:left;box-shadow:0 3px 12px rgba(15,23,42,.06);cursor:pointer;color:#14213d}.cmd:active{transform:scale(.98)}.cmd .ico{font-size:27px;display:block;margin-bottom:7px}.cmd b{display:block;font-size:14px}.cmd small{display:block;margin-top:4px;opacity:.7;line-height:1.25}.cmd-output{margin-top:14px;padding:14px;border-radius:14px;background:#f7f9fc;border:1px solid #dce3ec;display:none}.cmd-output.show{display:block}
 @media(max-width:720px){.command-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.cmd{min-height:112px;padding:14px 11px}}
+</style><style id="v51-home">
+.command-center{margin:16px 0}.command-center h2{margin-bottom:5px}.command-sub{opacity:.78;margin-bottom:14px}.command-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.cmd{appearance:none;border:1px solid #d7dde5;border-radius:16px;background:#fff;padding:17px 12px;text-align:left;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,.06);min-height:112px;transition:.16s}.cmd:hover,.cmd:focus{transform:translateY(-2px);box-shadow:0 7px 18px rgba(0,0,0,.11);outline:2px solid #9db7d5}.cmd .ico{font-size:28px;display:block;margin-bottom:8px}.cmd b{display:block;font-size:14px}.cmd small{display:block;margin-top:4px;opacity:.7;line-height:1.25}.quick-result{margin-top:14px;border:1px solid #d7dde5;border-radius:16px;padding:16px;background:#fff}.quick-result h3{margin:0 0 10px}.quick-table{width:100%;border-collapse:collapse;font-size:12px}.quick-table th,.quick-table td{padding:8px;border-bottom:1px solid #e8ebef;text-align:left;vertical-align:top}.quick-table tr{cursor:pointer}.quick-table tr:hover{background:#f5f7fa}.quick-actions{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}@media(max-width:800px){.command-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.cmd{min-height:105px}.quick-result{overflow:auto}}@media(max-width:420px){.command-grid{gap:9px}.cmd{padding:14px 10px}}
 </style></head><body><header><h1>BI Executivo de Hidrovias — DPP/SNHN · v51</h1><p>Assessoria executiva · backend estruturado · 21 registros · corte 27/09/2026 · filtros validados no iPhone</p></header><main class="wrap"><nav class="nav"><button onclick="goTo('filtros')">Carteira / Filtros</button><button onclick="showContracts()">Contratos e Valores</button><button onclick="showConcessions()">Concessões</button><button onclick="showControl()">Auditorias e Controle</button><button onclick="goTo('atualizacao')">Atualização Pública</button><button onclick="goTo('docs')">Relatórios / Briefing</button></nav>
-<section class="box command-center" id="comando"><div class="command-title">Central de Comando Executivo</div><div class="command-sub">Toque no que deseja consultar. O BI prepara a visão correspondente e mantém os filtros disponíveis para aprofundamento.</div><div class="command-grid">
+<section class="box command-center" id="comando"><h2>Central de Comando Executivo</h2><div class="command-sub">Toque em uma função. O BI gera imediatamente a visão solicitada; depois você pode refinar pelos filtros territoriais.</div><div class="command-grid">
+<button class="cmd" onclick="quickView('invest')"><span class="ico">🗺️</span><b>Investimentos</b><small>Carteira completa e situação</small></button>
+<button class="cmd" onclick="quickView('territorio')"><span class="ico">📍</span><b>Região / UF</b><small>Abrir filtros em cascata</small></button>
+<button class="cmd" onclick="quickView('hidrovias')"><span class="ico">🌊</span><b>Hidrovias</b><small>Carteira por rio/hidrovia</small></button>
+<button class="cmd" onclick="quickView('contratos')"><span class="ico">📑</span><b>Contratos</b><small>Empresa, objeto, valor e situação</small></button>
+<button class="cmd" onclick="quickView('fisica')"><span class="ico">🏗️</span><b>Execução Física</b><small>Percentual, medição e fonte</small></button>
+<button class="cmd" onclick="quickView('orc')"><span class="ico">💰</span><b>Execução Orçamentária</b><small>Dotação, empenho, RAP e saldo</small></button>
+<button class="cmd" onclick="quickView('fin')"><span class="ico">💳</span><b>Execução Financeira</b><small>Liquidado, pago e fonte</small></button>
+<button class="cmd" onclick="quickView('concessoes')"><span class="ico">⚓</span><b>Concessões</b><small>Estudos, consulta, edital e leilão</small></button>
+<button class="cmd" onclick="quickView('controle')"><span class="ico">🔎</span><b>Auditorias e Controle</b><small>TCU, CGU e TCEs</small></button>
+<button class="cmd" onclick="quickView('relatorio')"><span class="ico">📊</span><b>Relatório Executivo</b><small>Gerar relatório da seleção</small></button>
+<button class="cmd" onclick="quickView('briefing')"><span class="ico">🎯</span><b>Briefing</b><small>Síntese para autoridade</small></button>
+<button class="cmd" onclick="quickView('fontes')"><span class="ico">🔄</span><b>Atualização / Fontes</b><small>Fontes oficiais e data-base</small></button>
+</div><div id="quickResult" class="quick-result" hidden></div></section><section class="box command-center" id="comando"><div class="command-title">Central de Comando Executivo</div><div class="command-sub">Toque no que deseja consultar. O BI prepara a visão correspondente e mantém os filtros disponíveis para aprofundamento.</div><div class="command-grid">
 <button class="cmd" onclick="acao('investimentos')"><span class="ico">🗺️</span><b>Investimentos</b><small>Carteira completa e situação.</small></button>
 <button class="cmd" onclick="acao('territorio')"><span class="ico">📍</span><b>Região / UF</b><small>Recorte territorial em cascata.</small></button>
 <button class="cmd" onclick="acao('hidrovias')"><span class="ico">🌊</span><b>Hidrovias</b><small>Projetos por rio/hidrovia.</small></button>
@@ -274,5 +289,25 @@ function showControl(){
  var el=document.getElementById("special");el.innerHTML='<div class="field w control"><b>AUDITORIAS E CONTROLE</b>Somente ocorrências explicitamente relacionadas no backend/fontes confirmadas são exibidas. Ausência de registro não significa ausência de fiscalização.</div>';
  if(!a.length){el.innerHTML+='<div class="field w">DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — pesquisar TCU, AGU/CGU e TCE competente pelo empreendimento.</div>'}
  else renderSpecial("AUDITORIAS E CONTROLE",a,"control");goTo("especial")
+}
+
+function qesc(v){return String(v==null?"":v).replace(/[&<>"']/g,function(m){return({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[m]})}
+function qpick(r,k){var v=r[k];if(Array.isArray(v))return v.join(", ");return v||"—"}
+function qrows(rows,cols){return '<table class="quick-table"><thead><tr>'+cols.map(x=>'<th>'+x[0]+'</th>').join('')+'</tr></thead><tbody>'+rows.map((r,i)=>'<tr onclick="openQuickProject('+DATA.indexOf(r)+')">'+cols.map(x=>'<td>'+qesc(qpick(r,x[1]))+'</td>').join('')+'</tr>').join('')+'</tbody></table>'}
+function openQuickProject(i){var r=DATA[i];if(!r)return;var s=document.querySelector('#projeto');if(s){for(var j=0;j<s.options.length;j++){if(s.options[j].text===r.nome||s.options[j].value===r.nome){s.selectedIndex=j;s.dispatchEvent(new Event('change'));break}}}var target=document.querySelector('#resultado')||document.querySelector('#painel')||document.querySelector('#ficha');if(target)target.scrollIntoView({behavior:'smooth',block:'start'})}
+function quickView(t){var el=document.getElementById('quickResult');if(!el)return;el.hidden=false;var rows=DATA.slice(),title='',cols=[];
+ if(t==='territorio'){el.hidden=true;var z=document.querySelector('#filtros')||document.querySelector('select');if(z)z.scrollIntoView({behavior:'smooth',block:'start'});return}
+ if(t==='fontes'){el.hidden=true;goTo('atualizacao');return}
+ if(t==='concessoes'){rows=rows.filter(r=>/concess/i.test((r.nome||'')+' '+(r.tipo||'')));title='⚓ Concessões';cols=[['Investimento','nome'],['Hidrovia','hidrovia'],['Situação','situacao'],['Próximo marco','proximoMarco'],['Fonte','fonte']]}
+ else if(t==='contratos'){title='📑 Contratos e instrumentos';cols=[['Investimento','nome'],['Contrato / instrumento','instrumento'],['Executor / empresa','executor'],['Valor','valor'],['Situação','situacao'],['Fonte','fonte']]}
+ else if(t==='fisica'){title='🏗️ Execução física';cols=[['Investimento','nome'],['Execução física','execFisica'],['Fonte','fonteExecFisica'],['Data-base','dataFonte']]}
+ else if(t==='orc'){title='💰 Execução orçamentária';cols=[['Investimento','nome'],['Execução orçamentária','execOrcamentaria'],['Empenhado / pago','empenhadoPago'],['Fonte','fonteExecOrcamentaria']]}
+ else if(t==='fin'){title='💳 Execução financeira';cols=[['Investimento','nome'],['Execução financeira','execFinanceira'],['Empenhado / pago','empenhadoPago'],['Fonte','fonteExecFinanceira']]}
+ else if(t==='hidrovias'){title='🌊 Hidrovias e rios';cols=[['Investimento','nome'],['Hidrovia / rio','hidrovia'],['UF','ufs'],['Situação','situacao'],['Fonte','fonte']]}
+ else if(t==='controle'){title='🔎 Auditorias e controle';rows=rows.filter(r=>/TCU|CGU|TCE|auditor|acórd/i.test(JSON.stringify(r)));cols=[['Investimento','nome'],['Situação','situacao'],['Pendência / controle','pendencia'],['Fonte','fonte']]}
+ else if(t==='relatorio'){el.hidden=true;if(typeof gerarRelatorio==='function')gerarRelatorio();else goTo('docs');return}
+ else if(t==='briefing'){el.hidden=true;if(typeof gerarBriefing==='function')gerarBriefing();else goTo('docs');return}
+ else {title='🗺️ Carteira de investimentos';cols=[['Investimento','nome'],['UF','ufs'],['Tipo','tipo'],['Situação','situacao'],['Valor','valor'],['Fonte','fonte']]}
+ el.innerHTML='<h3>'+title+' <small>('+rows.length+')</small></h3><div class="quick-actions"><button onclick="document.getElementById(\'quickResult\').hidden=true">Fechar</button></div>'+qrows(rows,cols);el.scrollIntoView({behavior:'smooth',block:'start'})
 }
 </script></body></html>
