@@ -1,6 +1,6 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>BI Executivo de Hidrovias v40 — DPP/SNHN</title><style>
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>BI Executivo de Hidrovias v41 — DPP/SNHN</title><style>
 *{box-sizing:border-box}body{margin:0;background:#eef4f5;color:#17324d;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}header{background:#173d63;color:#fff;padding:28px 20px;border-bottom:7px solid #35a66f}header h1{margin:0;font-size:28px}header p{margin:10px 0 0;font-size:16px;line-height:1.4}.wrap{max-width:1100px;margin:auto;padding:18px}.box{background:#fff;border:1px solid #cbd9dd;border-radius:14px;padding:18px;margin-bottom:16px}.box h2{margin:0 0 16px}.filters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}label{font-weight:800;font-size:14px}select{width:100%;margin-top:6px;padding:13px;border:2px solid #9fbdb6;border-radius:10px;background:#fff;font-size:17px}.wide{grid-column:1/-1}.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.kpi{background:#e8f1f2;padding:13px;border-radius:10px;text-align:center}.kpi b{display:block;font-size:24px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border:1px solid #d8e2e5;border-radius:10px;overflow:hidden}.field{padding:14px;border-bottom:1px solid #e0e7e9;white-space:pre-wrap}.field b{display:block;color:#49677c;font-size:12px;text-transform:uppercase;margin-bottom:6px}.field.w{grid-column:1/-1}.warn{background:#fff8e5}.src{background:#eef7ff}.actions{display:flex;gap:10px;flex-wrap:wrap}button{padding:13px 16px;border:0;border-radius:9px;background:#173d63;color:#fff;font-weight:800;font-size:15px}.doc{display:none;white-space:pre-wrap;background:#fff;border:1px solid #ccd9dd;border-radius:12px;padding:18px;margin-top:14px}@media(max-width:650px){.filters,.grid{grid-template-columns:1fr}.wide,.field.w{grid-column:1}.kpis{grid-template-columns:repeat(2,1fr)}header h1{font-size:24px}}
-.nav{display:flex;gap:8px;overflow:auto;margin-bottom:16px}.nav button{white-space:nowrap;background:#e8f1f2;color:#173d63;border:1px solid #9fbdb6}.badge{display:inline-block;padding:5px 9px;border-radius:999px;background:#e8f1f2;margin:3px;font-size:12px;font-weight:800}.control{border-left:5px solid #7b5aa6}.contract{border-left:5px solid #173d63}.concession{border-left:5px solid #35a66f}.sourcebar{margin-top:10px;padding:10px 12px;background:#eef7ff;border-radius:9px;font-size:13px}.sourcebar a{font-weight:800;color:#173d63}.sourcebtn{display:inline-block;margin:4px 5px 0 0;padding:7px 9px;border:1px solid #9fbdb6;border-radius:8px;text-decoration:none;background:#fff;color:#173d63}</style></head><body><header><h1>BI Executivo de Hidrovias — DPP/SNHN · v40</h1><p>Assessoria executiva · backend estruturado · 21 registros · corte 27/09/2026 · filtros validados no iPhone</p></header><main class="wrap"><nav class="nav"><button onclick="goTo('filtros')">Carteira / Filtros</button><button onclick="showContracts()">Contratos e Valores</button><button onclick="showConcessions()">Concessões</button><button onclick="showControl()">Auditorias e Controle</button><button onclick="goTo('docs')">Relatórios / Briefing</button></nav>
+.nav{display:flex;gap:8px;overflow:auto;margin-bottom:16px}.nav button{white-space:nowrap;background:#e8f1f2;color:#173d63;border:1px solid #9fbdb6}.badge{display:inline-block;padding:5px 9px;border-radius:999px;background:#e8f1f2;margin:3px;font-size:12px;font-weight:800}.control{border-left:5px solid #7b5aa6}.contract{border-left:5px solid #173d63}.concession{border-left:5px solid #35a66f}.sourcebar{margin-top:10px;padding:10px 12px;background:#eef7ff;border-radius:9px;font-size:13px}.sourcebar a{font-weight:800;color:#173d63}.sourcebtn{display:inline-block;margin:4px 5px 0 0;padding:7px 9px;border:1px solid #9fbdb6;border-radius:8px;text-decoration:none;background:#fff;color:#173d63}</style></head><body><header><h1>BI Executivo de Hidrovias — DPP/SNHN · v41</h1><p>Assessoria executiva · backend estruturado · 21 registros · corte 27/09/2026 · filtros validados no iPhone</p></header><main class="wrap"><nav class="nav"><button onclick="goTo('filtros')">Carteira / Filtros</button><button onclick="showContracts()">Contratos e Valores</button><button onclick="showConcessions()">Concessões</button><button onclick="showControl()">Auditorias e Controle</button><button onclick="goTo('docs')">Relatórios / Briefing</button></nav>
 <section class="box" id="filtros"><h2>Filtros em cascata</h2><div class="filters"><label class="">REGIÃO<select id="regiao"><option value="TODOS">TODOS</option></select></label><label class="">UF<select id="uf"><option value="TODOS">TODOS</option></select></label><label class="">MUNICÍPIO / ABRANGÊNCIA<select id="municipio"><option value="TODOS">TODOS</option></select></label><label class="">HIDROVIA / RIO<select id="hidrovia"><option value="TODOS">TODOS</option></select></label><label class="">TIPO<select id="tipo"><option value="TODOS">TODOS</option></select></label><label class="wide">EMPREENDIMENTO<select id="empreendimento"><option value="TODOS">TODOS</option></select></label></div></section>
 <section class="box"><div class="kpis"><div class="kpi"><b id="kc">0</b>investimentos</div><div class="kpi"><b id="ku">0</b>UFs</div><div class="kpi"><b id="km">0</b>localidades</div><div class="kpi"><b id="kp">—</b><span id="kplabel">problemas: em validação</span></div></div></section>
 <section class="box"><h2 id="pt">Painel executivo consolidado</h2><div id="panel" class="grid"></div></section>
@@ -358,6 +358,66 @@ const OFFICIAL_SOURCES=[
  fonte:"DNIT — Instrução Normativa nº 10/2026",
  dataFonte:"27/09/2026",origem:"PESQUISA OFICIAL DNIT",
  refConsulta:"https://www.gov.br/dnit/pt-br/central-de-conteudos/atos-normativos/tipo/instrucao-normativa/2026/instrucao-normativa-no-10-2026"
+ });
+})();
+
+/* v41 — saneamento PMH, Nova Avanhandava e Parintins */
+(function(){
+ function g(n){return DATA.find(function(x){return x.nome===n})}
+ let r=g("PMH — Programa de Monitoramento Hidroviário");
+ if(r)Object.assign(r,{
+ instrumento:"Instrução Normativa nº 1/DNIT SEDE, de 19/02/2026 — Processo nº 50600.004172/2025-28",
+ executor:"DNIT/DAQ — contratos estruturados por corpo d’água monitorado",
+ objeto:"Monitoramento contínuo das Hidrovias Federais, com dados hidrográficos/hidrológicos, batimetria, descargas, sedimentos, estações fluviométricas, rede geodésica e modelagem hidrodinâmica.",
+ fase:"Programa normatizado e integrado ao PNMH",
+ situacao:"IN nº 1/2026 vigente; PMH integra o Plano Nacional de Manutenção Hidroviária.",
+ marco:"IN nº 1/2026 publicada em 20/02/2026; PNMH instituído pela IN nº 11/2026.",
+ proximoMarco:"Consolidar contratos PMH por hidrovia, valores, vigências, executores e produtos entregues.",
+ gargalo:"Dados contratuais são descentralizados por corpo d’água e precisam ser consolidados para visão executiva.",
+ problema:"NÃO — programa estruturante identificado; problemas devem ser avaliados por contrato.",
+ providencia:"DPP: manter quadro nacional dos contratos PMH por hidrovia, produtos, levantamentos, vigência, execução e aplicação dos dados nas decisões de manutenção.",
+ pendencia:"Relação nacional atualizada dos contratos PMH 2026, valores, empresas, execução física/financeira e produtos.",
+ fonte:"DNIT — IN nº 1/2026; IN nº 11/2026; página PNMH",
+ dataFonte:"27/09/2026",origem:"PESQUISA OFICIAL DNIT",
+ refConsulta:"https://www.gov.br/dnit/pt-br/central-de-conteudos/atos-normativos/tipo/instrucao-normativa/2026/instrucao-normativa-no-01-2026"
+ });
+ r=g("Nova Avanhandava — Rio Tietê");
+ if(r)Object.assign(r,{
+ instrumento:"TC nº 589/2014 — parceria DNIT/Governo do Estado de São Paulo",
+ executor:"DH-SP / Governo do Estado de São Paulo — conforme Atlas Aquaviário DNIT abril/2026",
+ objeto:"Derrocamento e ampliação do canal de navegação de Nova Avanhandava, Hidrovia Tietê-Paraná, com aprofundamento para 3,5 m e remoção de cerca de 552 mil m³ de rocha.",
+ valor:"R$ 435.220.907 — valor PI+A+R no Atlas Aquaviário DNIT, abril/2026. Divulgação DNIT de 18/06/2025 mencionava investimento total de R$ 293,8 milhões; divergência temporal/documental deve permanecer registrada.",
+ fase:"Execução de obra / derrocamento",
+ situacao:"ATIVO no Atlas DNIT abril/2026; término cadastrado 30/06/2026. Situação posterior necessita validação.",
+ localExato:"SP — Rio Tietê, canal de Nova Avanhandava, Hidrovia Tietê-Paraná",
+ marco:"Atlas abril/2026: R$ 152.757.184 executados financeiramente, equivalentes a 35%.",
+ proximoMarco:"Confirmar conclusão física após 30/06/2026, aceite, valor final e execução financeira atualizada.",
+ gargalo:"Divergência entre valores divulgados em momentos distintos e necessidade de confirmar encerramento/conclusão após junho de 2026.",
+ problema:"SIM — divergência documental de valor e necessidade de atualização pós-data de término cadastrada.",
+ providencia:"DPP: conciliar TC 589/2014, Atlas DNIT, medições e prestação de contas; confirmar conclusão, valor final e benefícios operacionais.",
+ pendencia:"Execução física atual; financeiro após abril/2026; conclusão/aceite; valor final do instrumento.",
+ fonte:"DNIT — Atlas Aquaviário abril/2026; notícias DNIT 18/06/2025 e 26/03/2024",
+ dataFonte:"27/09/2026",origem:"PESQUISA OFICIAL DNIT",
+ refConsulta:"https://www.gov.br/dnit/pt-br/assuntos/aquaviario/atlas-aquaviario/AtlasAquaviario_Abril_2026.pdf"
+ });
+ r=g("Modernização da IP4 de Parintins");
+ if(r)Object.assign(r,{
+ instrumento:"Licitação de contratação integrada iniciada em 01/04/2026 — número do edital/contrato necessita validação no DNIT/PNCP",
+ executor:"Empresa/consórcio vencedor: NECESSITA VALIDAÇÃO no DNIT/PNCP",
+ objeto:"Modernização da IP4 de Parintins/AM: recuperação estrutural, ampliação dos cais flutuantes e melhorias operacionais, incluindo projetos básico e executivo e execução das obras.",
+ valor:"R$ 51,3 milhões — investimento estimado divulgado pelo MPOR em 01/04/2026.",
+ fase:"Licitação/contratação integrada — situação posterior ao lançamento necessita validação",
+ situacao:"Licitação iniciada em 01/04/2026; resultado, contratação e eventual OS necessitam validação.",
+ localExato:"Parintins/AM — IP4 no Rio Amazonas",
+ marco:"Lançamento da licitação para modernização em 01/04/2026.",
+ proximoMarco:"Confirmar edital, vencedor, valor homologado, contrato, assinatura, OS e cronograma.",
+ gargalo:"A base ainda não contém o resultado pós-licitação nem eventual contrato/OS.",
+ problema:"NÃO CONFIRMADO — pendência é de atualização documental pós-licitação.",
+ providencia:"DPP: consultar DNIT/PNCP para consolidar edital, adjudicação, empresa, valor contratado, vigência e execução.",
+ pendencia:"Número do edital; resultado; empresa; contrato; valor contratado; OS; execução física/financeira.",
+ fonte:"MPOR — notícia de 01/04/2026; DNIT — histórico de melhorias da IP4",
+ dataFonte:"27/09/2026",origem:"PESQUISA OFICIAL MPOR + DNIT",
+ refConsulta:"https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/03-1/licitacao-para-modernizacao-da-ip4-de-parintins-am-tem-investimento-estimado-em-r-51-3-milhoes"
  });
 })();
 function goTo(id){document.getElementById(id).scrollIntoView({behavior:"smooth",block:"start"})}
