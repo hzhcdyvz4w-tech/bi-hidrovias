@@ -26,8 +26,10 @@ jobs:
           set -euo pipefail
           MAIN='https://script.google.com/macros/s/AKfycbyUCnZm3VwmEivBW04wXSP8bPONg4Cv00acK7MaxZ_54jRMzgdwyIPUDmYnm3pasMLnvw/exec'
           SIOP_RAW='https://script.google.com/macros/s/AKfycbz2kMnc1DLfrf6M9t2mYjmb9h5NsdKdtvBoFGn9nWE4EENy0_692NvjoL8pQDv2me_z/exec'
+          SIOP_CSV='https://docs.google.com/spreadsheets/d/1cCxnVPI4vWsGB-zfXblG6JZymBqsleEzG4Slet2fz8A/gviz/tq?tqx=out:csv&sheet=Consulta%20SIOP%20BI'
           curl -A "Mozilla/5.0" -H "Accept: application/json,text/plain,*/*" -L --fail --retry 3 --retry-delay 3 --connect-timeout 30 --max-time 180 "$MAIN" -o /tmp/main.raw
-          curl -A "Mozilla/5.0" -H "Accept: application/json,text/plain,*/*" -L --fail --retry 3 --retry-delay 3 --connect-timeout 30 --max-time 180 "$SIOP_RAW" -o /tmp/siop.raw || true
+          curl -A "Mozilla/5.0" -H "Accept: application/json,text/plain,*/*" -L --retry 2 --retry-delay 2 --connect-timeout 20 --max-time 90 "$SIOP_RAW" -o /tmp/siop.raw || true
+          curl -A "Mozilla/5.0" -H "Accept: text/csv,text/plain,*/*" -L --retry 2 --retry-delay 2 --connect-timeout 20 --max-time 90 "$SIOP_CSV" -o /tmp/siop.csv || true
 
       - name: Validar e gerar snapshots
         shell: python
@@ -67,10 +69,69 @@ jobs:
           print('MAIN OK:',len(rows),'investimentos')
 
           try:
-              raw=parse_json('/tmp/siop.raw')
-              registros=raw.get('registros')
-              if raw.get('ok') is not True or not isinstance(registros,list) or len(registros)<100:
-                  raise ValueError('Consulta SIOP BI inválida ou incompleta')
+              raw=None
+              registros=None
+              origem='Apps Script Consulta SIOP BI'
+
+              # 1) Tenta a API JSON.
+              try:
+                  raw=parse_json('/tmp/siop.raw')
+                  rr=raw.get('registros') if isinstance(raw,dict) else None
+                  if raw.get('ok') is True and isinstance(rr,list) and len(rr)>=100:
+                      registros=rr
+              except Exception:
+                  raw=None
+
+              # 2) Se a API exigir login, tenta a exportação CSV da própria planilha Google Sheets.
+              if registros is None:
+                  import csv, io
+                  csv_path=pathlib.Path('/tmp/siop.csv')
+                  text=csv_path.read_text(encoding='utf-8',errors='replace') if csv_path.exists() else ''
+                  if '<html' in text[:500].lower() or 'accounts.google.com' in text[:1000].lower():
+                      raise ValueError('Google Sheets CSV exige autenticação')
+                  reader=csv.reader(io.StringIO(text))
+                  rows_csv=list(reader)
+                  header_idx=None
+                  required={'Ano','Ação','Plano Orçamentário','Grupo de Despesa','Dotação Atual','Empenhado','Liquidado','Pago'}
+                  for i,row in enumerate(rows_csv[:30]):
+                      if required.issubset(set(x.strip() for x in row)):
+                          header_idx=i;break
+                  if header_idx is None:
+                      raise ValueError('cabeçalho da Consulta SIOP BI não localizado no CSV')
+                  headers=[x.strip() for x in rows_csv[header_idx]]
+                  registros=[]
+                  def split_code_desc(v):
+                      s=str(v or '').strip()
+                      m=re.match(r'^([^\s]+)\s+-\s+(.*)$',s)
+                      return (m.group(1).strip(),m.group(2).strip()) if m else (s,'')
+                  for row in rows_csv[header_idx+1:]:
+                      if not any(str(x).strip() for x in row): continue
+                      d={headers[i]:(row[i] if i<len(row) else '') for i in range(len(headers))}
+                      ano=str(d.get('Ano','')).strip()
+                      if not ano.isdigit(): continue
+                      ac,ad=split_code_desc(d.get('Ação',''))
+                      pc,pd=split_code_desc(d.get('Plano Orçamentário',''))
+                      registros.append({
+                        'ano':int(ano),
+                        'acaoCodigo':ac,'acaoDescricao':ad,
+                        'poCodigo':pc,'poDescricao':pd,
+                        'grupoDespesa':d.get('Grupo de Despesa',''),
+                        'dotacaoAtual':num(d.get('Dotação Atual')),
+                        'empenhado':num(d.get('Empenhado')),
+                        'liquidado':num(d.get('Liquidado')),
+                        'pago':num(d.get('Pago'))
+                      })
+                  if len(registros)<100:
+                      raise ValueError(f'CSV Consulta SIOP BI incompleto: {len(registros)} registros')
+                  origem='Google Sheets CSV — Consulta SIOP BI'
+                  raw={
+                    'ok':True,
+                    'schemaVersion':1,
+                    'fonte':'Consulta SIOP BI',
+                    'generatedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+                    'spreadsheetId':'1cCxnVPI4vWsGB-zfXblG6JZymBqsleEzG4Slet2fz8A',
+                    'registros':registros
+                  }
 
               rel_cfg=json.loads(pathlib.Path('data/siop_relacionamentos.json').read_text(encoding='utf-8'))
               rels=[r for r in rel_cfg.get('relacoes',[]) if r.get('habilitado') is True]
@@ -134,41 +195,30 @@ jobs:
 
               investimentos=[]
               for nome,years in sorted(by_inv.items()):
-                  exs=[]
-                  all_rows=[]
+                  exs=[];all_rows=[]
                   for ano,recs in sorted(years.items()):
-                      exs.append({'ano':ano,'totais':totals(recs),'registros':recs})
-                      all_rows.extend(recs)
+                      exs.append({'ano':ano,'totais':totals(recs),'registros':recs});all_rows.extend(recs)
                   investimentos.append({'investimento':nome,'totais':totals(all_rows),'exercicios':exs})
 
               out={
-                'ok':True,
-                'schemaVersion':2,
-                'projeto':'Projeto BI - Hidrovias',
+                'ok':True,'schemaVersion':2,'projeto':'Projeto BI - Hidrovias',
                 'fonte':'Consulta SIOP BI (Google Drive) + Matriz de Relacionamento',
+                'fonteTecnica':origem,
                 'generatedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),
                 'sourceGeneratedAt':raw.get('generatedAt'),
                 'spreadsheetId':raw.get('spreadsheetId') or (raw.get('metadata') or {}).get('spreadsheetId'),
                 'metadata':{
-                  'registrosSIOP':len(registros),
-                  'relacionamentosHabilitados':len(rels),
-                  'linhasIntegradas':len(selected),
-                  'investimentosComSIOP':len(investimentos),
+                  'registrosSIOP':len(registros),'relacionamentosHabilitados':len(rels),
+                  'linhasIntegradas':len(selected),'investimentosComSIOP':len(investimentos),
                   'regra':'Consulta SIOP BI é a fonte dos valores; somente relações habilitadas entram automaticamente.'
                 },
-                'totaisIntegrados':totals(flat),
-                'investimentos':investimentos
+                'totaisIntegrados':totals(flat),'investimentos':investimentos
               }
-              pathlib.Path('data/siop_consulta_raw.json').write_text(
-                  json.dumps(raw,ensure_ascii=False,separators=(',',':')),encoding='utf-8'
-              )
-              pathlib.Path('data/siop_hidrovias_public.json').write_text(
-                  json.dumps(out,ensure_ascii=False,separators=(',',':')),encoding='utf-8'
-              )
-              print('SIOP DRIVE OK:',len(registros),'registros; integrados:',len(selected))
+              pathlib.Path('data/siop_consulta_raw.json').write_text(json.dumps(raw,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
+              pathlib.Path('data/siop_hidrovias_public.json').write_text(json.dumps(out,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
+              print('SIOP DRIVE OK:',origem,';',len(registros),'registros; integrados:',len(selected))
           except Exception as exc:
-              if not pathlib.Path('data/siop_hidrovias_public.json').exists():
-                  raise
+              if not pathlib.Path('data/siop_hidrovias_public.json').exists(): raise
               print('ATENÇÃO: Consulta SIOP BI remota indisponível; preservando último snapshot homologado:',repr(exc))
 
       - name: Publicar somente se houver alteração
