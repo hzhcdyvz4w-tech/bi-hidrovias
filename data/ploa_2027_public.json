@@ -1,0 +1,1751 @@
+{
+  "ok": true,
+  "schemaVersion": 1,
+  "projeto": "Projeto BI - Hidrovias",
+  "camada": "PLOA_2027_PUBLIC",
+  "exercicio": 2027,
+  "natureza": "Proposta Orçamentária - PLOA 2027",
+  "dataBase": "2026-10-02",
+  "fonte": {
+    "documento": "LOA - Consulta SIOP BI.pdf",
+    "orgao": "68000 - Ministério de Portos e Aeroportos",
+    "unidade": "68101 - Ministério de Portos e Aeroportos - Administração Direta",
+    "programa": "3105 - Portos e Transporte Aquaviário",
+    "regraPrecedencia": "68101 prevalece para integração; 68000 permanece como controle consolidado."
+  },
+  "controles": {
+    "orgao68000": {
+      "totalPLOA2027": 3179910886,
+      "programa3105PLOA2027": 820869591
+    },
+    "unidade68101": {
+      "totalPLOA2027": 1182841471,
+      "programa3105PLOA2027": 808963196,
+      "atividadesPrograma3105": 159184396,
+      "projetosPrograma3105": 649778800
+    }
+  },
+  "programa": {
+    "codigo": "3105",
+    "descricao": "Portos e Transporte Aquaviário",
+    "valorPLOA2027": 808963196
+  },
+  "resumoIntegracao": {
+    "registrosPLOA3105": 24,
+    "relacoesCadastradas": 21,
+    "relacoesExibidas": 6,
+    "investimentosComPLOAExibido": 6,
+    "valorUnicoRelacionadoSemDuplicacao": 635876546,
+    "valorConfirmadoExclusivo": 205200000,
+    "observacao": "O valor único relacionado deduplica o mesmo registro PLOA quando houver mais de um vínculo. Não representa necessariamente orçamento exclusivo dos empreendimentos."
+  },
+  "registros": [
+    {
+      "id": "PLOA27-20LN-0001",
+      "categoria": "Atividades",
+      "programaCodigo": "3105",
+      "programaDescricao": "Portos e Transporte Aquaviário",
+      "acaoCodigo": "20LN",
+      "acaoDescricao": "Operação de Terminais Hidroviários",
+      "localizadorCodigo": "0001",
+      "localizadorDescricao": "Nacional",
+      "sequencia": 3345,
+      "produto": "Terminal hidroviário mantido",
+      "unidadeProduto": "unidade",
+      "metaFisica": 73,
+      "valor": 120683396,
+      "alocacoes": [
+        {
+          "gnd": "3 - ODC",
+          "rp": 3,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "1000",
+          "valor": 32033805
+        },
+        {
+          "gnd": "3 - ODC",
+          "rp": 3,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "9444",
+          "valor": 88649591
+        }
+      ]
+    },
+    {
+      "id": "PLOA27-20LO-6033",
+      "categoria": "Atividades",
+      "programaCodigo": "3105",
+      "programaDescricao": "Portos e Transporte Aquaviário",
+      "acaoCodigo": "20LO",
+      "acaoDescricao": "Operação de Eclusas",
+      "localizadorCodigo": "6033",
+      "localizadorDescricao": "Na Região Hidrográfica do Tocantins-Araguaia",
+      "sequencia": 3346,
+      "produto": "Eclusa mantida",
+      "unidadeProduto": "unidade",
+      "metaFisica": 1,
+      "valor": 6500000,
+      "alocacoes": [
+        {
+          "gnd": "3 - ODC",
+          "rp": 3,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "1000",
+          "valor": 1725339
+        },
+        {
+          "gnd": "3 - ODC",
+          "rp": 3,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "9444",
+          "valor": 4774661
+        }
+      ]
+    },
+    {
+      "id": "PLOA27-20LO-6037",
+      "categoria": "Atividades",
+      "programaCodigo": "3105",
+      "programaDescricao": "Portos e Transporte Aquaviário",
+      "acaoCodigo": "20LO",
+      "acaoDescricao": "Operação de Eclusas",
+      "localizadorCodigo": "6037",
+      "localizadorDescricao": "Na Região Hidrográfica do São Francisco",
+      "sequencia": 3347,
+      "produto": "Eclusa mantida",
+      "unidadeProduto": "unidade",
+      "metaFisica": 1,
+      "valor": 5950000,
+      "alocacoes": [
+        {
+          "gnd": "3 - ODC",
+          "rp": 3,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "1000",
+          "valor": 1579348
+        },
+        {
+          "gnd": "3 - ODC",
+          "rp": 3,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "9444",
+          "valor": 4370652
+        }
+      ]
+    },
+    {
+      "id": "PLOA27-20LO-6040",
+      "categoria": "Atividades",
+      "programaCodigo": "3105",
+      "programaDescricao": "Portos e Transporte Aquaviário",
+      "acaoCodigo": "20LO",
+      "acaoDescricao": "Operação de Eclusas",
+      "localizadorCodigo": "6040",
+      "localizadorDescricao": "Na Região Hidrográfica do Paraná",
+      "sequencia": 3348,
+      "produto": "Eclusa mantida",
+      "unidadeProduto": "unidade",
+      "metaFisica": 2,
+      "valor": 9750000,
+      "alocacoes": [
+        {
+          "gnd": "3 - ODC",
+          "rp": 3,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "1000",
+          "valor": 2588008
+        },
+        {
+          "gnd": "3 - ODC",
+          "rp": 3,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "9444",
+          "valor": 7161992
+        }
+      ]
+    },
+    {
+      "id": "PLOA27-20LO-6043",
+      "categoria": "Atividades",
+      "programaCodigo": "3105",
+      "programaDescricao": "Portos e Transporte Aquaviário",
+      "acaoCodigo": "20LO",
+      "acaoDescricao": "Operação de Eclusas",
+      "localizadorCodigo": "6043",
+      "localizadorDescricao": "Na Região Hidrográfica Atlântico Sul",
+      "sequencia": 3349,
+      "produto": "Eclusa mantida",
+      "unidadeProduto": "unidade",
+      "metaFisica": 4,
+      "valor": 16250000,
+      "alocacoes": [
+        {
+          "gnd": "3 - ODC",
+          "rp": 3,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "1000",
+          "valor": 4313347
+        },
+        {
+          "gnd": "3 - ODC",
+          "rp": 3,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "9444",
+          "valor": 11936653
+        }
+      ]
+    },
+    {
+      "id": "PLOA27-21HM-0001",
+      "categoria": "Atividades",
+      "programaCodigo": "3105",
+      "programaDescricao": "Portos e Transporte Aquaviário",
+      "acaoCodigo": "21HM",
+      "acaoDescricao": "Pesquisa e Desenvolvimento Sustentável de Hidrovias",
+      "localizadorCodigo": "0001",
+      "localizadorDescricao": "Nacional",
+      "sequencia": 3350,
+      "produto": "Pesquisa realizada",
+      "unidadeProduto": "unidade",
+      "metaFisica": 1,
+      "valor": 50000,
+      "alocacoes": [
+        {
+          "gnd": "3 - ODC",
+          "rp": 2,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "1000",
+          "valor": 13272
+        },
+        {
+          "gnd": "3 - ODC",
+          "rp": 2,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "9444",
+          "valor": 36728
+        }
+      ]
+    },
+    {
+      "id": "PLOA27-21I1-0001",
+      "categoria": "Atividades",
+      "programaCodigo": "3105",
+      "programaDescricao": "Portos e Transporte Aquaviário",
+      "acaoCodigo": "21I1",
+      "acaoDescricao": "Manutenção e Operação da Infraestrutura Aquaviária Estratégica em Canais de Acesso aos Portos e Hidrovias Nacionais",
+      "localizadorCodigo": "0001",
+      "localizadorDescricao": "Nacional",
+      "sequencia": 3351,
+      "produto": "Infraestrutura aquaviária mantida",
+      "unidadeProduto": "conforme fonte",
+      "metaFisica": "44.903.900",
+      "valor": 1000,
+      "alocacoes": [
+        {
+          "gnd": "4 - INV",
+          "rp": 2,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "1000",
+          "valor": 1000
+        }
+      ]
+    },
+    {
+      "id": "PLOA27-123M-0001",
+      "categoria": "Projetos",
+      "programaCodigo": "3105",
+      "programaDescricao": "Portos e Transporte Aquaviário",
+      "acaoCodigo": "123M",
+      "acaoDescricao": "Melhoramentos no Canal de Navegação da Hidrovia do Rio Tocantins",
+      "localizadorCodigo": "0001",
+      "localizadorDescricao": "Nacional",
+      "sequencia": 3352,
+      "produto": "Hidrovia melhorada",
+      "unidadeProduto": "% de execução física",
+      "metaFisica": 3,
+      "valor": 150000000,
+      "alocacoes": [
+        {
+          "gnd": "4 - INV",
+          "rp": 3,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "1000",
+          "valor": 150000000
+        }
+      ]
+    },
+    {
+      "id": "PLOA27-127G-0208",
+      "categoria": "Projetos",
+      "programaCodigo": "3105",
+      "programaDescricao": "Portos e Transporte Aquaviário",
+      "acaoCodigo": "127G",
+      "acaoDescricao": "Construção de Terminais Fluviais",
+      "localizadorCodigo": "0208",
+      "localizadorDescricao": "No Município de Lábrea - AM",
+      "sequencia": 3353,
+      "produto": "Terminal fluvial construído",
+      "unidadeProduto": "% de execução física",
+      "metaFisica": 2,
+      "valor": 1000000,
+      "alocacoes": [
+        {
+          "gnd": "4 - INV",
+          "rp": 3,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "1000",
+          "valor": 1000000
+        }
+      ]
+    },
+    {
+      "id": "PLOA27-127G-0226",
+      "categoria": "Projetos",
+      "programaCodigo": "3105",
+      "programaDescricao": "Portos e Transporte Aquaviário",
+      "acaoCodigo": "127G",
+      "acaoDescricao": "Construção de Terminais Fluviais",
+      "localizadorCodigo": "0226",
+      "localizadorDescricao": "No Município de São Paulo de Olivença - AM",
+      "sequencia": 3354,
+      "produto": "Terminal fluvial construído",
+      "unidadeProduto": "% de execução física",
+      "metaFisica": 11,
+      "valor": 2470000,
+      "alocacoes": [
+        {
+          "gnd": "4 - INV",
+          "rp": 3,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "1000",
+          "valor": 2470000
+        }
+      ]
+    },
+    {
+      "id": "PLOA27-13LO-0211",
+      "categoria": "Projetos",
+      "programaCodigo": "3105",
+      "programaDescricao": "Portos e Transporte Aquaviário",
+      "acaoCodigo": "13LO",
+      "acaoDescricao": "Construção do Porto de Manaus Moderna - no Estado do Amazonas",
+      "localizadorCodigo": "0211",
+      "localizadorDescricao": "No Município de Manaus - AM",
+      "sequencia": 3355,
+      "produto": "Porto construído",
+      "unidadeProduto": "% de execução física",
+      "metaFisica": 2,
+      "valor": 200000000,
+      "alocacoes": [
+        {
+          "gnd": "4 - INV",
+          "rp": 3,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "1000",
+          "valor": 200000000
+        }
+      ]
+    },
+    {
+      "id": "PLOA27-14MZ-0211",
+      "categoria": "Projetos",
+      "programaCodigo": "3105",
+      "programaDescricao": "Portos e Transporte Aquaviário",
+      "acaoCodigo": "14MZ",
+      "acaoDescricao": "Ampliação do Terminal Fluvial de São Raimundo em Manaus/AM",
+      "localizadorCodigo": "0211",
+      "localizadorDescricao": "No Município de Manaus - AM",
+      "sequencia": 3356,
+      "produto": "Terminal fluvial ampliado",
+      "unidadeProduto": "% de execução física",
+      "metaFisica": 9,
+      "valor": 6500000,
+      "alocacoes": [
+        {
+          "gnd": "4 - INV",
+          "rp": 3,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "1000",
+          "valor": 6500000
+        }
+      ]
+    },
+    {
+      "id": "PLOA27-161Y-4521",
+      "categoria": "Projetos",
+      "programaCodigo": "3105",
+      "programaDescricao": "Portos e Transporte Aquaviário",
+      "acaoCodigo": "161Y",
+      "acaoDescricao": "Manutenção e Reforço do Molhe de Abrigo do Porto de Imbituba/SC",
+      "localizadorCodigo": "4521",
+      "localizadorDescricao": "No Município de Imbituba - SC",
+      "sequencia": 3357,
+      "produto": "Molhe de abrigo adequado",
+      "unidadeProduto": "% de execução física",
+      "metaFisica": 70,
+      "valor": 32565650,
+      "alocacoes": [
+        {
+          "gnd": "4 - INV",
+          "rp": 3,
+          "mod": 30,
+          "iu": 0,
+          "fonte": "1000",
+          "valor": 32565650
+        }
+      ]
+    },
+    {
+      "id": "PLOA27-161Z-1695",
+      "categoria": "Projetos",
+      "programaCodigo": "3105",
+      "programaDescricao": "Portos e Transporte Aquaviário",
+      "acaoCodigo": "161Z",
+      "acaoDescricao": "Dragagem e Readequação da Infraestrutura Aquaviária do Porto do Recife/PE",
+      "localizadorCodigo": "1695",
+      "localizadorDescricao": "No Município de Recife - PE",
+      "sequencia": 3358,
+      "produto": "Dragagem adequada",
+      "unidadeProduto": "% de execução física",
+      "metaFisica": 74,
+      "valor": 1000000,
+      "alocacoes": [
+        {
+          "gnd": "4 - INV",
+          "rp": 3,
+          "mod": 30,
+          "iu": 0,
+          "fonte": "1000",
+          "valor": 1000000
+        }
+      ]
+    },
+    {
+      "id": "PLOA27-162B-1642",
+      "categoria": "Projetos",
+      "programaCodigo": "3105",
+      "programaDescricao": "Portos e Transporte Aquaviário",
+      "acaoCodigo": "162B",
+      "acaoDescricao": "Modernização, Recuperação e Ampliação da Capacidade do Porto de Suape/PE",
+      "localizadorCodigo": "1642",
+      "localizadorDescricao": "No Município de Ipojuca - PE",
+      "sequencia": 3359,
+      "produto": "Porto modernizado",
+      "unidadeProduto": "% de execução física",
+      "metaFisica": 30,
+      "valor": 1000000,
+      "alocacoes": [
+        {
+          "gnd": "4 - INV",
+          "rp": 3,
+          "mod": 30,
+          "iu": 0,
+          "fonte": "1000",
+          "valor": 1000000
+        }
+      ]
+    },
+    {
+      "id": "PLOA27-162D-5045",
+      "categoria": "Projetos",
+      "programaCodigo": "3105",
+      "programaDescricao": "Portos e Transporte Aquaviário",
+      "acaoCodigo": "162D",
+      "acaoDescricao": "Dragagem e Sinalização Náutica da Lagoa Mirim",
+      "localizadorCodigo": "5045",
+      "localizadorDescricao": "No Município de Rio Grande - RS",
+      "sequencia": 3360,
+      "produto": "Dragagem adequada",
+      "unidadeProduto": "% de execução física",
+      "metaFisica": 14,
+      "valor": 5200000,
+      "alocacoes": [
+        {
+          "gnd": "4 - INV",
+          "rp": 3,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "1000",
+          "valor": 5200000
+        }
+      ]
+    },
+    {
+      "id": "PLOA27-165T-0011",
+      "categoria": "Projetos",
+      "programaCodigo": "3105",
+      "programaDescricao": "Portos e Transporte Aquaviário",
+      "acaoCodigo": "165T",
+      "acaoDescricao": "Recuperação do Cais Flutuante do Porto de Porto Velho/RO",
+      "localizadorCodigo": "0011",
+      "localizadorDescricao": "No Estado de Rondônia",
+      "sequencia": 3361,
+      "produto": "Cais flutuante recuperado",
+      "unidadeProduto": "% de execução física",
+      "metaFisica": 38,
+      "valor": 18000000,
+      "alocacoes": [
+        {
+          "gnd": "4 - INV",
+          "rp": 3,
+          "mod": 30,
+          "iu": 0,
+          "fonte": "1000",
+          "valor": 18000000
+        }
+      ]
+    },
+    {
+      "id": "PLOA27-167T-1382",
+      "categoria": "Projetos",
+      "programaCodigo": "3105",
+      "programaDescricao": "Portos e Transporte Aquaviário",
+      "acaoCodigo": "167T",
+      "acaoDescricao": "Melhoria da Infraestrutura e das Operações Portuárias do Porto de Cabedelo/PB",
+      "localizadorCodigo": "1382",
+      "localizadorDescricao": "No Município de Cabedelo - PB",
+      "sequencia": 3362,
+      "produto": "Porto adequado",
+      "unidadeProduto": "% de execução física",
+      "metaFisica": 100,
+      "valor": 34500000,
+      "alocacoes": [
+        {
+          "gnd": "4 - INV",
+          "rp": 3,
+          "mod": 30,
+          "iu": 0,
+          "fonte": "1000",
+          "valor": 34500000
+        }
+      ]
+    },
+    {
+      "id": "PLOA27-21I6-6032",
+      "categoria": "Projetos",
+      "programaCodigo": "3105",
+      "programaDescricao": "Portos e Transporte Aquaviário",
+      "acaoCodigo": "21I6",
+      "acaoDescricao": "Intervenções para Recuperação e Restauração de Infraestruturas Hidroviárias",
+      "localizadorCodigo": "6032",
+      "localizadorDescricao": "Na Região Hidrográfica Amazônica",
+      "sequencia": 3363,
+      "produto": "Intervenção realizada",
+      "unidadeProduto": "% de execução física",
+      "metaFisica": 13,
+      "valor": 150243150,
+      "alocacoes": [
+        {
+          "gnd": "3 - ODC",
+          "rp": 3,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "1000",
+          "valor": 517602
+        },
+        {
+          "gnd": "3 - ODC",
+          "rp": 3,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "9444",
+          "valor": 1432398
+        },
+        {
+          "gnd": "4 - INV",
+          "rp": 3,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "1000",
+          "valor": 148293150
+        }
+      ]
+    },
+    {
+      "id": "PLOA27-21I6-6033",
+      "categoria": "Projetos",
+      "programaCodigo": "3105",
+      "programaDescricao": "Portos e Transporte Aquaviário",
+      "acaoCodigo": "21I6",
+      "acaoDescricao": "Intervenções para Recuperação e Restauração de Infraestruturas Hidroviárias",
+      "localizadorCodigo": "6033",
+      "localizadorDescricao": "Na Região Hidrográfica do Tocantins-Araguaia",
+      "sequencia": 3364,
+      "produto": "Intervenção realizada",
+      "unidadeProduto": "% de execução física",
+      "metaFisica": 15,
+      "valor": 1300000,
+      "alocacoes": [
+        {
+          "gnd": "4 - INV",
+          "rp": 3,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "1000",
+          "valor": 1300000
+        }
+      ]
+    },
+    {
+      "id": "PLOA27-21I6-6035",
+      "categoria": "Projetos",
+      "programaCodigo": "3105",
+      "programaDescricao": "Portos e Transporte Aquaviário",
+      "acaoCodigo": "21I6",
+      "acaoDescricao": "Intervenções para Recuperação e Restauração de Infraestruturas Hidroviárias",
+      "localizadorCodigo": "6035",
+      "localizadorDescricao": "Na Região Hidrográfica do Parnaíba",
+      "sequencia": 3365,
+      "produto": "Intervenção realizada",
+      "unidadeProduto": "% de execução física",
+      "metaFisica": 11,
+      "valor": 2800000,
+      "alocacoes": [
+        {
+          "gnd": "3 - ODC",
+          "rp": 3,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "1000",
+          "valor": 398155
+        },
+        {
+          "gnd": "3 - ODC",
+          "rp": 3,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "9444",
+          "valor": 1101845
+        },
+        {
+          "gnd": "4 - INV",
+          "rp": 3,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "1000",
+          "valor": 1300000
+        }
+      ]
+    },
+    {
+      "id": "PLOA27-21I6-6040",
+      "categoria": "Projetos",
+      "programaCodigo": "3105",
+      "programaDescricao": "Portos e Transporte Aquaviário",
+      "acaoCodigo": "21I6",
+      "acaoDescricao": "Intervenções para Recuperação e Restauração de Infraestruturas Hidroviárias",
+      "localizadorCodigo": "6040",
+      "localizadorDescricao": "Na Região Hidrográfica do Paraná",
+      "sequencia": 3366,
+      "produto": "Intervenção realizada",
+      "unidadeProduto": "% de execução física",
+      "metaFisica": 11,
+      "valor": 5600000,
+      "alocacoes": [
+        {
+          "gnd": "3 - ODC",
+          "rp": 3,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "1000",
+          "valor": 1486446
+        },
+        {
+          "gnd": "3 - ODC",
+          "rp": 3,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "9444",
+          "valor": 4113554
+        }
+      ]
+    },
+    {
+      "id": "PLOA27-21I6-6041",
+      "categoria": "Projetos",
+      "programaCodigo": "3105",
+      "programaDescricao": "Portos e Transporte Aquaviário",
+      "acaoCodigo": "21I6",
+      "acaoDescricao": "Intervenções para Recuperação e Restauração de Infraestruturas Hidroviárias",
+      "localizadorCodigo": "6041",
+      "localizadorDescricao": "Na Região Hidrográfica do Paraguai",
+      "sequencia": 3367,
+      "produto": "Intervenção realizada",
+      "unidadeProduto": "% de execução física",
+      "metaFisica": 10,
+      "valor": 9700000,
+      "alocacoes": [
+        {
+          "gnd": "4 - INV",
+          "rp": 3,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "1000",
+          "valor": 9700000
+        }
+      ]
+    },
+    {
+      "id": "PLOA27-21I6-6043",
+      "categoria": "Projetos",
+      "programaCodigo": "3105",
+      "programaDescricao": "Portos e Transporte Aquaviário",
+      "acaoCodigo": "21I6",
+      "acaoDescricao": "Intervenções para Recuperação e Restauração de Infraestruturas Hidroviárias",
+      "localizadorCodigo": "6043",
+      "localizadorDescricao": "Na Região Hidrográfica Atlântico Sul",
+      "sequencia": 3368,
+      "produto": "Intervenção realizada",
+      "unidadeProduto": "% de execução física",
+      "metaFisica": 10,
+      "valor": 27900000,
+      "alocacoes": [
+        {
+          "gnd": "4 - INV",
+          "rp": 3,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "1000",
+          "valor": 27900000
+        }
+      ]
+    }
+  ],
+  "relacoesExibidas": [
+    {
+      "id": "REL-PLOA27-001",
+      "investimento": "Operação e manutenção de 54 IP4",
+      "recordId": "PLOA27-20LN-0001",
+      "natureza": "COMPARTILHADO",
+      "confianca": "ALTA",
+      "nivelAtribuicao": "AÇÃO / LOCALIZADOR NACIONAL",
+      "exclusivo": false,
+      "exibirNoBI": true,
+      "validacao": "RELACIONADO COM RESSALVA",
+      "fundamento": "Ação 20LN é Operação de Terminais Hidroviários, localizador Nacional, com produto de 73 terminais mantidos; o valor não é exclusivo das 54 IP4.",
+      "registro": {
+        "id": "PLOA27-20LN-0001",
+        "categoria": "Atividades",
+        "programaCodigo": "3105",
+        "programaDescricao": "Portos e Transporte Aquaviário",
+        "acaoCodigo": "20LN",
+        "acaoDescricao": "Operação de Terminais Hidroviários",
+        "localizadorCodigo": "0001",
+        "localizadorDescricao": "Nacional",
+        "sequencia": 3345,
+        "produto": "Terminal hidroviário mantido",
+        "unidadeProduto": "unidade",
+        "metaFisica": 73,
+        "valor": 120683396,
+        "alocacoes": [
+          {
+            "gnd": "3 - ODC",
+            "rp": 3,
+            "mod": 90,
+            "iu": 0,
+            "fonte": "1000",
+            "valor": 32033805
+          },
+          {
+            "gnd": "3 - ODC",
+            "rp": 3,
+            "mod": 90,
+            "iu": 0,
+            "fonte": "9444",
+            "valor": 88649591
+          }
+        ]
+      }
+    },
+    {
+      "id": "REL-PLOA27-004",
+      "investimento": "Terminal Manaus Moderna",
+      "recordId": "PLOA27-13LO-0211",
+      "natureza": "CONFIRMADO",
+      "confianca": "ALTA",
+      "nivelAtribuicao": "EMPREENDIMENTO / LOCALIZADOR MUNICIPAL",
+      "exclusivo": true,
+      "exibirNoBI": true,
+      "validacao": "APTO",
+      "fundamento": "Ação 13LO e localizador 0211 identificam explicitamente o Porto de Manaus Moderna no Município de Manaus/AM.",
+      "registro": {
+        "id": "PLOA27-13LO-0211",
+        "categoria": "Projetos",
+        "programaCodigo": "3105",
+        "programaDescricao": "Portos e Transporte Aquaviário",
+        "acaoCodigo": "13LO",
+        "acaoDescricao": "Construção do Porto de Manaus Moderna - no Estado do Amazonas",
+        "localizadorCodigo": "0211",
+        "localizadorDescricao": "No Município de Manaus - AM",
+        "sequencia": 3355,
+        "produto": "Porto construído",
+        "unidadeProduto": "% de execução física",
+        "metaFisica": 2,
+        "valor": 200000000,
+        "alocacoes": [
+          {
+            "gnd": "4 - INV",
+            "rp": 3,
+            "mod": 90,
+            "iu": 0,
+            "fonte": "1000",
+            "valor": 200000000
+          }
+        ]
+      }
+    },
+    {
+      "id": "REL-PLOA27-005",
+      "investimento": "Pedral do Lourenço — Rio Tocantins",
+      "recordId": "PLOA27-123M-0001",
+      "natureza": "COMPATÍVEL",
+      "confianca": "ALTA",
+      "nivelAtribuicao": "AÇÃO NACIONAL",
+      "exclusivo": false,
+      "exibirNoBI": true,
+      "validacao": "RELACIONADO COM RESSALVA",
+      "fundamento": "A ação 123M trata de melhoramentos no canal de navegação da Hidrovia do Rio Tocantins, mas o documento não cita nominalmente o Pedral do Lourenço.",
+      "registro": {
+        "id": "PLOA27-123M-0001",
+        "categoria": "Projetos",
+        "programaCodigo": "3105",
+        "programaDescricao": "Portos e Transporte Aquaviário",
+        "acaoCodigo": "123M",
+        "acaoDescricao": "Melhoramentos no Canal de Navegação da Hidrovia do Rio Tocantins",
+        "localizadorCodigo": "0001",
+        "localizadorDescricao": "Nacional",
+        "sequencia": 3352,
+        "produto": "Hidrovia melhorada",
+        "unidadeProduto": "% de execução física",
+        "metaFisica": 3,
+        "valor": 150000000,
+        "alocacoes": [
+          {
+            "gnd": "4 - INV",
+            "rp": 3,
+            "mod": 90,
+            "iu": 0,
+            "fonte": "1000",
+            "valor": 150000000
+          }
+        ]
+      }
+    },
+    {
+      "id": "REL-PLOA27-006",
+      "investimento": "Nova Avanhandava — Rio Tietê",
+      "recordId": "PLOA27-20LO-6040",
+      "natureza": "COMPARTILHADO",
+      "confianca": "MÉDIA",
+      "nivelAtribuicao": "REGIÃO HIDROGRÁFICA",
+      "exclusivo": false,
+      "exibirNoBI": true,
+      "validacao": "RELACIONADO COM RESSALVA",
+      "fundamento": "Ação 20LO/6040 é Operação de Eclusas na Região Hidrográfica do Paraná e o produto prevê 2 eclusas; o valor não individualiza Nova Avanhandava.",
+      "registro": {
+        "id": "PLOA27-20LO-6040",
+        "categoria": "Atividades",
+        "programaCodigo": "3105",
+        "programaDescricao": "Portos e Transporte Aquaviário",
+        "acaoCodigo": "20LO",
+        "acaoDescricao": "Operação de Eclusas",
+        "localizadorCodigo": "6040",
+        "localizadorDescricao": "Na Região Hidrográfica do Paraná",
+        "sequencia": 3348,
+        "produto": "Eclusa mantida",
+        "unidadeProduto": "unidade",
+        "metaFisica": 2,
+        "valor": 9750000,
+        "alocacoes": [
+          {
+            "gnd": "3 - ODC",
+            "rp": 3,
+            "mod": 90,
+            "iu": 0,
+            "fonte": "1000",
+            "valor": 2588008
+          },
+          {
+            "gnd": "3 - ODC",
+            "rp": 3,
+            "mod": 90,
+            "iu": 0,
+            "fonte": "9444",
+            "valor": 7161992
+          }
+        ]
+      }
+    },
+    {
+      "id": "REL-PLOA27-007",
+      "investimento": "Dragagens Amazonas, Madeira e Solimões",
+      "recordId": "PLOA27-21I6-6032",
+      "natureza": "COMPARTILHADO",
+      "confianca": "MÉDIA",
+      "nivelAtribuicao": "REGIÃO HIDROGRÁFICA",
+      "exclusivo": false,
+      "exibirNoBI": true,
+      "validacao": "RELACIONADO COM RESSALVA",
+      "fundamento": "Ação 21I6/6032 cobre intervenções de recuperação e restauração na Região Hidrográfica Amazônica; não individualiza cada rio ou contrato de dragagem.",
+      "registro": {
+        "id": "PLOA27-21I6-6032",
+        "categoria": "Projetos",
+        "programaCodigo": "3105",
+        "programaDescricao": "Portos e Transporte Aquaviário",
+        "acaoCodigo": "21I6",
+        "acaoDescricao": "Intervenções para Recuperação e Restauração de Infraestruturas Hidroviárias",
+        "localizadorCodigo": "6032",
+        "localizadorDescricao": "Na Região Hidrográfica Amazônica",
+        "sequencia": 3363,
+        "produto": "Intervenção realizada",
+        "unidadeProduto": "% de execução física",
+        "metaFisica": 13,
+        "valor": 150243150,
+        "alocacoes": [
+          {
+            "gnd": "3 - ODC",
+            "rp": 3,
+            "mod": 90,
+            "iu": 0,
+            "fonte": "1000",
+            "valor": 517602
+          },
+          {
+            "gnd": "3 - ODC",
+            "rp": 3,
+            "mod": 90,
+            "iu": 0,
+            "fonte": "9444",
+            "valor": 1432398
+          },
+          {
+            "gnd": "4 - INV",
+            "rp": 3,
+            "mod": 90,
+            "iu": 0,
+            "fonte": "1000",
+            "valor": 148293150
+          }
+        ]
+      }
+    },
+    {
+      "id": "REL-PLOA27-008",
+      "investimento": "Dragagem Lagoa Mirim",
+      "recordId": "PLOA27-162D-5045",
+      "natureza": "CONFIRMADO",
+      "confianca": "ALTA",
+      "nivelAtribuicao": "AÇÃO / LOCALIZADOR MUNICIPAL",
+      "exclusivo": true,
+      "exibirNoBI": true,
+      "validacao": "APTO",
+      "fundamento": "Ação 162D e localizador 5045 identificam Dragagem e Sinalização Náutica da Lagoa Mirim, no Município de Rio Grande/RS.",
+      "registro": {
+        "id": "PLOA27-162D-5045",
+        "categoria": "Projetos",
+        "programaCodigo": "3105",
+        "programaDescricao": "Portos e Transporte Aquaviário",
+        "acaoCodigo": "162D",
+        "acaoDescricao": "Dragagem e Sinalização Náutica da Lagoa Mirim",
+        "localizadorCodigo": "5045",
+        "localizadorDescricao": "No Município de Rio Grande - RS",
+        "sequencia": 3360,
+        "produto": "Dragagem adequada",
+        "unidadeProduto": "% de execução física",
+        "metaFisica": 14,
+        "valor": 5200000,
+        "alocacoes": [
+          {
+            "gnd": "4 - INV",
+            "rp": 3,
+            "mod": 90,
+            "iu": 0,
+            "fonte": "1000",
+            "valor": 5200000
+          }
+        ]
+      }
+    }
+  ],
+  "relacoesGovernanca": [
+    {
+      "id": "REL-PLOA27-001",
+      "investimento": "Operação e manutenção de 54 IP4",
+      "recordId": "PLOA27-20LN-0001",
+      "natureza": "COMPARTILHADO",
+      "confianca": "ALTA",
+      "nivelAtribuicao": "AÇÃO / LOCALIZADOR NACIONAL",
+      "exclusivo": false,
+      "exibirNoBI": true,
+      "validacao": "RELACIONADO COM RESSALVA",
+      "fundamento": "Ação 20LN é Operação de Terminais Hidroviários, localizador Nacional, com produto de 73 terminais mantidos; o valor não é exclusivo das 54 IP4."
+    },
+    {
+      "id": "REL-PLOA27-002",
+      "investimento": "Supervisão das 54 IP4",
+      "recordId": "PLOA27-20LN-0001",
+      "natureza": "COMPATÍVEL",
+      "confianca": "MÉDIA",
+      "nivelAtribuicao": "AÇÃO / LOCALIZADOR NACIONAL",
+      "exclusivo": false,
+      "exibirNoBI": false,
+      "validacao": "VALIDAR",
+      "fundamento": "A ação 20LN é compatível com a operação das IP4, mas o documento não individualiza a supervisão."
+    },
+    {
+      "id": "REL-PLOA27-003",
+      "investimento": "Modernização da IP4 de Parintins",
+      "recordId": null,
+      "natureza": "NÃO RELACIONADO",
+      "confianca": "BAIXA",
+      "nivelAtribuicao": "SEM CHAVE ESPECÍFICA",
+      "exclusivo": false,
+      "exibirNoBI": false,
+      "validacao": "VALIDAR",
+      "fundamento": "O PLOA 2027 da Unidade 68101 não apresenta ação/localizador específico de Parintins."
+    },
+    {
+      "id": "REL-PLOA27-004",
+      "investimento": "Terminal Manaus Moderna",
+      "recordId": "PLOA27-13LO-0211",
+      "natureza": "CONFIRMADO",
+      "confianca": "ALTA",
+      "nivelAtribuicao": "EMPREENDIMENTO / LOCALIZADOR MUNICIPAL",
+      "exclusivo": true,
+      "exibirNoBI": true,
+      "validacao": "APTO",
+      "fundamento": "Ação 13LO e localizador 0211 identificam explicitamente o Porto de Manaus Moderna no Município de Manaus/AM."
+    },
+    {
+      "id": "REL-PLOA27-005",
+      "investimento": "Pedral do Lourenço — Rio Tocantins",
+      "recordId": "PLOA27-123M-0001",
+      "natureza": "COMPATÍVEL",
+      "confianca": "ALTA",
+      "nivelAtribuicao": "AÇÃO NACIONAL",
+      "exclusivo": false,
+      "exibirNoBI": true,
+      "validacao": "RELACIONADO COM RESSALVA",
+      "fundamento": "A ação 123M trata de melhoramentos no canal de navegação da Hidrovia do Rio Tocantins, mas o documento não cita nominalmente o Pedral do Lourenço."
+    },
+    {
+      "id": "REL-PLOA27-006",
+      "investimento": "Nova Avanhandava — Rio Tietê",
+      "recordId": "PLOA27-20LO-6040",
+      "natureza": "COMPARTILHADO",
+      "confianca": "MÉDIA",
+      "nivelAtribuicao": "REGIÃO HIDROGRÁFICA",
+      "exclusivo": false,
+      "exibirNoBI": true,
+      "validacao": "RELACIONADO COM RESSALVA",
+      "fundamento": "Ação 20LO/6040 é Operação de Eclusas na Região Hidrográfica do Paraná e o produto prevê 2 eclusas; o valor não individualiza Nova Avanhandava."
+    },
+    {
+      "id": "REL-PLOA27-007",
+      "investimento": "Dragagens Amazonas, Madeira e Solimões",
+      "recordId": "PLOA27-21I6-6032",
+      "natureza": "COMPARTILHADO",
+      "confianca": "MÉDIA",
+      "nivelAtribuicao": "REGIÃO HIDROGRÁFICA",
+      "exclusivo": false,
+      "exibirNoBI": true,
+      "validacao": "RELACIONADO COM RESSALVA",
+      "fundamento": "Ação 21I6/6032 cobre intervenções de recuperação e restauração na Região Hidrográfica Amazônica; não individualiza cada rio ou contrato de dragagem."
+    },
+    {
+      "id": "REL-PLOA27-008",
+      "investimento": "Dragagem Lagoa Mirim",
+      "recordId": "PLOA27-162D-5045",
+      "natureza": "CONFIRMADO",
+      "confianca": "ALTA",
+      "nivelAtribuicao": "AÇÃO / LOCALIZADOR MUNICIPAL",
+      "exclusivo": true,
+      "exibirNoBI": true,
+      "validacao": "APTO",
+      "fundamento": "Ação 162D e localizador 5045 identificam Dragagem e Sinalização Náutica da Lagoa Mirim, no Município de Rio Grande/RS."
+    },
+    {
+      "id": "REL-PLOA27-009",
+      "investimento": "Concessão SAI Sul–Lagoa Mirim",
+      "recordId": null,
+      "natureza": "NÃO RELACIONADO",
+      "confianca": "BAIXA",
+      "nivelAtribuicao": "SEM CHAVE ESPECÍFICA",
+      "exclusivo": false,
+      "exibirNoBI": false,
+      "validacao": "NÃO RELACIONADO",
+      "fundamento": "Não há ação/localizador do PLOA 2027 que individualize a concessão."
+    },
+    {
+      "id": "REL-PLOA27-010",
+      "investimento": "Concessão Hidrovia do Rio Paraguai",
+      "recordId": null,
+      "natureza": "NÃO RELACIONADO",
+      "confianca": "BAIXA",
+      "nivelAtribuicao": "SEM CHAVE ESPECÍFICA",
+      "exclusivo": false,
+      "exibirNoBI": false,
+      "validacao": "NÃO RELACIONADO",
+      "fundamento": "Não há ação/localizador do PLOA 2027 que individualize a concessão."
+    },
+    {
+      "id": "REL-PLOA27-011",
+      "investimento": "Concessão Hidrovia do Rio Madeira",
+      "recordId": null,
+      "natureza": "NÃO RELACIONADO",
+      "confianca": "BAIXA",
+      "nivelAtribuicao": "SEM CHAVE ESPECÍFICA",
+      "exclusivo": false,
+      "exibirNoBI": false,
+      "validacao": "NÃO RELACIONADO",
+      "fundamento": "Não há ação/localizador do PLOA 2027 que individualize a concessão."
+    },
+    {
+      "id": "REL-PLOA27-012",
+      "investimento": "Concessão Hidrovia do Rio Tocantins",
+      "recordId": null,
+      "natureza": "NÃO RELACIONADO",
+      "confianca": "BAIXA",
+      "nivelAtribuicao": "SEM CHAVE ESPECÍFICA",
+      "exclusivo": false,
+      "exibirNoBI": false,
+      "validacao": "NÃO RELACIONADO",
+      "fundamento": "Não há ação/localizador do PLOA 2027 que individualize a concessão."
+    },
+    {
+      "id": "REL-PLOA27-013",
+      "investimento": "Concessão Hidrovia do Rio Tapajós",
+      "recordId": null,
+      "natureza": "NÃO RELACIONADO",
+      "confianca": "BAIXA",
+      "nivelAtribuicao": "SEM CHAVE ESPECÍFICA",
+      "exclusivo": false,
+      "exibirNoBI": false,
+      "validacao": "NÃO RELACIONADO",
+      "fundamento": "Não há ação/localizador do PLOA 2027 que individualize a concessão."
+    },
+    {
+      "id": "REL-PLOA27-014",
+      "investimento": "ACT dragagem emergencial Rio Tapajós — Itapaiuna e Amorim",
+      "recordId": "PLOA27-21I6-6032",
+      "natureza": "COMPATÍVEL",
+      "confianca": "BAIXA",
+      "nivelAtribuicao": "REGIÃO HIDROGRÁFICA",
+      "exclusivo": false,
+      "exibirNoBI": false,
+      "validacao": "VALIDAR",
+      "fundamento": "O localizador 6032 é Região Hidrográfica Amazônica, mas o PLOA não identifica o ACT nem os trechos Itapaiuna e Amorim."
+    },
+    {
+      "id": "REL-PLOA27-015",
+      "investimento": "PADMA — Programa Anual de Dragagem de Manutenção Aquaviária",
+      "recordId": null,
+      "acaoCandidata": "21I6",
+      "natureza": "COMPATÍVEL",
+      "confianca": "BAIXA",
+      "nivelAtribuicao": "AÇÃO COM MÚLTIPLOS LOCALIZADORES",
+      "exclusivo": false,
+      "exibirNoBI": false,
+      "validacao": "VALIDAR",
+      "fundamento": "A ação 21I6 possui múltiplos localizadores hidrográficos, mas o documento não identifica o PADMA."
+    },
+    {
+      "id": "REL-PLOA27-016",
+      "investimento": "PMH — Programa de Monitoramento Hidroviário",
+      "recordId": "PLOA27-21HM-0001",
+      "natureza": "COMPATÍVEL",
+      "confianca": "BAIXA",
+      "nivelAtribuicao": "AÇÃO NACIONAL",
+      "exclusivo": false,
+      "exibirNoBI": false,
+      "validacao": "VALIDAR",
+      "fundamento": "A ação 21HM trata de pesquisa e desenvolvimento sustentável de hidrovias; o documento não cita o PMH."
+    },
+    {
+      "id": "REL-PLOA27-017",
+      "investimento": "Boa Vista pelas Águas — Navegabilidade do Rio Branco",
+      "recordId": "PLOA27-21I6-6032",
+      "natureza": "COMPATÍVEL",
+      "confianca": "BAIXA",
+      "nivelAtribuicao": "REGIÃO HIDROGRÁFICA",
+      "exclusivo": false,
+      "exibirNoBI": false,
+      "validacao": "VALIDAR",
+      "fundamento": "A Região Hidrográfica Amazônica é ampla e o documento não individualiza o Rio Branco/Boa Vista."
+    },
+    {
+      "id": "REL-PLOA27-018A",
+      "investimento": "Barragem de Amarópolis — Hidrovia do Rio Jacuí",
+      "recordId": "PLOA27-20LO-6043",
+      "natureza": "COMPARTILHADO",
+      "confianca": "MÉDIA",
+      "nivelAtribuicao": "REGIÃO HIDROGRÁFICA",
+      "exclusivo": false,
+      "exibirNoBI": false,
+      "validacao": "VALIDAR",
+      "fundamento": "Ação 20LO/6043 cobre operação de 4 eclusas na Região Hidrográfica Atlântico Sul; não individualiza Amarópolis."
+    },
+    {
+      "id": "REL-PLOA27-018B",
+      "investimento": "Barragem de Amarópolis — Hidrovia do Rio Jacuí",
+      "recordId": "PLOA27-21I6-6043",
+      "natureza": "COMPATÍVEL",
+      "confianca": "MÉDIA",
+      "nivelAtribuicao": "REGIÃO HIDROGRÁFICA",
+      "exclusivo": false,
+      "exibirNoBI": false,
+      "validacao": "VALIDAR",
+      "fundamento": "Ação 21I6/6043 cobre recuperação e restauração na Região Hidrográfica Atlântico Sul; não individualiza Amarópolis."
+    },
+    {
+      "id": "REL-PLOA27-019A",
+      "investimento": "Supervisão — Barragem de Amarópolis / Rio Jacuí",
+      "recordId": "PLOA27-20LO-6043",
+      "natureza": "COMPATÍVEL",
+      "confianca": "BAIXA",
+      "nivelAtribuicao": "REGIÃO HIDROGRÁFICA",
+      "exclusivo": false,
+      "exibirNoBI": false,
+      "validacao": "VALIDAR",
+      "fundamento": "A ação não individualiza o contrato de supervisão."
+    },
+    {
+      "id": "REL-PLOA27-019B",
+      "investimento": "Supervisão — Barragem de Amarópolis / Rio Jacuí",
+      "recordId": "PLOA27-21I6-6043",
+      "natureza": "COMPATÍVEL",
+      "confianca": "BAIXA",
+      "nivelAtribuicao": "REGIÃO HIDROGRÁFICA",
+      "exclusivo": false,
+      "exibirNoBI": false,
+      "validacao": "VALIDAR",
+      "fundamento": "A ação não individualiza o contrato de supervisão."
+    }
+  ],
+  "registrosAindaNaoIntegrados": [
+    {
+      "id": "PLOA27-20LO-6033",
+      "categoria": "Atividades",
+      "programaCodigo": "3105",
+      "programaDescricao": "Portos e Transporte Aquaviário",
+      "acaoCodigo": "20LO",
+      "acaoDescricao": "Operação de Eclusas",
+      "localizadorCodigo": "6033",
+      "localizadorDescricao": "Na Região Hidrográfica do Tocantins-Araguaia",
+      "sequencia": 3346,
+      "produto": "Eclusa mantida",
+      "unidadeProduto": "unidade",
+      "metaFisica": 1,
+      "valor": 6500000,
+      "alocacoes": [
+        {
+          "gnd": "3 - ODC",
+          "rp": 3,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "1000",
+          "valor": 1725339
+        },
+        {
+          "gnd": "3 - ODC",
+          "rp": 3,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "9444",
+          "valor": 4774661
+        }
+      ]
+    },
+    {
+      "id": "PLOA27-20LO-6037",
+      "categoria": "Atividades",
+      "programaCodigo": "3105",
+      "programaDescricao": "Portos e Transporte Aquaviário",
+      "acaoCodigo": "20LO",
+      "acaoDescricao": "Operação de Eclusas",
+      "localizadorCodigo": "6037",
+      "localizadorDescricao": "Na Região Hidrográfica do São Francisco",
+      "sequencia": 3347,
+      "produto": "Eclusa mantida",
+      "unidadeProduto": "unidade",
+      "metaFisica": 1,
+      "valor": 5950000,
+      "alocacoes": [
+        {
+          "gnd": "3 - ODC",
+          "rp": 3,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "1000",
+          "valor": 1579348
+        },
+        {
+          "gnd": "3 - ODC",
+          "rp": 3,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "9444",
+          "valor": 4370652
+        }
+      ]
+    },
+    {
+      "id": "PLOA27-20LO-6043",
+      "categoria": "Atividades",
+      "programaCodigo": "3105",
+      "programaDescricao": "Portos e Transporte Aquaviário",
+      "acaoCodigo": "20LO",
+      "acaoDescricao": "Operação de Eclusas",
+      "localizadorCodigo": "6043",
+      "localizadorDescricao": "Na Região Hidrográfica Atlântico Sul",
+      "sequencia": 3349,
+      "produto": "Eclusa mantida",
+      "unidadeProduto": "unidade",
+      "metaFisica": 4,
+      "valor": 16250000,
+      "alocacoes": [
+        {
+          "gnd": "3 - ODC",
+          "rp": 3,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "1000",
+          "valor": 4313347
+        },
+        {
+          "gnd": "3 - ODC",
+          "rp": 3,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "9444",
+          "valor": 11936653
+        }
+      ]
+    },
+    {
+      "id": "PLOA27-21HM-0001",
+      "categoria": "Atividades",
+      "programaCodigo": "3105",
+      "programaDescricao": "Portos e Transporte Aquaviário",
+      "acaoCodigo": "21HM",
+      "acaoDescricao": "Pesquisa e Desenvolvimento Sustentável de Hidrovias",
+      "localizadorCodigo": "0001",
+      "localizadorDescricao": "Nacional",
+      "sequencia": 3350,
+      "produto": "Pesquisa realizada",
+      "unidadeProduto": "unidade",
+      "metaFisica": 1,
+      "valor": 50000,
+      "alocacoes": [
+        {
+          "gnd": "3 - ODC",
+          "rp": 2,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "1000",
+          "valor": 13272
+        },
+        {
+          "gnd": "3 - ODC",
+          "rp": 2,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "9444",
+          "valor": 36728
+        }
+      ]
+    },
+    {
+      "id": "PLOA27-21I1-0001",
+      "categoria": "Atividades",
+      "programaCodigo": "3105",
+      "programaDescricao": "Portos e Transporte Aquaviário",
+      "acaoCodigo": "21I1",
+      "acaoDescricao": "Manutenção e Operação da Infraestrutura Aquaviária Estratégica em Canais de Acesso aos Portos e Hidrovias Nacionais",
+      "localizadorCodigo": "0001",
+      "localizadorDescricao": "Nacional",
+      "sequencia": 3351,
+      "produto": "Infraestrutura aquaviária mantida",
+      "unidadeProduto": "conforme fonte",
+      "metaFisica": "44.903.900",
+      "valor": 1000,
+      "alocacoes": [
+        {
+          "gnd": "4 - INV",
+          "rp": 2,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "1000",
+          "valor": 1000
+        }
+      ]
+    },
+    {
+      "id": "PLOA27-127G-0208",
+      "categoria": "Projetos",
+      "programaCodigo": "3105",
+      "programaDescricao": "Portos e Transporte Aquaviário",
+      "acaoCodigo": "127G",
+      "acaoDescricao": "Construção de Terminais Fluviais",
+      "localizadorCodigo": "0208",
+      "localizadorDescricao": "No Município de Lábrea - AM",
+      "sequencia": 3353,
+      "produto": "Terminal fluvial construído",
+      "unidadeProduto": "% de execução física",
+      "metaFisica": 2,
+      "valor": 1000000,
+      "alocacoes": [
+        {
+          "gnd": "4 - INV",
+          "rp": 3,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "1000",
+          "valor": 1000000
+        }
+      ]
+    },
+    {
+      "id": "PLOA27-127G-0226",
+      "categoria": "Projetos",
+      "programaCodigo": "3105",
+      "programaDescricao": "Portos e Transporte Aquaviário",
+      "acaoCodigo": "127G",
+      "acaoDescricao": "Construção de Terminais Fluviais",
+      "localizadorCodigo": "0226",
+      "localizadorDescricao": "No Município de São Paulo de Olivença - AM",
+      "sequencia": 3354,
+      "produto": "Terminal fluvial construído",
+      "unidadeProduto": "% de execução física",
+      "metaFisica": 11,
+      "valor": 2470000,
+      "alocacoes": [
+        {
+          "gnd": "4 - INV",
+          "rp": 3,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "1000",
+          "valor": 2470000
+        }
+      ]
+    },
+    {
+      "id": "PLOA27-14MZ-0211",
+      "categoria": "Projetos",
+      "programaCodigo": "3105",
+      "programaDescricao": "Portos e Transporte Aquaviário",
+      "acaoCodigo": "14MZ",
+      "acaoDescricao": "Ampliação do Terminal Fluvial de São Raimundo em Manaus/AM",
+      "localizadorCodigo": "0211",
+      "localizadorDescricao": "No Município de Manaus - AM",
+      "sequencia": 3356,
+      "produto": "Terminal fluvial ampliado",
+      "unidadeProduto": "% de execução física",
+      "metaFisica": 9,
+      "valor": 6500000,
+      "alocacoes": [
+        {
+          "gnd": "4 - INV",
+          "rp": 3,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "1000",
+          "valor": 6500000
+        }
+      ]
+    },
+    {
+      "id": "PLOA27-161Y-4521",
+      "categoria": "Projetos",
+      "programaCodigo": "3105",
+      "programaDescricao": "Portos e Transporte Aquaviário",
+      "acaoCodigo": "161Y",
+      "acaoDescricao": "Manutenção e Reforço do Molhe de Abrigo do Porto de Imbituba/SC",
+      "localizadorCodigo": "4521",
+      "localizadorDescricao": "No Município de Imbituba - SC",
+      "sequencia": 3357,
+      "produto": "Molhe de abrigo adequado",
+      "unidadeProduto": "% de execução física",
+      "metaFisica": 70,
+      "valor": 32565650,
+      "alocacoes": [
+        {
+          "gnd": "4 - INV",
+          "rp": 3,
+          "mod": 30,
+          "iu": 0,
+          "fonte": "1000",
+          "valor": 32565650
+        }
+      ]
+    },
+    {
+      "id": "PLOA27-161Z-1695",
+      "categoria": "Projetos",
+      "programaCodigo": "3105",
+      "programaDescricao": "Portos e Transporte Aquaviário",
+      "acaoCodigo": "161Z",
+      "acaoDescricao": "Dragagem e Readequação da Infraestrutura Aquaviária do Porto do Recife/PE",
+      "localizadorCodigo": "1695",
+      "localizadorDescricao": "No Município de Recife - PE",
+      "sequencia": 3358,
+      "produto": "Dragagem adequada",
+      "unidadeProduto": "% de execução física",
+      "metaFisica": 74,
+      "valor": 1000000,
+      "alocacoes": [
+        {
+          "gnd": "4 - INV",
+          "rp": 3,
+          "mod": 30,
+          "iu": 0,
+          "fonte": "1000",
+          "valor": 1000000
+        }
+      ]
+    },
+    {
+      "id": "PLOA27-162B-1642",
+      "categoria": "Projetos",
+      "programaCodigo": "3105",
+      "programaDescricao": "Portos e Transporte Aquaviário",
+      "acaoCodigo": "162B",
+      "acaoDescricao": "Modernização, Recuperação e Ampliação da Capacidade do Porto de Suape/PE",
+      "localizadorCodigo": "1642",
+      "localizadorDescricao": "No Município de Ipojuca - PE",
+      "sequencia": 3359,
+      "produto": "Porto modernizado",
+      "unidadeProduto": "% de execução física",
+      "metaFisica": 30,
+      "valor": 1000000,
+      "alocacoes": [
+        {
+          "gnd": "4 - INV",
+          "rp": 3,
+          "mod": 30,
+          "iu": 0,
+          "fonte": "1000",
+          "valor": 1000000
+        }
+      ]
+    },
+    {
+      "id": "PLOA27-165T-0011",
+      "categoria": "Projetos",
+      "programaCodigo": "3105",
+      "programaDescricao": "Portos e Transporte Aquaviário",
+      "acaoCodigo": "165T",
+      "acaoDescricao": "Recuperação do Cais Flutuante do Porto de Porto Velho/RO",
+      "localizadorCodigo": "0011",
+      "localizadorDescricao": "No Estado de Rondônia",
+      "sequencia": 3361,
+      "produto": "Cais flutuante recuperado",
+      "unidadeProduto": "% de execução física",
+      "metaFisica": 38,
+      "valor": 18000000,
+      "alocacoes": [
+        {
+          "gnd": "4 - INV",
+          "rp": 3,
+          "mod": 30,
+          "iu": 0,
+          "fonte": "1000",
+          "valor": 18000000
+        }
+      ]
+    },
+    {
+      "id": "PLOA27-167T-1382",
+      "categoria": "Projetos",
+      "programaCodigo": "3105",
+      "programaDescricao": "Portos e Transporte Aquaviário",
+      "acaoCodigo": "167T",
+      "acaoDescricao": "Melhoria da Infraestrutura e das Operações Portuárias do Porto de Cabedelo/PB",
+      "localizadorCodigo": "1382",
+      "localizadorDescricao": "No Município de Cabedelo - PB",
+      "sequencia": 3362,
+      "produto": "Porto adequado",
+      "unidadeProduto": "% de execução física",
+      "metaFisica": 100,
+      "valor": 34500000,
+      "alocacoes": [
+        {
+          "gnd": "4 - INV",
+          "rp": 3,
+          "mod": 30,
+          "iu": 0,
+          "fonte": "1000",
+          "valor": 34500000
+        }
+      ]
+    },
+    {
+      "id": "PLOA27-21I6-6033",
+      "categoria": "Projetos",
+      "programaCodigo": "3105",
+      "programaDescricao": "Portos e Transporte Aquaviário",
+      "acaoCodigo": "21I6",
+      "acaoDescricao": "Intervenções para Recuperação e Restauração de Infraestruturas Hidroviárias",
+      "localizadorCodigo": "6033",
+      "localizadorDescricao": "Na Região Hidrográfica do Tocantins-Araguaia",
+      "sequencia": 3364,
+      "produto": "Intervenção realizada",
+      "unidadeProduto": "% de execução física",
+      "metaFisica": 15,
+      "valor": 1300000,
+      "alocacoes": [
+        {
+          "gnd": "4 - INV",
+          "rp": 3,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "1000",
+          "valor": 1300000
+        }
+      ]
+    },
+    {
+      "id": "PLOA27-21I6-6035",
+      "categoria": "Projetos",
+      "programaCodigo": "3105",
+      "programaDescricao": "Portos e Transporte Aquaviário",
+      "acaoCodigo": "21I6",
+      "acaoDescricao": "Intervenções para Recuperação e Restauração de Infraestruturas Hidroviárias",
+      "localizadorCodigo": "6035",
+      "localizadorDescricao": "Na Região Hidrográfica do Parnaíba",
+      "sequencia": 3365,
+      "produto": "Intervenção realizada",
+      "unidadeProduto": "% de execução física",
+      "metaFisica": 11,
+      "valor": 2800000,
+      "alocacoes": [
+        {
+          "gnd": "3 - ODC",
+          "rp": 3,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "1000",
+          "valor": 398155
+        },
+        {
+          "gnd": "3 - ODC",
+          "rp": 3,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "9444",
+          "valor": 1101845
+        },
+        {
+          "gnd": "4 - INV",
+          "rp": 3,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "1000",
+          "valor": 1300000
+        }
+      ]
+    },
+    {
+      "id": "PLOA27-21I6-6040",
+      "categoria": "Projetos",
+      "programaCodigo": "3105",
+      "programaDescricao": "Portos e Transporte Aquaviário",
+      "acaoCodigo": "21I6",
+      "acaoDescricao": "Intervenções para Recuperação e Restauração de Infraestruturas Hidroviárias",
+      "localizadorCodigo": "6040",
+      "localizadorDescricao": "Na Região Hidrográfica do Paraná",
+      "sequencia": 3366,
+      "produto": "Intervenção realizada",
+      "unidadeProduto": "% de execução física",
+      "metaFisica": 11,
+      "valor": 5600000,
+      "alocacoes": [
+        {
+          "gnd": "3 - ODC",
+          "rp": 3,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "1000",
+          "valor": 1486446
+        },
+        {
+          "gnd": "3 - ODC",
+          "rp": 3,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "9444",
+          "valor": 4113554
+        }
+      ]
+    },
+    {
+      "id": "PLOA27-21I6-6041",
+      "categoria": "Projetos",
+      "programaCodigo": "3105",
+      "programaDescricao": "Portos e Transporte Aquaviário",
+      "acaoCodigo": "21I6",
+      "acaoDescricao": "Intervenções para Recuperação e Restauração de Infraestruturas Hidroviárias",
+      "localizadorCodigo": "6041",
+      "localizadorDescricao": "Na Região Hidrográfica do Paraguai",
+      "sequencia": 3367,
+      "produto": "Intervenção realizada",
+      "unidadeProduto": "% de execução física",
+      "metaFisica": 10,
+      "valor": 9700000,
+      "alocacoes": [
+        {
+          "gnd": "4 - INV",
+          "rp": 3,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "1000",
+          "valor": 9700000
+        }
+      ]
+    },
+    {
+      "id": "PLOA27-21I6-6043",
+      "categoria": "Projetos",
+      "programaCodigo": "3105",
+      "programaDescricao": "Portos e Transporte Aquaviário",
+      "acaoCodigo": "21I6",
+      "acaoDescricao": "Intervenções para Recuperação e Restauração de Infraestruturas Hidroviárias",
+      "localizadorCodigo": "6043",
+      "localizadorDescricao": "Na Região Hidrográfica Atlântico Sul",
+      "sequencia": 3368,
+      "produto": "Intervenção realizada",
+      "unidadeProduto": "% de execução física",
+      "metaFisica": 10,
+      "valor": 27900000,
+      "alocacoes": [
+        {
+          "gnd": "4 - INV",
+          "rp": 3,
+          "mod": 90,
+          "iu": 0,
+          "fonte": "1000",
+          "valor": 27900000
+        }
+      ]
+    }
+  ]
+}

@@ -9,6 +9,9 @@ Painel executivo da DPP/SNHN para acompanhamento da carteira de investimentos, e
 - `index.html` — aplicação publicada no GitHub Pages.
 - `data/bi_hidrovias_public.json` — snapshot da base principal.
 - `data/siop_hidrovias_public.json` — snapshot SIOP homologado e matriz de relacionamentos habilitados.
+- `data/ploa_2027_raw.json` — base PLOA 2027 estruturada da Unidade 68101.
+- `data/ploa_2027_relacionamentos.json` — governança dos vínculos PLOA 2027.
+- `data/ploa_2027_public.json` — camada PLOA 2027 consumida pela aplicação.
 - `releases/BI_Executivo_Hidrovias_v74_PRODUCAO.html` — cópia nominada da aplicação publicada.
 - `docs/ARQUITETURA.md` — arquitetura, regras de integração e manutenção.
 - `.github/workflows/update-data.yml` — rotina de atualização/validação dos snapshots.

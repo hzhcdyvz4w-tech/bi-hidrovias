@@ -24,3 +24,16 @@ A execução SIOP usa o recorte da carteira e permite refinamento adicional por:
 ## Publicação
 
 A versão visível fica em `index.html`. Cópias de referência ficam em `releases/`. Arquivos de teste não devem permanecer na raiz.
+
+
+## PLOA 2027
+
+A camada PLOA 2027 é independente da LOA/execução 2026.
+
+- `data/ploa_2027_raw.json` — transcrição estruturada da Unidade 68101, Programa 3105.
+- `data/ploa_2027_relacionamentos.json` — governança dos vínculos investimento ↔ ação/localizador.
+- `data/ploa_2027_public.json` — camada consumida pelo frontend.
+
+Regra de precedência: a Unidade **68101 - Administração Direta** prevalece por ser mais específica e detalhada; o Órgão **68000** é mantido apenas para controle consolidado.
+
+Relações PLOA podem ser CONFIRMADO, COMPATÍVEL, COMPARTILHADO ou NÃO RELACIONADO. Valores não exclusivos são exibidos como **orçamento relacionado à fonte**, nunca como valor exclusivo do empreendimento.
