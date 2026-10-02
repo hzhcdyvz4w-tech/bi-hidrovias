@@ -1,0 +1,717 @@
+{
+  "schemaVersion": 1,
+  "sourceWorkbook": "BI_DPP_SNHN_v36_ATUALIZACAO_DIARIA_28-09-2026.xlsx",
+  "sourceSheet": "04_Carteira_Atual_2026",
+  "sourceContractsSheet": "32_Contratos_Valores",
+  "auditedAt": "2026-10-02",
+  "rule": "Base v36 supplies territorial/cadastral/contractual fallback. SIOP/PLOA remain preferred when a valid relationship exists.",
+  "investments": [
+    {
+      "sourceRow": 7,
+      "nome": "Operação e manutenção de 54 IP4",
+      "ufs": [
+        "AM",
+        "RO",
+        "RR"
+      ],
+      "regioes": [
+        "Norte"
+      ],
+      "municipios": [
+        "AM",
+        "RO",
+        "RR"
+      ],
+      "hidrovias": [],
+      "tipo": "IP4/Terminal",
+      "situacao": "EM ANDAMENTO",
+      "objeto": "Operação contínua e manutenção preventiva/corretiva de terminais hidroviários",
+      "instrumento": "Contrato nº 12/2026 — contratada: Antonelly Construções e Serviços Ltda.; vencedora dos 6 lotes do Pregão/Edital DNIT nº 439/2025; O&M das 54 IP4 em AM/RO/RR; valor global divulgado R$ 572,6 milhões; prazo informado de 730 dias.",
+      "valor": "R$ 572,6 milhões",
+      "fase": "Contrato em execução por 730 dias",
+      "proximoMarco": "Acompanhar execução física/financeira e níveis de serviço",
+      "unidade": "DGH",
+      "executor": "DNIT + MPOR",
+      "sistema": "SIAFI / Obrasgov / SEI",
+      "marco": "Contrato nº 12/2026 em execução",
+      "fonte": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/02/governo-federal-investe-r-572-6-milhoes-para-garantir-mobilidade-em-54-instalacoes-portuarias-na-regiao-norte",
+      "dataFonte": "24/02/2026",
+      "loa": "Validar LOA/SIOP/PLOA/PPA",
+      "execFisica": "DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO",
+      "execFinanceira": "DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO",
+      "empenhadoPago": "Validar SIAFI/SIOP | Validar SIAFI",
+      "execOrcamentaria": "Validar LOA/SIOP/PLOA/PPA",
+      "fonteExecOrcamentaria": "MPOR; DNIT; SIAFI; SIOP; Obrasgov; PNCP",
+      "fonteExecFinanceira": "MPOR; DNIT; SIAFI; SIOP; Obrasgov; PNCP",
+      "fonteExecFisica": "MPOR; DNIT; SIAFI; SIOP; Obrasgov; PNCP"
+    },
+    {
+      "sourceRow": 8,
+      "nome": "Supervisão das 54 IP4",
+      "ufs": [
+        "AM",
+        "RO",
+        "RR"
+      ],
+      "regioes": [
+        "Norte"
+      ],
+      "municipios": [
+        "AM",
+        "RO",
+        "RR"
+      ],
+      "hidrovias": [],
+      "tipo": "IP4/Terminal",
+      "situacao": "EM CONTRATAÇÃO",
+      "objeto": "Supervisão da operação e manutenção das IP4",
+      "instrumento": "Licitação/contrato de supervisão",
+      "valor": "R$ 83,3 milhões",
+      "fase": "ÚLTIMA CONFIRMAÇÃO PÚBLICA LOCALIZADA: balanço SNHN de 20/05/2026 informava licitação da supervisão em andamento. Não foi localizada, nas fontes públicas consultadas até 31/08/2026, confirmação oficial posterior de adjudicação, assinatura ou ordem de início.",
+      "proximoMarco": "Reconfirmar imediatamente no SEI/DNIT e Compras.gov o estágio atual; se contratada, registrar contrato, supervisora, vigência e ordem de início.",
+      "unidade": "DGH",
+      "executor": "DNIT / futura supervisora",
+      "sistema": "Compras.gov / SEI",
+      "marco": "Balanço SNHN 20/05/2026: licitação em andamento; situação corrente a reconfirmar.",
+      "fonte": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/05/mpor-faz-balanco-do-primeiro-bienio-da-secretaria-nacional-de-hidrovias-e-navegacao/20260520_APRESENTAO_BIENIOSNHN_FINAL.pdf",
+      "dataFonte": "20/05/2026",
+      "loa": "",
+      "execFisica": "",
+      "execFinanceira": "",
+      "empenhadoPago": "",
+      "execOrcamentaria": "",
+      "fonteExecOrcamentaria": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/05/mpor-faz-balanco-do-primeiro-bienio-da-secretaria-nacional-de-hidrovias-e-navegacao/20260520_APRESENTAO_BIENIOSNHN_FINAL.pdf",
+      "fonteExecFinanceira": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/05/mpor-faz-balanco-do-primeiro-bienio-da-secretaria-nacional-de-hidrovias-e-navegacao/20260520_APRESENTAO_BIENIOSNHN_FINAL.pdf",
+      "fonteExecFisica": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/05/mpor-faz-balanco-do-primeiro-bienio-da-secretaria-nacional-de-hidrovias-e-navegacao/20260520_APRESENTAO_BIENIOSNHN_FINAL.pdf"
+    },
+    {
+      "sourceRow": 9,
+      "nome": "Modernização da IP4 de Parintins",
+      "ufs": [
+        "AM"
+      ],
+      "regioes": [
+        "Norte"
+      ],
+      "municipios": [
+        "AM"
+      ],
+      "hidrovias": [],
+      "tipo": "IP4/Terminal",
+      "situacao": "EM LICITAÇÃO",
+      "objeto": "Projetos básico/executivo + recuperação/ampliação da IP4",
+      "instrumento": "Contratação integrada",
+      "valor": "R$ 51,3 milhões (estimado)",
+      "fase": "Licitação iniciada em 01/04/2026, com investimento estimado de R$ 51,3 milhões. Não foi localizado, nas fontes oficiais consultadas até 31/08/2026, resultado posterior inequívoco do certame.",
+      "proximoMarco": "Consultar Compras.gov e processo DNIT para confirmar julgamento, adjudicação, homologação, contrato e eventual ordem de serviço.",
+      "unidade": "DGH",
+      "executor": "DNIT",
+      "sistema": "Compras.gov / Obrasgov / SEI",
+      "marco": "Licitação iniciada em 01/04/2026; resultado posterior não confirmado nesta varredura.",
+      "fonte": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/03-1/licitacao-para-modernizacao-da-ip4-de-parintins-am-tem-investimento-estimado-em-r-51-3-milhoes",
+      "dataFonte": "01/04/2026; atualização operacional jun/2026",
+      "loa": "",
+      "execFisica": "",
+      "execFinanceira": "",
+      "empenhadoPago": "",
+      "execOrcamentaria": "",
+      "fonteExecOrcamentaria": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/03-1/licitacao-para-modernizacao-da-ip4-de-parintins-am-tem-investimento-estimado-em-r-51-3-milhoes",
+      "fonteExecFinanceira": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/03-1/licitacao-para-modernizacao-da-ip4-de-parintins-am-tem-investimento-estimado-em-r-51-3-milhoes",
+      "fonteExecFisica": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/03-1/licitacao-para-modernizacao-da-ip4-de-parintins-am-tem-investimento-estimado-em-r-51-3-milhoes"
+    },
+    {
+      "sourceRow": 10,
+      "nome": "Terminal Manaus Moderna",
+      "ufs": [
+        "AM"
+      ],
+      "regioes": [
+        "Norte"
+      ],
+      "municipios": [
+        "AM"
+      ],
+      "hidrovias": [],
+      "tipo": "IP4/Terminal",
+      "situacao": "EM ANDAMENTO",
+      "objeto": "Novo terminal hidroviário para passageiros e cargas",
+      "instrumento": "Contrato de obras",
+      "valor": "R$ 875,9 milhões",
+      "fase": "Contrato assinado em março/2026; conclusão prevista para 2029",
+      "proximoMarco": "Execução das obras e marcos contratuais",
+      "unidade": "DGH",
+      "executor": "MPOR + DNIT",
+      "sistema": "SIAFI / Obrasgov / SEI",
+      "marco": "Contrato assinado",
+      "fonte": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/05/terminal-manaus-moderna-no-amazonas-vai-receber-r-875-9-milhoes-em-investimentos",
+      "dataFonte": "27/05/2026",
+      "loa": "",
+      "execFisica": "",
+      "execFinanceira": "",
+      "empenhadoPago": "",
+      "execOrcamentaria": "",
+      "fonteExecOrcamentaria": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/05/terminal-manaus-moderna-no-amazonas-vai-receber-r-875-9-milhoes-em-investimentos",
+      "fonteExecFinanceira": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/05/terminal-manaus-moderna-no-amazonas-vai-receber-r-875-9-milhoes-em-investimentos",
+      "fonteExecFisica": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/05/terminal-manaus-moderna-no-amazonas-vai-receber-r-875-9-milhoes-em-investimentos"
+    },
+    {
+      "sourceRow": 11,
+      "nome": "Pedral do Lourenço — Rio Tocantins",
+      "ufs": [
+        "PA"
+      ],
+      "regioes": [
+        "Norte"
+      ],
+      "municipios": [
+        "PA"
+      ],
+      "hidrovias": [
+        "Rio Tocantins"
+      ],
+      "tipo": "Obra",
+      "situacao": "EM ANDAMENTO",
+      "objeto": "Derrocamento para ampliação da navegabilidade",
+      "instrumento": "Contrato nº 245/2016-DAQ/DNIT + licenciamento ambiental + instrumentos ambientais associados",
+      "valor": "Valor não consolidado nesta pesquisa",
+      "fase": "Contrato nº 245/2016-DAQ/DNIT teve 13º termo aditivo aprovado pela Diretoria Colegiada do DNIT em 24/03/2026. Em 25/08/2026, o DNIT publicou o TED nº 271/2026-00 para ações de recuperação/preservação de quelônios afetados pelas obras. Confirmar no processo o avanço físico atual do derrocamento.",
+      "proximoMarco": "Acompanhar execução do derrocamento, condicionantes/licenciamento e ações ambientais do TED nº 271/2026-00; confirmar cronograma físico vigente.",
+      "unidade": "DGH",
+      "executor": "DNIT + MPOR + Ibama",
+      "sistema": "SIAFI / Obrasgov / SEI",
+      "marco": "13º TA aprovado em 24/03/2026; TED ambiental nº 271/2026 publicado em 25/08/2026.",
+      "fonte": "https://www.gov.br/dnit/pt-br/acesso-a-informacao/convenios/termos-de-execucao-descentralizada/ted-no-271-2026-00",
+      "dataFonte": "21/05/2026",
+      "loa": "",
+      "execFisica": "",
+      "execFinanceira": "",
+      "empenhadoPago": "",
+      "execOrcamentaria": "",
+      "fonteExecOrcamentaria": "https://www.gov.br/dnit/pt-br/acesso-a-informacao/convenios/termos-de-execucao-descentralizada/ted-no-271-2026-00",
+      "fonteExecFinanceira": "https://www.gov.br/dnit/pt-br/acesso-a-informacao/convenios/termos-de-execucao-descentralizada/ted-no-271-2026-00",
+      "fonteExecFisica": "https://www.gov.br/dnit/pt-br/acesso-a-informacao/convenios/termos-de-execucao-descentralizada/ted-no-271-2026-00"
+    },
+    {
+      "sourceRow": 12,
+      "nome": "Nova Avanhandava — Rio Tietê",
+      "ufs": [
+        "SP"
+      ],
+      "regioes": [
+        "Sudeste"
+      ],
+      "municipios": [
+        "SP"
+      ],
+      "hidrovias": [
+        "Rio Tietê"
+      ],
+      "tipo": "Obra",
+      "situacao": "EM ANDAMENTO",
+      "objeto": "Derrocamento/intervenções para navegabilidade",
+      "instrumento": "Termo de Compromisso nº 589/2014 — DNIT / Governo de São Paulo; 6º termo aditivo aprovado em 24/03/2026",
+      "valor": "MPOR divulgou investimento de R$ 293,8 milhões; Atlas DNIT mar/2026 registra valor total do TC de R$ 435,220 milhões — escopos/atualizações devem ser conciliados no processo.",
+      "fase": "Atlas DNIT de março/2026 registrava o empreendimento ATIVO, com 35% de execução financeira e término do instrumento em 30/06/2026. O MPOR informou em abril previsão de conclusão em junho/2026. Não foi localizada, até 31/08/2026, fonte oficial posterior que confirme formalmente a conclusão.",
+      "proximoMarco": "Confirmar no SEI/DNIT/SEMIL a situação após 30/06/2026: conclusão, saldo físico, eventual nova vigência e aceitação/entrega.",
+      "unidade": "DGH",
+      "executor": "DNIT + Governo de SP",
+      "sistema": "SIAFI / Obrasgov / SEI",
+      "marco": "Mar/2026: ativo, 35% financeiro (Atlas DNIT); abr/2026: conclusão prevista para junho. Situação final não confirmada nesta varredura.",
+      "fonte": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/03-1/mpor-preve-entrega-das-obras-de-ampliacao-do-canal-de-nova-avanhandava-sp-para-junho",
+      "dataFonte": "21/05/2026",
+      "loa": "",
+      "execFisica": "",
+      "execFinanceira": "",
+      "empenhadoPago": "",
+      "execOrcamentaria": "",
+      "fonteExecOrcamentaria": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/03-1/mpor-preve-entrega-das-obras-de-ampliacao-do-canal-de-nova-avanhandava-sp-para-junho",
+      "fonteExecFinanceira": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/03-1/mpor-preve-entrega-das-obras-de-ampliacao-do-canal-de-nova-avanhandava-sp-para-junho",
+      "fonteExecFisica": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/03-1/mpor-preve-entrega-das-obras-de-ampliacao-do-canal-de-nova-avanhandava-sp-para-junho"
+    },
+    {
+      "sourceRow": 13,
+      "nome": "Dragagens Amazonas, Madeira e Solimões",
+      "ufs": [
+        "AM",
+        "RO"
+      ],
+      "regioes": [
+        "Norte"
+      ],
+      "municipios": [
+        "AM",
+        "RO"
+      ],
+      "hidrovias": [
+        "Rio Madeira"
+      ],
+      "tipo": "Dragagem",
+      "situacao": "EM ANDAMENTO",
+      "objeto": "Dragagens para manutenção da navegabilidade",
+      "instrumento": "DNIT: Contratos nº 605/2024 (Rio Amazonas, Manaus–Itacoatiara); 616/2024 (Rio Solimões, Tabatinga–Benjamin Constant); 617/2024 (Rio Solimões, Codajás–Coari); 638/2024 (Rio Solimões, Benjamin Constant–São Paulo de Olivença). Supervisões emergenciais: 927/2024, 928/2024 e 929/2024.",
+      "valor": "Base DNIT informa valores iniciais: R$ 92,860 mi (605/2024); R$ 104,899 mi (616/2024); R$ 90,394 mi (617/2024); R$ 84,259 mi (638/2024). Supervisões: R$ 2,868 mi; R$ 3,115 mi; R$ 2,850 mi, respectivamente.",
+      "fase": "Na base DNIT consultada, os quatro contratos principais aparecem ATIVOS. Usar a base como fotografia histórica e reconfirmar situação vigente no SEI/DNIT antes de despacho.",
+      "proximoMarco": "Campanhas/contratos e execução conforme programação",
+      "unidade": "DGH",
+      "executor": "DNIT",
+      "sistema": "SIAFI / Obrasgov / SEI",
+      "marco": "Dragagens programadas/em execução",
+      "fonte": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/05/mpor-faz-balanco-do-primeiro-bienio-da-secretaria-nacional-de-hidrovias-e-navegacao",
+      "dataFonte": "21/05/2026",
+      "loa": "Validar SIOP/LOA/PLOA",
+      "execFisica": "DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO",
+      "execFinanceira": "DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO",
+      "empenhadoPago": "Validar SIAFI | Validar SIAFI",
+      "execOrcamentaria": "Validar SIOP/LOA/PLOA",
+      "fonteExecOrcamentaria": "Base DNIT; PNCP; SIAFI; Obrasgov",
+      "fonteExecFinanceira": "Base DNIT; PNCP; SIAFI; Obrasgov",
+      "fonteExecFisica": "Base DNIT; PNCP; SIAFI; Obrasgov"
+    },
+    {
+      "sourceRow": 14,
+      "nome": "Dragagem Lagoa Mirim",
+      "ufs": [
+        "RS"
+      ],
+      "regioes": [
+        "Sul"
+      ],
+      "municipios": [
+        "RS"
+      ],
+      "hidrovias": [
+        "Lagoa Mirim"
+      ],
+      "tipo": "Dragagem",
+      "situacao": "EM ANDAMENTO",
+      "objeto": "Projeto executivo, dragagem de manutenção e sinalização náutica",
+      "instrumento": "Contratação de obras/serviços",
+      "valor": "R$ 57,9 milhões, dos quais R$ 6,7 milhões para supervisão",
+      "fase": "Recursos previstos 2026–2028; contratação descrita no projeto",
+      "proximoMarco": "Execução 2026–2028 e integração com futura concessão",
+      "unidade": "DGH",
+      "executor": "MPOR/DNIT e contratados, conforme processo",
+      "sistema": "SIAFI / Obrasgov / SEI",
+      "marco": "Ordem de serviço assinada em 23/06/2026",
+      "fonte": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/07/aberta-consulta-publica-sobre-concessao-do-sistema-aquaviario-integrado-do-sul-e-da-lagoa-mirim",
+      "dataFonte": "01/07/2026",
+      "loa": "",
+      "execFisica": "",
+      "execFinanceira": "",
+      "empenhadoPago": "",
+      "execOrcamentaria": "",
+      "fonteExecOrcamentaria": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/07/aberta-consulta-publica-sobre-concessao-do-sistema-aquaviario-integrado-do-sul-e-da-lagoa-mirim",
+      "fonteExecFinanceira": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/07/aberta-consulta-publica-sobre-concessao-do-sistema-aquaviario-integrado-do-sul-e-da-lagoa-mirim",
+      "fonteExecFisica": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/07/aberta-consulta-publica-sobre-concessao-do-sistema-aquaviario-integrado-do-sul-e-da-lagoa-mirim"
+    },
+    {
+      "sourceRow": 15,
+      "nome": "Concessão SAI Sul–Lagoa Mirim",
+      "ufs": [
+        "RS"
+      ],
+      "regioes": [
+        "Sul"
+      ],
+      "municipios": [
+        "RS"
+      ],
+      "hidrovias": [
+        "Lagoa Mirim"
+      ],
+      "tipo": "Concessão",
+      "situacao": "POR FIRMAR / ESTRUTURAÇÃO",
+      "objeto": "Gestão integrada: dragagem, sinalização, levantamentos, monitoramento e tráfego aquaviário",
+      "instrumento": "Futura concessão — prazo inicial proposto de 25 anos",
+      "valor": "R$ 134 milhões de investimentos indicados na consulta pública",
+      "fase": "Consulta e audiência públicas em curso. A audiência ocorreu em 11/08/2026 e a ANTAQ, em atualização de 18/08/2026, registra o período de contribuições da Consulta Pública nº 06/2026 até 14/10/2026, por prorrogação.",
+      "proximoMarco": "Acompanhar contribuições até 14/10/2026, eventual nova audiência no RS, consolidação das contribuições e evolução dos documentos técnicos/jurídicos para as etapas seguintes.",
+      "unidade": "DGH",
+      "executor": "MPOR + ANTAQ + Portos RS + futuro concessionário",
+      "sistema": "SEI / bases ANTAQ/concessões",
+      "marco": "EVTEA/documentos disponíveis; audiência realizada em 11/08; consulta pública prorrogada até 14/10/2026.",
+      "fonte": "https://www.gov.br/antaq/pt-br/acesso-a-informacao/participacao-social/audiencias-e-consultas-publicas/audiencias/audiencia-publica-no-06-2026-antaq",
+      "dataFonte": "12/08/2026",
+      "loa": "",
+      "execFisica": "",
+      "execFinanceira": "",
+      "empenhadoPago": "",
+      "execOrcamentaria": "",
+      "fonteExecOrcamentaria": "https://www.gov.br/antaq/pt-br/acesso-a-informacao/participacao-social/audiencias-e-consultas-publicas/audiencias/audiencia-publica-no-06-2026-antaq",
+      "fonteExecFinanceira": "https://www.gov.br/antaq/pt-br/acesso-a-informacao/participacao-social/audiencias-e-consultas-publicas/audiencias/audiencia-publica-no-06-2026-antaq",
+      "fonteExecFisica": "https://www.gov.br/antaq/pt-br/acesso-a-informacao/participacao-social/audiencias-e-consultas-publicas/audiencias/audiencia-publica-no-06-2026-antaq"
+    },
+    {
+      "sourceRow": 16,
+      "nome": "Concessão Hidrovia do Rio Paraguai",
+      "ufs": [
+        "MS"
+      ],
+      "regioes": [
+        "Centro-Oeste"
+      ],
+      "municipios": [
+        "MS"
+      ],
+      "hidrovias": [
+        "Rio Paraguai"
+      ],
+      "tipo": "Concessão",
+      "situacao": "POR FIRMAR / ESTUDOS",
+      "objeto": "Serviços de infraestrutura hidroviária e manutenção da navegabilidade",
+      "instrumento": "Futura concessão",
+      "valor": "Não consolidado nesta pesquisa",
+      "fase": "Agenda estratégica de concessões; estudos/modelagem. Balanço de maio aponta leilões da carteira no 1º semestre de 2027",
+      "proximoMarco": "Consolidação de estudos, controle, edital e leilão",
+      "unidade": "DGH",
+      "executor": "MPOR + ANTAQ + futuro concessionário",
+      "sistema": "SEI / bases ANTAQ/concessões",
+      "marco": "Projeto incluído na carteira de concessões",
+      "fonte": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/05/mpor-faz-balanco-do-primeiro-bienio-da-secretaria-nacional-de-hidrovias-e-navegacao",
+      "dataFonte": "21/05/2026",
+      "loa": "",
+      "execFisica": "",
+      "execFinanceira": "",
+      "empenhadoPago": "",
+      "execOrcamentaria": "",
+      "fonteExecOrcamentaria": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/05/mpor-faz-balanco-do-primeiro-bienio-da-secretaria-nacional-de-hidrovias-e-navegacao",
+      "fonteExecFinanceira": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/05/mpor-faz-balanco-do-primeiro-bienio-da-secretaria-nacional-de-hidrovias-e-navegacao",
+      "fonteExecFisica": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/05/mpor-faz-balanco-do-primeiro-bienio-da-secretaria-nacional-de-hidrovias-e-navegacao"
+    },
+    {
+      "sourceRow": 17,
+      "nome": "Concessão Hidrovia do Rio Madeira",
+      "ufs": [
+        "RO",
+        "AM"
+      ],
+      "regioes": [
+        "Norte"
+      ],
+      "municipios": [
+        "RO",
+        "AM"
+      ],
+      "hidrovias": [
+        "Rio Madeira"
+      ],
+      "tipo": "Concessão",
+      "situacao": "POR FIRMAR / ESTUDOS",
+      "objeto": "Serviços de infraestrutura hidroviária",
+      "instrumento": "Futura concessão — prazo de 12 anos (ANTAQ)",
+      "valor": "CAPEX R$ 109.035.320,84 até o 4º ano; OPEX R$ 38.680.479,69/ano; aporte/contraprestações públicas pré-leilão R$ 561.354.537,00 via CDN",
+      "fase": "Estudos/modelagem com documentação técnica pública. ANTAQ atualizou a página do projeto em 24/09/2026; processo 50300.017021/2023-52; trecho Porto Velho/RO–foz do Rio Madeira, 1.075 km. Página registra audiência pública e leilão como 'em breve'.",
+      "proximoMarco": "Acompanhar convocação da audiência pública, evolução da modelagem, eventual submissão ao TCU, edital e leilão.",
+      "unidade": "DGH",
+      "executor": "MPOR + ANTAQ + futuro concessionário",
+      "sistema": "SEI / bases ANTAQ/concessões",
+      "marco": "Processo, prazo, CAPEX, OPEX, aporte via CDN, extensão e minutas/documentos técnicos publicados pela ANTAQ.",
+      "fonte": "https://www.gov.br/antaq/pt-br/assuntos/projetos-de-concessao/novas-concessoes-hidroviarias/madeira",
+      "dataFonte": "24/09/2026",
+      "loa": "",
+      "execFisica": "",
+      "execFinanceira": "",
+      "empenhadoPago": "",
+      "execOrcamentaria": "",
+      "fonteExecOrcamentaria": "https://www.gov.br/antaq/pt-br/assuntos/projetos-de-concessao/novas-concessoes-hidroviarias/madeira",
+      "fonteExecFinanceira": "https://www.gov.br/antaq/pt-br/assuntos/projetos-de-concessao/novas-concessoes-hidroviarias/madeira",
+      "fonteExecFisica": "https://www.gov.br/antaq/pt-br/assuntos/projetos-de-concessao/novas-concessoes-hidroviarias/madeira"
+    },
+    {
+      "sourceRow": 18,
+      "nome": "Concessão Hidrovia do Rio Tocantins",
+      "ufs": [
+        "TO",
+        "PA"
+      ],
+      "regioes": [
+        "Norte"
+      ],
+      "municipios": [
+        "TO",
+        "PA"
+      ],
+      "hidrovias": [
+        "Rio Tocantins"
+      ],
+      "tipo": "Concessão",
+      "situacao": "POR FIRMAR / ESTUDOS",
+      "objeto": "Serviços de infraestrutura hidroviária",
+      "instrumento": "Futura concessão",
+      "valor": "Não consolidado nesta pesquisa",
+      "fase": "Estudos/modelagem; integra carteira estratégica",
+      "proximoMarco": "Avançar modelagem e compatibilizar com Pedral do Lourenço",
+      "unidade": "DGH",
+      "executor": "MPOR + ANTAQ + futuro concessionário",
+      "sistema": "SEI / bases ANTAQ/concessões",
+      "marco": "Projeto incluído na carteira de concessões",
+      "fonte": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/05/mpor-faz-balanco-do-primeiro-bienio-da-secretaria-nacional-de-hidrovias-e-navegacao",
+      "dataFonte": "21/05/2026",
+      "loa": "",
+      "execFisica": "",
+      "execFinanceira": "",
+      "empenhadoPago": "",
+      "execOrcamentaria": "",
+      "fonteExecOrcamentaria": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/05/mpor-faz-balanco-do-primeiro-bienio-da-secretaria-nacional-de-hidrovias-e-navegacao",
+      "fonteExecFinanceira": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/05/mpor-faz-balanco-do-primeiro-bienio-da-secretaria-nacional-de-hidrovias-e-navegacao",
+      "fonteExecFisica": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/05/mpor-faz-balanco-do-primeiro-bienio-da-secretaria-nacional-de-hidrovias-e-navegacao"
+    },
+    {
+      "sourceRow": 19,
+      "nome": "Concessão Hidrovia do Rio Tapajós",
+      "ufs": [
+        "PA"
+      ],
+      "regioes": [
+        "Norte"
+      ],
+      "municipios": [
+        "PA"
+      ],
+      "hidrovias": [
+        "Rio Tapajós"
+      ],
+      "tipo": "Concessão",
+      "situacao": "POR FIRMAR / ESTUDOS",
+      "objeto": "Serviços de infraestrutura hidroviária / modelagem de concessão",
+      "instrumento": "Futura concessão",
+      "valor": "Não consolidado nesta pesquisa",
+      "fase": "BI MPOR (25/09/2026): projeto Atrasado; execução 36,1% (13 de 36 tarefas concluídas). Análise crítica de agosto informa produtos entregues em análise pela ANTAQ e dependência da definição do cenário pelo GM/MPOR e Diretoria-Geral da ANTAQ.",
+      "proximoMarco": "Confirmar decisão de cenário, reprogramar marcos vencidos e verificar viabilidade do marco de consulta/audiência pública previsto no BI.",
+      "unidade": "DGH",
+      "executor": "MPOR + ANTAQ + BNDES / futuro concessionário",
+      "sistema": "BI MPOR / SEI / bases ANTAQ/concessões",
+      "marco": "13/36 tarefas concluídas; produtos entregues em análise pela ANTAQ.",
+      "fonte": "https://app.powerbi.com/view?r=eyJrIjoiYjM2NzcxODYtYzViMC00N2Q0LTg5OTktYjExMDQxNWM5OTQyIiwidCI6IjdiZjAxYzZhLWU2ZmItNDIxYS1iYmIyLWI5MGMzZWE4NjhmNyJ9",
+      "dataFonte": "25/09/2026",
+      "loa": "",
+      "execFisica": "",
+      "execFinanceira": "",
+      "empenhadoPago": "",
+      "execOrcamentaria": "",
+      "fonteExecOrcamentaria": "https://app.powerbi.com/view?r=eyJrIjoiYjM2NzcxODYtYzViMC00N2Q0LTg5OTktYjExMDQxNWM5OTQyIiwidCI6IjdiZjAxYzZhLWU2ZmItNDIxYS1iYmIyLWI5MGMzZWE4NjhmNyJ9",
+      "fonteExecFinanceira": "https://app.powerbi.com/view?r=eyJrIjoiYjM2NzcxODYtYzViMC00N2Q0LTg5OTktYjExMDQxNWM5OTQyIiwidCI6IjdiZjAxYzZhLWU2ZmItNDIxYS1iYmIyLWI5MGMzZWE4NjhmNyJ9",
+      "fonteExecFisica": "https://app.powerbi.com/view?r=eyJrIjoiYjM2NzcxODYtYzViMC00N2Q0LTg5OTktYjExMDQxNWM5OTQyIiwidCI6IjdiZjAxYzZhLWU2ZmItNDIxYS1iYmIyLWI5MGMzZWE4NjhmNyJ9"
+    },
+    {
+      "sourceRow": 20,
+      "nome": "ACT dragagem emergencial Rio Tapajós — Itapaiuna e Amorim",
+      "ufs": [
+        "PA"
+      ],
+      "regioes": [
+        "Norte"
+      ],
+      "municipios": [
+        "PA"
+      ],
+      "hidrovias": [
+        "Rio Tapajós"
+      ],
+      "tipo": "Dragagem",
+      "situacao": "EM ANDAMENTO — COOPERAÇÃO",
+      "objeto": "Dragagem de manutenção aquaviária excepcional/emergencial",
+      "instrumento": "ACT nº 001/2025 DAQ + referência contratual DNIT nº 841/2024 para dragagem emergencial de manutenção aquaviária da Hidrovia do Rio Tapajós (HN-106), trecho Santarém/PA–Itaituba/PA.",
+      "valor": "Contrato DNIT nº 841/2024: valor inicial registrado na base = R$ 32.663.096,49.",
+      "fase": "Base DNIT: contrato nº 841/2024; término previsto 25/09/2025 e término consolidado 12/12/2025 na fotografia da base recebida. Confirmar situação posterior no SEI/DNIT.",
+      "proximoMarco": "Acompanhar entregas e resultados do ACT",
+      "unidade": "DGH (acompanhamento de política)",
+      "executor": "DNIT + ABANI",
+      "sistema": "SEI / controles DNIT",
+      "marco": "ACT nº 001/2025 DAQ publicado",
+      "fonte": "https://www.gov.br/dnit/pt-br/acesso-a-informacao/convenios/acordos-de-cooperacao-tecnica/2025/acordo-de-cooperacao-tecnica-no-001-2025-daq",
+      "dataFonte": "08/04/2026 (publicação da página)",
+      "loa": "Validar SIOP/LOA/PLOA",
+      "execFisica": "DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO",
+      "execFinanceira": "DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO",
+      "empenhadoPago": "Validar SIAFI | Validar SIAFI",
+      "execOrcamentaria": "Validar SIOP/LOA/PLOA",
+      "fonteExecOrcamentaria": "DNIT; PNCP; SIAFI; Obrasgov",
+      "fonteExecFinanceira": "DNIT; PNCP; SIAFI; Obrasgov",
+      "fonteExecFisica": "DNIT; PNCP; SIAFI; Obrasgov"
+    },
+    {
+      "sourceRow": 21,
+      "nome": "PADMA — Programa Anual de Dragagem de Manutenção Aquaviária",
+      "ufs": [
+        "Nacional",
+        "vias DNIT"
+      ],
+      "regioes": [],
+      "municipios": [
+        "Nacional",
+        "vias DNIT"
+      ],
+      "hidrovias": [],
+      "tipo": "Dragagem",
+      "situacao": "INSTRUMENTO PERMANENTE / EXECUÇÃO",
+      "objeto": "Planejamento anual de dragagens de manutenção",
+      "instrumento": "Programa técnico-administrativo + contratos decorrentes",
+      "valor": "Conforme cada plano/contrato",
+      "fase": "IN DNIT nº 10/2026 disciplina elaboração, contratação, execução, supervisão, medição e fiscalização",
+      "proximoMarco": "Planos anuais e contratos de dragagem",
+      "unidade": "DGH (interface SNHN)",
+      "executor": "DNIT",
+      "sistema": "SIAFI / Obrasgov / sistemas DNIT / SEI",
+      "marco": "IN DNIT nº 10/2026 vigente",
+      "fonte": "https://www.gov.br/dnit/pt-br/central-de-conteudos/atos-normativos/tipo/instrucao-normativa/2026/instrucao-normativa-no-10-2026",
+      "dataFonte": "17/08/2026",
+      "loa": "",
+      "execFisica": "",
+      "execFinanceira": "",
+      "empenhadoPago": "",
+      "execOrcamentaria": "",
+      "fonteExecOrcamentaria": "https://www.gov.br/dnit/pt-br/central-de-conteudos/atos-normativos/tipo/instrucao-normativa/2026/instrucao-normativa-no-10-2026",
+      "fonteExecFinanceira": "https://www.gov.br/dnit/pt-br/central-de-conteudos/atos-normativos/tipo/instrucao-normativa/2026/instrucao-normativa-no-10-2026",
+      "fonteExecFisica": "https://www.gov.br/dnit/pt-br/central-de-conteudos/atos-normativos/tipo/instrucao-normativa/2026/instrucao-normativa-no-10-2026"
+    },
+    {
+      "sourceRow": 22,
+      "nome": "PMH — Programa de Monitoramento Hidroviário",
+      "ufs": [
+        "Nacional",
+        "vias DNIT"
+      ],
+      "regioes": [],
+      "municipios": [
+        "Nacional",
+        "vias DNIT"
+      ],
+      "hidrovias": [],
+      "tipo": "Programa",
+      "situacao": "INSTRUMENTO PERMANENTE / EXECUÇÃO",
+      "objeto": "Monitoramento hidroviário, batimetria e dados das vias navegáveis",
+      "instrumento": "Programa do PNMH + contratos de monitoramento",
+      "valor": "Conforme contratos",
+      "fase": "IN DNIT nº 01/2026 estabelece padrões de execução, métrica e fiscalização",
+      "proximoMarco": "Acompanhar contratos e dados anuais de monitoramento",
+      "unidade": "DGH (interface SNHN)",
+      "executor": "DNIT",
+      "sistema": "Sistemas DNIT / SEI",
+      "marco": "IN DNIT nº 01/2026 vigente",
+      "fonte": "https://www.gov.br/dnit/pt-br/central-de-conteudos/atos-normativos/tipo/instrucao-normativa/2026/instrucao-normativa-no-01-2026",
+      "dataFonte": "19/08/2026 (página atualizada)",
+      "loa": "",
+      "execFisica": "",
+      "execFinanceira": "",
+      "empenhadoPago": "",
+      "execOrcamentaria": "",
+      "fonteExecOrcamentaria": "https://www.gov.br/dnit/pt-br/central-de-conteudos/atos-normativos/tipo/instrucao-normativa/2026/instrucao-normativa-no-01-2026",
+      "fonteExecFinanceira": "https://www.gov.br/dnit/pt-br/central-de-conteudos/atos-normativos/tipo/instrucao-normativa/2026/instrucao-normativa-no-01-2026",
+      "fonteExecFisica": "https://www.gov.br/dnit/pt-br/central-de-conteudos/atos-normativos/tipo/instrucao-normativa/2026/instrucao-normativa-no-01-2026"
+    },
+    {
+      "sourceRow": 23,
+      "nome": "Boa Vista pelas Águas — Navegabilidade do Rio Branco",
+      "ufs": [
+        "RR",
+        "AM"
+      ],
+      "regioes": [
+        "Norte"
+      ],
+      "municipios": [
+        "RR",
+        "AM"
+      ],
+      "hidrovias": [
+        "Rio Branco"
+      ],
+      "tipo": "Dragagem",
+      "situacao": "EM ESTRUTURAÇÃO / VALIDAÇÃO",
+      "objeto": "Acesso hidroviário a Boa Vista pelo Rio Branco; EVTEA, cartografia, sinalização náutica, dragagem e derrocamento",
+      "instrumento": "Projeto/iniciativa em estruturação — instrumento a confirmar",
+      "valor": "Informação recebida: R$ 50 mi nos 2 primeiros anos + R$ 500 mi do 3º ao 6º ano (R$ 550 mi total) — NÃO confirmado em fonte pública localizada",
+      "fase": "Informação institucional recebida em 25/09/2026. Antecedente documental: estudos de planejamento federal registram intervenções para melhoria da navegabilidade dos rios Negro e Branco até Boa Vista/RR. Não localizado no BI MPOR consultado em 25/09/2026.",
+      "proximoMarco": "Obter documento oficial da SNHN/DNIT com escopo, fase, responsável, orçamento, cronograma e eventual cadastro no BI.",
+      "unidade": "DGH / a confirmar",
+      "executor": "MPOR/SNHN + DNIT + parceiros a confirmar",
+      "sistema": "SEI / BI MPOR / DNIT",
+      "marco": "Antecedente histórico de planejamento federal localizado; iniciativa atual ainda precisa de documentação oficial.",
+      "fonte": "https://web.bndes.gov.br/bib/jspui/bitstream/1408/7668/2/An%C3%A1lise%20e%20avalia%C3%A7%C3%A3o_FEP0110_resultado_vol_2_P.pdf",
+      "dataFonte": "25/09/2026",
+      "loa": "",
+      "execFisica": "",
+      "execFinanceira": "",
+      "empenhadoPago": "",
+      "execOrcamentaria": "",
+      "fonteExecOrcamentaria": "https://web.bndes.gov.br/bib/jspui/bitstream/1408/7668/2/An%C3%A1lise%20e%20avalia%C3%A7%C3%A3o_FEP0110_resultado_vol_2_P.pdf",
+      "fonteExecFinanceira": "https://web.bndes.gov.br/bib/jspui/bitstream/1408/7668/2/An%C3%A1lise%20e%20avalia%C3%A7%C3%A3o_FEP0110_resultado_vol_2_P.pdf",
+      "fonteExecFisica": "https://web.bndes.gov.br/bib/jspui/bitstream/1408/7668/2/An%C3%A1lise%20e%20avalia%C3%A7%C3%A3o_FEP0110_resultado_vol_2_P.pdf"
+    },
+    {
+      "sourceRow": 24,
+      "nome": "Barragem de Amarópolis — Hidrovia do Rio Jacuí",
+      "ufs": [
+        "RS"
+      ],
+      "regioes": [
+        "Sul"
+      ],
+      "municipios": [
+        "RS"
+      ],
+      "hidrovias": [
+        "Rio Jacuí"
+      ],
+      "tipo": "Obra",
+      "situacao": "EM ANDAMENTO",
+      "objeto": "Projetos executivos e obras de reformas, recuperações e modernizações na barragem",
+      "instrumento": "Contrato DNIT nº 321/2024 — contratação integrada",
+      "valor": "153912630,2",
+      "fase": "Base DNIT: ATIVO; assinatura 20/05/2024; término previsto 30/06/2027; término consolidado 26/11/2027.",
+      "proximoMarco": "Confirmar avanço físico/financeiro e marcos contratuais vigentes",
+      "unidade": "DGH",
+      "executor": "DNIT",
+      "sistema": "SEI/DNIT",
+      "marco": "",
+      "fonte": "VALIDAR SITUAÇÃO ATUAL",
+      "dataFonte": "Base DNIT fornecida pelo usuário",
+      "loa": "Validar SIOP/LOA/PLOA",
+      "execFisica": "DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO",
+      "execFinanceira": "DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO",
+      "empenhadoPago": "Validar SIAFI | Validar SIAFI",
+      "execOrcamentaria": "Validar SIOP/LOA/PLOA",
+      "fonteExecOrcamentaria": "Base DNIT; PNCP; SIAFI; Obrasgov",
+      "fonteExecFinanceira": "Base DNIT; PNCP; SIAFI; Obrasgov",
+      "fonteExecFisica": "Base DNIT; PNCP; SIAFI; Obrasgov"
+    },
+    {
+      "sourceRow": 25,
+      "nome": "Supervisão — Barragem de Amarópolis / Rio Jacuí",
+      "ufs": [
+        "RS"
+      ],
+      "regioes": [
+        "Sul"
+      ],
+      "municipios": [
+        "RS"
+      ],
+      "hidrovias": [
+        "Rio Jacuí"
+      ],
+      "tipo": "Obra",
+      "situacao": "EM ANDAMENTO",
+      "objeto": "Supervisão da elaboração dos projetos executivos e das obras de reformas, recuperações e modernizações",
+      "instrumento": "Contrato DNIT nº 489/2024 — supervisão",
+      "valor": "5667357,41",
+      "fase": "Base DNIT: ATIVO; assinatura 31/07/2024; término previsto 31/01/2028; término consolidado 01/07/2028.",
+      "proximoMarco": "Confirmar execução da supervisão e aderência ao contrato principal",
+      "unidade": "DGH",
+      "executor": "DNIT",
+      "sistema": "SEI/DNIT",
+      "marco": "",
+      "fonte": "VALIDAR SITUAÇÃO ATUAL",
+      "dataFonte": "Base DNIT fornecida pelo usuário",
+      "loa": "Validar SIOP/LOA/PLOA",
+      "execFisica": "DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO",
+      "execFinanceira": "DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO",
+      "empenhadoPago": "Validar SIAFI | Validar SIAFI",
+      "execOrcamentaria": "Validar SIOP/LOA/PLOA",
+      "fonteExecOrcamentaria": "Base DNIT; PNCP; SIAFI; Obrasgov",
+      "fonteExecFinanceira": "Base DNIT; PNCP; SIAFI; Obrasgov",
+      "fonteExecFisica": "Base DNIT; PNCP; SIAFI; Obrasgov"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "version": "v88 FINAL",
+  "sourceWorkbook": "BI_DPP_SNHN_v36_ATUALIZACAO_DIARIA_28-09-2026.xlsx",
+  "portfolioCount": 19,
+  "v36SnapshotCount": 19,
+  "missingPortfolioNames": [],
+  "mainUfCoverage": [
+    "AM",
+    "MS",
+    "Nacional",
+    "PA",
+    "RO",
+    "RR",
+    "RS",
+    "SP",
+    "TO",
+    "vias DNIT"
+  ],
+  "v36UfCoverage": [
+    "AM",
+    "MS",
+    "Nacional",
+    "PA",
+    "RO",
+    "RR",
+    "RS",
+    "SP",
+    "TO",
+    "vias DNIT"
+  ],
+  "missingUfCoverage": [],
+  "siopPriorityRule": "SIOP/PLOA only when relationship is valid; otherwise report falls back to v36 without inventing monetary values.",
+  "expectedDirectSiopExamples": [
+    "Operação e manutenção de 54 IP4",
+    "Modernização da IP4 de Parintins",
+    "Terminal Manaus Moderna",
+    "Pedral do Lourenço — Rio Tocantins",
+    "Dragagem Lagoa Mirim"
+  ],
+  "jsInlineScriptsValidated": 18,
+  "duplicateIds": [],
+  "finalizedAt": "2026-10-02"
+}
