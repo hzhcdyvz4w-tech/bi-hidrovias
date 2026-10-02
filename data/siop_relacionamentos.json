@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "projeto": "Projeto BI - Hidrovias",
+  "source": "Consulta SIOP BI / Google Drive",
+  "regra": "Somente relações habilitado=true entram automaticamente no BI.",
+  "updatedAt": "2026-10-02",
+  "relacoes": [
+    {
+      "id": "Dragagem Lagoa Mirim|2025|162D|0000|3",
+      "investimento": "Dragagem Lagoa Mirim",
+      "ano": 2025,
+      "acaoCodigo": "162D",
+      "poCodigo": "0000",
+      "grupoCodigo": "3",
+      "habilitado": true,
+      "statusValidacao": "SIM - PROVISÓRIO"
+    },
+    {
+      "id": "Dragagem Lagoa Mirim|2025|162D|0000|4",
+      "investimento": "Dragagem Lagoa Mirim",
+      "ano": 2025,
+      "acaoCodigo": "162D",
+      "poCodigo": "0000",
+      "grupoCodigo": "4",
+      "habilitado": true,
+      "statusValidacao": "SIM - PROVISÓRIO"
+    },
+    {
+      "id": "Dragagem Lagoa Mirim|2026|162D|0000|4",
+      "investimento": "Dragagem Lagoa Mirim",
+      "ano": 2026,
+      "acaoCodigo": "162D",
+      "poCodigo": "0000",
+      "grupoCodigo": "4",
+      "habilitado": true,
+      "statusValidacao": "SIM - PROVISÓRIO"
+    },
+    {
+      "id": "Modernização da IP4 de Parintins|2025|219Z|000P|4",
+      "investimento": "Modernização da IP4 de Parintins",
+      "ano": 2025,
+      "acaoCodigo": "219Z",
+      "poCodigo": "000P",
+      "grupoCodigo": "4",
+      "habilitado": true,
+      "statusValidacao": "SIM - PROVISÓRIO"
+    },
+    {
+      "id": "Operação e manutenção de 54 IP4|2025|20LN|0002|3",
+      "investimento": "Operação e manutenção de 54 IP4",
+      "ano": 2025,
+      "acaoCodigo": "20LN",
+      "poCodigo": "0002",
+      "grupoCodigo": "3",
+      "habilitado": true,
+      "statusValidacao": "SIM - PROVISÓRIO"
+    },
+    {
+      "id": "Operação e manutenção de 54 IP4|2026|20LN|0002|3",
+      "investimento": "Operação e manutenção de 54 IP4",
+      "ano": 2026,
+      "acaoCodigo": "20LN",
+      "poCodigo": "0002",
+      "grupoCodigo": "3",
+      "habilitado": true,
+      "statusValidacao": "SIM - PROVISÓRIO"
+    },
+    {
+      "id": "Pedral do Lourenço — Rio Tocantins|2025|123M|0001|3",
+      "investimento": "Pedral do Lourenço — Rio Tocantins",
+      "ano": 2025,
+      "acaoCodigo": "123M",
+      "poCodigo": "0001",
+      "grupoCodigo": "3",
+      "habilitado": true,
+      "statusValidacao": "SIM - PROVISÓRIO"
+    },
+    {
+      "id": "Pedral do Lourenço — Rio Tocantins|2025|123M|0001|4",
+      "investimento": "Pedral do Lourenço — Rio Tocantins",
+      "ano": 2025,
+      "acaoCodigo": "123M",
+      "poCodigo": "0001",
+      "grupoCodigo": "4",
+      "habilitado": true,
+      "statusValidacao": "SIM - PROVISÓRIO"
+    },
+    {
+      "id": "Pedral do Lourenço — Rio Tocantins|2026|123M|0001|3",
+      "investimento": "Pedral do Lourenço — Rio Tocantins",
+      "ano": 2026,
+      "acaoCodigo": "123M",
+      "poCodigo": "0001",
+      "grupoCodigo": "3",
+      "habilitado": true,
+      "statusValidacao": "SIM - PROVISÓRIO"
+    },
+    {
+      "id": "Pedral do Lourenço — Rio Tocantins|2026|123M|0001|4",
+      "investimento": "Pedral do Lourenço — Rio Tocantins",
+      "ano": 2026,
+      "acaoCodigo": "123M",
+      "poCodigo": "0001",
+      "grupoCodigo": "4",
+      "habilitado": true,
+      "statusValidacao": "SIM - PROVISÓRIO"
+    },
+    {
+      "id": "Terminal Manaus Moderna|2026|13LO|0000|4",
+      "investimento": "Terminal Manaus Moderna",
+      "ano": 2026,
+      "acaoCodigo": "13LO",
+      "poCodigo": "0000",
+      "grupoCodigo": "4",
+      "habilitado": true,
+      "statusValidacao": "SIM - PROVISÓRIO"
+    }
+  ]
+}

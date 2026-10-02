@@ -8,6 +8,7 @@ on:
     branches: [ main ]
     paths:
       - '.github/workflows/update-data.yml'
+      - 'data/siop_relacionamentos.json'
 
 permissions:
   contents: write
@@ -19,70 +20,168 @@ jobs:
       - name: Baixar repositório
         uses: actions/checkout@v4
 
-      - name: Extrair bases autorizadas
+      - name: Extrair bases Google Drive
         shell: bash
         run: |
           set -euo pipefail
           MAIN='https://script.google.com/macros/s/AKfycbyUCnZm3VwmEivBW04wXSP8bPONg4Cv00acK7MaxZ_54jRMzgdwyIPUDmYnm3pasMLnvw/exec'
-          SIOP='https://script.google.com/macros/s/AKfycbyBOezMVBXAnk1ZMI0fzYoWzHR_Fn37pdoQR3UUkYqM8cCDbUPzUBzCO-23iwmBVJYvnw/exec'
+          SIOP_RAW='https://script.google.com/macros/s/AKfycbz2kMnc1DLfrf6M9t2mYjmb9h5NsdKdtvBoFGn9nWE4EENy0_692NvjoL8pQDv2me_z/exec'
           curl -A "Mozilla/5.0" -H "Accept: application/json,text/plain,*/*" -L --fail --retry 3 --retry-delay 3 --connect-timeout 30 --max-time 180 "$MAIN" -o /tmp/main.raw
-          curl -A "Mozilla/5.0" -H "Accept: application/json,text/plain,*/*" -L --fail --retry 3 --retry-delay 3 --connect-timeout 30 --max-time 180 "$SIOP" -o /tmp/siop.raw || true
+          curl -A "Mozilla/5.0" -H "Accept: application/json,text/plain,*/*" -L --fail --retry 3 --retry-delay 3 --connect-timeout 30 --max-time 180 "$SIOP_RAW" -o /tmp/siop.raw || true
 
       - name: Validar e gerar snapshots
         shell: python
         run: |
-          import json, pathlib
+          import json, pathlib, re, datetime
           pathlib.Path('data').mkdir(exist_ok=True)
 
-          def parse_json(path, label):
-              text = pathlib.Path(path).read_text(encoding='utf-8', errors='replace')
-              clean = text.lstrip('\ufeff \t\r\n')
-              return json.loads(clean)
+          def parse_json(path):
+              text=pathlib.Path(path).read_text(encoding='utf-8',errors='replace')
+              return json.loads(text.lstrip('\ufeff \t\r\n'))
 
-          main = parse_json('/tmp/main.raw','MAIN')
-          rows = main.get('investments') or main.get('data')
-          if not isinstance(rows,list) or len(rows) != 19:
+          def num(v):
+              if v is None or v=='': return 0
+              if isinstance(v,(int,float)): return v
+              s=str(v).strip().replace('R$','').replace(' ','')
+              if ',' in s:
+                  s=s.replace('.','').replace(',','.')
+              try: return float(s)
+              except: return 0
+
+          def pick(d,*keys):
+              for k in keys:
+                  if k in d and d[k] not in (None,''): return d[k]
+              return None
+
+          def group_code(v):
+              m=re.match(r'\s*(\d+)',str(v or ''))
+              return m.group(1) if m else ''
+
+          main=parse_json('/tmp/main.raw')
+          rows=main.get('investments') or main.get('data')
+          if not isinstance(rows,list) or len(rows)!=19:
               raise SystemExit('Base principal inválida: esperado 19 investimentos')
-          ids=[str(x.get('id')) for x in rows]
-          if len(ids)!=len(set(ids)) or any(not x.get('nome') for x in rows):
-              raise SystemExit('Base principal inválida: ID duplicado ou investimento sem nome')
           pathlib.Path('data/bi_hidrovias_public.json').write_text(
               json.dumps(main,ensure_ascii=False,separators=(',',':')),encoding='utf-8'
           )
-          print(f'MAIN OK: {len(rows)} investimentos')
+          print('MAIN OK:',len(rows),'investimentos')
 
-          # O endpoint SIOP pode exigir autenticação em chamadas servidor-servidor.
-          # Quando isso ocorrer, preserva-se o último snapshot homologado no repositório.
           try:
-              siop=parse_json('/tmp/siop.raw','SIOP')
-              inv=siop.get('investimentos')
-              if siop.get('ok') is not True or not isinstance(inv,list) or not inv:
-                  raise ValueError('snapshot SIOP inválido')
-              for item in inv:
-                  for ex in item.get('exercicios',[]):
-                      for r in ex.get('registros',[]):
-                          st=str(r.get('statusValidacao','')).upper()
-                          if st and not st.startswith('SIM'):
-                              raise ValueError('relação não habilitada: '+st)
-              pathlib.Path('data/siop_hidrovias_public.json').write_text(
-                  json.dumps(siop,ensure_ascii=False,separators=(',',':')),encoding='utf-8'
+              raw=parse_json('/tmp/siop.raw')
+              registros=raw.get('registros')
+              if raw.get('ok') is not True or not isinstance(registros,list) or len(registros)<100:
+                  raise ValueError('Consulta SIOP BI inválida ou incompleta')
+
+              rel_cfg=json.loads(pathlib.Path('data/siop_relacionamentos.json').read_text(encoding='utf-8'))
+              rels=[r for r in rel_cfg.get('relacoes',[]) if r.get('habilitado') is True]
+              if not rels: raise ValueError('matriz SIOP sem relações habilitadas')
+
+              idx={}
+              for r in registros:
+                  ano=int(num(pick(r,'ano','Ano')))
+                  acao=str(pick(r,'acaoCodigo','acao_codigo','codigoAcao','Ação Código') or '').strip()
+                  po=str(pick(r,'poCodigo','po_codigo','codigoPO','Plano Orçamentário Código') or '').strip()
+                  grupo=group_code(pick(r,'grupoDespesa','grupo_despesa','Grupo de Despesa'))
+                  key=(ano,acao,po,grupo)
+                  idx.setdefault(key,[]).append(r)
+
+              selected=[]
+              missing=[]
+              for rel in rels:
+                  key=(int(rel['ano']),str(rel['acaoCodigo']),str(rel['poCodigo']),str(rel['grupoCodigo']))
+                  found=idx.get(key,[])
+                  if not found:
+                      missing.append('|'.join(map(str,key)))
+                      continue
+                  for src in found:
+                      selected.append((rel,src))
+
+              if missing:
+                  raise ValueError('relações habilitadas sem linha na Consulta SIOP BI: '+', '.join(missing))
+              if len(selected)!=len(rels):
+                  raise ValueError(f'join inesperado: {len(selected)} linhas para {len(rels)} relações')
+
+              def totals(recs):
+                  t={k:sum(num(x.get(k)) for x in recs) for k in ['dotacaoAtual','empenhado','liquidado','pago']}
+                  t['saldoEmpenhar']=t['dotacaoAtual']-t['empenhado']
+                  t['saldoLiquidar']=t['empenhado']-t['liquidado']
+                  t['empenhadoNaoPago']=t['empenhado']-t['pago']
+                  t['liquidadoPagar']=t['liquidado']-t['pago']
+                  t['pctEmpenhadoDotacao']=100*t['empenhado']/t['dotacaoAtual'] if t['dotacaoAtual'] else None
+                  t['pctLiquidadoEmpenhado']=100*t['liquidado']/t['empenhado'] if t['empenhado'] else None
+                  t['pctPagoLiquidado']=100*t['pago']/t['liquidado'] if t['liquidado'] else None
+                  t['pctPagoDotacao']=100*t['pago']/t['dotacaoAtual'] if t['dotacaoAtual'] else None
+                  return t
+
+              by_inv={}
+              flat=[]
+              for rel,src in selected:
+                  row={
+                    'ano':int(rel['ano']),
+                    'acaoCodigo':str(rel['acaoCodigo']),
+                    'acaoDescricao':str(pick(src,'acaoDescricao','acao_descricao','descricaoAcao') or ''),
+                    'poCodigo':str(rel['poCodigo']),
+                    'poDescricao':str(pick(src,'poDescricao','po_descricao','descricaoPO') or ''),
+                    'grupoDespesa':str(pick(src,'grupoDespesa','grupo_despesa','Grupo de Despesa') or ''),
+                    'dotacaoAtual':num(pick(src,'dotacaoAtual','dotacao_atual','Dotação Atual')),
+                    'empenhado':num(pick(src,'empenhado','Empenhado')),
+                    'liquidado':num(pick(src,'liquidado','Liquidado')),
+                    'pago':num(pick(src,'pago','Pago')),
+                    'statusValidacao':rel.get('statusValidacao','SIM - PROVISÓRIO')
+                  }
+                  flat.append(row)
+                  by_inv.setdefault(rel['investimento'],{}).setdefault(int(rel['ano']),[]).append(row)
+
+              investimentos=[]
+              for nome,years in sorted(by_inv.items()):
+                  exs=[]
+                  all_rows=[]
+                  for ano,recs in sorted(years.items()):
+                      exs.append({'ano':ano,'totais':totals(recs),'registros':recs})
+                      all_rows.extend(recs)
+                  investimentos.append({'investimento':nome,'totais':totals(all_rows),'exercicios':exs})
+
+              out={
+                'ok':True,
+                'schemaVersion':2,
+                'projeto':'Projeto BI - Hidrovias',
+                'fonte':'Consulta SIOP BI (Google Drive) + Matriz de Relacionamento',
+                'generatedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+                'sourceGeneratedAt':raw.get('generatedAt'),
+                'spreadsheetId':raw.get('spreadsheetId') or (raw.get('metadata') or {}).get('spreadsheetId'),
+                'metadata':{
+                  'registrosSIOP':len(registros),
+                  'relacionamentosHabilitados':len(rels),
+                  'linhasIntegradas':len(selected),
+                  'investimentosComSIOP':len(investimentos),
+                  'regra':'Consulta SIOP BI é a fonte dos valores; somente relações habilitadas entram automaticamente.'
+                },
+                'totaisIntegrados':totals(flat),
+                'investimentos':investimentos
+              }
+              pathlib.Path('data/siop_consulta_raw.json').write_text(
+                  json.dumps(raw,ensure_ascii=False,separators=(',',':')),encoding='utf-8'
               )
-              print(f'SIOP OK: {len(inv)} investimentos relacionados')
+              pathlib.Path('data/siop_hidrovias_public.json').write_text(
+                  json.dumps(out,ensure_ascii=False,separators=(',',':')),encoding='utf-8'
+              )
+              print('SIOP DRIVE OK:',len(registros),'registros; integrados:',len(selected))
           except Exception as exc:
               if not pathlib.Path('data/siop_hidrovias_public.json').exists():
                   raise
-              print('SIOP remoto indisponível; snapshot homologado preservado:',repr(exc))
+              print('ATENÇÃO: Consulta SIOP BI remota indisponível; preservando último snapshot homologado:',repr(exc))
 
       - name: Publicar somente se houver alteração
         shell: bash
         run: |
           set -euo pipefail
-          if [ -z "$(git status --porcelain -- data/bi_hidrovias_public.json data/siop_hidrovias_public.json)" ]; then
+          if [ -z "$(git status --porcelain -- data/bi_hidrovias_public.json data/siop_hidrovias_public.json data/siop_consulta_raw.json)" ]; then
             echo "Sem alteração nas bases."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/bi_hidrovias_public.json data/siop_hidrovias_public.json
-          git commit -m "Atualiza snapshots das bases do BI"
+          [ -f data/siop_consulta_raw.json ] && git add data/siop_consulta_raw.json
+          git commit -m "Atualiza bases Google Drive do BI"
           git push
