@@ -706,7 +706,7 @@ var oldQV=window.quickView;window.quickView=function(t){var z=oldQV?oldQV(t):und
 #siop-test .siop-alert{font-weight:700}
 </style>
 <section class="box" id="siop-test">
-  <h2>🧪 Execução Orçamentária — SIOP | Homologação B</h2>
+  <h2>🧪 Execução Orçamentária — SIOP | Homologação Final</h2>
   <p class="siop-note"><b>Ambiente experimental.</b> Esta seção não altera a base estável v74. Exibe somente relacionamentos habilitados pela matriz de teste. Relacionamentos “SIM - PROVISÓRIO” continuam sujeitos à validação documental.</p>
   <div id="siopTestStatus" class="siop-note">Aguardando leitura da API de junção…</div>
   <div class="siop-controls">
@@ -719,7 +719,7 @@ var oldQV=window.quickView;window.quickView=function(t){var z=oldQV?oldQV(t):und
 </section>
 <script id="siopTestScript">
 (function(){
-const ENDPOINT='https://script.google.com/macros/s/AKfycbyBOezMVBXAnk1ZMI0fzYoWzHR_Fn37pdoQR3UUkYqM8cCDbUPzUBzCO-23iwmBVJYvnw/exec';
+const ENDPOINT='./siop_hidrovias_public.json';
 let SIOP_TEST_DATA=null;
 function brl(v){return Number(v||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'})}
 function pct(v){return v==null?'N/A':Number(v).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})+'%'}
@@ -737,7 +737,7 @@ window.renderSiopTest=function(){
  const nome=document.getElementById('siopInv').value, ano=document.getElementById('siopAno').value;
  const inv=SIOP_TEST_DATA.investimentos.find(x=>x.investimento===nome); if(!inv)return;
  const ex=ano==='TODOS'?null:inv.exercicios.find(x=>x.ano===ano);
- const t=ex?ex.totais:inv.totaisTodosExercicios;
+ const t=ex?ex.totais:inv.totais;
  document.getElementById('siopCards').innerHTML=cards(t);
  const regs=ex?ex.registros:inv.exercicios.flatMap(x=>x.registros);
  let warn=[];
@@ -747,7 +747,7 @@ window.renderSiopTest=function(){
  document.getElementById('siopDetail').innerHTML=(warn.length?'<p class="siop-alert">'+warn.join('<br>')+'</p>':'')+
  '<table><thead><tr><th>Ano</th><th>Ação</th><th>PO</th><th>Grupo</th><th>Dotação</th><th>Empenhado</th><th>Liquidado</th><th>Pago</th><th>Status</th></tr></thead><tbody>'+
  regs.map(r=>'<tr><td>'+esc(r.ano)+'</td><td>'+esc(r.acaoCodigo)+'<br><small>'+esc(r.acaoDescricao)+'</small></td><td>'+esc(r.poCodigo)+'<br><small>'+esc(r.poDescricao)+'</small></td><td>'+esc(r.grupoDespesa)+'</td><td>'+brl(r.dotacaoAtual)+'</td><td>'+brl(r.empenhado)+'</td><td>'+brl(r.liquidado)+'</td><td>'+brl(r.pago)+'</td><td>'+esc(r.statusValidacao)+'</td></tr>').join('')+'</tbody></table>'+
- '<p class="siop-note">Fonte: SIOP + Matriz de Relacionamento · API gerada em '+esc(SIOP_TEST_DATA.generatedAt)+' · Exercícios não são misturados por padrão na integração.</p>';
+ '<p class="siop-note">Fonte: SIOP + Matriz de Relacionamento · Base publicada em '+esc(SIOP_TEST_DATA.dataBase)+' · Exercícios não são misturados por padrão na integração.</p>';
 }
 function fill(){
  const invSel=document.getElementById('siopInv'), anoSel=document.getElementById('siopAno');
@@ -758,12 +758,12 @@ function fill(){
 async function load(){
  const st=document.getElementById('siopTestStatus');
  try{
-  const sep=ENDPOINT.includes('?')?'&':'?'; const r=await fetch(ENDPOINT+sep+'_ts='+Date.now(),{cache:'no-store',credentials:'omit'});
+  const sep=ENDPOINT.includes('?')?'&':'?'; const r=await fetch(ENDPOINT+sep+'_ts='+Date.now(),{cache:'no-store'});
   if(!r.ok)throw new Error('HTTP '+r.status); const j=await r.json();
   if(!j.ok||!Array.isArray(j.investimentos))throw new Error('JSON de junção inválido');
   SIOP_TEST_DATA=j; fill();
-  st.textContent='API OK · '+j.metadata.quantidadeRegistrosSiop+' registros SIOP · '+j.metadata.quantidadeRelacionamentosHabilitados+' relações habilitadas · '+j.metadata.quantidadeInvestimentosComSiop+' investimentos com SIOP · '+j.metadata.quantidadeLinhasIntegradas+' linhas integradas.';
- }catch(e){st.textContent='Falha na leitura da API de teste: '+e.message;st.className='siop-note siop-alert';}
+  st.textContent='BASE SIOP OK · '+j.metadata.registrosSIOP+' registros SIOP · '+j.metadata.relacionamentosHabilitados+' relações habilitadas · '+j.metadata.investimentosComSIOP+' investimentos com SIOP · '+j.metadata.linhasIntegradas+' linhas integradas.';
+ }catch(e){st.textContent='Falha na leitura da base SIOP publicada: '+e.message;st.className='siop-note siop-alert';}
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',load);else load();
 })();
