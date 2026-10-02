@@ -98,7 +98,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          if git diff --quiet -- bi_hidrovias_public.json siop_hidrovias_public.json; then
+          if [ -z "$(git status --porcelain -- bi_hidrovias_public.json siop_hidrovias_public.json)" ]; then
             echo "Sem alteração nas bases."
             exit 0
           fi
