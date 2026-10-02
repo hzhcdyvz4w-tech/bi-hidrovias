@@ -596,6 +596,12 @@ function carregarCacheSeguro(){
 }
 
 async function sincronizarBaseDrive(){
+  if (location.protocol === "file:") {
+    DATA = FALLBACK_DATA;
+    atualizarStatusSync("✓ Base embarcada • modo local autônomo", true);
+    window.dispatchEvent(new CustomEvent("bi:data-updated", {detail:{count:DATA.length, syncedAt:new Date().toISOString()}}));
+    return true;
+  }
   if (!DRIVE_SYNC_CONFIG.enabled ||
       !DRIVE_SYNC_CONFIG.endpoint ||
       DRIVE_SYNC_CONFIG.endpoint.includes("COLE_AQUI")) {
@@ -743,7 +749,7 @@ var oldQV=window.quickView;window.quickView=function(t){var z=oldQV?oldQV(t):und
 #siop-test .siop-alert{font-weight:700}
 </style>
 <section class="box" id="siop-test">
-  <h2>💰 Execução Orçamentária — SIOP</h2>
+  <h2>💰 Execução Orçamentária — SIOP | Homologação Final</h2>
   <p class="siop-note"><b>Base relacionada.</b> Os filtros territoriais do BI limitam automaticamente os investimentos SIOP. Depois, Ação e PO refinam a execução. Somente vínculos habilitados entram nos valores; “SIM - PROVISÓRIO” continua sujeito à validação documental.</p>
   <div id="siopTestStatus" class="siop-note">Carregando base orçamentária…</div>
   <div id="siopContext" class="siop-context"></div>
