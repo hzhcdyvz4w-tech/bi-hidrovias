@@ -489,10 +489,10 @@ function gerarProdutoV51(tipo){
  - Em falha, o BI mantém a última base válida em cache ou a base v59 embutida.
 */
 const DRIVE_SYNC_CONFIG = {
-  enabled: true, // endpoint permanente do Apps Script ativado
+  enabled: true, // sincronização same-origin via snapshot publicado pelo GitHub Actions
   spreadsheetId: "1KJyLL2LHXpqJ0_3Avd60lhvYBiTNt8geos3YmOKGPLY",
   driveSourceUrl: "https://docs.google.com/spreadsheets/d/1KJyLL2LHXpqJ0_3Avd60lhvYBiTNt8geos3YmOKGPLY/edit",
-  endpoint: "https://script.google.com/macros/s/AKfycbyUCnZm3VwmEivBW04wXSP8bPONg4Cv00acK7MaxZ_54jRMzgdwyIPUDmYnm3pasMLnvw/exec",
+  endpoint: "./bi_hidrovias_public.json",
   refreshMinutes: 1440, // nova leitura diária enquanto o painel estiver aberto
   cacheKey: "bi_hidrovias_v62_last_valid_data",
   metaKey: "bi_hidrovias_v62_last_sync_meta"
