@@ -25,8 +25,8 @@ jobs:
           set -euo pipefail
           MAIN='https://script.google.com/macros/s/AKfycbyUCnZm3VwmEivBW04wXSP8bPONg4Cv00acK7MaxZ_54jRMzgdwyIPUDmYnm3pasMLnvw/exec'
           SIOP='https://script.google.com/macros/s/AKfycbyBOezMVBXAnk1ZMI0fzYoWzHR_Fn37pdoQR3UUkYqM8cCDbUPzUBzCO-23iwmBVJYvnw/exec'
-          curl -L --fail --retry 4 --retry-delay 5 --connect-timeout 30 --max-time 180 "$MAIN?_source=github-actions" -o /tmp/main.json
-          curl -L --fail --retry 4 --retry-delay 5 --connect-timeout 30 --max-time 180 "$SIOP?_source=github-actions" -o /tmp/siop.json
+          curl -A "Mozilla/5.0" -H "Accept: application/json,text/plain,*/*" -L --fail --retry 4 --retry-delay 5 --connect-timeout 30 --max-time 180 "$MAIN" -o /tmp/main.json
+          curl -A "Mozilla/5.0" -H "Accept: application/json,text/plain,*/*" -L --fail --retry 4 --retry-delay 5 --connect-timeout 30 --max-time 180 "$SIOP" -o /tmp/siop.json\n          echo "SIOP content-type/signature:"\n          head -c 120 /tmp/siop.json | tr "\\n" " "
 
       - name: Validar e publicar snapshots
         shell: python
