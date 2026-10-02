@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "modulo": "Janela Orçamentária",
+  "dataBase": "2026-10-02",
+  "origemExecucaoFisica": "Base SEI local (IndexedDB)",
+  "origemExecucaoFinanceira": "Consulta SIOP BI",
+  "definicaoExecucaoFinanceira": "Pago / Dotação Atual",
+  "regraExcedente": {
+    "preferencia": "Valor de execução física monetário explícito no SEI",
+    "fallback": "Valor de repasse × percentual de execução física",
+    "calculo": "Excedente = max(0, valor de repasse - valor físico considerado)"
+  },
+  "regraDestino": {
+    "condicao": "Execução física (%) >= execução financeira (%)",
+    "data": "Data de término conhecida e futura",
+    "prioridade": [
+      "Data de término futura mais próxima",
+      "Maior diferença execução física - execução financeira"
+    ]
+  },
+  "seguranca": "Sem físico, repasse ou término confirmados no SEI não há proposta automática. O módulo não executa remanejamento."
+}
