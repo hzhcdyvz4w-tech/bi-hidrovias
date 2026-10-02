@@ -1,4 +1,4 @@
-name: Atualizar base SIOP do BI
+name: Atualizar bases Google Drive do BI
 
 on:
   workflow_dispatch:
@@ -13,57 +13,73 @@ permissions:
   contents: write
 
 jobs:
-  atualizar-siop:
+  atualizar-bases:
     runs-on: ubuntu-latest
     steps:
       - name: Baixar repositório
         uses: actions/checkout@v4
 
-      - name: Extrair SIOP do Google Drive via camada de junção
+      - name: Extrair base principal e SIOP do Google Drive
         shell: bash
         run: |
           set -euo pipefail
-          URL='https://script.google.com/macros/s/AKfycbyBOezMVBXAnk1ZMI0fzYoWzHR_Fn37pdoQR3UUkYqM8cCDbUPzUBzCO-23iwmBVJYvnw/exec'
-          curl -L --fail --retry 4 --retry-delay 5 --connect-timeout 30 --max-time 180 "$URL?_source=github-actions" -o /tmp/siop.json
+          MAIN='https://script.google.com/macros/s/AKfycbyUCnZm3VwmEivBW04wXSP8bPONg4Cv00acK7MaxZ_54jRMzgdwyIPUDmYnm3pasMLnvw/exec'
+          SIOP='https://script.google.com/macros/s/AKfycbyBOezMVBXAnk1ZMI0fzYoWzHR_Fn37pdoQR3UUkYqM8cCDbUPzUBzCO-23iwmBVJYvnw/exec'
+          curl -L --fail --retry 4 --retry-delay 5 --connect-timeout 30 --max-time 180 "$MAIN?_source=github-actions" -o /tmp/main.json
+          curl -L --fail --retry 4 --retry-delay 5 --connect-timeout 30 --max-time 180 "$SIOP?_source=github-actions" -o /tmp/siop.json
 
-      - name: Validar estrutura e integridade
+      - name: Validar e publicar snapshots
         shell: python
         run: |
-          import json, pathlib, sys
-          p = pathlib.Path('/tmp/siop.json')
-          data = json.loads(p.read_text(encoding='utf-8'))
-          if data.get('ok') is not True:
+          import json, pathlib
+
+          main = json.loads(pathlib.Path('/tmp/main.json').read_text(encoding='utf-8'))
+          rows = main.get('investments') or main.get('data')
+          if not isinstance(rows, list) or len(rows) != 19:
+              raise SystemExit(f'Base principal inválida: esperado 19 investimentos, recebido {0 if not isinstance(rows,list) else len(rows)}')
+          ids = [str(x.get('id')) for x in rows]
+          if len(ids) != len(set(ids)):
+              raise SystemExit('Base principal inválida: IDs duplicados')
+          if any(not x.get('nome') for x in rows):
+              raise SystemExit('Base principal inválida: investimento sem nome')
+          pathlib.Path('bi_hidrovias_public.json').write_text(
+              json.dumps(main, ensure_ascii=False, separators=(',', ':')),
+              encoding='utf-8'
+          )
+
+          siop = json.loads(pathlib.Path('/tmp/siop.json').read_text(encoding='utf-8'))
+          if siop.get('ok') is not True:
               raise SystemExit('API SIOP retornou ok != true')
-          investimentos = data.get('investimentos')
-          if not isinstance(investimentos, list) or not investimentos:
-              raise SystemExit('Lista de investimentos ausente/vazia')
-          m = data.get('metadata') or {}
-          qtd = m.get('quantidadeInvestimentosComSiop', len(investimentos))
-          if int(qtd) != len(investimentos):
-              raise SystemExit(f'Divergência de investimentos: metadata={qtd}, lista={len(investimentos)}')
-          # Segurança: somente relações habilitadas devem aparecer na integração.
-          for inv in investimentos:
-              for ex in inv.get('exercicios', []):
+          inv = siop.get('investimentos')
+          if not isinstance(inv, list) or not inv:
+              raise SystemExit('Lista SIOP de investimentos ausente/vazia')
+          m = siop.get('metadata') or {}
+          qtd = int(m.get('quantidadeInvestimentosComSiop', len(inv)))
+          if qtd != len(inv):
+              raise SystemExit(f'Divergência SIOP: metadata={qtd}, lista={len(inv)}')
+          for item in inv:
+              for ex in item.get('exercicios', []):
                   for r in ex.get('registros', []):
                       status = str(r.get('statusValidacao','')).upper()
                       if status and not status.startswith('SIM'):
-                          raise SystemExit('Registro não habilitado encontrado: '+status)
+                          raise SystemExit('Registro SIOP não habilitado encontrado: '+status)
           pathlib.Path('siop_hidrovias_public.json').write_text(
-              json.dumps(data, ensure_ascii=False, separators=(',', ':')),
+              json.dumps(siop, ensure_ascii=False, separators=(',', ':')),
               encoding='utf-8'
           )
-          print(f'OK: {len(investimentos)} investimentos integrados')
+
+          print(f'OK: base principal com {len(rows)} investimentos; SIOP com {len(inv)} investimentos integrados')
 
       - name: Publicar somente se houver alteração
         shell: bash
         run: |
           set -euo pipefail
-          if git diff --quiet -- siop_hidrovias_public.json; then
-            echo "Sem alteração material na base SIOP."
+          if git diff --quiet -- bi_hidrovias_public.json siop_hidrovias_public.json; then
+            echo "Sem alteração nas bases."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add siop_hidrovias_public.json
-          git commit -m "Atualiza base SIOP automaticamente"
+          git add bi_hidrovias_public.json siop_hidrovias_public.json
+          git commit -m "Atualiza bases Google Drive automaticamente"
           git push
