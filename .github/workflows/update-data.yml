@@ -27,7 +27,7 @@ jobs:
           MAIN='https://script.google.com/macros/s/AKfycbyUCnZm3VwmEivBW04wXSP8bPONg4Cv00acK7MaxZ_54jRMzgdwyIPUDmYnm3pasMLnvw/exec'
           SIOP_RAW='https://script.google.com/macros/s/AKfycbz2kMnc1DLfrf6M9t2mYjmb9h5NsdKdtvBoFGn9nWE4EENy0_692NvjoL8pQDv2me_z/exec'
           SIOP_CSV='https://docs.google.com/spreadsheets/d/1cCxnVPI4vWsGB-zfXblG6JZymBqsleEzG4Slet2fz8A/gviz/tq?tqx=out:csv&sheet=Consulta%20SIOP%20BI'
-          curl -A "Mozilla/5.0" -H "Accept: application/json,text/plain,*/*" -L --fail --retry 3 --retry-delay 3 --connect-timeout 30 --max-time 180 "$MAIN" -o /tmp/main.raw
+          curl -A "Mozilla/5.0" -H "Accept: application/json,text/plain,*/*" -L --retry 2 --retry-delay 2 --connect-timeout 20 --max-time 90 "$MAIN" -o /tmp/main.raw || true
           curl -A "Mozilla/5.0" -H "Accept: application/json,text/plain,*/*" -L --retry 2 --retry-delay 2 --connect-timeout 20 --max-time 90 "$SIOP_RAW" -o /tmp/siop.raw || true
           curl -A "Mozilla/5.0" -H "Accept: text/csv,text/plain,*/*" -L --retry 2 --retry-delay 2 --connect-timeout 20 --max-time 90 "$SIOP_CSV" -o /tmp/siop.csv || true
 
@@ -59,14 +59,18 @@ jobs:
               m=re.match(r'\s*(\d+)',str(v or ''))
               return m.group(1) if m else ''
 
-          main=parse_json('/tmp/main.raw')
-          rows=main.get('investments') or main.get('data')
-          if not isinstance(rows,list) or len(rows)!=19:
-              raise SystemExit('Base principal inválida: esperado 19 investimentos')
-          pathlib.Path('data/bi_hidrovias_public.json').write_text(
-              json.dumps(main,ensure_ascii=False,separators=(',',':')),encoding='utf-8'
-          )
-          print('MAIN OK:',len(rows),'investimentos')
+          try:
+              main=parse_json('/tmp/main.raw')
+              rows=main.get('investments') or main.get('data')
+              if not isinstance(rows,list) or len(rows)!=19:
+                  raise ValueError('esperado 19 investimentos')
+              pathlib.Path('data/bi_hidrovias_public.json').write_text(
+                  json.dumps(main,ensure_ascii=False,separators=(',',':')),encoding='utf-8'
+              )
+              print('MAIN OK:',len(rows),'investimentos')
+          except Exception as exc:
+              if not pathlib.Path('data/bi_hidrovias_public.json').exists(): raise
+              print('ATENÇÃO: base principal remota indisponível; preservando snapshot atual:',repr(exc))
 
           try:
               raw=None
