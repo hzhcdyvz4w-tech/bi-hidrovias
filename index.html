@@ -46,7 +46,44 @@
 @media(max-width:900px){.quick-table,.v73-audit table{min-width:760px}.quick-result,.v73-audit{overflow-x:auto;-webkit-overflow-scrolling:touch}}
 @media print{.quick-result,.v73-audit{overflow:visible}.quick-table,.v73-audit table{min-width:0!important;font-size:8.5pt}.quick-table th,.quick-table td,.v73-audit th,.v73-audit td{padding:4px;overflow-wrap:anywhere;word-break:break-word}a{word-break:break-all}}
 </style>
-</head><body><header><h1>BI Executivo de Hidrovias — DPP/SNHN · v74-SIOP AUTÔNOMO</h1><p>Assessoria executiva · backend estruturado · 19 registros · corte 29/09/2026 · filtros validados no iPhone</p></header><main class="wrap"><nav class="nav" id="legacyNav" style="display:none"><button onclick="goTo('filtros')">Carteira / Filtros</button><button onclick="showContracts()">Contratos e Valores</button><button onclick="showConcessions()">Concessões</button><button onclick="showControl()">Auditorias e Controle</button><button onclick="goTo('atualizacao')">Atualização Pública</button><button onclick="goTo('docs')">Relatórios / Briefing</button></nav>
+
+<style id="v74-refined-ui">
+.compact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin:10px 0}
+.compact-card{border:1px solid #d6e0ea;border-radius:12px;padding:11px 12px;background:#fff}
+.compact-card b{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:#33546f;margin-bottom:5px}
+.compact-card strong{font-size:16px;color:#0f3153}
+.compact-details{margin-top:12px;border:1px solid #d6e0ea;border-radius:10px;background:#f9fbfd;padding:8px 12px}
+.compact-details summary{cursor:pointer;font-weight:800;color:#173d63;padding:4px 0}
+.compact-details .grid{margin-top:10px}
+.budget-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:8px;margin:10px 0 14px}
+.budget-pill{border:1px solid #cbd8e5;border-radius:10px;padding:9px;background:#f9fbfd}
+.budget-pill b{display:block;font-size:11px;color:#49657c}
+.budget-pill span{display:block;font-size:15px;font-weight:800;color:#0e3356;margin-top:3px}
+.report-more{border:1px solid #d6e0ea;border-radius:10px;padding:8px 12px;margin-top:12px;background:#fbfcfe}
+.report-more summary{cursor:pointer;font-weight:800;color:#173d63}
+.report-budget-table td,.report-budget-table th{padding:7px 9px}
+.siop-context{margin:8px 0 4px;padding:8px 10px;border-radius:9px;background:#eef5fb;color:#264862;font-size:12px}
+#siop-test .siop-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:10px;align-items:end}
+#siop-test .siop-controls select{width:100%;min-width:0}
+#siop-test .siop-controls button{height:38px}
+#siop-test .siop-empty{padding:16px;border:1px dashed #c3d1df;border-radius:10px;background:#fbfcfe;font-weight:700;color:#536b80}
+.source-compact{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.source-chip{border:1px solid #cbd8e5;border-radius:999px;padding:7px 10px;background:#fff;font-size:12px;font-weight:700;color:#234d70}
+#atualizacao .grid{display:none}
+#atualizacao .sourcebar{margin-top:10px}
+#docs>p{max-width:900px;margin-bottom:10px}
+.doc .reportsection{margin-top:14px}
+@media(max-width:720px){
+ .compact-grid,.budget-strip,#siop-test .siop-controls{grid-template-columns:1fr}
+ .rtable{font-size:12px}
+}
+@media print{
+ .compact-details>*,.report-more>*{display:block!important}
+ .compact-details summary,.report-more summary,#siopClearBtn{display:none!important}
+ #siop-test .siop-controls{display:none!important}
+}
+</style>
+</head><body><header><h1>BI Executivo de Hidrovias — DPP/SNHN · v74-SIOP REFINADO</h1><p>Assessoria executiva · backend estruturado · 19 registros · corte 29/09/2026 · filtros validados no iPhone</p></header><main class="wrap"><nav class="nav" id="legacyNav" style="display:none"><button onclick="goTo('filtros')">Carteira / Filtros</button><button onclick="showContracts()">Contratos e Valores</button><button onclick="showConcessions()">Concessões</button><button onclick="showControl()">Auditorias e Controle</button><button onclick="goTo('atualizacao')">Atualização Pública</button><button onclick="goTo('docs')">Relatórios / Briefing</button></nav>
 <section class="box command-center" id="comando"><h2>Central de Comando Executivo</h2><div class="command-sub">Toque em uma função. O BI gera imediatamente a visão solicitada; depois você pode refinar pelos filtros territoriais.</div><div class="command-grid">
 <button class="cmd" onclick="quickView('invest')"><span class="ico">🗺️</span><b>Investimentos</b><small>Carteira completa e situação</small></button>
 <button class="cmd" onclick="quickView('territorio')"><span class="ico">📍</span><b>Região / UF</b><small>Abrir filtros em cascata</small></button>
@@ -680,7 +717,313 @@ function auditHtml(){return '<table><thead><tr><th>Órgão</th><th>Processo / re
 function invTable(rs){return '<table><thead><tr><th>Investimento</th><th>UF</th><th>Hidrovia/Rio</th><th>Situação</th><th>Instrumento</th><th>Valor</th><th>Próximo marco</th></tr></thead><tbody>'+rs.map(function(r){var h=(typeof hidroviasRelacionadasV72==='function'?hidroviasRelacionadasV72([r]):(r.hidrovias||[]).join(' • '));return '<tr><td>'+e(r.nome)+'</td><td>'+e((r.ufs||[]).join(' • '))+'</td><td>'+e(h)+'</td><td>'+e(r.situacao)+'</td><td>'+e(r.instrumento)+'</td><td>'+e(r.valor)+'</td><td>'+e(r.proximoMarco)+'</td></tr>'}).join('')+'</tbody></table>'}
 function executive(rs){return rs.map(function(r){return '<section class="item"><h2>'+e(r.nome)+'</h2><p><b>Situação:</b> '+e(r.situacao)+' | <b>Fase:</b> '+e(r.fase)+'</p><p><b>Execução física:</b> '+e(r.execFisica)+'<br><b>Execução orçamentária:</b> '+e(r.execOrcamentaria||r.execOrcSIOP)+'<br><b>Execução financeira:</b> '+e(r.execFinanceira)+'</p><p><b>Risco/gargalo:</b> '+e(r.gargalo)+'<br><b>Providência:</b> '+e(r.providencia)+'<br><b>Próximo marco:</b> '+e(r.proximoMarco)+'</p><p class="src"><b>Fonte/data:</b> '+e(r.fonte)+' • '+e(r.dataFonte)+'</p></section>'}).join('')}
 function briefing(rs){return rs.map(function(r){return '<section class="item"><h2>'+e(r.nome)+'</h2><p><b>Situação atual:</b> '+e(r.situacao)+'</p><p><b>Resultado/marco:</b> '+e(r.marco)+'</p><p><b>Principal risco:</b> '+e(r.gargalo)+'</p><p><b>Providência:</b> '+e(r.providencia)+'</p><p><b>Próximo marco:</b> '+e(r.proximoMarco)+'</p><p class="src"><b>Fonte/data:</b> '+e(r.fonte)+' • '+e(r.dataFonte)+'</p></section>'}).join('')}
-function build(kind,complete){var rs=filtered(), title=kind==='carteira'?'Carteira de Investimentos':kind==='relatorio'?'Relatório Executivo':'Briefing para Autoridade';var body=kind==='carteira'?invTable(rs):kind==='relatorio'?executive(rs):briefing(rs);if(complete)body+='<h2>Auditorias / Atualização por Fontes Públicas</h2>'+auditHtml();return '<!doctype html><html><head><meta charset="utf-8"><title>'+e(title)+'</title><style>@page{size:A4;margin:12mm}body{font:11pt Arial,sans-serif;color:#111}h1{font-size:19pt;margin:0 0 4px}h2{font-size:13pt;margin:14px 0 6px}.meta,.src{font-size:9pt;color:#555}.item{break-inside:avoid;border-bottom:1px solid #bbb;padding:0 0 8px;margin:0 0 8px}table{width:100%;border-collapse:collapse;font-size:9pt}th,td{border:1px solid #bbb;padding:5px;text-align:left;vertical-align:top}th{background:#eee}a{color:#111}</style></head><body><h1>'+e(title)+'</h1><p class="meta">Filtro: '+e(currentFilter())+' • '+rs.length+' investimento(s) • corte 29/09/2026</p>'+body+'</body></html>'}
+function build(kind,complete){var rs=filtered(), title=kind==='carteira'?'Carteira de Investimentos':kind==='relatorio'?'Relatório Executivo':'Briefing para Autoridade';var body=kind==='carteira'?invTable(rs):kind==='relatorio'?executive(rs):briefing(rs);if(complete)body+='<h2>Auditorias / Atualização por Fontes Públicas</h2>'+auditHtml();return '<!doctype html><html><head><meta charset="utf-8"><title>'+e(title)+'</title><style>@page{size:A4;margin:12mm}body{font:11pt Arial,sans-serif;color:#111}h1{font-size:19pt;margin:0 0 4px}h2{font-size:13pt;margin:14px 0 6px}.meta,.src{font-size:9pt;color:#555}.item{break-inside:avoid;border-bottom:1px solid #bbb;padding:0 0 8px;margin:0 0 8px}table{width:100%;border-collapse:collapse;font-size:9pt}th,td{border:1px solid #bbb;padding:5px;text-align:left;vertical-align:top}th{background:#eee}a{color:#111}</style></head><body><h1>'+e(title)+'</h1><p class="meta">Filtro: '+e(currentFilter())+' • '+rs.length+' investimento(s) • corte 29/09/2026</p>'+body+'
+<script id="v74-budget-refinement">
+(function(){
+'use strict';
+var MAIN_YEAR=2026, PLOA_YEAR=2027, ALLV='TODOS';
+
+function xesc(v){return String(v==null?'—':v).replace(/[&<>"']/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]})}
+function xbrl(v){return Number(v||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'})}
+function xpct(v){return v==null?'N/A':Number(v).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})+'%'}
+function uniq(a){return Array.from(new Set((a||[]).filter(function(x){return x!==null&&x!==undefined&&String(x).trim()!==''})))}
+function siopData(){return window.SIOP_DATA&&Array.isArray(window.SIOP_DATA.investimentos)?window.SIOP_DATA:null}
+function mainRowByName(nome){return (window.DATA||[]).find(function(r){return r.nome===nome})}
+function siopInv(nome){var d=siopData();return d?d.investimentos.find(function(x){return x.investimento===nome}):null}
+function exOf(inv,ano){return inv&&(inv.exercicios||[]).find(function(x){return String(x.ano)===String(ano)})}
+function allRecords(inv){var out=[];(inv&&inv.exercicios||[]).forEach(function(ex){(ex.registros||[]).forEach(function(r){var z=Object.assign({investimento:inv.investimento},r);out.push(z)})});return out}
+function regiaoOf(nome){var r=mainRowByName(nome);return r&&Array.isArray(r.regioes)&&r.regioes.length?r.regioes:['NÃO CLASSIFICADA']}
+function actionPO(inv,ano){
+ var ex=exOf(inv,ano), recs=ex?(ex.registros||[]):allRecords(inv);
+ var a=uniq(recs.map(function(r){return (r.acaoCodigo||'—')+(r.acaoDescricao?' — '+r.acaoDescricao:'')}));
+ var p=uniq(recs.map(function(r){return (r.poCodigo||'—')+(r.poDescricao?' — '+r.poDescricao:'')}));
+ return {acao:a.join(' • ')||'DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO',po:p.join(' • ')||'DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO'};
+}
+function budgetInfo(r){
+ var inv=siopInv(r&&r.nome), ex=exOf(inv,MAIN_YEAR), ap=actionPO(inv,MAIN_YEAR);
+ var ploaEx=exOf(inv,PLOA_YEAR);
+ return {
+  linked:!!inv, inv:inv, ex:ex, ap:ap, ploaEx:ploaEx,
+  loa:ex?xbrl(ex.totais.dotacaoAtual)+' — Dotação Atual SIOP '+MAIN_YEAR:'DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — LOA '+MAIN_YEAR+' não localizada para este vínculo',
+  ploa:ploaEx?xbrl(ploaEx.totais.dotacaoAtual)+' — proposta orçamentária '+PLOA_YEAR:'DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — PLOA '+PLOA_YEAR+' não consta na base SIOP relacionada',
+  ppa:'DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — validar PPA vigente na fonte orçamentária oficial'
+ };
+}
+window.biBudgetInfo=budgetInfo;
+
+function enrichFromSiop(){
+ if(!Array.isArray(window.DATA))return;
+ DATA.forEach(function(r){
+   var b=budgetInfo(r);
+   if(!b.linked)return;
+   var inv=b.inv, ex=b.ex, ref=ex||((inv.exercicios||[]).slice().sort(function(a,b){return Number(b.ano)-Number(a.ano)})[0]);
+   var ap=actionPO(inv,ref&&ref.ano);
+   r.acaoPO='Ação: '+ap.acao+' | PO: '+ap.po;
+   r.loa2026=b.loa;
+   r.ploa2027=b.ploa;
+   r.dataSIOP=(siopData().generatedAt||siopData().dataBase||'02/10/2026');
+   r.fonteExecOrcamentaria='SIOP + Matriz de Relacionamento';
+   if(ex){
+     var t=ex.totais;
+     r.execOrcSIOP='Dotação '+xbrl(t.dotacaoAtual)+' | Empenhado '+xbrl(t.empenhado)+' ('+xpct(t.pctEmpenhadoDotacao)+') | Saldo a empenhar '+xbrl(t.saldoEmpenhar);
+     r.execFinSIOP='Liquidado '+xbrl(t.liquidado)+' | Pago '+xbrl(t.pago);
+     r.execOrcamentaria=r.execOrcSIOP;
+     r.execFinanceira=r.execFinSIOP;
+     r.empenhadoPago='Empenhado '+xbrl(t.empenhado)+' | Liquidado '+xbrl(t.liquidado)+' | Pago '+xbrl(t.pago);
+   }
+ });
+}
+
+function budgetStrip(r){
+ var b=budgetInfo(r),t=b.ex&&b.ex.totais;
+ if(!t)return '<div class="siop-empty">Sem execução SIOP homologada para '+MAIN_YEAR+' neste investimento.</div>';
+ var a=[
+  ['LOA '+MAIN_YEAR,xbrl(t.dotacaoAtual)],
+  ['Empenhado',xbrl(t.empenhado)+' · '+xpct(t.pctEmpenhadoDotacao)],
+  ['Liquidado',xbrl(t.liquidado)+' · '+xpct(t.pctLiquidadoEmpenhado)],
+  ['Pago',xbrl(t.pago)+' · '+xpct(t.pctPagoLiquidado)],
+  ['Saldo a empenhar',xbrl(t.saldoEmpenhar)]
+ ];
+ return '<div class="budget-strip">'+a.map(function(x){return '<div class="budget-pill"><b>'+x[0]+'</b><span>'+x[1]+'</span></div>'}).join('')+'</div>';
+}
+
+var originalRender=window.render;
+window.render=function(){
+ var rs=typeof set==='function'?set():(window.DATA||[]),p=document.getElementById('panel');
+ if(!p)return originalRender&&originalRender();
+ enrichFromSiop();
+ document.getElementById('kc').textContent=rs.length;
+ document.getElementById('ku').textContent=uniq([].concat.apply([],rs.map(function(r){return r.ufs||[]}))).length;
+ document.getElementById('km').textContent=uniq([].concat.apply([],rs.map(function(r){return r.municipios||[]}))).length;
+ document.getElementById('kp').textContent=rs.filter(function(r){return /SIM|ATENÇÃO|RISCO|PEND/i.test(r.problema||'')}).length;
+ var h='';
+ if(rs.length===1){
+   var r=rs[0],b=budgetInfo(r);
+   document.getElementById('pt').textContent='Ficha executiva — '+r.nome;
+   h+='<div class="compact-grid">'+
+      '<div class="compact-card"><b>Situação</b><strong>'+xesc(safe(r.situacao))+'</strong></div>'+
+      '<div class="compact-card"><b>Contrato / instrumento</b><strong>'+xesc(safe(r.instrumento))+'</strong></div>'+
+      '<div class="compact-card"><b>Valor do instrumento</b><strong>'+xesc(safe(r.valor))+'</strong></div>'+
+      '<div class="compact-card"><b>Ação / PO</b><strong>'+xesc(b.ap.acao)+'</strong><div>'+xesc(b.ap.po)+'</div></div>'+
+      '</div>'+
+      budgetStrip(r)+
+      '<div class="compact-grid">'+
+      '<div class="compact-card"><b>LOA '+MAIN_YEAR+'</b><strong>'+xesc(b.loa)+'</strong></div>'+
+      '<div class="compact-card"><b>PLOA '+PLOA_YEAR+'</b><strong>'+xesc(b.ploa)+'</strong></div>'+
+      '<div class="compact-card"><b>Próximo marco</b><strong>'+xesc(safe(r.proximoMarco))+'</strong></div>'+
+      '<div class="compact-card"><b>Risco / gargalo</b><strong>'+xesc(safe(r.gargalo))+'</strong></div>'+
+      '</div>'+
+      '<details class="compact-details"><summary>Detalhes técnicos, financeiros e rastreabilidade</summary><div class="grid">'+
+      F('Nome',r.nome,1)+F('Região',(r.regioes||[]).join(', '))+F('UF',(r.ufs||[]).join(', '))+F('Município / abrangência',(r.municipios||[]).join(' • '),1)+
+      F('Hidrovia / rio',(r.hidrovias||[]).join(', '))+F('Tipo',r.tipo)+F('Objeto',r.objeto,1)+F('Fase',r.fase,1)+
+      F('Execução física',r.execFisica,1,'warn')+F('Execução orçamentária',r.execOrcamentaria,1,'warn')+F('Execução financeira',r.execFinanceira,1,'warn')+
+      F('Empenhado / liquidado / pago',r.empenhadoPago,1,'warn')+F('PPA',b.ppa,1,'warn')+
+      F('Executor',r.executor)+F('Unidade responsável',r.unidade)+F('Marco alcançado',r.marco,1)+F('Providência DPP',r.providencia,1)+
+      F('Evidência pendente',r.pendencia,1,'warn')+F('Fonte',r.fonte,1,'src')+F('Data da fonte/corte',r.dataFonte,1,'src')+
+      '</div></details>';
+ }else{
+   document.getElementById('pt').textContent='Painel consolidado — '+rs.length+' investimentos';
+   var names=new Set(rs.map(function(r){return r.nome})), d=siopData();
+   var linked=d?d.investimentos.filter(function(i){return names.has(i.investimento)}):[];
+   var rec=[];linked.forEach(function(i){var ex=exOf(i,MAIN_YEAR);if(ex)(ex.registros||[]).forEach(function(r){rec.push(r)})});
+   var t=sumRecords(rec);
+   h+='<div class="compact-grid">'+
+     '<div class="compact-card"><b>Investimentos no recorte</b><strong>'+rs.length+'</strong></div>'+
+     '<div class="compact-card"><b>Com SIOP homologado</b><strong>'+linked.length+'</strong></div>'+
+     '<div class="compact-card"><b>LOA '+MAIN_YEAR+' relacionada</b><strong>'+xbrl(t.dotacaoAtual)+'</strong></div>'+
+     '<div class="compact-card"><b>Pago '+MAIN_YEAR+'</b><strong>'+xbrl(t.pago)+'</strong></div>'+
+     '</div>'+
+     F('Investimentos',rs.map(function(r){return '• '+r.nome}).join('\n'),1)+
+     F('UFs',ag(rs,'uf'))+F('Hidrovias / rios',typeof hidroviasRelacionadasV72==='function'?hidroviasRelacionadasV72(rs):ag(rs,'hidrovia'))+
+     F('Situações',uniq(rs.map(function(r){return r.situacao})).join(' • '),1)+
+     '<details class="compact-details"><summary>Próximos marcos, riscos e providências</summary><div class="grid">'+
+     F('Próximos marcos',rs.map(function(r){return '• '+r.nome+': '+safe(r.proximoMarco)}).join('\n'),1)+
+     F('Riscos / gargalos',rs.map(function(r){return '• '+r.nome+': '+safe(r.gargalo)}).join('\n'),1)+
+     F('Providências DPP',rs.map(function(r){return '• '+r.nome+': '+safe(r.providencia)}).join('\n'),1)+
+     '</div></details>';
+ }
+ p.innerHTML=h;
+ setTimeout(syncSiopWithMainFilters,0);
+};
+
+function reportBudgetRows(r,row){
+ var b=budgetInfo(r),t=b.ex&&b.ex.totais;
+ return row('Ação',b.ap.acao)+row('Plano Orçamentário (PO)',b.ap.po)+
+        row('LOA '+MAIN_YEAR,b.loa)+row('PLOA '+PLOA_YEAR,b.ploa)+
+        row('Dotação atual '+MAIN_YEAR,t?xbrl(t.dotacaoAtual):'DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO')+
+        row('Empenhado '+MAIN_YEAR,t?xbrl(t.empenhado)+' — '+xpct(t.pctEmpenhadoDotacao):'DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO')+
+        row('Liquidado '+MAIN_YEAR,t?xbrl(t.liquidado)+' — '+xpct(t.pctLiquidadoEmpenhado)+' do empenhado':'DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO')+
+        row('Pago '+MAIN_YEAR,t?xbrl(t.pago)+' — '+xpct(t.pctPagoLiquidado)+' do liquidado':'DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO')+
+        row('Saldo a empenhar '+MAIN_YEAR,t?xbrl(t.saldoEmpenhar):'DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO');
+}
+
+window.doc=function(tipo){
+ enrichFromSiop();
+ var a=typeof currentSet==='function'?currentSet():(typeof set==='function'?set():DATA),d=document.getElementById('doc');
+ if(!d)return;
+ if(!a.length){d.innerHTML='<div class="siop-empty">Nenhum investimento corresponde aos filtros atuais.</div>';return}
+ function row(k,v){return '<tr><th>'+xesc(k)+'</th><td>'+xesc(safe(v))+'</td></tr>'}
+ function ficha(r,brief){
+   var b=budgetInfo(r),t=b.ex&&b.ex.totais;
+   if(brief){
+     return '<div class="reporthead"><h2>BRIEFING — '+xesc(r.nome)+'</h2><div class="reportmeta">DPP/SNHN · base dinâmica · '+xesc(r.dataFonte||'data a validar')+'</div></div>'+
+       '<div class="compact-grid"><div class="compact-card"><b>Situação</b><strong>'+xesc(safe(r.situacao))+'</strong></div>'+
+       '<div class="compact-card"><b>LOA '+MAIN_YEAR+'</b><strong>'+xesc(b.loa)+'</strong></div>'+
+       '<div class="compact-card"><b>Empenhado</b><strong>'+(t?xesc(xbrl(t.empenhado)):'A VALIDAR')+'</strong></div>'+
+       '<div class="compact-card"><b>Pago</b><strong>'+(t?xesc(xbrl(t.pago)):'A VALIDAR')+'</strong></div></div>'+
+       '<table class="rtable report-budget-table">'+row('Contrato / instrumento',r.instrumento)+row('Empresa / executor',r.executor)+row('Valor',r.valor)+
+       reportBudgetRows(r,row)+row('Próximo marco',r.proximoMarco)+row('Risco / gargalo',r.gargalo)+row('Providência DPP',r.providencia)+'</table>'+
+       '<p class="reportmeta"><b>Fonte:</b> '+xesc(safe(r.fonteExecOrcamentaria||r.fonte))+' · vínculo SIOP somente quando habilitado.</p>';
+   }
+   return '<div class="reporthead"><h2>RELATÓRIO EXECUTIVO — '+xesc(r.nome)+'</h2><div class="reportmeta">DPP/SNHN · base dinâmica · origem '+xesc(safe(r.origem))+'</div></div>'+
+     '<div class="reportsection"><h3>1. Síntese executiva</h3><p>'+xesc(safe(r.objeto))+'</p><p><b>Situação:</b> '+xesc(safe(r.situacao))+' &nbsp; <b>Fase:</b> '+xesc(safe(r.fase))+'</p></div>'+
+     budgetStrip(r)+
+     '<div class="reportsection"><h3>2. Quadro contratual</h3><table class="rtable">'+
+       row('Contrato / instrumento',r.instrumento)+row('Empresa / executor',r.executor)+row('Valor do instrumento',r.valor)+row('Prazo / próximo marco',r.proximoMarco)+
+     '</table></div>'+
+     '<div class="reportsection"><h3>3. Orçamento e execução</h3><table class="rtable report-budget-table">'+
+       reportBudgetRows(r,row)+row('Execução física',r.execFisica)+
+     '</table></div>'+
+     '<details class="report-more"><summary>4. Marcos, riscos, controle e fontes</summary>'+
+       '<table class="rtable">'+row('Marco alcançado',r.marco)+row('Risco / gargalo',r.gargalo)+row('Problema confirmado?',r.problema)+row('Providência DPP',r.providencia)+row('Evidência pendente',r.pendencia)+row('PPA',b.ppa)+row('Fonte principal',r.fonte)+row('Fonte orçamentária',r.fonteExecOrcamentaria)+row('Data da fonte/corte',r.dataFonte)+'</table>'+
+     '</details>';
+ }
+ d.innerHTML=a.map(function(r){return ficha(r,tipo==='brief')}).join('<hr style="margin:24px 0">');
+ d.scrollIntoView({behavior:'smooth',block:'start'});
+};
+
+window.gerarProdutoV51=function(tipo){
+ var r=(typeof selectedV51==='function'?selectedV51():(typeof set==='function'?set()[0]:DATA[0]));
+ var out=document.getElementById('produtoV51');if(!out||!r)return;
+ var b=budgetInfo(r),t=b.ex&&b.ex.totais;
+ out.innerHTML='<div class="doc-v51"><h2>'+xesc(tipo==='briefing'?'BRIEFING EXECUTIVO':'QUADRO EXECUTIVO')+' — '+xesc(r.nome)+'</h2>'+
+  budgetStrip(r)+'<div class="compact-grid">'+
+  '<div class="compact-card"><b>Ação / PO</b><strong>'+xesc(b.ap.acao)+'</strong><div>'+xesc(b.ap.po)+'</div></div>'+
+  '<div class="compact-card"><b>LOA '+MAIN_YEAR+'</b><strong>'+xesc(b.loa)+'</strong></div>'+
+  '<div class="compact-card"><b>PLOA '+PLOA_YEAR+'</b><strong>'+xesc(b.ploa)+'</strong></div>'+
+  '<div class="compact-card"><b>Próximo marco</b><strong>'+xesc(safe(r.proximoMarco))+'</strong></div>'+
+  '</div><details class="compact-details"><summary>Contrato, risco e fonte</summary><div class="grid">'+
+  F('Contrato / instrumento',r.instrumento,1)+F('Empresa / executor',r.executor,1)+F('Valor',r.valor,1)+F('Risco / gargalo',r.gargalo,1)+F('Fonte',r.fonte,1,'src')+
+  '</div></details></div>';
+ out.scrollIntoView({behavior:'smooth',block:'start'});
+};
+
+function sumRecords(recs){
+ var t={dotacaoAtual:0,empenhado:0,liquidado:0,pago:0,saldoEmpenhar:0,saldoLiquidar:0,empenhadoNaoPago:0,liquidadoPagar:0};
+ (recs||[]).forEach(function(r){['dotacaoAtual','empenhado','liquidado','pago'].forEach(function(k){t[k]+=Number(r[k]||0)})});
+ t.saldoEmpenhar=t.dotacaoAtual-t.empenhado;t.saldoLiquidar=t.empenhado-t.liquidado;t.empenhadoNaoPago=t.empenhado-t.pago;t.liquidadoPagar=t.liquidado-t.pago;
+ t.pctEmpenhadoDotacao=t.dotacaoAtual?100*t.empenhado/t.dotacaoAtual:null;
+ t.pctLiquidadoEmpenhado=t.empenhado?100*t.liquidado/t.empenhado:null;
+ t.pctPagoLiquidado=t.liquidado?100*t.pago/t.liquidado:null;
+ t.pctPagoDotacao=t.dotacaoAtual?100*t.pago/t.dotacaoAtual:null;
+ return t;
+}
+window.sumSiopRecords=sumRecords;
+
+function mainFilteredNames(){
+ try{return new Set((typeof set==='function'?set():DATA).map(function(r){return r.nome}))}catch(e){return new Set((DATA||[]).map(function(r){return r.nome}))}
+}
+function recordsForCandidates(cands){
+ var out=[];(cands||[]).forEach(function(inv){allRecords(inv).forEach(function(r){out.push(r)})});return out
+}
+function fillSelect(el,items,label,keep){
+ if(!el)return;var old=keep?el.value:ALLV;el.innerHTML='<option value="'+ALLV+'">'+label+'</option>'+items.map(function(x){return '<option value="'+xesc(x.value)+'">'+xesc(x.label)+'</option>'}).join('');
+ if(items.some(function(x){return String(x.value)===String(old)}))el.value=old;else el.value=ALLV;
+}
+function filteredSiopInvestments(){
+ var d=siopData();if(!d)return[];
+ var names=mainFilteredNames(),reg=document.getElementById('siopRegiao');
+ return d.investimentos.filter(function(inv){
+   if(!names.has(inv.investimento))return false;
+   if(reg&&reg.value!==ALLV&&regiaoOf(inv.investimento).indexOf(reg.value)<0)return false;
+   return true;
+ });
+}
+function refreshSiopOptions(preserve){
+ var d=siopData();if(!d)return;
+ var reg=document.getElementById('siopRegiao'),acao=document.getElementById('siopAcao'),po=document.getElementById('siopPO'),invSel=document.getElementById('siopInv'),ano=document.getElementById('siopAno');
+ var allRegs=uniq(d.investimentos.reduce(function(a,i){return a.concat(regiaoOf(i.investimento))},[])).sort();
+ fillSelect(reg,allRegs.map(function(x){return{value:x,label:x}}),'TODAS',preserve);
+ var cands=filteredSiopInvestments(),recs=recordsForCandidates(cands);
+ var actions={};recs.forEach(function(r){actions[r.acaoCodigo||'—']=r.acaoDescricao||''});
+ fillSelect(acao,Object.keys(actions).sort().map(function(k){return{value:k,label:k+(actions[k]?' — '+actions[k]:'')}}),'TODAS',preserve);
+ var act=acao&&acao.value;
+ var poMap={};recs.filter(function(r){return !act||act===ALLV||String(r.acaoCodigo)===String(act)}).forEach(function(r){poMap[r.poCodigo||'—']=r.poDescricao||''});
+ fillSelect(po,Object.keys(poMap).sort().map(function(k){return{value:k,label:k+(poMap[k]?' — '+poMap[k]:'')}}),'TODOS',preserve);
+ fillSelect(invSel,cands.map(function(i){return{value:i.investimento,label:i.investimento}}),'TODOS OS RELACIONADOS ('+cands.length+')',preserve);
+ var selectedInv=invSel&&invSel.value!==ALLV?cands.filter(function(i){return i.investimento===invSel.value}):cands;
+ var years=uniq(recordsForCandidates(selectedInv).map(function(r){return String(r.ano)})).sort().reverse();
+ fillSelect(ano,years.map(function(y){return{value:y,label:y}}),'Todos os exercícios',preserve);
+}
+function filteredSiopRecords(){
+ var cands=filteredSiopInvestments(),invSel=document.getElementById('siopInv'),ano=document.getElementById('siopAno'),acao=document.getElementById('siopAcao'),po=document.getElementById('siopPO');
+ if(invSel&&invSel.value!==ALLV)cands=cands.filter(function(i){return i.investimento===invSel.value});
+ var recs=recordsForCandidates(cands);
+ return recs.filter(function(r){
+   if(ano&&ano.value!==ALLV&&String(r.ano)!==String(ano.value))return false;
+   if(acao&&acao.value!==ALLV&&String(r.acaoCodigo)!==String(acao.value))return false;
+   if(po&&po.value!==ALLV&&String(r.poCodigo)!==String(po.value))return false;
+   return true;
+ });
+}
+window.renderSiopTest=function(){
+ var d=siopData(),cards=document.getElementById('siopCards'),detail=document.getElementById('siopDetail'),ctx=document.getElementById('siopContext'),st=document.getElementById('siopTestStatus');
+ if(!d||!cards||!detail)return;
+ var cands=filteredSiopInvestments(),recs=filteredSiopRecords(),t=sumRecords(recs);
+ var mainRs=typeof set==='function'?set():DATA;
+ if(ctx)ctx.innerHTML='<b>Recorte do BI:</b> '+xesc(mainRs.length+' investimento(s) após Região → UF → Município/Hidrovia → Tipo → Empreendimento')+' · <b>SIOP relacionado:</b> '+cands.length+' investimento(s).';
+ if(!cands.length){
+   cards.innerHTML='';detail.innerHTML='<div class="siop-empty">Nenhum investimento com relacionamento SIOP habilitado corresponde aos filtros atuais do BI. O sistema não exibe valores de outro empreendimento por aproximação.</div>';
+   if(st)st.textContent='SIOP OK · recorte atual sem vínculo homologado.';
+   return;
+ }
+ var vals=[['Dotação',xbrl(t.dotacaoAtual)],['Empenhado',xbrl(t.empenhado)+' · '+xpct(t.pctEmpenhadoDotacao)],['Liquidado',xbrl(t.liquidado)+' · '+xpct(t.pctLiquidadoEmpenhado)],['Pago',xbrl(t.pago)+' · '+xpct(t.pctPagoLiquidado)],['Saldo a empenhar',xbrl(t.saldoEmpenhar)],['Liquidado a pagar',xbrl(t.liquidadoPagar)]];
+ cards.innerHTML=vals.map(function(x){return '<div class="siop-card"><b>'+x[0]+'</b><span>'+x[1]+'</span></div>'}).join('');
+ var warn=[];if(t.saldoEmpenhar<0)warn.push('⚠️ Empenhado superior à dotação.');if(t.empenhado>0&&t.pctLiquidadoEmpenhado<10)warn.push('⚠️ Liquidação inferior a 10% do empenhado.');if(t.liquidadoPagar>0)warn.push('ℹ️ Há valor liquidado ainda não pago.');
+ detail.innerHTML=(warn.length?'<p class="siop-alert">'+warn.join('<br>')+'</p>':'')+
+ '<table><thead><tr><th>Investimento</th><th>Ano</th><th>Ação</th><th>PO</th><th>Grupo</th><th>Dotação</th><th>Empenhado</th><th>Liquidado</th><th>Pago</th></tr></thead><tbody>'+
+ recs.map(function(r){return '<tr><td>'+xesc(r.investimento)+'</td><td>'+xesc(r.ano)+'</td><td>'+xesc(r.acaoCodigo)+'<br><small>'+xesc(r.acaoDescricao)+'</small></td><td>'+xesc(r.poCodigo)+'<br><small>'+xesc(r.poDescricao)+'</small></td><td>'+xesc(r.grupoDespesa)+'</td><td>'+xbrl(r.dotacaoAtual)+'</td><td>'+xbrl(r.empenhado)+'</td><td>'+xbrl(r.liquidado)+'</td><td>'+xbrl(r.pago)+'</td></tr>'}).join('')+'</tbody></table>'+
+ '<p class="siop-note"><b>Fonte:</b> SIOP + Matriz de Relacionamento · '+recs.length+' linha(s) integrada(s) no recorte. Exercícios não são misturados por padrão quando um ano é selecionado.</p>';
+ if(st)st.textContent='BASE SIOP OK · '+((d.metadata&&d.metadata.registrosSIOP)||156)+' registros de origem · '+((d.metadata&&d.metadata.relacionamentosHabilitados)||11)+' relações habilitadas.';
+};
+
+function syncSiopWithMainFilters(){
+ if(!siopData())return;
+ var reg=document.getElementById('siopRegiao'),invSel=document.getElementById('siopInv');
+ var mainReg=document.getElementById('regiao'),mainInv=document.getElementById('empreendimento');
+ refreshSiopOptions(false);
+ if(reg&&mainReg&&mainReg.value&&mainReg.value!==ALLV&&Array.from(reg.options).some(function(o){return o.value===mainReg.value}))reg.value=mainReg.value;
+ refreshSiopOptions(true);
+ if(invSel&&mainInv&&mainInv.value&&mainInv.value!==ALLV&&Array.from(invSel.options).some(function(o){return o.value===mainInv.value}))invSel.value=mainInv.value;
+ refreshSiopOptions(true);renderSiopTest();
+}
+window.syncSiopWithMainFilters=syncSiopWithMainFilters;
+
+function compactStaticSections(){
+ var a=document.getElementById('atualizacao');
+ if(a)a.innerHTML='<h2>Atualização e fontes</h2><p class="siop-note">Fontes organizadas por função. Abra somente o que precisar.</p><div class="source-compact">'+
+   '<span class="source-chip">SIOP · orçamento</span><span class="source-chip">SIAFI · execução financeira</span><span class="source-chip">DNIT · infraestrutura</span><span class="source-chip">ANTAQ · concessões</span><span class="source-chip">PNCP · contratos</span><span class="source-chip">TCU/CGU/TCE · controle</span>'+
+   '</div><details class="compact-details"><summary>Regras de atualização e demais fontes</summary><p>ObrasGov, Transferegov, Infra S.A. e Administrações Hidroviárias são fontes complementares quando houver correspondência inequívoca. Cada valor mantém sistema de origem e data-base; divergências são sinalizadas e não há substituição silenciosa.</p></details>';
+ var docs=document.getElementById('docs');
+ if(docs){var p=docs.querySelector('p');if(p)p.innerHTML='<b>Saídas executivas:</b> contrato, executor, valor, LOA, PLOA e execução orçamentária/financeira são apresentados separadamente; ausência de vínculo permanece explicitamente em validação.'}
+}
+
+function bindRefined(){
+ ['regiao','uf','municipio','hidrovia','tipo','empreendimento'].forEach(function(id){var e=document.getElementById(id);if(e)e.addEventListener('change',function(){setTimeout(syncSiopWithMainFilters,0)})});
+ ['siopRegiao','siopAcao','siopPO','siopInv','siopAno'].forEach(function(id){var e=document.getElementById(id);if(e)e.addEventListener('change',function(){refreshSiopOptions(true);renderSiopTest()})});
+ var clear=document.getElementById('siopClearBtn');if(clear)clear.onclick=function(){['siopRegiao','siopAcao','siopPO','siopInv','siopAno'].forEach(function(id){var e=document.getElementById(id);if(e)e.value=ALLV});refreshSiopOptions(false);renderSiopTest()};
+ window.addEventListener('bi:data-updated',function(){setTimeout(function(){enrichFromSiop();syncSiopWithMainFilters();window.render()},50)});
+ window.addEventListener('bi:siop-updated',function(){setTimeout(function(){enrichFromSiop();syncSiopWithMainFilters();window.render()},50)});
+}
+
+function startRefined(){
+ compactStaticSections();enrichFromSiop();refreshSiopOptions(false);bindRefined();syncSiopWithMainFilters();window.render();
+ var p=document.querySelector('header p');if(p)p.textContent='Base dinâmica · 19 investimentos · execução SIOP relacionada · LOA/PLOA separados · interface refinada';
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',startRefined);else startRefined();
+})();
+</script>
+</body></html>'}
 window.v73Print=function(k){var w=window.open('','_blank');if(!w){alert('Permita pop-ups para imprimir somente este relatório.');return}w.document.open();w.document.write(build(k,false));w.document.close();w.focus();setTimeout(function(){w.print()},250)};
 window.v73Export=function(k){var html=build(k,true), blob=new Blob([html],{type:'text/html;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='BI_'+k+'_completo_29-09-2026.html';document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},500)};
 function toolbar(k){return '<div class="v73-toolbar"><button onclick="v73Print(\''+k+'\')">🖨️ Imprimir essencial</button><button onclick="v73Export(\''+k+'\')">⬇️ Exportar completo</button></div>'}
@@ -706,13 +1049,17 @@ var oldQV=window.quickView;window.quickView=function(t){var z=oldQV?oldQV(t):und
 #siop-test .siop-alert{font-weight:700}
 </style>
 <section class="box" id="siop-test">
-  <h2>🧪 Execução Orçamentária — SIOP | Homologação Final</h2>
-  <p class="siop-note"><b>Ambiente de homologação final.</b> Esta seção não altera a base estável v74. Exibe somente relacionamentos habilitados pela matriz de teste. Relacionamentos “SIM - PROVISÓRIO” continuam sujeitos à validação documental.</p>
-  <div id="siopTestStatus" class="siop-note">Aguardando leitura da API de junção…</div>
+  <h2>💰 Execução Orçamentária — SIOP</h2>
+  <p class="siop-note"><b>Base relacionada.</b> Os filtros territoriais do BI limitam automaticamente os investimentos SIOP. Depois, Ação e PO refinam a execução. Somente vínculos habilitados entram nos valores; “SIM - PROVISÓRIO” continua sujeito à validação documental.</p>
+  <div id="siopTestStatus" class="siop-note">Carregando base orçamentária…</div>
+  <div id="siopContext" class="siop-context"></div>
   <div class="siop-controls">
+    <div><label>Região</label><br><select id="siopRegiao"><option value="TODOS">TODAS</option></select></div>
+    <div><label>Ação</label><br><select id="siopAcao"><option value="TODOS">TODAS</option></select></div>
+    <div><label>Plano Orçamentário (PO)</label><br><select id="siopPO"><option value="TODOS">TODOS</option></select></div>
     <div><label>Investimento</label><br><select id="siopInv"></select></div>
-    <div><label>Exercício</label><br><select id="siopAno"><option value="TODOS">Todos (somente para conferência)</option></select></div>
-    <button type="button" onclick="renderSiopTest()">Atualizar teste</button>
+    <div><label>Exercício</label><br><select id="siopAno"><option value="TODOS">Todos</option></select></div>
+    <button type="button" id="siopClearBtn">Limpar filtros SIOP</button>
   </div>
   <div id="siopCards" class="siop-grid"></div>
   <div id="siopDetail"></div>
@@ -721,7 +1068,7 @@ var oldQV=window.quickView;window.quickView=function(t){var z=oldQV?oldQV(t):und
 (function(){
 const SIOP_EMBEDDED={"ok":true,"schemaVersion":2,"projeto":"Projeto BI - Hidrovias","fonte":"SIOP — base Google Drive/Sheets + Matriz de Relacionamento","dataBase":"02/10/2026","metadata":{"registrosSIOP":156,"relacionamentosHabilitados":11,"linhasIntegradas":11,"investimentosComSIOP":5,"regra":"Somente relacionamentos habilitado=SIM; exercícios separados; sem estimativa."},"totaisIntegrados":{"dotacaoAtual":664452445,"empenhado":538295314,"liquidado":235965186,"pago":224596286,"saldoEmpenhar":126157131,"saldoLiquidar":302330128,"empenhadoNaoPago":313699028,"liquidadoPagar":11368900,"pctEmpenhadoDotacao":81.0133694368451,"pctLiquidadoEmpenhado":43.835638145644346,"pctPagoLiquidado":95.18195874877915,"pctPagoDotacao":33.80170961670553},"investimentos":[{"investimento":"Dragagem Lagoa Mirim","totais":{"dotacaoAtual":7798862,"empenhado":4150672,"liquidado":3271188,"pago":3224133,"saldoEmpenhar":3648190,"saldoLiquidar":879484,"empenhadoNaoPago":926539,"liquidadoPagar":47055,"pctEmpenhadoDotacao":53.22150847136415,"pctLiquidadoEmpenhado":78.81104553672273,"pctPagoLiquidado":98.5615317737776,"pctPagoDotacao":41.34107001765129},"exercicios":[{"ano":2025,"totais":{"dotacaoAtual":3303988,"empenhado":3309987,"liquidado":3271188,"pago":3224133,"saldoEmpenhar":-5999,"saldoLiquidar":38799,"empenhadoNaoPago":85854,"liquidadoPagar":47055,"pctEmpenhadoDotacao":100.18156845605976,"pctLiquidadoEmpenhado":98.82782016968646,"pctPagoLiquidado":98.5615317737776,"pctPagoDotacao":97.5830723356138},"registros":[{"ano":2025,"acaoCodigo":"162D","acaoDescricao":"Dragagem e Sinalização Náutica da Lagoa Mirim","poCodigo":"0000","poDescricao":"Dragagem e Sinalização Náutica da Lagoa Mirim","grupoDespesa":"3 - Outras Despesas Correntes","dotacaoAtual":2994000,"empenhado":3000000,"liquidado":2994000,"pago":2994000,"statusValidacao":"SIM - PROVISÓRIO"},{"ano":2025,"acaoCodigo":"162D","acaoDescricao":"Dragagem e Sinalização Náutica da Lagoa Mirim","poCodigo":"0000","poDescricao":"Dragagem e Sinalização Náutica da Lagoa Mirim","grupoDespesa":"4 - Investimentos","dotacaoAtual":309988,"empenhado":309987,"liquidado":277188,"pago":230133,"statusValidacao":"SIM - PROVISÓRIO"}]},{"ano":2026,"totais":{"dotacaoAtual":4494874,"empenhado":840685,"liquidado":0,"pago":0,"saldoEmpenhar":3654189,"saldoLiquidar":840685,"empenhadoNaoPago":840685,"liquidadoPagar":0,"pctEmpenhadoDotacao":18.703193904879203,"pctLiquidadoEmpenhado":0,"pctPagoLiquidado":null,"pctPagoDotacao":0},"registros":[{"ano":2026,"acaoCodigo":"162D","acaoDescricao":"Dragagem e Sinalização Náutica da Lagoa Mirim","poCodigo":"0000","poDescricao":"Dragagem e Sinalização Náutica da Lagoa Mirim","grupoDespesa":"4 - Investimentos","dotacaoAtual":4494874,"empenhado":840685,"liquidado":0,"pago":0,"statusValidacao":"SIM - PROVISÓRIO"}]}]},{"investimento":"Modernização da IP4 de Parintins","totais":{"dotacaoAtual":6955154,"empenhado":6955150,"liquidado":6955150,"pago":6955150,"saldoEmpenhar":4,"saldoLiquidar":0,"empenhadoNaoPago":0,"liquidadoPagar":0,"pctEmpenhadoDotacao":99.99994248869257,"pctLiquidadoEmpenhado":100,"pctPagoLiquidado":100,"pctPagoDotacao":99.99994248869257},"exercicios":[{"ano":2025,"totais":{"dotacaoAtual":6955154,"empenhado":6955150,"liquidado":6955150,"pago":6955150,"saldoEmpenhar":4,"saldoLiquidar":0,"empenhadoNaoPago":0,"liquidadoPagar":0,"pctEmpenhadoDotacao":99.99994248869257,"pctLiquidadoEmpenhado":100,"pctPagoLiquidado":100,"pctPagoDotacao":99.99994248869257},"registros":[{"ano":2025,"acaoCodigo":"219Z","acaoDescricao":"Conservação e Recuperação de Ativos de Infraestrutura da União","poCodigo":"000P","poDescricao":"IP4 de Parintins/AM - Recuperação","grupoDespesa":"4 - Investimentos","dotacaoAtual":6955154,"empenhado":6955150,"liquidado":6955150,"pago":6955150,"statusValidacao":"SIM - PROVISÓRIO"}]}]},{"investimento":"Operação e manutenção de 54 IP4","totais":{"dotacaoAtual":487554964,"empenhado":416304485,"liquidado":222945443,"pago":212187857,"saldoEmpenhar":71250479,"saldoLiquidar":193359042,"empenhadoNaoPago":204116628,"liquidadoPagar":10757586,"pctEmpenhadoDotacao":85.38616478941233,"pctLiquidadoEmpenhado":53.55345691267295,"pctPagoLiquidado":95.17478991485822,"pctPagoDotacao":43.520807430441835},"exercicios":[{"ano":2025,"totais":{"dotacaoAtual":186236245,"empenhado":186236244,"liquidado":122359050,"pago":119492306,"saldoEmpenhar":1,"saldoLiquidar":63877194,"empenhadoNaoPago":66743938,"liquidadoPagar":2866744,"pctEmpenhadoDotacao":99.9999994630476,"pctLiquidadoEmpenhado":65.70098675314779,"pctPagoLiquidado":97.65710505271167,"pctPagoDotacao":64.16168130967202},"registros":[{"ano":2025,"acaoCodigo":"20LN","acaoDescricao":"Operação de Terminais Hidroviários","poCodigo":"0002","poDescricao":"CREMA das IP4 AM/RO/RR","grupoDespesa":"3 - Outras Despesas Correntes","dotacaoAtual":186236245,"empenhado":186236244,"liquidado":122359050,"pago":119492306,"statusValidacao":"SIM - PROVISÓRIO"}]},{"ano":2026,"totais":{"dotacaoAtual":301318719,"empenhado":230068241,"liquidado":100586393,"pago":92695551,"saldoEmpenhar":71250478,"saldoLiquidar":129481848,"empenhadoNaoPago":137372690,"liquidadoPagar":7890842,"pctEmpenhadoDotacao":76.35378305189198,"pctLiquidadoEmpenhado":43.72024255186095,"pctPagoLiquidado":92.15515959499612,"pctPagoDotacao":30.763289883759263},"registros":[{"ano":2026,"acaoCodigo":"20LN","acaoDescricao":"Operação de Terminais Hidroviários","poCodigo":"0002","poDescricao":"CREMA das IP4 AM/RO/RR","grupoDespesa":"3 - Outras Despesas Correntes","dotacaoAtual":301318719,"empenhado":230068241,"liquidado":100586393,"pago":92695551,"statusValidacao":"SIM - PROVISÓRIO"}]}]},{"investimento":"Pedral do Lourenço — Rio Tocantins","totais":{"dotacaoAtual":47828449,"empenhado":14423484,"liquidado":1685420,"pago":1685420,"saldoEmpenhar":33404965,"saldoLiquidar":12738064,"empenhadoNaoPago":12738064,"liquidadoPagar":0,"pctEmpenhadoDotacao":30.156704433380227,"pctLiquidadoEmpenhado":11.68524886220278,"pctPagoLiquidado":100,"pctPagoDotacao":3.5238859616794183},"exercicios":[{"ano":2025,"totais":{"dotacaoAtual":7828449,"empenhado":7829943,"liquidado":1685420,"pago":1685420,"saldoEmpenhar":-1494,"saldoLiquidar":6144523,"empenhadoNaoPago":6144523,"liquidadoPagar":0,"pctEmpenhadoDotacao":100.01908424005828,"pctLiquidadoEmpenhado":21.52531634010618,"pctPagoLiquidado":100,"pctPagoDotacao":21.52942428314983},"registros":[{"ano":2025,"acaoCodigo":"123M","acaoDescricao":"Melhoramentos no Canal de Navegação da Hidrovia do Rio Tocantins","poCodigo":"0001","poDescricao":"Derrocagem do Pedral do Lourenço (HN-200)","grupoDespesa":"3 - Outras Despesas Correntes","dotacaoAtual":200000,"empenhado":200000,"liquidado":0,"pago":0,"statusValidacao":"SIM - PROVISÓRIO"},{"ano":2025,"acaoCodigo":"123M","acaoDescricao":"Melhoramentos no Canal de Navegação da Hidrovia do Rio Tocantins","poCodigo":"0001","poDescricao":"Derrocagem do Pedral do Lourenço (HN-200)","grupoDespesa":"4 - Investimentos","dotacaoAtual":7628449,"empenhado":7629943,"liquidado":1685420,"pago":1685420,"statusValidacao":"SIM - PROVISÓRIO"}]},{"ano":2026,"totais":{"dotacaoAtual":40000000,"empenhado":6593541,"liquidado":0,"pago":0,"saldoEmpenhar":33406459,"saldoLiquidar":6593541,"empenhadoNaoPago":6593541,"liquidadoPagar":0,"pctEmpenhadoDotacao":16.4838525,"pctLiquidadoEmpenhado":0,"pctPagoLiquidado":null,"pctPagoDotacao":0},"registros":[{"ano":2026,"acaoCodigo":"123M","acaoDescricao":"Melhoramentos no Canal de Navegação da Hidrovia do Rio Tocantins","poCodigo":"0001","poDescricao":"Derrocagem do Pedral do Lourenço (HN-200)","grupoDespesa":"3 - Outras Despesas Correntes","dotacaoAtual":611622,"empenhado":0,"liquidado":0,"pago":0,"statusValidacao":"SIM - PROVISÓRIO"},{"ano":2026,"acaoCodigo":"123M","acaoDescricao":"Melhoramentos no Canal de Navegação da Hidrovia do Rio Tocantins","poCodigo":"0001","poDescricao":"Derrocagem do Pedral do Lourenço (HN-200)","grupoDespesa":"4 - Investimentos","dotacaoAtual":39388378,"empenhado":6593541,"liquidado":0,"pago":0,"statusValidacao":"SIM - PROVISÓRIO"}]}]},{"investimento":"Terminal Manaus Moderna","totais":{"dotacaoAtual":114315016,"empenhado":96461523,"liquidado":1107985,"pago":543726,"saldoEmpenhar":17853493,"saldoLiquidar":95353538,"empenhadoNaoPago":95917797,"liquidadoPagar":564259,"pctEmpenhadoDotacao":84.38219787328727,"pctLiquidadoEmpenhado":1.1486289719891734,"pctPagoLiquidado":49.07340803350226,"pctPagoDotacao":0.47563830109598204},"exercicios":[{"ano":2026,"totais":{"dotacaoAtual":114315016,"empenhado":96461523,"liquidado":1107985,"pago":543726,"saldoEmpenhar":17853493,"saldoLiquidar":95353538,"empenhadoNaoPago":95917797,"liquidadoPagar":564259,"pctEmpenhadoDotacao":84.38219787328727,"pctLiquidadoEmpenhado":1.1486289719891734,"pctPagoLiquidado":49.07340803350226,"pctPagoDotacao":0.47563830109598204},"registros":[{"ano":2026,"acaoCodigo":"13LO","acaoDescricao":"Construção do Porto de Manaus Moderna - no Estado do Amazonas","poCodigo":"0000","poDescricao":"Construção do Porto de Manaus Moderna - no Estado do Amazonas","grupoDespesa":"4 - Investimentos","dotacaoAtual":114315016,"empenhado":96461523,"liquidado":1107985,"pago":543726,"statusValidacao":"SIM - PROVISÓRIO"}]}]}]};
 const ENDPOINT='./siop_hidrovias_public.json';
-let SIOP_TEST_DATA=SIOP_EMBEDDED;
+let SIOP_TEST_DATA=SIOP_EMBEDDED; window.SIOP_DATA=SIOP_TEST_DATA;
 function brl(v){return Number(v||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'})}
 function pct(v){return v==null?'N/A':Number(v).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})+'%'}
 function esc(v){return String(v==null?'—':v).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
@@ -780,7 +1127,7 @@ async function refreshOnline(){
   if(!r.ok)throw new Error('HTTP '+r.status);
   const j=await r.json();
   if(!j.ok||!Array.isArray(j.investimentos)||!j.investimentos.length)throw new Error('JSON inválido');
-  SIOP_TEST_DATA=j;fill();setStatus('BASE SIOP ONLINE OK','sincronização automática ativa');
+  SIOP_TEST_DATA=j; window.SIOP_DATA=j; fill(); setStatus('BASE SIOP ONLINE OK','sincronização automática ativa'); window.dispatchEvent(new CustomEvent('bi:siop-updated'));
  }catch(e){
   setStatus('BASE SIOP EMBUTIDA OK','modo autônomo; atualização online indisponível');
  }
