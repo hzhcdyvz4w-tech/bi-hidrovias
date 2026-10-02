@@ -1,4 +1,4 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>BI Executivo de Hidrovias v62-TESTE — DPP/SNHN</title><style>
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>BI Executivo de Hidrovias e Navegação Interior — DPP/SNHN</title><style>
 *{box-sizing:border-box}body{margin:0;background:#eef4f5;color:#17324d;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}header{background:#173d63;color:#fff;padding:28px 20px;border-bottom:7px solid #35a66f}header h1{margin:0;font-size:28px}header p{margin:10px 0 0;font-size:16px;line-height:1.4}.wrap{max-width:1100px;margin:auto;padding:18px}.box{background:#fff;border:1px solid #cbd9dd;border-radius:14px;padding:18px;margin-bottom:16px}.box h2{margin:0 0 16px}.filters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}label{font-weight:800;font-size:14px}select{width:100%;margin-top:6px;padding:13px;border:2px solid #9fbdb6;border-radius:10px;background:#fff;font-size:17px}.wide{grid-column:1/-1}.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.kpi{background:#e8f1f2;padding:13px;border-radius:10px;text-align:center}.kpi b{display:block;font-size:24px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border:1px solid #d8e2e5;border-radius:10px;overflow:hidden}.field{padding:14px;border-bottom:1px solid #e0e7e9;white-space:pre-wrap}.field b{display:block;color:#49677c;font-size:12px;text-transform:uppercase;margin-bottom:6px}.field.w{grid-column:1/-1}.warn{background:#fff8e5}.src{background:#eef7ff}.actions{display:flex;gap:10px;flex-wrap:wrap}button{padding:13px 16px;border:0;border-radius:9px;background:#173d63;color:#fff;font-weight:800;font-size:15px}.doc{display:none;white-space:pre-wrap;background:#fff;border:1px solid #ccd9dd;border-radius:12px;padding:18px;margin-top:14px}@media(max-width:650px){.filters,.grid{grid-template-columns:1fr}.wide,.field.w{grid-column:1}.kpis{grid-template-columns:repeat(2,1fr)}header h1{font-size:24px}}
 .nav{display:flex;gap:8px;overflow:auto;margin-bottom:16px}.nav button{white-space:nowrap;background:#e8f1f2;color:#173d63;border:1px solid #9fbdb6}.badge{display:inline-block;padding:5px 9px;border-radius:999px;background:#e8f1f2;margin:3px;font-size:12px;font-weight:800}.control{border-left:5px solid #7b5aa6}.contract{border-left:5px solid #173d63}.concession{border-left:5px solid #35a66f}.sourcebar{margin-top:10px;padding:10px 12px;background:#eef7ff;border-radius:9px;font-size:13px}.sourcebar a{font-weight:800;color:#173d63}.sourcebtn{display:inline-block;margin:4px 5px 0 0;padding:7px 9px;border:1px solid #9fbdb6;border-radius:8px;text-decoration:none;background:#fff;color:#173d63}
 .reporthead{border-bottom:3px solid #173d63;padding-bottom:10px;margin-bottom:14px}.reportmeta{font-size:12px;color:#49677c}.decision{background:#eef7ff;border-left:5px solid #173d63;padding:12px;margin:12px 0}.alertbox{background:#fff8e5;border-left:5px solid #d49b24;padding:12px;margin:12px 0}.rtable{width:100%;border-collapse:collapse;margin:12px 0}.rtable th,.rtable td{border:1px solid #ccd9dd;padding:8px;text-align:left;vertical-align:top}.rtable th{background:#e8f1f2}.reportsection{margin:18px 0}.reportsection h3{margin:0 0 8px;color:#173d63}.report-actions{position:sticky;bottom:8px;background:#fff;padding:8px 0}@media print{header,.nav,#filtros,.kpis,#especial,#sourceLinks,.actions,.report-actions{display:none!important}.box{border:0;padding:0}.doc{display:block!important;border:0}.wrap{max-width:none;padding:0}body{background:#fff;color:#111}.rtable{font-size:10pt}}
@@ -83,7 +83,114 @@
  #siop-test .siop-controls{display:none!important}
 }
 </style>
-</head><body><header><h1>BI Executivo de Hidrovias — DPP/SNHN · v74-SIOP REFINADO</h1><p>Assessoria executiva · backend estruturado · 19 registros · corte 29/09/2026 · filtros validados no iPhone</p></header><main class="wrap"><nav class="nav" id="legacyNav" style="display:none"><button onclick="goTo('filtros')">Carteira / Filtros</button><button onclick="showContracts()">Contratos e Valores</button><button onclick="showConcessions()">Concessões</button><button onclick="showControl()">Auditorias e Controle</button><button onclick="goTo('atualizacao')">Atualização Pública</button><button onclick="goTo('docs')">Relatórios / Briefing</button></nav>
+<style id="production-ui">
+:root{
+  --bi-navy:#173d63;
+  --bi-navy-2:#0f3153;
+  --bi-green:#2f8f62;
+  --bi-bg:#f3f6f8;
+  --bi-card:#ffffff;
+  --bi-border:#d7e0e6;
+  --bi-muted:#5f7385;
+  --bi-soft:#eef4f8;
+  --bi-warn:#fff8e5;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bi-bg);color:#17324d;line-height:1.45}
+.bi-header{padding:0;border-bottom:4px solid var(--bi-green);box-shadow:0 2px 8px rgba(15,49,83,.08)}
+.bi-header-inner{max-width:1440px;margin:0 auto;padding:24px 24px;display:flex;justify-content:space-between;align-items:center;gap:18px}
+.bi-header h1{font-size:clamp(24px,2.2vw,34px);letter-spacing:-.02em}
+.bi-header p{max-width:920px;font-size:14px;opacity:.9;margin-top:7px}
+.bi-header-badge{border:1px solid rgba(255,255,255,.42);border-radius:999px;padding:8px 12px;font-size:12px;font-weight:800;white-space:nowrap}
+.wrap{max-width:1440px;padding:20px 24px 34px}
+.box{padding:clamp(16px,1.7vw,24px);margin-bottom:16px;border-color:var(--bi-border);box-shadow:0 2px 10px rgba(15,49,83,.035)}
+.box h2{font-size:clamp(18px,1.5vw,24px);letter-spacing:-.01em}
+.section-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin-bottom:14px}
+.section-heading h2{margin:0 0 5px}
+.section-heading p{margin:0;color:var(--bi-muted);font-size:13px;max-width:900px}
+.status-badge{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:7px 10px;background:#e7f7ee;color:#176b42;border:1px solid #b9ddc8;font-weight:800;font-size:11px;white-space:nowrap}
+.command-center{margin-top:0}
+.command-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.cmd{min-height:118px;border-radius:14px;padding:15px;box-shadow:none}
+.cmd:hover,.cmd:focus-visible{box-shadow:0 7px 20px rgba(15,49,83,.10)}
+.filters{gap:12px 14px}
+label{font-size:12px;letter-spacing:.015em}
+select{min-height:46px;margin-top:5px;padding:10px 12px;font-size:15px;border:1px solid #9fbdb6}
+.kpis{gap:12px}.kpi{border:1px solid var(--bi-border);background:#f8fafb}
+.grid{border-color:var(--bi-border)}
+.field{padding:12px 14px}
+.field b{font-size:11px;letter-spacing:.035em}
+.compact-card,.budget-pill,.home-stat{box-shadow:none}
+.quick-result,.doc,.doc-v51{overflow-wrap:anywhere}
+.quick-table,.rtable,#siopDetail table{width:100%;border-collapse:collapse}
+.quick-table th,.quick-table td,.rtable th,.rtable td,#siopDetail th,#siopDetail td{overflow-wrap:anywhere;word-break:normal}
+.table-scroll{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.budget-filter-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px 14px;margin:12px 0}
+.budget-filter-grid .span-2{grid-column:span 2}
+.budget-actions{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 14px}
+.secondary-btn{background:#edf3f7;color:var(--bi-navy);border:1px solid #bfd0dc;padding:10px 13px}
+.secondary-btn:hover{background:#e2edf4}
+.system-note,.filter-context{padding:9px 11px;border-radius:9px;font-size:12px;margin:8px 0}
+.system-note{background:#f5f8fa;border:1px solid var(--bi-border);color:#38546a}
+.filter-context{background:#eef7ff;border:1px solid #d5e5f3;color:#264862}
+.budget-kpis{margin-top:12px}
+.siop-card{min-width:0}
+.siop-card span{overflow-wrap:anywhere}
+.source-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.source-links a{display:inline-flex;align-items:center;gap:6px;padding:8px 10px;border:1px solid #cbd8e5;border-radius:999px;background:#fff;color:#173d63;text-decoration:none;font-size:12px;font-weight:800}
+.source-links a:hover,.source-links a:focus-visible{background:#eef5fb;outline:2px solid #9db7d5}
+#atualizacao .source-compact{margin-top:8px}
+#docs .actions button,.exec-action{min-height:44px}
+#homeBack{margin:0 0 16px!important}
+#homeBack button{padding:9px 12px;font-size:12px}
+.app-footer{border-top:1px solid #d7e0e6;background:#fff;color:#506779}
+.app-footer-inner{max-width:1440px;margin:0 auto;padding:16px 24px;display:flex;justify-content:space-between;gap:18px;align-items:center;font-size:11px}
+.app-footer strong{color:#173d63}
+.app-footer-meta{text-align:right}
+.empty-state{padding:18px;border:1px dashed #bdcbd6;background:#fbfcfd;border-radius:10px;color:#5a7082;font-weight:700}
+@media(max-width:1100px){
+  .budget-filter-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .command-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:800px){
+  .bi-header-inner{padding:20px 16px;align-items:flex-start}
+  .bi-header-badge{display:none}
+  .wrap{padding:14px}
+  .budget-filter-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .budget-filter-grid .span-2{grid-column:span 2}
+  .command-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .box{border-radius:12px;margin-bottom:12px}
+  .section-heading{display:block}
+  .status-badge{margin-top:8px}
+  .app-footer-inner{padding:14px;display:block}
+  .app-footer-meta{text-align:left;margin-top:5px}
+}
+@media(max-width:520px){
+  .budget-filter-grid,.filters,.grid{grid-template-columns:1fr}
+  .budget-filter-grid .span-2,.wide,.field.w{grid-column:1}
+  .command-grid{grid-template-columns:1fr 1fr}
+  .cmd{min-height:112px}
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  select{font-size:16px}
+}
+@media(max-width:390px){
+  .command-grid{grid-template-columns:1fr}
+  .kpis{grid-template-columns:1fr 1fr}
+}
+@media print{
+  .app-footer{display:none!important}
+  .table-scroll{overflow:visible}
+}
+</style>
+</head><body><header class="bi-header">
+  <div class="bi-header-inner">
+    <div>
+      <h1>BI Executivo de Hidrovias e Navegação Interior</h1>
+      <p>Painel de acompanhamento da carteira de investimentos, execução físico-orçamentária e apoio ao assessoramento executivo — DPP/SNHN</p>
+    </div>
+    <div class="bi-header-badge">Painel Executivo</div>
+  </div>
+</header><main class="wrap"><nav class="nav" id="legacyNav" style="display:none"><button onclick="goTo('filtros')">Carteira / Filtros</button><button onclick="showContracts()">Contratos e Valores</button><button onclick="showConcessions()">Concessões</button><button onclick="showControl()">Auditorias e Controle</button><button onclick="goTo('atualizacao')">Atualização Pública</button><button onclick="goTo('docs')">Relatórios / Briefing</button></nav>
 <section class="box command-center" id="comando"><h2>Central de Comando Executivo</h2><div class="command-sub">Toque em uma função. O BI gera imediatamente a visão solicitada; depois você pode refinar pelos filtros territoriais.</div><div class="command-grid">
 <button class="cmd" onclick="quickView('invest')"><span class="ico">🗺️</span><b>Investimentos</b><small>Carteira completa e situação</small></button>
 <button class="cmd" onclick="quickView('territorio')"><span class="ico">📍</span><b>Região / UF</b><small>Abrir filtros em cascata</small></button>
@@ -105,19 +212,18 @@
 <button class="exec-action" onclick="gerarProdutoV51('relatorio')"><b>📊 Relatório executivo</b><span>situação • execução • riscos • fontes</span></button>
 <button class="exec-action" onclick="gerarProdutoV51('financeiro')"><b>💰 Quadro financeiro</b><span>valor • empenhado • liquidado • pago</span></button>
 <button class="exec-action" onclick="gerarProdutoV51('contratual')"><b>📑 Quadro contratual</b><span>instrumento • empresa • prazo • status</span></button>
-</div><div id="produtoV51"></div></section><section class="box" id="atualizacao"><h2>Atualização por fontes públicas</h2><div class="grid">
-<div class="field"><b>SIOP / Orçamento Federal</b><div>LOA, PLOA, dotação, empenhado, liquidado, pago e pagamento efetivo.</div></div>
-<div class="field"><b>ObrasGov</b><div>Execução física, financeira, situação e georreferenciamento dos investimentos cadastrados.</div></div>
-<div class="field"><b>Transferegov</b><div>Instrumentos, propostas e dados abertos disponíveis; execução financeira por API conforme disponibilidade do módulo.</div></div>
-<div class="field"><b>PNCP / Compras.gov</b><div>Editais, contratos, empresas, valores, vigências, aditivos e histórico contratual.</div></div>
-<div class="field"><b>SIAFI / Tesouro</b><div>Empenho, liquidação e pagamento: consulta pública via Portal da Transparência; Tesouro Gerencial exige habilitação.</div></div>
-<div class="field"><b>TCU / CGU / TCEs</b><div>Auditorias, acórdãos, determinações e achados publicados; TCE consultado conforme UF do investimento.</div></div>
-</div><div class="grid" style="margin-top:14px">
-<div class="field"><b>ANTAQ — REGULAÇÃO / CONCESSÕES</b><div>Processos de concessão, EVTEA/modelagem, CAPEX/OPEX, consultas e audiências públicas, outorgas, deliberações, estudos, dados estatísticos e marcos regulatórios.</div></div>
-<div class="field"><b>DNIT / DAQ — EXECUÇÃO DA INFRAESTRUTURA</b><div>Contratos e aditivos, IP4, dragagens, derrocamentos, sinalização, eclusas, PADMA, PMH/PNMH, medições, fiscalização, situação das obras e dados abertos.</div></div>
-<div class="field"><b>INFRA S.A. — PLANEJAMENTO / ESTUDOS</b><div>Planejamento integrado de transportes, estudos técnicos e de viabilidade, carteira/projetos e informações de suporte à estruturação de infraestrutura.</div></div>
-<div class="field"><b>ADMINISTRAÇÕES HIDROVIÁRIAS REGIONAIS</b><div>Consulta territorial e operacional: AHIMOC, AHIMOR, AHINOR, AHIPAR, AHITAR, AHRANA, AHSFRA e AHSUL. Usar para contratos regionais, hidrovias sob atuação, manutenção e ocorrências locais.</div></div>
-</div><div class="sourcebar"><strong>Regra de atualização:</strong> cada valor deve manter sistema de origem, data-base e natureza do dado. Divergências entre sistemas são sinalizadas; não há substituição silenciosa.</div></section><section class="box" id="docs"><h2>Documentos executivos</h2><p><strong>Relatório obrigatório:</strong> para cada empreendimento, exibir número do contrato/instrumento, empresa/executor contratado e valor confirmado. Dados não confirmados permanecem como “DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO”.</p><div class="actions"><button onclick="doc('rel')">Relatório Executivo</button><button onclick="doc('brief')">Briefing para Autoridade</button><button onclick="window.print()">Imprimir / PDF</button></div><div id="doc" class="doc"></div></section>
+</div><div id="produtoV51"></div></section><section class="box" id="atualizacao">
+  <div class="section-heading"><div><h2>Fontes e Atualização de Dados</h2><p>Referências organizadas por função, com rastreabilidade e validação antes da incorporação automática.</p></div></div>
+  <div class="source-compact">
+    <span class="source-chip">SIOP · orçamento</span>
+    <span class="source-chip">SIAFI · execução financeira</span>
+    <span class="source-chip">DNIT · infraestrutura</span>
+    <span class="source-chip">ANTAQ · concessões</span>
+    <span class="source-chip">PNCP · contratos</span>
+    <span class="source-chip">TCU/CGU/TCE · controle</span>
+  </div>
+  <details class="compact-details"><summary>Critérios de atualização</summary><p>Cada valor mantém sistema de origem e data-base. Divergências são sinalizadas e informações sem vínculo inequívoco permanecem como “DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO”.</p></details>
+</section><section class="box" id="docs"><h2>Documentos executivos</h2><p><strong>Relatório obrigatório:</strong> para cada empreendimento, exibir número do contrato/instrumento, empresa/executor contratado e valor confirmado. Dados não confirmados permanecem como “DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO”.</p><div class="actions"><button onclick="doc('rel')">Relatório Executivo</button><button onclick="doc('brief')">Briefing para Autoridade</button><button onclick="window.print()">Imprimir / PDF</button></div><div id="doc" class="doc"></div></section>
 </main><script>var FALLBACK_DATA=[{"id":1,"nome":"Operação e manutenção de 54 IP4","regioes":["Norte"],"ufs":["AM","RO","RR"],"municipios":["AM/RO/RR"],"hidrovias":["A confirmar"],"tipo":"IP4","situacao":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","objeto":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","fase":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","instrumento":"Contrato nº 12/2026","valor":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","execFisica":"Não informado na base","execFinanceira":"Não informado na base","empenhadoPago":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — validar SIAFI/SEI","executor":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","unidade":"SNHN/DGH — validar","sistema":"SEI / sistema setorial — validar","marco":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","proximoMarco":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","gargalo":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","problema":"NECESSITA VALIDAÇÃO","providencia":"Validar situação corrente, marco, execução e pendências no processo oficial antes do assessoramento.","pendencia":"Atualização documental/operacional","fonte":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","dataFonte":"27/09/2026","localExato":"AM/RO/RR","precisaoLocal":"Localização/abrangência conforme base disponível","loa":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — validar SIOP/SIAFI/LOA/PLOA/PPA","origem":"BACKEND + complementos oficiais preservados da versão anterior","acaoPO":"A VINCULAR — consulta SIOP por ação/localizador/PO","loa2026":"A VALIDAR NO SIOP — LOA 2026","ploa2027":"A VALIDAR NO SIOP — PLOA 2027","metaFisicaSIOP":"A VALIDAR NO SIOP — meta/realizado físico do PO","execOrcSIOP":"A VALIDAR NO SIOP — dotação atual/empenhado/RAP/saldo","execFinSIOP":"A VALIDAR NO SIOP/SIAFI — liquidado/pago","dataSIOP":"Pendente de vinculação segura do PO","validacaoEstruturantes":{"SIOP":{"sistema":"SIOP","consultaPublica":"Acompanhamento Físico-Financeiro / execução por ação-localizador-PO","status":"CONSULTADO — VÍNCULO PO NÃO CONFIRMADO","dataConsulta":"27/09/2026","regra":"Não associar ação/PO por aproximação nominal."},"SIAFI":{"sistema":"SIAFI / Portal da Transparência","consultaPublica":"Documentos de despesa: empenho, liquidação e pagamento","status":"CONSULTA PÚBLICA PREVISTA POR UG/documento/ação; vínculo individual depende de chave inequívoca","dataConsulta":"27/09/2026"},"PNCP":{"sistema":"PNCP / Compras.gov","consultaPublica":"Contratos e contratações","status":"FONTE COMPLEMENTAR — conferir por instrumento/UG","dataConsulta":"27/09/2026"},"OBRASGOV":{"sistema":"ObrasGov","consultaPublica":"Obras e investimentos cadastrados","status":"CONSULTA COMPLEMENTAR — usar quando houver correspondência de empreendimento","dataConsulta":"27/09/2026"},"TRANSFEREGOV":{"sistema":"Transferegov","consultaPublica":"Instrumentos/transferências","status":"CONSULTA COMPLEMENTAR — aplicável somente quando houver instrumento federal compatível","dataConsulta":"27/09/2026"},"SETORIAL":{"sistema":"SNHN/DGH — validar","consultaPublica":"Fonte setorial oficial","status":"VALIDAÇÃO SETORIAL CONFORME fonte/dataFonte da ficha","dataConsulta":"27/09/2026"}}},{"id":2,"nome":"Supervisão das 54 IP4","regioes":["Norte"],"ufs":["AM","RO","RR"],"municipios":["AM/RO/RR"],"hidrovias":["A confirmar"],"tipo":"IP4","situacao":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","objeto":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","fase":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","instrumento":"Licitação/contrato de supervisão","valor":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","execFisica":"Não informado na base","execFinanceira":"Não informado na base","empenhadoPago":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — validar SIAFI/SEI","executor":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","unidade":"SNHN/DGH — validar","sistema":"SEI / sistema setorial — validar","marco":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","proximoMarco":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","gargalo":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","problema":"NECESSITA VALIDAÇÃO","providencia":"Validar situação corrente, marco, execução e pendências no processo oficial antes do assessoramento.","pendencia":"Atualização documental/operacional","fonte":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","dataFonte":"27/09/2026","localExato":"AM/RO/RR","precisaoLocal":"Localização/abrangência conforme base disponível","loa":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — validar SIOP/SIAFI/LOA/PLOA/PPA","origem":"BACKEND + complementos oficiais preservados da versão anterior","acaoPO":"A VINCULAR — consulta SIOP por ação/localizador/PO","loa2026":"A VALIDAR NO SIOP — LOA 2026","ploa2027":"A VALIDAR NO SIOP — PLOA 2027","metaFisicaSIOP":"A VALIDAR NO SIOP — meta/realizado físico do PO","execOrcSIOP":"A VALIDAR NO SIOP — dotação atual/empenhado/RAP/saldo","execFinSIOP":"A VALIDAR NO SIOP/SIAFI — liquidado/pago","dataSIOP":"Pendente de vinculação segura do PO","validacaoEstruturantes":{"SIOP":{"sistema":"SIOP","consultaPublica":"Acompanhamento Físico-Financeiro / execução por ação-localizador-PO","status":"CONSULTADO — VÍNCULO PO NÃO CONFIRMADO","dataConsulta":"27/09/2026","regra":"Não associar ação/PO por aproximação nominal."},"SIAFI":{"sistema":"SIAFI / Portal da Transparência","consultaPublica":"Documentos de despesa: empenho, liquidação e pagamento","status":"CONSULTA PÚBLICA PREVISTA POR UG/documento/ação; vínculo individual depende de chave inequívoca","dataConsulta":"27/09/2026"},"PNCP":{"sistema":"PNCP / Compras.gov","consultaPublica":"Contratos e contratações","status":"FONTE COMPLEMENTAR — conferir por instrumento/UG","dataConsulta":"27/09/2026"},"OBRASGOV":{"sistema":"ObrasGov","consultaPublica":"Obras e investimentos cadastrados","status":"CONSULTA COMPLEMENTAR — usar quando houver correspondência de empreendimento","dataConsulta":"27/09/2026"},"TRANSFEREGOV":{"sistema":"Transferegov","consultaPublica":"Instrumentos/transferências","status":"CONSULTA COMPLEMENTAR — aplicável somente quando houver instrumento federal compatível","dataConsulta":"27/09/2026"},"SETORIAL":{"sistema":"SNHN/DGH — validar","consultaPublica":"Fonte setorial oficial","status":"VALIDAÇÃO SETORIAL CONFORME fonte/dataFonte da ficha","dataConsulta":"27/09/2026"}}},{"id":3,"nome":"Modernização da IP4 de Parintins","regioes":["Norte"],"ufs":["AM"],"municipios":["Parintins/AM"],"hidrovias":["Rio Amazonas"],"tipo":"IP4","situacao":"LICITAÇÃO / MODERNIZAÇÃO EM ESTRUTURAÇÃO","objeto":"Modernização da IP4 de Parintins: recuperação estrutural, ampliação dos cais flutuantes e melhorias operacionais; contratação integrada com projetos básico/executivo e execução das obras.","fase":"Licitação anunciada em 01/04/2026; IP4 permaneceu em operação com intervenções e melhorias durante 2026.","instrumento":"Contratação integrada","valor":"R$ 51,3 milhões — investimento estimado divulgado pelo MPor para a modernização.","execFisica":"Não informado na base","execFinanceira":"Não informado na base","empenhadoPago":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — validar SIAFI/SEI","executor":"DNIT / futura contratada da contratação integrada","unidade":"DNIT/DAQ","sistema":"SEI / sistema setorial — validar","marco":"Licitação para modernização anunciada em 01/04/2026.","proximoMarco":"Acompanhar resultado da licitação, contratação e ordem de serviço.","gargalo":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","problema":"NECESSITA VALIDAÇÃO","providencia":"Acompanhar contratação integrada e registrar contrato, cronograma, execução física e financeira após formalização.","pendencia":"Atualização documental/operacional","fonte":"MPor 01/04/2026 + DNIT 26/06/2026 + DNIT PROIP4","dataFonte":"26/06/2026","localExato":"Parintins/AM — IP4","precisaoLocal":"Município e instalação individualizados em fonte DNIT/MPor","loa":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — validar SIOP/SIAFI/LOA/PLOA/PPA","origem":"BACKEND + complementos oficiais preservados da versão anterior","fonteExecFisica":"DNIT — melhorias operacionais publicadas em 26/06/2026; execução da modernização depende da contratação.","acaoPO":"A VINCULAR — consulta SIOP por ação/localizador/PO","loa2026":"A VALIDAR NO SIOP — LOA 2026","ploa2027":"A VALIDAR NO SIOP — PLOA 2027","metaFisicaSIOP":"A VALIDAR NO SIOP — meta/realizado físico do PO","execOrcSIOP":"A VALIDAR NO SIOP — dotação atual/empenhado/RAP/saldo","execFinSIOP":"A VALIDAR NO SIOP/SIAFI — liquidado/pago","dataSIOP":"Pendente de vinculação segura do PO","validacaoEstruturantes":{"SIOP":{"sistema":"SIOP","consultaPublica":"Acompanhamento Físico-Financeiro / execução por ação-localizador-PO","status":"CONSULTADO — VÍNCULO PO NÃO CONFIRMADO","dataConsulta":"27/09/2026","regra":"Não associar ação/PO por aproximação nominal."},"SIAFI":{"sistema":"SIAFI / Portal da Transparência","consultaPublica":"Documentos de despesa: empenho, liquidação e pagamento","status":"CONSULTA PÚBLICA PREVISTA POR UG/documento/ação; vínculo individual depende de chave inequívoca","dataConsulta":"27/09/2026"},"PNCP":{"sistema":"PNCP / Compras.gov","consultaPublica":"Contratos e contratações","status":"FONTE COMPLEMENTAR — conferir por instrumento/UG","dataConsulta":"27/09/2026"},"OBRASGOV":{"sistema":"ObrasGov","consultaPublica":"Obras e investimentos cadastrados","status":"CONSULTA COMPLEMENTAR — usar quando houver correspondência de empreendimento","dataConsulta":"27/09/2026"},"TRANSFEREGOV":{"sistema":"Transferegov","consultaPublica":"Instrumentos/transferências","status":"CONSULTA COMPLEMENTAR — aplicável somente quando houver instrumento federal compatível","dataConsulta":"27/09/2026"},"SETORIAL":{"sistema":"DNIT/DAQ","consultaPublica":"Fonte setorial oficial","status":"VALIDAÇÃO SETORIAL CONFORME fonte/dataFonte da ficha","dataConsulta":"27/09/2026"}}},{"id":4,"nome":"Terminal Manaus Moderna","regioes":["Norte"],"ufs":["AM"],"municipios":["Manaus/AM"],"hidrovias":["Rio Negro"],"tipo":"Investimento hidroviário","situacao":"PROJETO / INVESTIMENTO ANUNCIADO","objeto":"Reestruturação do Terminal Manaus Moderna para ampliar transporte de passageiros e movimentação de cargas, reorganizar fluxo de embarcações e modernizar embarque/desembarque.","fase":"CONTRATO ASSINADO EM MARÇO/2026; conclusão prevista para 2029.","instrumento":"Contrato de obras assinado em março/2026 — número a validar em PNCP/DNIT","valor":"R$ 875,9 milhões — recursos do Novo PAC, conforme divulgação oficial de 02/06/2026.","execFisica":"Não informado na base","execFinanceira":"Não informado na base","empenhadoPago":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — validar SIAFI/SEI","executor":"MPor / DNIT — execução contratual específica a confirmar","unidade":"MPor/SNHN + DNIT/DAQ","sistema":"SEI / sistema setorial — validar","marco":"Contrato das obras assinado em março/2026; investimento anunciado em 27/05/2026.","proximoMarco":"Confirmar instrumento de execução, contratação, cronograma e programação orçamentária.","gargalo":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","problema":"NECESSITA VALIDAÇÃO","providencia":"Acompanhar formalização do instrumento/contratação e vincular ação/PO do SIOP quando confirmados.","pendencia":"Atualização documental/operacional","fonte":"MPor 27/05/2026 e 02/06/2026 + DNIT","dataFonte":"02/06/2026","localExato":"Manaus/AM — Terminal Manaus Moderna, margem do Rio Negro","precisaoLocal":"Localização/abrangência conforme base disponível","loa":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — validar SIOP/SIAFI/LOA/PLOA/PPA","origem":"BACKEND + complementos oficiais preservados da versão anterior","acaoPO":"A VINCULAR — consulta SIOP por ação/localizador/PO","loa2026":"A VALIDAR NO SIOP — LOA 2026","ploa2027":"A VALIDAR NO SIOP — PLOA 2027","metaFisicaSIOP":"A VALIDAR NO SIOP — meta/realizado físico do PO","execOrcSIOP":"A VALIDAR NO SIOP — dotação atual/empenhado/RAP/saldo","execFinSIOP":"A VALIDAR NO SIOP/SIAFI — liquidado/pago","dataSIOP":"Pendente de vinculação segura do PO","validacaoEstruturantes":{"SIOP":{"sistema":"SIOP","consultaPublica":"Acompanhamento Físico-Financeiro / execução por ação-localizador-PO","status":"CONSULTADO — VÍNCULO PO NÃO CONFIRMADO","dataConsulta":"27/09/2026","regra":"Não associar ação/PO por aproximação nominal."},"SIAFI":{"sistema":"SIAFI / Portal da Transparência","consultaPublica":"Documentos de despesa: empenho, liquidação e pagamento","status":"CONSULTA PÚBLICA PREVISTA POR UG/documento/ação; vínculo individual depende de chave inequívoca","dataConsulta":"27/09/2026"},"PNCP":{"sistema":"PNCP / Compras.gov","consultaPublica":"Contratos e contratações","status":"FONTE COMPLEMENTAR — conferir por instrumento/UG","dataConsulta":"27/09/2026"},"OBRASGOV":{"sistema":"ObrasGov","consultaPublica":"Obras e investimentos cadastrados","status":"CONSULTA COMPLEMENTAR — usar quando houver correspondência de empreendimento","dataConsulta":"27/09/2026"},"TRANSFEREGOV":{"sistema":"Transferegov","consultaPublica":"Instrumentos/transferências","status":"CONSULTA COMPLEMENTAR — aplicável somente quando houver instrumento federal compatível","dataConsulta":"27/09/2026"},"SETORIAL":{"sistema":"MPor/SNHN + DNIT/DAQ","consultaPublica":"Fonte setorial oficial","status":"VALIDAÇÃO SETORIAL CONFORME fonte/dataFonte da ficha","dataConsulta":"27/09/2026"}}},{"id":5,"nome":"Pedral do Lourenço — Rio Tocantins","regioes":["Norte"],"ufs":["PA"],"municipios":["PA"],"hidrovias":["Rio Tocantins"],"tipo":"Obra hidroviária","situacao":"EM DESENVOLVIMENTO / ETAPAS PREPARATÓRIAS","objeto":"Derrocamento no Rio Tocantins/PA, no trecho entre Itupiranga e Ilha do Bogéa, região do Pedral do Lourenço, para ampliação da navegabilidade.","fase":"ATIVO no Atlas DNIT abril/2026; contrato principal com término registrado em 16/10/2026.","instrumento":"Contrato DNIT nº 245/2016-DAQ + Supervisão nº 599/2016","valor":"R$ 1.006.019.273 — Contrato DNIT 245/2016 (PI+A+R), Atlas Aquaviário abril/2026.","execFisica":"Não informado na base","execFinanceira":"R$ 31.724.538 executados — 3% do contrato principal, Atlas DNIT abril/2026.","empenhadoPago":"Financeiro executado no Atlas: R$ 31.724.538 (3%); detalhar empenhado/liquidado/pago no SIOP/SIAFI.","executor":"Consórcio DTA-O'Martin","unidade":"DNIT/DAQ","sistema":"SEI / sistema setorial — validar","marco":"Estudos de modelagem física acompanhados pelo DNIT em março de 2026.","proximoMarco":"Acompanhar situação pós-16/10/2026, estudos/modelagem, licenciamento, contratação da supervisão prevista no PCA 2026 e execução.","gargalo":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","problema":"NECESSITA VALIDAÇÃO","providencia":"Manter acompanhamento de licenciamento, estudos, contratação e programação SIOP; não registrar execução física da obra sem medição oficial.","pendencia":"Atualização documental/operacional","fonte":"Atlas Aquaviário DNIT — abril/2026 + DNIT 31/03/2026","dataFonte":"30/04/2026","localExato":"PA","precisaoLocal":"Localização/abrangência conforme base disponível","loa":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — validar SIOP/SIAFI/LOA/PLOA/PPA","origem":"BACKEND + complementos oficiais preservados da versão anterior","acaoPO":"A VINCULAR — consulta SIOP por ação/localizador/PO","loa2026":"A VALIDAR NO SIOP — LOA 2026","ploa2027":"A VALIDAR NO SIOP — PLOA 2027","metaFisicaSIOP":"A VALIDAR NO SIOP — meta/realizado físico do PO","execOrcSIOP":"A VALIDAR NO SIOP — dotação atual/empenhado/RAP/saldo","execFinSIOP":"A VALIDAR NO SIOP/SIAFI — liquidado/pago","dataSIOP":"Pendente de vinculação segura do PO","fonteExecFinanceira":"Atlas Aquaviário DNIT abril/2026","validacaoEstruturantes":{"SIOP":{"sistema":"SIOP","consultaPublica":"Acompanhamento Físico-Financeiro / execução por ação-localizador-PO","status":"CONSULTADO — VÍNCULO PO NÃO CONFIRMADO","dataConsulta":"27/09/2026","regra":"Não associar ação/PO por aproximação nominal."},"SIAFI":{"sistema":"SIAFI / Portal da Transparência","consultaPublica":"Documentos de despesa: empenho, liquidação e pagamento","status":"CONSULTA PÚBLICA PREVISTA POR UG/documento/ação; vínculo individual depende de chave inequívoca","dataConsulta":"27/09/2026"},"PNCP":{"sistema":"PNCP / Compras.gov","consultaPublica":"Contratos e contratações","status":"FONTE COMPLEMENTAR — conferir por instrumento/UG","dataConsulta":"27/09/2026"},"OBRASGOV":{"sistema":"ObrasGov","consultaPublica":"Obras e investimentos cadastrados","status":"CONSULTA COMPLEMENTAR — usar quando houver correspondência de empreendimento","dataConsulta":"27/09/2026"},"TRANSFEREGOV":{"sistema":"Transferegov","consultaPublica":"Instrumentos/transferências","status":"CONSULTA COMPLEMENTAR — aplicável somente quando houver instrumento federal compatível","dataConsulta":"27/09/2026"},"SETORIAL":{"sistema":"DNIT/DAQ","consultaPublica":"Fonte setorial oficial","status":"VALIDAÇÃO SETORIAL CONFORME fonte/dataFonte da ficha","dataConsulta":"27/09/2026"}}},{"id":6,"nome":"Nova Avanhandava — Rio Tietê","regioes":["Sudeste"],"ufs":["SP"],"municipios":["SP"],"hidrovias":["Rio Tietê"],"tipo":"Obra hidroviária","situacao":"EM EXECUÇÃO","objeto":"Ampliação do canal de navegação a jusante de Nova Avanhandava, na Hidrovia Tietê-Paraná, com aprofundamento para 3,5 m ao longo de 16 km e remoção de cerca de 552 mil m³ de rocha.","fase":"ATIVO no Atlas DNIT abril/2026; término cadastrado em 30/06/2026. Notícias institucionais divulgaram investimento aproximado de R$ 293,8 milhões e previsão de conclusão em 2026.","instrumento":"Termo de Compromisso nº 589/2014 — DNIT / Governo de São Paulo; 6º termo aditivo aprovado em 24/03/2026","valor":"R$ 435.220.907 — valor PI+A+R do TC 589/2014 no Atlas Aquaviário DNIT abril/2026.","execFisica":"Não informado na base","execFinanceira":"R$ 152.757.184 executados — 35% do TC 589/2014, Atlas Aquaviário DNIT abril/2026.","empenhadoPago":"Atlas DNIT informa R$ 152.757.184 de financeiro executado (35%); decomposição empenhado/liquidado/pago permanece a conciliar no SIOP/SIAFI.","executor":"Governo do Estado de São Paulo / parceria DNIT","unidade":"DNIT/DAQ + Governo de São Paulo","sistema":"SEI / sistema setorial — validar","marco":"6º termo aditivo do TC 589/2014 aprovado pela Diretoria Colegiada do DNIT em 24/03/2026.","proximoMarco":"Acompanhar conclusão física, medições e encerramento/ajustes do Termo de Compromisso.","gargalo":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","problema":"NECESSITA VALIDAÇÃO","providencia":"Atualizar execução física/financeira pela medição e pelo SIOP/SIAFI antes de briefing.","pendencia":"Atualização documental/operacional","fonte":"Atlas Aquaviário DNIT abril/2026 + MPor 08/04/2026 + Ata DNIT 24/03/2026","dataFonte":"30/04/2026","localExato":"SP","precisaoLocal":"Localização/abrangência conforme base disponível","loa":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — validar SIOP/SIAFI/LOA/PLOA/PPA","origem":"BACKEND + complementos oficiais preservados da versão anterior","acaoPO":"A VINCULAR — consulta SIOP por ação/localizador/PO","loa2026":"A VALIDAR NO SIOP — LOA 2026","ploa2027":"A VALIDAR NO SIOP — PLOA 2027","metaFisicaSIOP":"A VALIDAR NO SIOP — meta/realizado físico do PO","execOrcSIOP":"A VALIDAR NO SIOP — dotação atual/empenhado/RAP/saldo","execFinSIOP":"A VALIDAR NO SIOP/SIAFI — liquidado/pago","dataSIOP":"Pendente de vinculação segura do PO","validacaoEstruturantes":{"SIOP":{"sistema":"SIOP","consultaPublica":"Acompanhamento Físico-Financeiro / execução por ação-localizador-PO","status":"CONSULTADO — VÍNCULO PO NÃO CONFIRMADO","dataConsulta":"27/09/2026","regra":"Não associar ação/PO por aproximação nominal."},"SIAFI":{"sistema":"SIAFI / Portal da Transparência","consultaPublica":"Documentos de despesa: empenho, liquidação e pagamento","status":"CONSULTA PÚBLICA PREVISTA POR UG/documento/ação; vínculo individual depende de chave inequívoca","dataConsulta":"27/09/2026"},"PNCP":{"sistema":"PNCP / Compras.gov","consultaPublica":"Contratos e contratações","status":"FONTE COMPLEMENTAR — conferir por instrumento/UG","dataConsulta":"27/09/2026"},"OBRASGOV":{"sistema":"ObrasGov","consultaPublica":"Obras e investimentos cadastrados","status":"CONSULTA COMPLEMENTAR — usar quando houver correspondência de empreendimento","dataConsulta":"27/09/2026"},"TRANSFEREGOV":{"sistema":"Transferegov","consultaPublica":"Instrumentos/transferências","status":"CONSULTA COMPLEMENTAR — aplicável somente quando houver instrumento federal compatível","dataConsulta":"27/09/2026"},"SETORIAL":{"sistema":"DNIT/DAQ + Governo de São Paulo","consultaPublica":"Fonte setorial oficial","status":"VALIDAÇÃO SETORIAL CONFORME fonte/dataFonte da ficha","dataConsulta":"27/09/2026"}},"fonteExecFinanceira":"Atlas Aquaviário DNIT abril/2026","observacaoValor":"R$ 293,8 milhões é o investimento divulgado em comunicação institucional; R$ 435,220907 milhões é o valor PI+A+R do instrumento no Atlas DNIT e é o valor usado no campo contratual."},{"id":7,"nome":"Dragagens Amazonas, Madeira e Solimões","regioes":["Norte"],"ufs":["AM","RO"],"municipios":["AM/RO"],"hidrovias":["Rio Madeira"],"tipo":"Dragagem","situacao":"EM EXECUÇÃO — DRAGAGENS DE MANUTENÇÃO / CONTRATOS ATIVOS","objeto":"Dragagens de manutenção nas hidrovias amazônicas. Em setembro/2026, o DNIT informou início de obras em Benjamin Constant–São Paulo de Olivença, Tabatinga–Benjamin Constant, Coari–Codajás e Manaus–Itacoatiara, no âmbito do PADMA; o registro também acompanha contratos do Rio Madeira/Humaitá.","fase":"Ordens de serviço dos quatro trechos do Amazonas emitidas e mobilização informada para a primeira quinzena de setembro/2026; contratos do Madeira/Humaitá acompanhados pelo Atlas DNIT.","instrumento":"Contrato 22 00220/2021 (Rio Madeira) + Contrato 22 00250/2022 (Travessia Humaitá/AM)","valor":"R$ 175.114.456 — valor agregado dos dois contratos de dragagem no Atlas DNIT abril/2026.","execFisica":"Não informado na base","execFinanceira":"R$ 168.742.366 executados (96% agregado) — Atlas Aquaviário DNIT abril/2026.","empenhadoPago":"Atlas DNIT informa financeiro executado; detalhamento empenhado/liquidado/pago deve ser conciliado no SIOP/SIAFI.","executor":"Consórcio Jan De Nul–JEED + JEED Engenharia Ltda.","unidade":"DNIT/DAQ — gestão/fiscalização SR/RO","sistema":"SEI / sistema setorial — validar","marco":"Setembro/2026: início das dragagens de manutenção em quatro trechos hidroviários do Amazonas no PADMA.","proximoMarco":"Acompanhar mobilização, volumes dragados, medições, término dos serviços e execução orçamentário-financeira por contrato/PO.","gargalo":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","problema":"NECESSITA VALIDAÇÃO","providencia":"Desdobrar o registro por trecho/contrato quando forem identificados contrato, PO e medições; vincular cada serviço ao SIOP/SIAFI.","pendencia":"Atualização documental/operacional","fonte":"DNIT — início de dragagens de manutenção em quatro trechos do Amazonas (set/2026) + Atlas Aquaviário DNIT","dataFonte":"27/09/2026","localExato":"AM/RO","precisaoLocal":"Localização/abrangência conforme base disponível","loa":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — validar SIOP/SIAFI/LOA/PLOA/PPA","origem":"BACKEND + complementos oficiais preservados da versão anterior","fonteExecFinanceira":"Atlas Aquaviário DNIT — abril/2026","acaoPO":"A VINCULAR — consulta SIOP por ação/localizador/PO","loa2026":"A VALIDAR NO SIOP — LOA 2026","ploa2027":"A VALIDAR NO SIOP — PLOA 2027","metaFisicaSIOP":"A VALIDAR NO SIOP — meta/realizado físico do PO","execOrcSIOP":"A VALIDAR NO SIOP — dotação atual/empenhado/RAP/saldo","execFinSIOP":"A VALIDAR NO SIOP/SIAFI — liquidado/pago","dataSIOP":"Pendente de vinculação segura do PO","validacaoEstruturantes":{"SIOP":{"sistema":"SIOP","consultaPublica":"Acompanhamento Físico-Financeiro / execução por ação-localizador-PO","status":"CONSULTADO — VÍNCULO PO NÃO CONFIRMADO","dataConsulta":"27/09/2026","regra":"Não associar ação/PO por aproximação nominal."},"SIAFI":{"sistema":"SIAFI / Portal da Transparência","consultaPublica":"Documentos de despesa: empenho, liquidação e pagamento","status":"CONSULTA PÚBLICA PREVISTA POR UG/documento/ação; vínculo individual depende de chave inequívoca","dataConsulta":"27/09/2026"},"PNCP":{"sistema":"PNCP / Compras.gov","consultaPublica":"Contratos e contratações","status":"FONTE COMPLEMENTAR — conferir por instrumento/UG","dataConsulta":"27/09/2026"},"OBRASGOV":{"sistema":"ObrasGov","consultaPublica":"Obras e investimentos cadastrados","status":"CONSULTA COMPLEMENTAR — usar quando houver correspondência de empreendimento","dataConsulta":"27/09/2026"},"TRANSFEREGOV":{"sistema":"Transferegov","consultaPublica":"Instrumentos/transferências","status":"CONSULTA COMPLEMENTAR — aplicável somente quando houver instrumento federal compatível","dataConsulta":"27/09/2026"},"SETORIAL":{"sistema":"DNIT/DAQ — gestão/fiscalização SR/RO","consultaPublica":"Fonte setorial oficial","status":"VALIDAÇÃO SETORIAL CONFORME fonte/dataFonte da ficha","dataConsulta":"27/09/2026"}},"fonteExecFisica":"DNIT — notícia operacional setembro/2026; medições quantitativas ainda a vincular por contrato."},{"id":8,"nome":"Dragagem Lagoa Mirim","regioes":["Sul"],"ufs":["RS"],"municipios":["RS"],"hidrovias":["Lagoa Mirim"],"tipo":"Dragagem","situacao":"ORDEM DE SERVIÇO EMITIDA / EXECUÇÃO CONTRATADA","objeto":"Elaboração dos projetos e execução da dragagem de manutenção da Hidrovia da Lagoa Mirim, entre Santa Vitória do Palmar e o Canal do Sangradouro.","fase":"OS assinada em 23/06/2026; início previsto em até 30 dias; execução 23 meses e vigência 29 meses.","instrumento":"Contratação de obras/serviços","valor":"R$ 51.272.004,68","execFisica":"Não informado na base","execFinanceira":"Não informado na base","empenhadoPago":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — validar SIAFI/SEI","executor":"Contratada da dragagem — razão social a validar no PNCP/contrato","unidade":"DNIT/DAQ","sistema":"SEI / sistema setorial — validar","marco":"Ordem de Serviço assinada em 23/06/2026.","proximoMarco":"Confirmar mobilização/início, contrato, empresa, medições e execução financeira.","gargalo":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","problema":"NECESSITA VALIDAÇÃO","providencia":"Vincular contrato/empresa no PNCP e ação/PO no SIOP; atualizar medições e financeiro.","pendencia":"Atualização documental/operacional","fonte":"DNIT — Ordem de Serviço da dragagem da Lagoa Mirim, 25/06/2026","dataFonte":"25/06/2026","localExato":"RS","precisaoLocal":"Localização/abrangência conforme base disponível","loa":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — validar SIOP/SIAFI/LOA/PLOA/PPA","origem":"BACKEND + complementos oficiais preservados da versão anterior","acaoPO":"A VINCULAR — consulta SIOP por ação/localizador/PO","loa2026":"A VALIDAR NO SIOP — LOA 2026","ploa2027":"A VALIDAR NO SIOP — PLOA 2027","metaFisicaSIOP":"A VALIDAR NO SIOP — meta/realizado físico do PO","execOrcSIOP":"A VALIDAR NO SIOP — dotação atual/empenhado/RAP/saldo","execFinSIOP":"A VALIDAR NO SIOP/SIAFI — liquidado/pago","dataSIOP":"Pendente de vinculação segura do PO","validacaoEstruturantes":{"SIOP":{"sistema":"SIOP","consultaPublica":"Acompanhamento Físico-Financeiro / execução por ação-localizador-PO","status":"CONSULTADO — VÍNCULO PO NÃO CONFIRMADO","dataConsulta":"27/09/2026","regra":"Não associar ação/PO por aproximação nominal."},"SIAFI":{"sistema":"SIAFI / Portal da Transparência","consultaPublica":"Documentos de despesa: empenho, liquidação e pagamento","status":"CONSULTA PÚBLICA PREVISTA POR UG/documento/ação; vínculo individual depende de chave inequívoca","dataConsulta":"27/09/2026"},"PNCP":{"sistema":"PNCP / Compras.gov","consultaPublica":"Contratos e contratações","status":"FONTE COMPLEMENTAR — conferir por instrumento/UG","dataConsulta":"27/09/2026"},"OBRASGOV":{"sistema":"ObrasGov","consultaPublica":"Obras e investimentos cadastrados","status":"CONSULTA COMPLEMENTAR — usar quando houver correspondência de empreendimento","dataConsulta":"27/09/2026"},"TRANSFEREGOV":{"sistema":"Transferegov","consultaPublica":"Instrumentos/transferências","status":"CONSULTA COMPLEMENTAR — aplicável somente quando houver instrumento federal compatível","dataConsulta":"27/09/2026"},"SETORIAL":{"sistema":"DNIT/DAQ","consultaPublica":"Fonte setorial oficial","status":"VALIDAÇÃO SETORIAL CONFORME fonte/dataFonte da ficha","dataConsulta":"27/09/2026"}}},{"id":9,"nome":"Concessão SAI Sul–Lagoa Mirim","regioes":["Sul"],"ufs":["RS"],"municipios":["RS"],"hidrovias":["Lagoa Mirim"],"tipo":"Concessão","situacao":"PARTICIPAÇÃO SOCIAL EM CURSO","objeto":"Futura concessão do Sistema Aquaviário Integrado do Sul e Lagoa Mirim (SAI Sul-Mirim), no Rio Grande do Sul.","fase":"Consulta Pública nº 06/2026 prorrogada até 14/10/2026; audiência virtual realizada em 11/08/2026; audiência presencial marcada para 07/10/2026 em Rio Grande/RS.","instrumento":"Processo ANTAQ nº 50300.004564/2026-52 — futura concessão SAIP Sul-Mirim.","valor":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","execFisica":"Não informado na base","execFinanceira":"Não informado na base","empenhadoPago":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — validar SIAFI/SEI","executor":"Projeto de concessão — MPor / ANTAQ","unidade":"MPor/SNHN + ANTAQ","sistema":"SEI / sistema setorial — validar","marco":"Consulta pública prorrogada até 14/10/2026.","proximoMarco":"Audiência presencial em 07/10/2026 e encerramento da consulta em 14/10/2026.","gargalo":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","problema":"NECESSITA VALIDAÇÃO","providencia":"Atualizar o BI quando forem publicados documentos consolidados, edital ou novo cronograma.","pendencia":"Atualização documental/operacional","fonte":"ANTAQ — Audiência/Consulta Pública nº 06/2026, atualizada em 04/09/2026","dataFonte":"04/09/2026","localExato":"RS","precisaoLocal":"Localização/abrangência conforme base disponível","loa":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — validar SIOP/SIAFI/LOA/PLOA/PPA","origem":"BACKEND + complementos oficiais preservados da versão anterior","acaoPO":"A VINCULAR — consulta SIOP por ação/localizador/PO","loa2026":"A VALIDAR NO SIOP — LOA 2026","ploa2027":"A VALIDAR NO SIOP — PLOA 2027","metaFisicaSIOP":"A VALIDAR NO SIOP — meta/realizado físico do PO","execOrcSIOP":"A VALIDAR NO SIOP — dotação atual/empenhado/RAP/saldo","execFinSIOP":"A VALIDAR NO SIOP/SIAFI — liquidado/pago","dataSIOP":"Pendente de vinculação segura do PO","validacaoEstruturantes":{"SIOP":{"sistema":"SIOP","consultaPublica":"Acompanhamento Físico-Financeiro / execução por ação-localizador-PO","status":"CONSULTADO — VÍNCULO PO NÃO CONFIRMADO","dataConsulta":"27/09/2026","regra":"Não associar ação/PO por aproximação nominal."},"SIAFI":{"sistema":"SIAFI / Portal da Transparência","consultaPublica":"Documentos de despesa: empenho, liquidação e pagamento","status":"CONSULTA PÚBLICA PREVISTA POR UG/documento/ação; vínculo individual depende de chave inequívoca","dataConsulta":"27/09/2026"},"PNCP":{"sistema":"PNCP / Compras.gov","consultaPublica":"Contratos e contratações","status":"FONTE COMPLEMENTAR — conferir por instrumento/UG","dataConsulta":"27/09/2026"},"OBRASGOV":{"sistema":"ObrasGov","consultaPublica":"Obras e investimentos cadastrados","status":"CONSULTA COMPLEMENTAR — usar quando houver correspondência de empreendimento","dataConsulta":"27/09/2026"},"TRANSFEREGOV":{"sistema":"Transferegov","consultaPublica":"Instrumentos/transferências","status":"CONSULTA COMPLEMENTAR — aplicável somente quando houver instrumento federal compatível","dataConsulta":"27/09/2026"},"SETORIAL":{"sistema":"MPor/SNHN + ANTAQ","consultaPublica":"Fonte setorial oficial","status":"VALIDAÇÃO SETORIAL CONFORME fonte/dataFonte da ficha","dataConsulta":"27/09/2026"}}},{"id":10,"nome":"Concessão Hidrovia do Rio Paraguai","regioes":["Centro-Oeste"],"ufs":["MS"],"municipios":["Corumbá/MS à foz do Rio Apa"],"hidrovias":["Rio Paraguai"],"tipo":"Concessão","situacao":"PROJETO DE CONCESSÃO — PÓS-AUDIÊNCIA PÚBLICA","objeto":"Concessão da Hidrovia do Rio Paraguai para administração e exploração da infraestrutura.","fase":"Audiência pública realizada em 2025; página ANTAQ atualizada em 05/05/2026; leilão indicado como 'em breve'.","instrumento":"Processo ANTAQ 50300.024732/2024-64 — concessão com prazo de 15 anos.","valor":"CAPEX R$ 63,7 milhões até o 5º ano + OPEX R$ 14,1 milhões/ano — data-base abril/2024.","execFisica":"Não informado na base","execFinanceira":"Não informado na base","empenhadoPago":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — validar SIAFI/SEI","executor":"Futura concessionária","unidade":"ANTAQ / MPor","sistema":"SEI / sistema setorial — validar","marco":"Página ANTAQ atualizada em 05/05/2026: audiência pública realizada; leilão indicado como 'em breve'.","proximoMarco":"Acompanhar edital e definição do leilão.","gargalo":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","problema":"NECESSITA VALIDAÇÃO","providencia":"Acompanhar atualização de estudos, edital e cronograma do leilão.","pendencia":"Atualização documental/operacional","fonte":"ANTAQ — Hidrovia do Rio Paraguai, atualização 05/05/2026","dataFonte":"05/05/2026","localExato":"Trecho Corumbá/MS à foz do Rio Apa — 600 km","precisaoLocal":"Trecho e extensão publicados pela ANTAQ","loa":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — validar SIOP/SIAFI/LOA/PLOA/PPA","origem":"BACKEND + complementos oficiais preservados da versão anterior","acaoPO":"A VINCULAR — consulta SIOP por ação/localizador/PO","loa2026":"A VALIDAR NO SIOP — LOA 2026","ploa2027":"A VALIDAR NO SIOP — PLOA 2027","metaFisicaSIOP":"A VALIDAR NO SIOP — meta/realizado físico do PO","execOrcSIOP":"A VALIDAR NO SIOP — dotação atual/empenhado/RAP/saldo","execFinSIOP":"A VALIDAR NO SIOP/SIAFI — liquidado/pago","dataSIOP":"Pendente de vinculação segura do PO","validacaoEstruturantes":{"SIOP":{"sistema":"SIOP","consultaPublica":"Acompanhamento Físico-Financeiro / execução por ação-localizador-PO","status":"CONSULTADO — VÍNCULO PO NÃO CONFIRMADO","dataConsulta":"27/09/2026","regra":"Não associar ação/PO por aproximação nominal."},"SIAFI":{"sistema":"SIAFI / Portal da Transparência","consultaPublica":"Documentos de despesa: empenho, liquidação e pagamento","status":"CONSULTA PÚBLICA PREVISTA POR UG/documento/ação; vínculo individual depende de chave inequívoca","dataConsulta":"27/09/2026"},"PNCP":{"sistema":"PNCP / Compras.gov","consultaPublica":"Contratos e contratações","status":"FONTE COMPLEMENTAR — conferir por instrumento/UG","dataConsulta":"27/09/2026"},"OBRASGOV":{"sistema":"ObrasGov","consultaPublica":"Obras e investimentos cadastrados","status":"CONSULTA COMPLEMENTAR — usar quando houver correspondência de empreendimento","dataConsulta":"27/09/2026"},"TRANSFEREGOV":{"sistema":"Transferegov","consultaPublica":"Instrumentos/transferências","status":"CONSULTA COMPLEMENTAR — aplicável somente quando houver instrumento federal compatível","dataConsulta":"27/09/2026"},"SETORIAL":{"sistema":"ANTAQ / MPor","consultaPublica":"Fonte setorial oficial","status":"VALIDAÇÃO SETORIAL CONFORME fonte/dataFonte da ficha","dataConsulta":"27/09/2026"}},"processoPublico":"ANTAQ 50300.024732/2024-64","prazoConcessao":"15 anos","capex":"R$ 63,7 milhões até o 5º ano","opex":"R$ 14,1 milhões/ano","dataBaseConcessao":"abril/2024"},{"id":11,"nome":"Concessão Hidrovia do Rio Madeira","regioes":["Norte"],"ufs":["RO","AM"],"municipios":["Porto Velho/RO à foz do Rio Madeira"],"hidrovias":["Rio Madeira"],"tipo":"Concessão","situacao":"ESTRUTURAÇÃO DA CONCESSÃO — DOCUMENTOS TÉCNICOS DIVULGADOS","objeto":"Concessão de aproximadamente 1.075 km do Rio Madeira entre Porto Velho/RO e a foz do rio.","fase":"ANTAQ divulgou documentos técnicos para contribuições em 24/09/2026.","instrumento":"Processo ANTAQ nº 50300.017021/2023-52; minuta de edital e minuta de contrato divulgadas.","valor":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","execFisica":"Não informado na base","execFinanceira":"Não informado na base","empenhadoPago":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — validar SIAFI/SEI","executor":"Futura concessionária","unidade":"ANTAQ / MPor","sistema":"SEI / sistema setorial — validar","marco":"24/09/2026: ANTAQ divulgou documentos técnicos do Rio Madeira para contribuições.","proximoMarco":"Acompanhar contribuições e novos atos após a divulgação dos documentos técnicos.","gargalo":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","problema":"NECESSITA VALIDAÇÃO","providencia":"Atualizar imediatamente quando ANTAQ publicar novo cronograma/ato de concessão.","pendencia":"Atualização documental/operacional","fonte":"ANTAQ — Hidrovia do Rio Madeira, publicada em 24/09/2026","dataFonte":"24/09/2026","localExato":"Rio Madeira — Porto Velho/RO à foz — aproximadamente 1.075 km","precisaoLocal":"Trecho publicado pela ANTAQ","loa":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — validar SIOP/SIAFI/LOA/PLOA/PPA","origem":"BACKEND + complementos oficiais preservados da versão anterior","acaoPO":"A VINCULAR — consulta SIOP por ação/localizador/PO","loa2026":"A VALIDAR NO SIOP — LOA 2026","ploa2027":"A VALIDAR NO SIOP — PLOA 2027","metaFisicaSIOP":"A VALIDAR NO SIOP — meta/realizado físico do PO","execOrcSIOP":"A VALIDAR NO SIOP — dotação atual/empenhado/RAP/saldo","execFinSIOP":"A VALIDAR NO SIOP/SIAFI — liquidado/pago","dataSIOP":"Pendente de vinculação segura do PO","validacaoEstruturantes":{"SIOP":{"sistema":"SIOP","consultaPublica":"Acompanhamento Físico-Financeiro / execução por ação-localizador-PO","status":"CONSULTADO — VÍNCULO PO NÃO CONFIRMADO","dataConsulta":"27/09/2026","regra":"Não associar ação/PO por aproximação nominal."},"SIAFI":{"sistema":"SIAFI / Portal da Transparência","consultaPublica":"Documentos de despesa: empenho, liquidação e pagamento","status":"CONSULTA PÚBLICA PREVISTA POR UG/documento/ação; vínculo individual depende de chave inequívoca","dataConsulta":"27/09/2026"},"PNCP":{"sistema":"PNCP / Compras.gov","consultaPublica":"Contratos e contratações","status":"FONTE COMPLEMENTAR — conferir por instrumento/UG","dataConsulta":"27/09/2026"},"OBRASGOV":{"sistema":"ObrasGov","consultaPublica":"Obras e investimentos cadastrados","status":"CONSULTA COMPLEMENTAR — usar quando houver correspondência de empreendimento","dataConsulta":"27/09/2026"},"TRANSFEREGOV":{"sistema":"Transferegov","consultaPublica":"Instrumentos/transferências","status":"CONSULTA COMPLEMENTAR — aplicável somente quando houver instrumento federal compatível","dataConsulta":"27/09/2026"},"SETORIAL":{"sistema":"ANTAQ / MPor","consultaPublica":"Fonte setorial oficial","status":"VALIDAÇÃO SETORIAL CONFORME fonte/dataFonte da ficha","dataConsulta":"27/09/2026"}},"processoPublico":"ANTAQ 50300.017021/2023-52","extensao":"aprox. 1.075 km — Porto Velho/RO à foz do Rio Madeira"},{"id":12,"nome":"Concessão Hidrovia do Rio Tocantins","regioes":["Norte"],"ufs":["TO","PA"],"municipios":["TO/PA"],"hidrovias":["Rio Tocantins"],"tipo":"Concessão","situacao":"ESTUDOS / ESTRUTURAÇÃO DA CONCESSÃO","objeto":"Estruturação da concessão da Hidrovia do Tocantins, associada à manutenção e expansão da navegação comercial e condicionada por intervenções estruturantes como o Pedral do Lourenço.","fase":"Página ANTAQ informa estudos em elaboração; PGA 2026 previa consolidação de EVTEA e documentos jurídico-regulatórios.","instrumento":"Futura concessão","valor":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","execFisica":"Não informado na base","execFinanceira":"Não informado na base","empenhadoPago":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — validar SIAFI/SEI","executor":"ANTAQ / MPor — futura concessionária após licitação","unidade":"ANTAQ / MPor","sistema":"SEI / sistema setorial — validar","marco":"Estudos em elaboração; metas de estruturação constam do PGA ANTAQ 2026.","proximoMarco":"Confirmar publicação de participação social/documentos consolidados e cronograma atualizado.","gargalo":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","problema":"NECESSITA VALIDAÇÃO","providencia":"Manter como estruturação; não indicar concessão licitada até publicação oficial correspondente.","pendencia":"Atualização documental/operacional","fonte":"ANTAQ — Hidrovia do Tocantins + PGA 2026","dataFonte":"27/09/2026","localExato":"Hidrovia do Rio Tocantins — TO/PA; escopo final da concessão em estruturação","precisaoLocal":"Projeto de concessão ainda em estruturação; não confundir com contrato do Pedral do Lourenço","loa":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — validar SIOP/SIAFI/LOA/PLOA/PPA","origem":"BACKEND + complementos oficiais preservados da versão anterior","acaoPO":"A VINCULAR — consulta SIOP por ação/localizador/PO","loa2026":"A VALIDAR NO SIOP — LOA 2026","ploa2027":"A VALIDAR NO SIOP — PLOA 2027","metaFisicaSIOP":"A VALIDAR NO SIOP — meta/realizado físico do PO","execOrcSIOP":"A VALIDAR NO SIOP — dotação atual/empenhado/RAP/saldo","execFinSIOP":"A VALIDAR NO SIOP/SIAFI — liquidado/pago","dataSIOP":"Pendente de vinculação segura do PO","validacaoEstruturantes":{"SIOP":{"sistema":"SIOP","consultaPublica":"Acompanhamento Físico-Financeiro / execução por ação-localizador-PO","status":"CONSULTADO — VÍNCULO PO NÃO CONFIRMADO","dataConsulta":"27/09/2026","regra":"Não associar ação/PO por aproximação nominal."},"SIAFI":{"sistema":"SIAFI / Portal da Transparência","consultaPublica":"Documentos de despesa: empenho, liquidação e pagamento","status":"CONSULTA PÚBLICA PREVISTA POR UG/documento/ação; vínculo individual depende de chave inequívoca","dataConsulta":"27/09/2026"},"PNCP":{"sistema":"PNCP / Compras.gov","consultaPublica":"Contratos e contratações","status":"FONTE COMPLEMENTAR — conferir por instrumento/UG","dataConsulta":"27/09/2026"},"OBRASGOV":{"sistema":"ObrasGov","consultaPublica":"Obras e investimentos cadastrados","status":"CONSULTA COMPLEMENTAR — usar quando houver correspondência de empreendimento","dataConsulta":"27/09/2026"},"TRANSFEREGOV":{"sistema":"Transferegov","consultaPublica":"Instrumentos/transferências","status":"CONSULTA COMPLEMENTAR — aplicável somente quando houver instrumento federal compatível","dataConsulta":"27/09/2026"},"SETORIAL":{"sistema":"ANTAQ / MPor","consultaPublica":"Fonte setorial oficial","status":"VALIDAÇÃO SETORIAL CONFORME fonte/dataFonte da ficha","dataConsulta":"27/09/2026"}},"statusConcessaoPublica":"Estudos em elaboração — página ANTAQ; não tratar como concessão licitada."},{"id":13,"nome":"Concessão Hidrovia do Rio Tapajós","regioes":["Norte"],"ufs":["PA"],"municipios":["Itaituba/PA–Santarém/PA"],"hidrovias":["Rio Tapajós"],"tipo":"Concessão","situacao":"ESTUDOS EM ELABORAÇÃO","objeto":"Estruturação da concessão da Hidrovia do Tapajós; navegação comercial concentrada no trecho Itaituba/PA–foz no Amazonas/Santarém, aproximadamente 250 km.","fase":"Página ANTAQ mantém 'Estudos em elaboração'.","instrumento":"Futura concessão","valor":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","execFisica":"Não informado na base","execFinanceira":"Não informado na base","empenhadoPago":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — validar SIAFI/SEI","executor":"ANTAQ / MPor — futura concessionária após licitação","unidade":"ANTAQ / MPor","sistema":"SEI / sistema setorial — validar","marco":"Projeto consta da carteira de novas concessões hidroviárias da ANTAQ.","proximoMarco":"Acompanhar conclusão dos estudos e abertura de participação social.","gargalo":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","problema":"NECESSITA VALIDAÇÃO","providencia":"Não atribuir CAPEX, prazo ou data de leilão sem publicação oficial específica.","pendencia":"Atualização documental/operacional","fonte":"ANTAQ — Hidrovia do Tapajós","dataFonte":"27/09/2026","localExato":"Rio Tapajós — navegação comercial concentrada entre Itaituba e a foz/Santarém, cerca de 250 km","precisaoLocal":"Descrição territorial da página ANTAQ; escopo concessório final depende dos estudos","loa":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — validar SIOP/SIAFI/LOA/PLOA/PPA","origem":"BACKEND + complementos oficiais preservados da versão anterior","acaoPO":"A VINCULAR — consulta SIOP por ação/localizador/PO","loa2026":"A VALIDAR NO SIOP — LOA 2026","ploa2027":"A VALIDAR NO SIOP — PLOA 2027","metaFisicaSIOP":"A VALIDAR NO SIOP — meta/realizado físico do PO","execOrcSIOP":"A VALIDAR NO SIOP — dotação atual/empenhado/RAP/saldo","execFinSIOP":"A VALIDAR NO SIOP/SIAFI — liquidado/pago","dataSIOP":"Pendente de vinculação segura do PO","validacaoEstruturantes":{"SIOP":{"sistema":"SIOP","consultaPublica":"Acompanhamento Físico-Financeiro / execução por ação-localizador-PO","status":"CONSULTADO — VÍNCULO PO NÃO CONFIRMADO","dataConsulta":"27/09/2026","regra":"Não associar ação/PO por aproximação nominal."},"SIAFI":{"sistema":"SIAFI / Portal da Transparência","consultaPublica":"Documentos de despesa: empenho, liquidação e pagamento","status":"CONSULTA PÚBLICA PREVISTA POR UG/documento/ação; vínculo individual depende de chave inequívoca","dataConsulta":"27/09/2026"},"PNCP":{"sistema":"PNCP / Compras.gov","consultaPublica":"Contratos e contratações","status":"FONTE COMPLEMENTAR — conferir por instrumento/UG","dataConsulta":"27/09/2026"},"OBRASGOV":{"sistema":"ObrasGov","consultaPublica":"Obras e investimentos cadastrados","status":"CONSULTA COMPLEMENTAR — usar quando houver correspondência de empreendimento","dataConsulta":"27/09/2026"},"TRANSFEREGOV":{"sistema":"Transferegov","consultaPublica":"Instrumentos/transferências","status":"CONSULTA COMPLEMENTAR — aplicável somente quando houver instrumento federal compatível","dataConsulta":"27/09/2026"},"SETORIAL":{"sistema":"ANTAQ / MPor","consultaPublica":"Fonte setorial oficial","status":"VALIDAÇÃO SETORIAL CONFORME fonte/dataFonte da ficha","dataConsulta":"27/09/2026"}},"statusConcessaoPublica":"Estudos em elaboração — página ANTAQ; navegação comercial atual descrita entre Itaituba e Santarém, aprox. 250 km."},{"id":14,"nome":"ACT dragagem emergencial Rio Tapajós — Itapaiuna e Amorim","regioes":["Norte"],"ufs":["PA"],"municipios":["Itaituba/PA–Santarém/PA — trechos Itapaiuna e Amorim"],"hidrovias":["Rio Tapajós"],"tipo":"Investimento hidroviário","situacao":"ACT FORMALIZADO / DRAGAGEM EMERGENCIAL","objeto":"Execução de dragagem de manutenção aquaviária, em caráter excepcional inclusive emergencial, na Hidrovia do Rio Tapajós, nos trechos de Itapaiuna e Amorim, entre Itaituba e Santarém/PA.","fase":"ACT nº 001/2025 DAQ publicado pelo DNIT; plano de trabalho e plano de dragagem associados.","instrumento":"Acordo de Cooperação Técnica nº 001/2025 DAQ — DNIT/ABANI.","valor":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","execFisica":"Não informado na base","execFinanceira":"Não informado na base","empenhadoPago":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — validar SIAFI/SEI","executor":"DNIT + ABANI","unidade":"DNIT/DAQ","sistema":"SEI / sistema setorial — validar","marco":"ACT e documentação disponibilizados publicamente pelo DNIT em 08/04/2026.","proximoMarco":"Validar execução realizada, volumes medidos e situação corrente nos documentos técnicos/SEI.","gargalo":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","problema":"NECESSITA VALIDAÇÃO","providencia":"Incorporar volumes e execução somente após validação em medição/relatório oficial.","pendencia":"Atualização documental/operacional","fonte":"DNIT — ACT nº 001/2025 DAQ, publicado em 08/04/2026","dataFonte":"08/04/2026","localExato":"Rio Tapajós — trechos Itapaiuna e Amorim, entre Itaituba e Santarém/PA","precisaoLocal":"Localização/abrangência conforme base disponível","loa":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — validar SIOP/SIAFI/LOA/PLOA/PPA","origem":"BACKEND + complementos oficiais preservados da versão anterior","acaoPO":"A VINCULAR — consulta SIOP por ação/localizador/PO","loa2026":"A VALIDAR NO SIOP — LOA 2026","ploa2027":"A VALIDAR NO SIOP — PLOA 2027","metaFisicaSIOP":"A VALIDAR NO SIOP — meta/realizado físico do PO","execOrcSIOP":"A VALIDAR NO SIOP — dotação atual/empenhado/RAP/saldo","execFinSIOP":"A VALIDAR NO SIOP/SIAFI — liquidado/pago","dataSIOP":"Pendente de vinculação segura do PO","validacaoEstruturantes":{"SIOP":{"sistema":"SIOP","consultaPublica":"Acompanhamento Físico-Financeiro / execução por ação-localizador-PO","status":"CONSULTADO — VÍNCULO PO NÃO CONFIRMADO","dataConsulta":"27/09/2026","regra":"Não associar ação/PO por aproximação nominal."},"SIAFI":{"sistema":"SIAFI / Portal da Transparência","consultaPublica":"Documentos de despesa: empenho, liquidação e pagamento","status":"CONSULTA PÚBLICA PREVISTA POR UG/documento/ação; vínculo individual depende de chave inequívoca","dataConsulta":"27/09/2026"},"PNCP":{"sistema":"PNCP / Compras.gov","consultaPublica":"Contratos e contratações","status":"FONTE COMPLEMENTAR — conferir por instrumento/UG","dataConsulta":"27/09/2026"},"OBRASGOV":{"sistema":"ObrasGov","consultaPublica":"Obras e investimentos cadastrados","status":"CONSULTA COMPLEMENTAR — usar quando houver correspondência de empreendimento","dataConsulta":"27/09/2026"},"TRANSFEREGOV":{"sistema":"Transferegov","consultaPublica":"Instrumentos/transferências","status":"CONSULTA COMPLEMENTAR — aplicável somente quando houver instrumento federal compatível","dataConsulta":"27/09/2026"},"SETORIAL":{"sistema":"DNIT/DAQ","consultaPublica":"Fonte setorial oficial","status":"VALIDAÇÃO SETORIAL CONFORME fonte/dataFonte da ficha","dataConsulta":"27/09/2026"}}},{"id":15,"nome":"PADMA — Programa Anual de Dragagem de Manutenção Aquaviária","regioes":["Nacional"],"ufs":[],"municipios":["Nacional / vias DNIT"],"hidrovias":["A confirmar"],"tipo":"Dragagem","situacao":"PROGRAMA REGULAMENTADO E COM SERVIÇOS EM EXECUÇÃO","objeto":"Programa Anual de Dragagem de Manutenção Aquaviária (PADMA): planejamento, programação e gestão das ações de dragagem de manutenção nas vias navegáveis sob responsabilidade do DNIT.","fase":"PADMA regulamentado pela IN DNIT nº 10/2026; em setembro/2026 há serviços de dragagem de manutenção iniciados em quatro trechos hidroviários do Amazonas.","instrumento":"IN nº 10/DNIT SEDE, de 13/08/2026; PADMAs e contratos decorrentes.","valor":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","execFisica":"Não informado na base","execFinanceira":"Não informado na base","empenhadoPago":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — validar SIAFI/SEI","executor":"DNIT/DAQ e Superintendências Regionais, conforme o PADMA.","unidade":"DNIT/DAQ","sistema":"SEI / sistema setorial — validar","marco":"IN nº 10/2026 vigente e aplicação operacional registrada em setembro/2026.","proximoMarco":"Acompanhar PADMAs aprovados, planos anuais, contratações, medições e execução por hidrovia.","gargalo":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","problema":"NECESSITA VALIDAÇÃO","providencia":"Cadastrar cada PADMA aprovado/contrato como unidade operacional e vincular ação/PO, meta física, empenhado, liquidado e pago.","pendencia":"Atualização documental/operacional","fonte":"DNIT — IN nº 10/2026 + início das dragagens PADMA no Amazonas (set/2026)","dataFonte":"27/09/2026","localExato":"Vias navegáveis sob responsabilidade do DNIT — aplicação conforme PADMA aprovado","precisaoLocal":"Programa nacional; particularização deve ocorrer por PADMA/hidrovia/contrato","loa":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — validar SIOP/SIAFI/LOA/PLOA/PPA","origem":"BACKEND + complementos oficiais preservados da versão anterior","acaoPO":"A VINCULAR — consulta SIOP por ação/localizador/PO","loa2026":"A VALIDAR NO SIOP — LOA 2026","ploa2027":"A VALIDAR NO SIOP — PLOA 2027","metaFisicaSIOP":"A VALIDAR NO SIOP — meta/realizado físico do PO","execOrcSIOP":"A VALIDAR NO SIOP — dotação atual/empenhado/RAP/saldo","execFinSIOP":"A VALIDAR NO SIOP/SIAFI — liquidado/pago","dataSIOP":"Pendente de vinculação segura do PO","validacaoEstruturantes":{"SIOP":{"sistema":"SIOP","consultaPublica":"Acompanhamento Físico-Financeiro / execução por ação-localizador-PO","status":"CONSULTADO — VÍNCULO PO NÃO CONFIRMADO","dataConsulta":"27/09/2026","regra":"Não associar ação/PO por aproximação nominal."},"SIAFI":{"sistema":"SIAFI / Portal da Transparência","consultaPublica":"Documentos de despesa: empenho, liquidação e pagamento","status":"CONSULTA PÚBLICA PREVISTA POR UG/documento/ação; vínculo individual depende de chave inequívoca","dataConsulta":"27/09/2026"},"PNCP":{"sistema":"PNCP / Compras.gov","consultaPublica":"Contratos e contratações","status":"FONTE COMPLEMENTAR — conferir por instrumento/UG","dataConsulta":"27/09/2026"},"OBRASGOV":{"sistema":"ObrasGov","consultaPublica":"Obras e investimentos cadastrados","status":"CONSULTA COMPLEMENTAR — usar quando houver correspondência de empreendimento","dataConsulta":"27/09/2026"},"TRANSFEREGOV":{"sistema":"Transferegov","consultaPublica":"Instrumentos/transferências","status":"CONSULTA COMPLEMENTAR — aplicável somente quando houver instrumento federal compatível","dataConsulta":"27/09/2026"},"SETORIAL":{"sistema":"DNIT/DAQ","consultaPublica":"Fonte setorial oficial","status":"VALIDAÇÃO SETORIAL CONFORME fonte/dataFonte da ficha","dataConsulta":"27/09/2026"}}},{"id":16,"nome":"PMH — Programa de Monitoramento Hidroviário","regioes":["Nacional"],"ufs":[],"municipios":["Nacional / vias DNIT"],"hidrovias":["A confirmar"],"tipo":"Programa","situacao":"PROGRAMA REGULAMENTADO — PMH","objeto":"Programa de Monitoramento Hidroviário (PMH): monitoramento contínuo das principais vias navegáveis, incluindo dados hidrográficos/hidrológicos, batimetria, topografia, sedimentação e modelagem hidrodinâmica.","fase":"IN nº 1/DNIT SEDE, de 19/02/2026, estabelece orientações, procedimentos e padrões para execução, métrica, padronização e fiscalização dos contratos do PMH.","instrumento":"Programa de Monitoramento Hidroviário — IN DNIT nº 1/2026; integrado ao planejamento de manutenção hidroviária do DNIT.","valor":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","execFisica":"Não informado na base","execFinanceira":"Não informado na base","empenhadoPago":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — validar SIAFI/SEI","executor":"DNIT/DAQ","unidade":"DNIT/DAQ","sistema":"SEI / sistema setorial — validar","marco":"PMH regulamentado pela IN nº 1/2026; página normativa DNIT atualizada em 16/09/2026.","proximoMarco":"Mapear contratos PMH por hidrovia e respectivas execuções física/financeira.","gargalo":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","problema":"NECESSITA VALIDAÇÃO","providencia":"Mapear contratos PMH vigentes por hidrovia e vincular respectivas metas, medições e execução SIOP/SIAFI.","pendencia":"Atualização documental/operacional","fonte":"DNIT — Instrução Normativa nº 1/2026 e página de Instruções Normativas 2026","dataFonte":"16/09/2026","localExato":"Principais vias navegáveis sob responsabilidade do DNIT — contratos PMH por hidrovia","precisaoLocal":"Programa nacional; particularização por contrato e hidrovia","loa":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — validar SIOP/SIAFI/LOA/PLOA/PPA","origem":"BACKEND + complementos oficiais preservados da versão anterior","acaoPO":"A VINCULAR — consulta SIOP por ação/localizador/PO","loa2026":"A VALIDAR NO SIOP — LOA 2026","ploa2027":"A VALIDAR NO SIOP — PLOA 2027","metaFisicaSIOP":"A VALIDAR NO SIOP — meta/realizado físico do PO","execOrcSIOP":"A VALIDAR NO SIOP — dotação atual/empenhado/RAP/saldo","execFinSIOP":"A VALIDAR NO SIOP/SIAFI — liquidado/pago","dataSIOP":"Pendente de vinculação segura do PO","validacaoEstruturantes":{"SIOP":{"sistema":"SIOP","consultaPublica":"Acompanhamento Físico-Financeiro / execução por ação-localizador-PO","status":"CONSULTADO — VÍNCULO PO NÃO CONFIRMADO","dataConsulta":"27/09/2026","regra":"Não associar ação/PO por aproximação nominal."},"SIAFI":{"sistema":"SIAFI / Portal da Transparência","consultaPublica":"Documentos de despesa: empenho, liquidação e pagamento","status":"CONSULTA PÚBLICA PREVISTA POR UG/documento/ação; vínculo individual depende de chave inequívoca","dataConsulta":"27/09/2026"},"PNCP":{"sistema":"PNCP / Compras.gov","consultaPublica":"Contratos e contratações","status":"FONTE COMPLEMENTAR — conferir por instrumento/UG","dataConsulta":"27/09/2026"},"OBRASGOV":{"sistema":"ObrasGov","consultaPublica":"Obras e investimentos cadastrados","status":"CONSULTA COMPLEMENTAR — usar quando houver correspondência de empreendimento","dataConsulta":"27/09/2026"},"TRANSFEREGOV":{"sistema":"Transferegov","consultaPublica":"Instrumentos/transferências","status":"CONSULTA COMPLEMENTAR — aplicável somente quando houver instrumento federal compatível","dataConsulta":"27/09/2026"},"SETORIAL":{"sistema":"DNIT/DAQ","consultaPublica":"Fonte setorial oficial","status":"VALIDAÇÃO SETORIAL CONFORME fonte/dataFonte da ficha","dataConsulta":"27/09/2026"}}},{"id":17,"nome":"Boa Vista pelas Águas — Navegabilidade do Rio Branco","regioes":["Norte"],"ufs":["RR"],"municipios":["Boa Vista/RR — acesso hidroviário pelo Rio Branco"],"hidrovias":["Rio Branco"],"tipo":"Investimento hidroviário","situacao":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","objeto":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","fase":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","instrumento":"Projeto/iniciativa em estruturação — instrumento a confirmar","valor":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","execFisica":"Não informado na base","execFinanceira":"Não informado na base","empenhadoPago":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — validar SIAFI/SEI","executor":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","unidade":"SNHN/DGH — validar","sistema":"SEI / sistema setorial — validar","marco":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","proximoMarco":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","gargalo":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","problema":"NECESSITA VALIDAÇÃO","providencia":"Validar situação corrente, marco, execução e pendências no processo oficial antes do assessoramento.","pendencia":"Atualização documental/operacional","fonte":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","dataFonte":"27/09/2026","localExato":"Boa Vista/RR — acesso hidroviário pelo Rio Branco","precisaoLocal":"Localização/abrangência conforme base disponível","loa":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — validar SIOP/SIAFI/LOA/PLOA/PPA","origem":"BACKEND + complementos oficiais preservados da versão anterior","acaoPO":"A VINCULAR — consulta SIOP por ação/localizador/PO","loa2026":"A VALIDAR NO SIOP — LOA 2026","ploa2027":"A VALIDAR NO SIOP — PLOA 2027","metaFisicaSIOP":"A VALIDAR NO SIOP — meta/realizado físico do PO","execOrcSIOP":"A VALIDAR NO SIOP — dotação atual/empenhado/RAP/saldo","execFinSIOP":"A VALIDAR NO SIOP/SIAFI — liquidado/pago","dataSIOP":"Pendente de vinculação segura do PO","validacaoEstruturantes":{"SIOP":{"sistema":"SIOP","consultaPublica":"Acompanhamento Físico-Financeiro / execução por ação-localizador-PO","status":"CONSULTADO — VÍNCULO PO NÃO CONFIRMADO","dataConsulta":"27/09/2026","regra":"Não associar ação/PO por aproximação nominal."},"SIAFI":{"sistema":"SIAFI / Portal da Transparência","consultaPublica":"Documentos de despesa: empenho, liquidação e pagamento","status":"CONSULTA PÚBLICA PREVISTA POR UG/documento/ação; vínculo individual depende de chave inequívoca","dataConsulta":"27/09/2026"},"PNCP":{"sistema":"PNCP / Compras.gov","consultaPublica":"Contratos e contratações","status":"FONTE COMPLEMENTAR — conferir por instrumento/UG","dataConsulta":"27/09/2026"},"OBRASGOV":{"sistema":"ObrasGov","consultaPublica":"Obras e investimentos cadastrados","status":"CONSULTA COMPLEMENTAR — usar quando houver correspondência de empreendimento","dataConsulta":"27/09/2026"},"TRANSFEREGOV":{"sistema":"Transferegov","consultaPublica":"Instrumentos/transferências","status":"CONSULTA COMPLEMENTAR — aplicável somente quando houver instrumento federal compatível","dataConsulta":"27/09/2026"},"SETORIAL":{"sistema":"SNHN/DGH — validar","consultaPublica":"Fonte setorial oficial","status":"VALIDAÇÃO SETORIAL CONFORME fonte/dataFonte da ficha","dataConsulta":"27/09/2026"}}},{"id":18,"nome":"Barragem de Amarópolis — Hidrovia do Rio Jacuí","regioes":["Sul"],"ufs":["RS"],"municipios":["General Câmara/RS"],"hidrovias":["Rio Jacuí"],"tipo":"Barragem / infraestrutura hidroviária","situacao":"EM ANDAMENTO","objeto":"Projetos executivos e obras de reformas, recuperações e modernizações na barragem","fase":"ATIVO; assinatura 20/05/2024; término consolidado 26/11/2027","instrumento":"Contrato DNIT nº 321/2024","valor":"R$ 153.912.630,21","execFisica":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — validar DNIT/SEI","execFinanceira":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — validar SIAFI/SEI","empenhadoPago":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — validar SIAFI/SEI","executor":"DNIT","unidade":"DGH","sistema":"SEI/DNIT","marco":"Contrato ativo; DNIT divulgou suspensão temporária da eclusagem em 02/04/2026.","proximoMarco":"Confirmar avanço físico/financeiro e marcos contratuais vigentes","gargalo":"Manutenção corretiva da eclusa e necessidade de acompanhar impactos na navegabilidade.","problema":"ATENÇÃO OPERACIONAL — eclusagem teve suspensão temporária divulgada em 02/04/2026 para manutenção corretiva nos portões de jusante.","providencia":"Acompanhar execução contratual e confirmar situação atual da eclusagem, medições e execução financeira.","pendencia":"Medições e execução financeira atualizadas","fonte":"Base DNIT do contrato + alerta DNIT de 02/04/2026","dataFonte":"02/04/2026","localExato":"General Câmara/RS — Barragem/Eclusa de Amarópolis, Rio Jacuí","precisaoLocal":"Localidade individualizada no backend","loa":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — validar SIOP/SIAFI","origem":"BACKEND","acaoPO":"A VINCULAR — consulta SIOP por ação/localizador/PO","loa2026":"A VALIDAR NO SIOP — LOA 2026","ploa2027":"A VALIDAR NO SIOP — PLOA 2027","metaFisicaSIOP":"A VALIDAR NO SIOP — meta/realizado físico do PO","execOrcSIOP":"A VALIDAR NO SIOP — dotação atual/empenhado/RAP/saldo","execFinSIOP":"A VALIDAR NO SIOP/SIAFI — liquidado/pago","dataSIOP":"Pendente de vinculação segura do PO","validacaoEstruturantes":{"SIOP":{"sistema":"SIOP","consultaPublica":"Acompanhamento Físico-Financeiro / execução por ação-localizador-PO","status":"CONSULTADO — VÍNCULO PO NÃO CONFIRMADO","dataConsulta":"27/09/2026","regra":"Não associar ação/PO por aproximação nominal."},"SIAFI":{"sistema":"SIAFI / Portal da Transparência","consultaPublica":"Documentos de despesa: empenho, liquidação e pagamento","status":"CONSULTA PÚBLICA PREVISTA POR UG/documento/ação; vínculo individual depende de chave inequívoca","dataConsulta":"27/09/2026"},"PNCP":{"sistema":"PNCP / Compras.gov","consultaPublica":"Contratos e contratações","status":"FONTE COMPLEMENTAR — conferir por instrumento/UG","dataConsulta":"27/09/2026"},"OBRASGOV":{"sistema":"ObrasGov","consultaPublica":"Obras e investimentos cadastrados","status":"CONSULTA COMPLEMENTAR — usar quando houver correspondência de empreendimento","dataConsulta":"27/09/2026"},"TRANSFEREGOV":{"sistema":"Transferegov","consultaPublica":"Instrumentos/transferências","status":"CONSULTA COMPLEMENTAR — aplicável somente quando houver instrumento federal compatível","dataConsulta":"27/09/2026"},"SETORIAL":{"sistema":"DGH","consultaPublica":"Fonte setorial oficial","status":"VALIDAÇÃO SETORIAL CONFORME fonte/dataFonte da ficha","dataConsulta":"27/09/2026"}}},{"id":19,"nome":"Supervisão — Barragem de Amarópolis / Rio Jacuí","regioes":["Sul"],"ufs":["RS"],"municipios":["General Câmara/RS"],"hidrovias":["Rio Jacuí"],"tipo":"Supervisão","situacao":"EM ANDAMENTO","objeto":"Supervisão dos projetos executivos e das obras de reformas, recuperações e modernizações","fase":"ATIVO; assinatura 31/07/2024; término consolidado 01/07/2028","instrumento":"Contrato DNIT nº 489/2024","valor":"R$ 5.667.357,41","execFisica":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — validar DNIT/SEI","execFinanceira":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — validar SIAFI/SEI","empenhadoPago":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — validar SIAFI/SEI","executor":"DNIT","unidade":"DGH","sistema":"SEI/DNIT","marco":"Contrato ativo","proximoMarco":"Confirmar execução da supervisão e aderência ao contrato principal","gargalo":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO","problema":"NECESSITA VALIDAÇÃO","providencia":"Acompanhar relatórios de supervisão, medições e não conformidades.","pendencia":"Relatórios de supervisão atualizados","fonte":"Base DNIT fornecida pelo usuário — validar situação atual","dataFonte":"27/09/2026","localExato":"General Câmara/RS — supervisão das obras da Barragem de Amarópolis","precisaoLocal":"Localidade individualizada no backend","loa":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — validar SIOP/SIAFI","origem":"BACKEND","acaoPO":"A VINCULAR — consulta SIOP por ação/localizador/PO","loa2026":"A VALIDAR NO SIOP — LOA 2026","ploa2027":"A VALIDAR NO SIOP — PLOA 2027","metaFisicaSIOP":"A VALIDAR NO SIOP — meta/realizado físico do PO","execOrcSIOP":"A VALIDAR NO SIOP — dotação atual/empenhado/RAP/saldo","execFinSIOP":"A VALIDAR NO SIOP/SIAFI — liquidado/pago","dataSIOP":"Pendente de vinculação segura do PO","validacaoEstruturantes":{"SIOP":{"sistema":"SIOP","consultaPublica":"Acompanhamento Físico-Financeiro / execução por ação-localizador-PO","status":"CONSULTADO — VÍNCULO PO NÃO CONFIRMADO","dataConsulta":"27/09/2026","regra":"Não associar ação/PO por aproximação nominal."},"SIAFI":{"sistema":"SIAFI / Portal da Transparência","consultaPublica":"Documentos de despesa: empenho, liquidação e pagamento","status":"CONSULTA PÚBLICA PREVISTA POR UG/documento/ação; vínculo individual depende de chave inequívoca","dataConsulta":"27/09/2026"},"PNCP":{"sistema":"PNCP / Compras.gov","consultaPublica":"Contratos e contratações","status":"FONTE COMPLEMENTAR — conferir por instrumento/UG","dataConsulta":"27/09/2026"},"OBRASGOV":{"sistema":"ObrasGov","consultaPublica":"Obras e investimentos cadastrados","status":"CONSULTA COMPLEMENTAR — usar quando houver correspondência de empreendimento","dataConsulta":"27/09/2026"},"TRANSFEREGOV":{"sistema":"Transferegov","consultaPublica":"Instrumentos/transferências","status":"CONSULTA COMPLEMENTAR — aplicável somente quando houver instrumento federal compatível","dataConsulta":"27/09/2026"},"SETORIAL":{"sistema":"DGH","consultaPublica":"Fonte setorial oficial","status":"VALIDAÇÃO SETORIAL CONFORME fonte/dataFonte da ficha","dataConsulta":"27/09/2026"}}}];var ALL="TODOS",ORD=["regiao","uf","municipio","hidrovia","tipo","empreendimento"],E={};for(var q=0;q<ORD.length;q++)E[ORD[q]]=document.getElementById(ORD[q]);
 function u(a){var o={},r=[];for(var i=0;i<a.length;i++){var v=a[i];if(v&&!o[v]){o[v]=1;r.push(v)}}return r.sort(function(a,b){return String(a).localeCompare(String(b),"pt-BR")})}
 var IP4_LOCALIDADES_POR_UF={"AM":["Alvarães/AM","Anori/AM","Apuí/AM","Autazes/AM","Barcelos/AM","Barreirinha/AM","Benjamin Constant/AM","Beruri/AM","Boa Vista do Ramos/AM","Borba/AM","Canutama/AM","Carauari/AM","Careiro da Várzea/AM","Coari/AM","Codajás/AM","Eirunepé/AM","Envira/AM","Fonte Boa/AM","Guajará/AM","Humaitá/AM","Ipixuna/AM","Iranduba/AM","Itacoatiara - Novo Terminal/AM","Itacoatiara/AM","Itamarati/AM","Itapiranga/AM","Japurá/AM","Jutaí/AM","Lábrea/AM","Manacapuru/AM","Manaquiri/AM","Manicoré/AM","Maués/AM","Nhamundá/AM","Nova Olinda do Norte/AM","Novo Airão/AM","Novo Aripuanã/AM","Parintins/AM","Santa Isabel do Rio Negro/AM","Santo Antônio do Içá/AM","Silves/AM","São Paulo de Olivença/AM","São Raimundo-Manaus/AM","São Sebastião do Uatumã/AM","Tabatinga/AM","Tapauá/AM","Tefé (Lago Tefé)/AM","Tonantins/AM","Urucará/AM","Urucurituba/AM","Vila Amazônia-Parintins/AM"],"RO":["Cai n'Água-Porto Velho/RO","Guajará-Mirim/RO"],"RR":["Caracaraí/RR"]};
@@ -529,7 +635,7 @@ const DRIVE_SYNC_CONFIG = {
   enabled: true, // sincronização same-origin via snapshot publicado pelo GitHub Actions
   spreadsheetId: "1KJyLL2LHXpqJ0_3Avd60lhvYBiTNt8geos3YmOKGPLY",
   driveSourceUrl: "https://docs.google.com/spreadsheets/d/1KJyLL2LHXpqJ0_3Avd60lhvYBiTNt8geos3YmOKGPLY/edit",
-  endpoint: "./bi_hidrovias_public.json",
+  endpoint: "./data/bi_hidrovias_public.json",
   refreshMinutes: 1440, // nova leitura diária enquanto o painel estiver aberto
   cacheKey: "bi_hidrovias_v62_last_valid_data",
   metaKey: "bi_hidrovias_v62_last_sync_meta"
@@ -748,418 +854,461 @@ var oldQV=window.quickView;window.quickView=function(t){var z=oldQV?oldQV(t):und
 #siop-test th,#siop-test td{vertical-align:top}
 #siop-test .siop-alert{font-weight:700}
 </style>
-<section class="box" id="siop-test">
-  <h2>💰 Execução Orçamentária — SIOP | Homologação Final</h2>
-  <p class="siop-note"><b>Base relacionada.</b> Os filtros territoriais do BI limitam automaticamente os investimentos SIOP. Depois, Ação e PO refinam a execução. Somente vínculos habilitados entram nos valores; “SIM - PROVISÓRIO” continua sujeito à validação documental.</p>
-  <div id="siopTestStatus" class="siop-note">Carregando base orçamentária…</div>
-  <div id="siopContext" class="siop-context"></div>
-  <div class="siop-controls">
-    <div><label>Região</label><br><select id="siopRegiao"><option value="TODOS">TODAS</option></select></div>
-    <div><label>Ação</label><br><select id="siopAcao"><option value="TODOS">TODAS</option></select></div>
-    <div><label>Plano Orçamentário (PO)</label><br><select id="siopPO"><option value="TODOS">TODOS</option></select></div>
-    <div><label>Investimento</label><br><select id="siopInv"></select></div>
-    <div><label>Exercício</label><br><select id="siopAno"><option value="TODOS">Todos</option></select></div>
-    <button type="button" id="siopClearBtn">Limpar filtros SIOP</button>
+<section class="box budget-section" id="siop-test">
+  <div class="section-heading">
+    <div>
+      <h2>Execução Orçamentária — SIOP | Homologação Final</h2>
+      <p>Recorte orçamentário relacionado à carteira do BI. Os filtros territoriais e de empreendimento delimitam automaticamente os vínculos habilitados.</p>
+    </div>
+    <span class="status-badge" id="siopStatusBadge">Base homologada</span>
   </div>
-  <div id="siopCards" class="siop-grid"></div>
-  <div id="siopDetail"></div>
-</section>
-<script id="siopTestScript">
+  <div id="siopTestStatus" class="system-note">Carregando base orçamentária…</div>
+  <div id="siopContext" class="filter-context"></div>
+
+  <div class="budget-filter-grid" aria-label="Filtros da execução orçamentária">
+    <label>REGIÃO<select id="siopRegiao"><option value="TODOS">TODAS</option></select></label>
+    <label>UF<select id="siopUF"><option value="TODOS">TODAS</option></select></label>
+    <label>MUNICÍPIO / ABRANGÊNCIA<select id="siopMunicipio"><option value="TODOS">TODOS</option></select></label>
+    <label>HIDROVIA / RIO<select id="siopHidrovia"><option value="TODOS">TODAS</option></select></label>
+    <label>TIPO<select id="siopTipo"><option value="TODOS">TODOS</option></select></label>
+    <label>AÇÃO<select id="siopAcao"><option value="TODOS">TODAS</option></select></label>
+    <label>PLANO ORÇAMENTÁRIO (PO)<select id="siopPO"><option value="TODOS">TODOS</option></select></label>
+    <label>GRUPO DE DESPESA<select id="siopGND"><option value="TODOS">TODOS</option></select></label>
+    <label class="span-2">INVESTIMENTO<select id="siopInv"><option value="TODOS">TODOS OS RELACIONADOS</option></select></label>
+    <label>EXERCÍCIO<select id="siopAno"><option value="TODOS">Todos os exercícios</option></select></label>
+  </div>
+
+  <div class="budget-actions">
+    <button type="button" class="secondary-btn" id="siopClearBtn">Limpar filtros SIOP</button>
+    <button type="button" class="secondary-btn" id="siopApplyMainBtn">Reaplicar filtros do BI</button>
+  </div>
+
+  <div id="siopCards" class="siop-grid budget-kpis"></div>
+  <div id="siopDetail" class="table-scroll"></div>
+</section><script id="siopTestScript">
 (function(){
-const SIOP_EMBEDDED={"ok":true,"schemaVersion":2,"projeto":"Projeto BI - Hidrovias","fonte":"SIOP — base Google Drive/Sheets + Matriz de Relacionamento","dataBase":"02/10/2026","metadata":{"registrosSIOP":156,"relacionamentosHabilitados":11,"linhasIntegradas":11,"investimentosComSIOP":5,"regra":"Somente relacionamentos habilitado=SIM; exercícios separados; sem estimativa."},"totaisIntegrados":{"dotacaoAtual":664452445,"empenhado":538295314,"liquidado":235965186,"pago":224596286,"saldoEmpenhar":126157131,"saldoLiquidar":302330128,"empenhadoNaoPago":313699028,"liquidadoPagar":11368900,"pctEmpenhadoDotacao":81.0133694368451,"pctLiquidadoEmpenhado":43.835638145644346,"pctPagoLiquidado":95.18195874877915,"pctPagoDotacao":33.80170961670553},"investimentos":[{"investimento":"Dragagem Lagoa Mirim","totais":{"dotacaoAtual":7798862,"empenhado":4150672,"liquidado":3271188,"pago":3224133,"saldoEmpenhar":3648190,"saldoLiquidar":879484,"empenhadoNaoPago":926539,"liquidadoPagar":47055,"pctEmpenhadoDotacao":53.22150847136415,"pctLiquidadoEmpenhado":78.81104553672273,"pctPagoLiquidado":98.5615317737776,"pctPagoDotacao":41.34107001765129},"exercicios":[{"ano":2025,"totais":{"dotacaoAtual":3303988,"empenhado":3309987,"liquidado":3271188,"pago":3224133,"saldoEmpenhar":-5999,"saldoLiquidar":38799,"empenhadoNaoPago":85854,"liquidadoPagar":47055,"pctEmpenhadoDotacao":100.18156845605976,"pctLiquidadoEmpenhado":98.82782016968646,"pctPagoLiquidado":98.5615317737776,"pctPagoDotacao":97.5830723356138},"registros":[{"ano":2025,"acaoCodigo":"162D","acaoDescricao":"Dragagem e Sinalização Náutica da Lagoa Mirim","poCodigo":"0000","poDescricao":"Dragagem e Sinalização Náutica da Lagoa Mirim","grupoDespesa":"3 - Outras Despesas Correntes","dotacaoAtual":2994000,"empenhado":3000000,"liquidado":2994000,"pago":2994000,"statusValidacao":"SIM - PROVISÓRIO"},{"ano":2025,"acaoCodigo":"162D","acaoDescricao":"Dragagem e Sinalização Náutica da Lagoa Mirim","poCodigo":"0000","poDescricao":"Dragagem e Sinalização Náutica da Lagoa Mirim","grupoDespesa":"4 - Investimentos","dotacaoAtual":309988,"empenhado":309987,"liquidado":277188,"pago":230133,"statusValidacao":"SIM - PROVISÓRIO"}]},{"ano":2026,"totais":{"dotacaoAtual":4494874,"empenhado":840685,"liquidado":0,"pago":0,"saldoEmpenhar":3654189,"saldoLiquidar":840685,"empenhadoNaoPago":840685,"liquidadoPagar":0,"pctEmpenhadoDotacao":18.703193904879203,"pctLiquidadoEmpenhado":0,"pctPagoLiquidado":null,"pctPagoDotacao":0},"registros":[{"ano":2026,"acaoCodigo":"162D","acaoDescricao":"Dragagem e Sinalização Náutica da Lagoa Mirim","poCodigo":"0000","poDescricao":"Dragagem e Sinalização Náutica da Lagoa Mirim","grupoDespesa":"4 - Investimentos","dotacaoAtual":4494874,"empenhado":840685,"liquidado":0,"pago":0,"statusValidacao":"SIM - PROVISÓRIO"}]}]},{"investimento":"Modernização da IP4 de Parintins","totais":{"dotacaoAtual":6955154,"empenhado":6955150,"liquidado":6955150,"pago":6955150,"saldoEmpenhar":4,"saldoLiquidar":0,"empenhadoNaoPago":0,"liquidadoPagar":0,"pctEmpenhadoDotacao":99.99994248869257,"pctLiquidadoEmpenhado":100,"pctPagoLiquidado":100,"pctPagoDotacao":99.99994248869257},"exercicios":[{"ano":2025,"totais":{"dotacaoAtual":6955154,"empenhado":6955150,"liquidado":6955150,"pago":6955150,"saldoEmpenhar":4,"saldoLiquidar":0,"empenhadoNaoPago":0,"liquidadoPagar":0,"pctEmpenhadoDotacao":99.99994248869257,"pctLiquidadoEmpenhado":100,"pctPagoLiquidado":100,"pctPagoDotacao":99.99994248869257},"registros":[{"ano":2025,"acaoCodigo":"219Z","acaoDescricao":"Conservação e Recuperação de Ativos de Infraestrutura da União","poCodigo":"000P","poDescricao":"IP4 de Parintins/AM - Recuperação","grupoDespesa":"4 - Investimentos","dotacaoAtual":6955154,"empenhado":6955150,"liquidado":6955150,"pago":6955150,"statusValidacao":"SIM - PROVISÓRIO"}]}]},{"investimento":"Operação e manutenção de 54 IP4","totais":{"dotacaoAtual":487554964,"empenhado":416304485,"liquidado":222945443,"pago":212187857,"saldoEmpenhar":71250479,"saldoLiquidar":193359042,"empenhadoNaoPago":204116628,"liquidadoPagar":10757586,"pctEmpenhadoDotacao":85.38616478941233,"pctLiquidadoEmpenhado":53.55345691267295,"pctPagoLiquidado":95.17478991485822,"pctPagoDotacao":43.520807430441835},"exercicios":[{"ano":2025,"totais":{"dotacaoAtual":186236245,"empenhado":186236244,"liquidado":122359050,"pago":119492306,"saldoEmpenhar":1,"saldoLiquidar":63877194,"empenhadoNaoPago":66743938,"liquidadoPagar":2866744,"pctEmpenhadoDotacao":99.9999994630476,"pctLiquidadoEmpenhado":65.70098675314779,"pctPagoLiquidado":97.65710505271167,"pctPagoDotacao":64.16168130967202},"registros":[{"ano":2025,"acaoCodigo":"20LN","acaoDescricao":"Operação de Terminais Hidroviários","poCodigo":"0002","poDescricao":"CREMA das IP4 AM/RO/RR","grupoDespesa":"3 - Outras Despesas Correntes","dotacaoAtual":186236245,"empenhado":186236244,"liquidado":122359050,"pago":119492306,"statusValidacao":"SIM - PROVISÓRIO"}]},{"ano":2026,"totais":{"dotacaoAtual":301318719,"empenhado":230068241,"liquidado":100586393,"pago":92695551,"saldoEmpenhar":71250478,"saldoLiquidar":129481848,"empenhadoNaoPago":137372690,"liquidadoPagar":7890842,"pctEmpenhadoDotacao":76.35378305189198,"pctLiquidadoEmpenhado":43.72024255186095,"pctPagoLiquidado":92.15515959499612,"pctPagoDotacao":30.763289883759263},"registros":[{"ano":2026,"acaoCodigo":"20LN","acaoDescricao":"Operação de Terminais Hidroviários","poCodigo":"0002","poDescricao":"CREMA das IP4 AM/RO/RR","grupoDespesa":"3 - Outras Despesas Correntes","dotacaoAtual":301318719,"empenhado":230068241,"liquidado":100586393,"pago":92695551,"statusValidacao":"SIM - PROVISÓRIO"}]}]},{"investimento":"Pedral do Lourenço — Rio Tocantins","totais":{"dotacaoAtual":47828449,"empenhado":14423484,"liquidado":1685420,"pago":1685420,"saldoEmpenhar":33404965,"saldoLiquidar":12738064,"empenhadoNaoPago":12738064,"liquidadoPagar":0,"pctEmpenhadoDotacao":30.156704433380227,"pctLiquidadoEmpenhado":11.68524886220278,"pctPagoLiquidado":100,"pctPagoDotacao":3.5238859616794183},"exercicios":[{"ano":2025,"totais":{"dotacaoAtual":7828449,"empenhado":7829943,"liquidado":1685420,"pago":1685420,"saldoEmpenhar":-1494,"saldoLiquidar":6144523,"empenhadoNaoPago":6144523,"liquidadoPagar":0,"pctEmpenhadoDotacao":100.01908424005828,"pctLiquidadoEmpenhado":21.52531634010618,"pctPagoLiquidado":100,"pctPagoDotacao":21.52942428314983},"registros":[{"ano":2025,"acaoCodigo":"123M","acaoDescricao":"Melhoramentos no Canal de Navegação da Hidrovia do Rio Tocantins","poCodigo":"0001","poDescricao":"Derrocagem do Pedral do Lourenço (HN-200)","grupoDespesa":"3 - Outras Despesas Correntes","dotacaoAtual":200000,"empenhado":200000,"liquidado":0,"pago":0,"statusValidacao":"SIM - PROVISÓRIO"},{"ano":2025,"acaoCodigo":"123M","acaoDescricao":"Melhoramentos no Canal de Navegação da Hidrovia do Rio Tocantins","poCodigo":"0001","poDescricao":"Derrocagem do Pedral do Lourenço (HN-200)","grupoDespesa":"4 - Investimentos","dotacaoAtual":7628449,"empenhado":7629943,"liquidado":1685420,"pago":1685420,"statusValidacao":"SIM - PROVISÓRIO"}]},{"ano":2026,"totais":{"dotacaoAtual":40000000,"empenhado":6593541,"liquidado":0,"pago":0,"saldoEmpenhar":33406459,"saldoLiquidar":6593541,"empenhadoNaoPago":6593541,"liquidadoPagar":0,"pctEmpenhadoDotacao":16.4838525,"pctLiquidadoEmpenhado":0,"pctPagoLiquidado":null,"pctPagoDotacao":0},"registros":[{"ano":2026,"acaoCodigo":"123M","acaoDescricao":"Melhoramentos no Canal de Navegação da Hidrovia do Rio Tocantins","poCodigo":"0001","poDescricao":"Derrocagem do Pedral do Lourenço (HN-200)","grupoDespesa":"3 - Outras Despesas Correntes","dotacaoAtual":611622,"empenhado":0,"liquidado":0,"pago":0,"statusValidacao":"SIM - PROVISÓRIO"},{"ano":2026,"acaoCodigo":"123M","acaoDescricao":"Melhoramentos no Canal de Navegação da Hidrovia do Rio Tocantins","poCodigo":"0001","poDescricao":"Derrocagem do Pedral do Lourenço (HN-200)","grupoDespesa":"4 - Investimentos","dotacaoAtual":39388378,"empenhado":6593541,"liquidado":0,"pago":0,"statusValidacao":"SIM - PROVISÓRIO"}]}]},{"investimento":"Terminal Manaus Moderna","totais":{"dotacaoAtual":114315016,"empenhado":96461523,"liquidado":1107985,"pago":543726,"saldoEmpenhar":17853493,"saldoLiquidar":95353538,"empenhadoNaoPago":95917797,"liquidadoPagar":564259,"pctEmpenhadoDotacao":84.38219787328727,"pctLiquidadoEmpenhado":1.1486289719891734,"pctPagoLiquidado":49.07340803350226,"pctPagoDotacao":0.47563830109598204},"exercicios":[{"ano":2026,"totais":{"dotacaoAtual":114315016,"empenhado":96461523,"liquidado":1107985,"pago":543726,"saldoEmpenhar":17853493,"saldoLiquidar":95353538,"empenhadoNaoPago":95917797,"liquidadoPagar":564259,"pctEmpenhadoDotacao":84.38219787328727,"pctLiquidadoEmpenhado":1.1486289719891734,"pctPagoLiquidado":49.07340803350226,"pctPagoDotacao":0.47563830109598204},"registros":[{"ano":2026,"acaoCodigo":"13LO","acaoDescricao":"Construção do Porto de Manaus Moderna - no Estado do Amazonas","poCodigo":"0000","poDescricao":"Construção do Porto de Manaus Moderna - no Estado do Amazonas","grupoDespesa":"4 - Investimentos","dotacaoAtual":114315016,"empenhado":96461523,"liquidado":1107985,"pago":543726,"statusValidacao":"SIM - PROVISÓRIO"}]}]}]};
-const ENDPOINT='./siop_hidrovias_public.json';
-let SIOP_TEST_DATA=SIOP_EMBEDDED; window.SIOP_DATA=SIOP_TEST_DATA;
-function brl(v){return Number(v||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'})}
-function pct(v){return v==null?'N/A':Number(v).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})+'%'}
-function esc(v){return String(v==null?'—':v).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
-function totals(inv){return inv.totais||inv.totaisTodosExercicios||{}}
-function meta(j){const m=j.metadata||{};return {
- registros:m.registrosSIOP??m.quantidadeRegistrosSiop??156,
- relacoes:m.relacionamentosHabilitados??m.quantidadeRelacionamentosHabilitados??11,
- investimentos:m.investimentosComSIOP??m.quantidadeInvestimentosComSiop??((j.investimentos||[]).length),
- linhas:m.linhasIntegradas??m.quantidadeLinhasIntegradas??11
-}}
-function updatedAt(j){return j.generatedAt||j.dataBase||'02/10/2026'}
-function cards(t){
- const vals=[
- ['Dotação atual',brl(t.dotacaoAtual)],['Empenhado',brl(t.empenhado)+' · '+pct(t.pctEmpenhadoDotacao)],
- ['Liquidado',brl(t.liquidado)+' · '+pct(t.pctLiquidadoEmpenhado)],['Pago',brl(t.pago)+' · '+pct(t.pctPagoLiquidado)],
- ['Saldo a empenhar',brl(t.saldoEmpenhar)],['Saldo a liquidar',brl(t.saldoLiquidar)],
- ['Empenhado não pago',brl(t.empenhadoNaoPago)],['Liquidado a pagar',brl(t.liquidadoPagar)]
- ]; return vals.map(x=>'<div class="siop-card"><b>'+x[0]+'</b><span>'+x[1]+'</span></div>').join('');
-}
-function setStatus(prefix,extra){
- const st=document.getElementById('siopTestStatus'),m=meta(SIOP_TEST_DATA);
- st.className='siop-note';
- st.textContent=prefix+' · '+m.registros+' registros SIOP · '+m.relacoes+' relações habilitadas · '+m.investimentos+' investimentos com SIOP · '+m.linhas+' linhas integradas'+(extra?' · '+extra:'')+'.';
-}
-window.renderSiopTest=function(){
- if(!SIOP_TEST_DATA)return;
- const invSel=document.getElementById('siopInv'),anoSel=document.getElementById('siopAno');
- const nome=invSel.value, ano=anoSel.value;
- const inv=(SIOP_TEST_DATA.investimentos||[]).find(x=>x.investimento===nome); if(!inv)return;
- const ex=ano==='TODOS'?null:(inv.exercicios||[]).find(x=>String(x.ano)===String(ano));
- const t=ex?ex.totais:totals(inv);
- document.getElementById('siopCards').innerHTML=cards(t);
- const regs=ex?(ex.registros||[]):(inv.exercicios||[]).flatMap(x=>x.registros||[]);
- let warn=[];
- if(Number(t.saldoEmpenhar)<0)warn.push('⚠️ Empenhado superior à dotação no recorte selecionado.');
- if(Number(t.pctLiquidadoEmpenhado)<10 && Number(t.empenhado)>0)warn.push('⚠️ Liquidação inferior a 10% do empenhado.');
- if(Number(t.liquidadoPagar)>0)warn.push('ℹ️ Há valor liquidado ainda não pago.');
- document.getElementById('siopDetail').innerHTML=(warn.length?'<p class="siop-alert">'+warn.join('<br>')+'</p>':'')+
- '<table><thead><tr><th>Ano</th><th>Ação</th><th>PO</th><th>Grupo</th><th>Dotação</th><th>Empenhado</th><th>Liquidado</th><th>Pago</th><th>Status</th></tr></thead><tbody>'+
- regs.map(r=>'<tr><td>'+esc(r.ano)+'</td><td>'+esc(r.acaoCodigo)+'<br><small>'+esc(r.acaoDescricao)+'</small></td><td>'+esc(r.poCodigo)+'<br><small>'+esc(r.poDescricao)+'</small></td><td>'+esc(r.grupoDespesa)+'</td><td>'+brl(r.dotacaoAtual)+'</td><td>'+brl(r.empenhado)+'</td><td>'+brl(r.liquidado)+'</td><td>'+brl(r.pago)+'</td><td>'+esc(r.statusValidacao)+'</td></tr>').join('')+'</tbody></table>'+
- '<p class="siop-note"><b>Fonte:</b> SIOP + Matriz de Relacionamento · Atualização: '+esc(updatedAt(SIOP_TEST_DATA))+' · Exercícios permanecem separados. Relações “SIM - PROVISÓRIO” dependem de validação documental.</p>';
-}
-function fill(){
- const invSel=document.getElementById('siopInv'),anoSel=document.getElementById('siopAno');
- const arr=SIOP_TEST_DATA.investimentos||[];
- const prior=invSel.value;
- invSel.innerHTML=arr.map(x=>'<option value="'+esc(x.investimento)+'">'+esc(x.investimento)+'</option>').join('');
- if(prior&&arr.some(x=>x.investimento===prior))invSel.value=prior;
- function anos(){const inv=arr.find(x=>x.investimento===invSel.value);anoSel.innerHTML='<option value="TODOS">Todos (somente para conferência)</option>'+(inv?(inv.exercicios||[]).map(x=>'<option value="'+esc(x.ano)+'">'+esc(x.ano)+'</option>').join(''):'');}
- invSel.onchange=function(){anos();renderSiopTest()}; anoSel.onchange=renderSiopTest; anos(); renderSiopTest();
-}
-async function refreshOnline(){
- if(location.protocol!=='http:'&&location.protocol!=='https:')return;
- try{
-  const r=await fetch(ENDPOINT+'?_ts='+Date.now(),{cache:'no-store'});
-  if(!r.ok)throw new Error('HTTP '+r.status);
-  const j=await r.json();
-  if(!j.ok||!Array.isArray(j.investimentos)||!j.investimentos.length)throw new Error('JSON inválido');
-  SIOP_TEST_DATA=j; window.SIOP_DATA=j; fill(); setStatus('BASE SIOP ONLINE OK','sincronização automática ativa'); window.dispatchEvent(new CustomEvent('bi:siop-updated'));
- }catch(e){
-  setStatus('BASE SIOP EMBUTIDA OK','modo autônomo; atualização online indisponível');
- }
-}
-function init(){
- fill();
- setStatus('BASE SIOP EMBUTIDA OK','funciona mesmo sem acesso ao GitHub Pages');
- refreshOnline();
-}
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+  "use strict";
+  const SIOP_EMBEDDED={"ok":true,"schemaVersion":2,"projeto":"Projeto BI - Hidrovias","fonte":"SIOP — base Google Drive/Sheets + Matriz de Relacionamento","dataBase":"02/10/2026","metadata":{"registrosSIOP":156,"relacionamentosHabilitados":11,"linhasIntegradas":11,"investimentosComSIOP":5,"regra":"Somente relacionamentos habilitado=SIM; exercícios separados; sem estimativa."},"totaisIntegrados":{"dotacaoAtual":664452445,"empenhado":538295314,"liquidado":235965186,"pago":224596286,"saldoEmpenhar":126157131,"saldoLiquidar":302330128,"empenhadoNaoPago":313699028,"liquidadoPagar":11368900,"pctEmpenhadoDotacao":81.0133694368451,"pctLiquidadoEmpenhado":43.835638145644346,"pctPagoLiquidado":95.18195874877915,"pctPagoDotacao":33.80170961670553},"investimentos":[{"investimento":"Dragagem Lagoa Mirim","totais":{"dotacaoAtual":7798862,"empenhado":4150672,"liquidado":3271188,"pago":3224133,"saldoEmpenhar":3648190,"saldoLiquidar":879484,"empenhadoNaoPago":926539,"liquidadoPagar":47055,"pctEmpenhadoDotacao":53.22150847136415,"pctLiquidadoEmpenhado":78.81104553672273,"pctPagoLiquidado":98.5615317737776,"pctPagoDotacao":41.34107001765129},"exercicios":[{"ano":2025,"totais":{"dotacaoAtual":3303988,"empenhado":3309987,"liquidado":3271188,"pago":3224133,"saldoEmpenhar":-5999,"saldoLiquidar":38799,"empenhadoNaoPago":85854,"liquidadoPagar":47055,"pctEmpenhadoDotacao":100.18156845605976,"pctLiquidadoEmpenhado":98.82782016968646,"pctPagoLiquidado":98.5615317737776,"pctPagoDotacao":97.5830723356138},"registros":[{"ano":2025,"acaoCodigo":"162D","acaoDescricao":"Dragagem e Sinalização Náutica da Lagoa Mirim","poCodigo":"0000","poDescricao":"Dragagem e Sinalização Náutica da Lagoa Mirim","grupoDespesa":"3 - Outras Despesas Correntes","dotacaoAtual":2994000,"empenhado":3000000,"liquidado":2994000,"pago":2994000,"statusValidacao":"SIM - PROVISÓRIO"},{"ano":2025,"acaoCodigo":"162D","acaoDescricao":"Dragagem e Sinalização Náutica da Lagoa Mirim","poCodigo":"0000","poDescricao":"Dragagem e Sinalização Náutica da Lagoa Mirim","grupoDespesa":"4 - Investimentos","dotacaoAtual":309988,"empenhado":309987,"liquidado":277188,"pago":230133,"statusValidacao":"SIM - PROVISÓRIO"}]},{"ano":2026,"totais":{"dotacaoAtual":4494874,"empenhado":840685,"liquidado":0,"pago":0,"saldoEmpenhar":3654189,"saldoLiquidar":840685,"empenhadoNaoPago":840685,"liquidadoPagar":0,"pctEmpenhadoDotacao":18.703193904879203,"pctLiquidadoEmpenhado":0,"pctPagoLiquidado":null,"pctPagoDotacao":0},"registros":[{"ano":2026,"acaoCodigo":"162D","acaoDescricao":"Dragagem e Sinalização Náutica da Lagoa Mirim","poCodigo":"0000","poDescricao":"Dragagem e Sinalização Náutica da Lagoa Mirim","grupoDespesa":"4 - Investimentos","dotacaoAtual":4494874,"empenhado":840685,"liquidado":0,"pago":0,"statusValidacao":"SIM - PROVISÓRIO"}]}]},{"investimento":"Modernização da IP4 de Parintins","totais":{"dotacaoAtual":6955154,"empenhado":6955150,"liquidado":6955150,"pago":6955150,"saldoEmpenhar":4,"saldoLiquidar":0,"empenhadoNaoPago":0,"liquidadoPagar":0,"pctEmpenhadoDotacao":99.99994248869257,"pctLiquidadoEmpenhado":100,"pctPagoLiquidado":100,"pctPagoDotacao":99.99994248869257},"exercicios":[{"ano":2025,"totais":{"dotacaoAtual":6955154,"empenhado":6955150,"liquidado":6955150,"pago":6955150,"saldoEmpenhar":4,"saldoLiquidar":0,"empenhadoNaoPago":0,"liquidadoPagar":0,"pctEmpenhadoDotacao":99.99994248869257,"pctLiquidadoEmpenhado":100,"pctPagoLiquidado":100,"pctPagoDotacao":99.99994248869257},"registros":[{"ano":2025,"acaoCodigo":"219Z","acaoDescricao":"Conservação e Recuperação de Ativos de Infraestrutura da União","poCodigo":"000P","poDescricao":"IP4 de Parintins/AM - Recuperação","grupoDespesa":"4 - Investimentos","dotacaoAtual":6955154,"empenhado":6955150,"liquidado":6955150,"pago":6955150,"statusValidacao":"SIM - PROVISÓRIO"}]}]},{"investimento":"Operação e manutenção de 54 IP4","totais":{"dotacaoAtual":487554964,"empenhado":416304485,"liquidado":222945443,"pago":212187857,"saldoEmpenhar":71250479,"saldoLiquidar":193359042,"empenhadoNaoPago":204116628,"liquidadoPagar":10757586,"pctEmpenhadoDotacao":85.38616478941233,"pctLiquidadoEmpenhado":53.55345691267295,"pctPagoLiquidado":95.17478991485822,"pctPagoDotacao":43.520807430441835},"exercicios":[{"ano":2025,"totais":{"dotacaoAtual":186236245,"empenhado":186236244,"liquidado":122359050,"pago":119492306,"saldoEmpenhar":1,"saldoLiquidar":63877194,"empenhadoNaoPago":66743938,"liquidadoPagar":2866744,"pctEmpenhadoDotacao":99.9999994630476,"pctLiquidadoEmpenhado":65.70098675314779,"pctPagoLiquidado":97.65710505271167,"pctPagoDotacao":64.16168130967202},"registros":[{"ano":2025,"acaoCodigo":"20LN","acaoDescricao":"Operação de Terminais Hidroviários","poCodigo":"0002","poDescricao":"CREMA das IP4 AM/RO/RR","grupoDespesa":"3 - Outras Despesas Correntes","dotacaoAtual":186236245,"empenhado":186236244,"liquidado":122359050,"pago":119492306,"statusValidacao":"SIM - PROVISÓRIO"}]},{"ano":2026,"totais":{"dotacaoAtual":301318719,"empenhado":230068241,"liquidado":100586393,"pago":92695551,"saldoEmpenhar":71250478,"saldoLiquidar":129481848,"empenhadoNaoPago":137372690,"liquidadoPagar":7890842,"pctEmpenhadoDotacao":76.35378305189198,"pctLiquidadoEmpenhado":43.72024255186095,"pctPagoLiquidado":92.15515959499612,"pctPagoDotacao":30.763289883759263},"registros":[{"ano":2026,"acaoCodigo":"20LN","acaoDescricao":"Operação de Terminais Hidroviários","poCodigo":"0002","poDescricao":"CREMA das IP4 AM/RO/RR","grupoDespesa":"3 - Outras Despesas Correntes","dotacaoAtual":301318719,"empenhado":230068241,"liquidado":100586393,"pago":92695551,"statusValidacao":"SIM - PROVISÓRIO"}]}]},{"investimento":"Pedral do Lourenço — Rio Tocantins","totais":{"dotacaoAtual":47828449,"empenhado":14423484,"liquidado":1685420,"pago":1685420,"saldoEmpenhar":33404965,"saldoLiquidar":12738064,"empenhadoNaoPago":12738064,"liquidadoPagar":0,"pctEmpenhadoDotacao":30.156704433380227,"pctLiquidadoEmpenhado":11.68524886220278,"pctPagoLiquidado":100,"pctPagoDotacao":3.5238859616794183},"exercicios":[{"ano":2025,"totais":{"dotacaoAtual":7828449,"empenhado":7829943,"liquidado":1685420,"pago":1685420,"saldoEmpenhar":-1494,"saldoLiquidar":6144523,"empenhadoNaoPago":6144523,"liquidadoPagar":0,"pctEmpenhadoDotacao":100.01908424005828,"pctLiquidadoEmpenhado":21.52531634010618,"pctPagoLiquidado":100,"pctPagoDotacao":21.52942428314983},"registros":[{"ano":2025,"acaoCodigo":"123M","acaoDescricao":"Melhoramentos no Canal de Navegação da Hidrovia do Rio Tocantins","poCodigo":"0001","poDescricao":"Derrocagem do Pedral do Lourenço (HN-200)","grupoDespesa":"3 - Outras Despesas Correntes","dotacaoAtual":200000,"empenhado":200000,"liquidado":0,"pago":0,"statusValidacao":"SIM - PROVISÓRIO"},{"ano":2025,"acaoCodigo":"123M","acaoDescricao":"Melhoramentos no Canal de Navegação da Hidrovia do Rio Tocantins","poCodigo":"0001","poDescricao":"Derrocagem do Pedral do Lourenço (HN-200)","grupoDespesa":"4 - Investimentos","dotacaoAtual":7628449,"empenhado":7629943,"liquidado":1685420,"pago":1685420,"statusValidacao":"SIM - PROVISÓRIO"}]},{"ano":2026,"totais":{"dotacaoAtual":40000000,"empenhado":6593541,"liquidado":0,"pago":0,"saldoEmpenhar":33406459,"saldoLiquidar":6593541,"empenhadoNaoPago":6593541,"liquidadoPagar":0,"pctEmpenhadoDotacao":16.4838525,"pctLiquidadoEmpenhado":0,"pctPagoLiquidado":null,"pctPagoDotacao":0},"registros":[{"ano":2026,"acaoCodigo":"123M","acaoDescricao":"Melhoramentos no Canal de Navegação da Hidrovia do Rio Tocantins","poCodigo":"0001","poDescricao":"Derrocagem do Pedral do Lourenço (HN-200)","grupoDespesa":"3 - Outras Despesas Correntes","dotacaoAtual":611622,"empenhado":0,"liquidado":0,"pago":0,"statusValidacao":"SIM - PROVISÓRIO"},{"ano":2026,"acaoCodigo":"123M","acaoDescricao":"Melhoramentos no Canal de Navegação da Hidrovia do Rio Tocantins","poCodigo":"0001","poDescricao":"Derrocagem do Pedral do Lourenço (HN-200)","grupoDespesa":"4 - Investimentos","dotacaoAtual":39388378,"empenhado":6593541,"liquidado":0,"pago":0,"statusValidacao":"SIM - PROVISÓRIO"}]}]},{"investimento":"Terminal Manaus Moderna","totais":{"dotacaoAtual":114315016,"empenhado":96461523,"liquidado":1107985,"pago":543726,"saldoEmpenhar":17853493,"saldoLiquidar":95353538,"empenhadoNaoPago":95917797,"liquidadoPagar":564259,"pctEmpenhadoDotacao":84.38219787328727,"pctLiquidadoEmpenhado":1.1486289719891734,"pctPagoLiquidado":49.07340803350226,"pctPagoDotacao":0.47563830109598204},"exercicios":[{"ano":2026,"totais":{"dotacaoAtual":114315016,"empenhado":96461523,"liquidado":1107985,"pago":543726,"saldoEmpenhar":17853493,"saldoLiquidar":95353538,"empenhadoNaoPago":95917797,"liquidadoPagar":564259,"pctEmpenhadoDotacao":84.38219787328727,"pctLiquidadoEmpenhado":1.1486289719891734,"pctPagoLiquidado":49.07340803350226,"pctPagoDotacao":0.47563830109598204},"registros":[{"ano":2026,"acaoCodigo":"13LO","acaoDescricao":"Construção do Porto de Manaus Moderna - no Estado do Amazonas","poCodigo":"0000","poDescricao":"Construção do Porto de Manaus Moderna - no Estado do Amazonas","grupoDespesa":"4 - Investimentos","dotacaoAtual":114315016,"empenhado":96461523,"liquidado":1107985,"pago":543726,"statusValidacao":"SIM - PROVISÓRIO"}]}]}]};
+  const ENDPOINT="./data/siop_hidrovias_public.json";
+  window.SIOP_DATA=SIOP_EMBEDDED;
+
+  async function refreshSiopData(){
+    if(location.protocol!=="http:" && location.protocol!=="https:") return false;
+    try{
+      const resp=await fetch(ENDPOINT+"?_ts="+Date.now(),{cache:"no-store"});
+      if(!resp.ok) throw new Error("HTTP "+resp.status);
+      const data=await resp.json();
+      if(!data || data.ok!==true || !Array.isArray(data.investimentos) || !data.investimentos.length){
+        throw new Error("Snapshot SIOP inválido");
+      }
+      window.SIOP_DATA=data;
+      window.dispatchEvent(new CustomEvent("bi:siop-updated",{detail:{source:"online",count:data.investimentos.length}}));
+      return true;
+    }catch(err){
+      console.warn("SIOP online indisponível; mantendo snapshot homologado embarcado.",err);
+      window.dispatchEvent(new CustomEvent("bi:siop-updated",{detail:{source:"embedded",count:(SIOP_EMBEDDED.investimentos||[]).length}}));
+      return false;
+    }
+  }
+  window.refreshSiopData=refreshSiopData;
+  if(document.readyState==="loading"){
+    document.addEventListener("DOMContentLoaded",refreshSiopData,{once:true});
+  }else{
+    refreshSiopData();
+  }
 })();
 </script>
-<script id="siopCommandIntegration">
+<script id="production-polish">
 (function(){
- const prev=window.quickView;
- window.quickView=function(t){
-   const ret=prev?prev(t):undefined;
-   if(t==='orc'){
-     const sec=document.getElementById('siop-test');
-     if(sec){
-       sec.classList.remove('home-hidden');
-       const st=document.getElementById('commandStatus');
-       if(st)st.innerHTML='<span class="dot"></span><span><strong>Execução Orçamentária — SIOP</strong> • base validada e disponível em modo autônomo.</span>';
-       setTimeout(()=>sec.scrollIntoView({behavior:'smooth',block:'start'}),40);
-     }
-   }
-   return ret;
- };
-})();
-</script><script id="v74-budget-refinement">
-(function(){
-'use strict';
-var MAIN_YEAR=2026, PLOA_YEAR=2027, ALLV='TODOS';
+"use strict";
+const ALL="TODOS", MAIN_YEAR=2026, PLOA_YEAR=2027;
+const SOURCE_LINKS=[
+  ["SIOP","https://www.siop.gov.br/"],
+  ["DNIT — Aquaviário","https://www.gov.br/dnit/pt-br/assuntos/aquaviario"],
+  ["ANTAQ","https://www.gov.br/antaq/pt-br"],
+  ["Transferegov.br","https://www.gov.br/transferegov/pt-br"],
+  ["PNCP","https://pncp.gov.br/app/"],
+  ["Portal da Transparência","https://portaldatransparencia.gov.br/"],
+  ["TCU — Pesquisa","https://pesquisa.apps.tcu.gov.br/"],
+  ["CGU — Auditoria","https://www.gov.br/cgu/pt-br/assuntos/auditoria-e-fiscalizacao"]
+];
 
-function xesc(v){return String(v==null?'—':v).replace(/[&<>"']/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]})}
-function xbrl(v){return Number(v||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'})}
-function xpct(v){return v==null?'N/A':Number(v).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})+'%'}
-function uniq(a){return Array.from(new Set((a||[]).filter(function(x){return x!==null&&x!==undefined&&String(x).trim()!==''})))}
-function siopData(){return window.SIOP_DATA&&Array.isArray(window.SIOP_DATA.investimentos)?window.SIOP_DATA:null}
-function mainRowByName(nome){return (window.DATA||[]).find(function(r){return r.nome===nome})}
-function siopInv(nome){var d=siopData();return d?d.investimentos.find(function(x){return x.investimento===nome}):null}
-function exOf(inv,ano){return inv&&(inv.exercicios||[]).find(function(x){return String(x.ano)===String(ano)})}
-function allRecords(inv){var out=[];(inv&&inv.exercicios||[]).forEach(function(ex){(ex.registros||[]).forEach(function(r){var z=Object.assign({investimento:inv.investimento},r);out.push(z)})});return out}
-function regiaoOf(nome){var r=mainRowByName(nome);return r&&Array.isArray(r.regioes)&&r.regioes.length?r.regioes:['NÃO CLASSIFICADA']}
-function actionPO(inv,ano){
- var ex=exOf(inv,ano), recs=ex?(ex.registros||[]):allRecords(inv);
- var a=uniq(recs.map(function(r){return (r.acaoCodigo||'—')+(r.acaoDescricao?' — '+r.acaoDescricao:'')}));
- var p=uniq(recs.map(function(r){return (r.poCodigo||'—')+(r.poDescricao?' — '+r.poDescricao:'')}));
- return {acao:a.join(' • ')||'DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO',po:p.join(' • ')||'DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO'};
+function el(id){return document.getElementById(id)}
+function escx(v){return String(v==null?"—":v).replace(/[&<>"']/g,function(m){return({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[m]})}
+function uniq(a){return Array.from(new Set((a||[]).filter(function(x){return x!==null&&x!==undefined&&String(x).trim()!==""})))}
+function money(v){return Number(v||0).toLocaleString("pt-BR",{style:"currency",currency:"BRL"})}
+function pct(v){return v==null?"N/A":Number(v).toLocaleString("pt-BR",{minimumFractionDigits:2,maximumFractionDigits:2})+"%"}
+function mainRows(){try{return typeof set==="function"?set():(window.DATA||[])}catch(_){return window.DATA||[]}}
+function mainRow(nome){return (window.DATA||[]).find(function(r){return r.nome===nome})}
+function sdata(){return window.SIOP_DATA&&Array.isArray(window.SIOP_DATA.investimentos)?window.SIOP_DATA:null}
+function sinv(nome){var d=sdata();return d?d.investimentos.find(function(x){return x.investimento===nome}):null}
+function flatRecords(inv){
+  var out=[];
+  (inv&&inv.exercicios||[]).forEach(function(ex){
+    (ex.registros||[]).forEach(function(r){
+      out.push(Object.assign({investimento:inv.investimento,ano:ex.ano},r));
+    });
+  });
+  return out;
 }
+function meta(inv){
+  var r=mainRow(inv.investimento)||{};
+  return {
+    regioes:Array.isArray(r.regioes)?r.regioes:[],
+    ufs:Array.isArray(r.ufs)?r.ufs:[],
+    municipios:Array.isArray(r.municipios)?r.municipios:[],
+    hidrovias:Array.isArray(r.hidrovias)?r.hidrovias:(r.hidrovia?[r.hidrovia]:[]),
+    tipo:r.tipo||"NÃO CLASSIFICADO"
+  };
+}
+function total(recs){
+  var t={dotacaoAtual:0,empenhado:0,liquidado:0,pago:0};
+  (recs||[]).forEach(function(r){
+    t.dotacaoAtual+=Number(r.dotacaoAtual||0);
+    t.empenhado+=Number(r.empenhado||0);
+    t.liquidado+=Number(r.liquidado||0);
+    t.pago+=Number(r.pago||0);
+  });
+  t.saldoEmpenhar=t.dotacaoAtual-t.empenhado;
+  t.saldoLiquidar=t.empenhado-t.liquidado;
+  t.empenhadoNaoPago=t.empenhado-t.pago;
+  t.liquidadoPagar=t.liquidado-t.pago;
+  t.pctEmpenhadoDotacao=t.dotacaoAtual?100*t.empenhado/t.dotacaoAtual:null;
+  t.pctLiquidadoEmpenhado=t.empenhado?100*t.liquidado/t.empenhado:null;
+  t.pctPagoLiquidado=t.liquidado?100*t.pago/t.liquidado:null;
+  return t;
+}
+function exOf(inv,ano){return inv&&(inv.exercicios||[]).find(function(e){return String(e.ano)===String(ano)})}
 function budgetInfo(r){
- var inv=siopInv(r&&r.nome), ex=exOf(inv,MAIN_YEAR), ap=actionPO(inv,MAIN_YEAR);
- var ploaEx=exOf(inv,PLOA_YEAR);
- return {
-  linked:!!inv, inv:inv, ex:ex, ap:ap, ploaEx:ploaEx,
-  loa:ex?xbrl(ex.totais.dotacaoAtual)+' — Dotação Atual SIOP '+MAIN_YEAR:'DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — LOA '+MAIN_YEAR+' não localizada para este vínculo',
-  ploa:ploaEx?xbrl(ploaEx.totais.dotacaoAtual)+' — proposta orçamentária '+PLOA_YEAR:'DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — PLOA '+PLOA_YEAR+' não consta na base SIOP relacionada',
-  ppa:'DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — validar PPA vigente na fonte orçamentária oficial'
- };
+  var inv=sinv(r&&r.nome), ex=exOf(inv,MAIN_YEAR), ploa=exOf(inv,PLOA_YEAR);
+  var rec=ex?(ex.registros||[]):flatRecords(inv);
+  var a=uniq(rec.map(function(x){return (x.acaoCodigo||"—")+(x.acaoDescricao?" — "+x.acaoDescricao:"")}));
+  var p=uniq(rec.map(function(x){return (x.poCodigo||"—")+(x.poDescricao?" — "+x.poDescricao:"")}));
+  return {
+    inv:inv,ex:ex,
+    acao:a.join(" • ")||"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO",
+    po:p.join(" • ")||"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO",
+    loa:ex?money(ex.totais.dotacaoAtual)+" — Dotação Atual SIOP "+MAIN_YEAR:"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — LOA "+MAIN_YEAR,
+    ploa:ploa?money(ploa.totais.dotacaoAtual)+" — PLOA "+PLOA_YEAR:"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO — PLOA "+PLOA_YEAR+" não consta na base relacionada"
+  };
 }
 window.biBudgetInfo=budgetInfo;
 
-function enrichFromSiop(){
- if(!Array.isArray(window.DATA))return;
- DATA.forEach(function(r){
-   var b=budgetInfo(r);
-   if(!b.linked)return;
-   var inv=b.inv, ex=b.ex, ref=ex||((inv.exercicios||[]).slice().sort(function(a,b){return Number(b.ano)-Number(a.ano)})[0]);
-   var ap=actionPO(inv,ref&&ref.ano);
-   r.acaoPO='Ação: '+ap.acao+' | PO: '+ap.po;
-   r.loa2026=b.loa;
-   r.ploa2027=b.ploa;
-   r.dataSIOP=(siopData().generatedAt||siopData().dataBase||'02/10/2026');
-   r.fonteExecOrcamentaria='SIOP + Matriz de Relacionamento';
-   if(ex){
-     var t=ex.totais;
-     r.execOrcSIOP='Dotação '+xbrl(t.dotacaoAtual)+' | Empenhado '+xbrl(t.empenhado)+' ('+xpct(t.pctEmpenhadoDotacao)+') | Saldo a empenhar '+xbrl(t.saldoEmpenhar);
-     r.execFinSIOP='Liquidado '+xbrl(t.liquidado)+' | Pago '+xbrl(t.pago);
-     r.execOrcamentaria=r.execOrcSIOP;
-     r.execFinanceira=r.execFinSIOP;
-     r.empenhadoPago='Empenhado '+xbrl(t.empenhado)+' | Liquidado '+xbrl(t.liquidado)+' | Pago '+xbrl(t.pago);
-   }
- });
+function enrich(){
+  (window.DATA||[]).forEach(function(r){
+    var b=budgetInfo(r);
+    if(!b.inv)return;
+    r.acaoPO="Ação: "+b.acao+" | PO: "+b.po;
+    r.loa2026=b.loa;
+    r.ploa2027=b.ploa;
+    r.fonteExecOrcamentaria="SIOP + Matriz de Relacionamento";
+    if(b.ex){
+      var t=b.ex.totais;
+      r.execOrcamentaria="Dotação "+money(t.dotacaoAtual)+" | Empenhado "+money(t.empenhado)+" ("+pct(t.pctEmpenhadoDotacao)+") | Saldo "+money(t.saldoEmpenhar);
+      r.execFinanceira="Liquidado "+money(t.liquidado)+" | Pago "+money(t.pago);
+      r.empenhadoPago="Empenhado "+money(t.empenhado)+" | Liquidado "+money(t.liquidado)+" | Pago "+money(t.pago);
+    }
+  });
 }
 
-function budgetStrip(r){
- var b=budgetInfo(r),t=b.ex&&b.ex.totais;
- if(!t)return '<div class="siop-empty">Sem execução SIOP homologada para '+MAIN_YEAR+' neste investimento.</div>';
- var a=[
-  ['LOA '+MAIN_YEAR,xbrl(t.dotacaoAtual)],
-  ['Empenhado',xbrl(t.empenhado)+' · '+xpct(t.pctEmpenhadoDotacao)],
-  ['Liquidado',xbrl(t.liquidado)+' · '+xpct(t.pctLiquidadoEmpenhado)],
-  ['Pago',xbrl(t.pago)+' · '+xpct(t.pctPagoLiquidado)],
-  ['Saldo a empenhar',xbrl(t.saldoEmpenhar)]
- ];
- return '<div class="budget-strip">'+a.map(function(x){return '<div class="budget-pill"><b>'+x[0]+'</b><span>'+x[1]+'</span></div>'}).join('')+'</div>';
+function options(select,items,placeholder,preserve){
+  if(!select)return;
+  var old=preserve?select.value:ALL;
+  select.innerHTML='<option value="'+ALL+'">'+escx(placeholder)+'</option>'+
+    items.map(function(x){return '<option value="'+escx(x.value)+'">'+escx(x.label)+'</option>'}).join("");
+  if(items.some(function(x){return String(x.value)===String(old)}))select.value=old;
+  else select.value=ALL;
+}
+function val(id){var x=el(id);return x?x.value:ALL}
+function hasMeta(inv,key,value){
+  if(value===ALL)return true;
+  var m=meta(inv);
+  if(key==="tipo")return String(m.tipo)===String(value);
+  return (m[key]||[]).indexOf(value)>=0;
+}
+function baseLinked(){
+  var d=sdata(); if(!d)return[];
+  var names=new Set(mainRows().map(function(r){return r.nome}));
+  return d.investimentos.filter(function(i){return names.has(i.investimento)});
+}
+function filteredInvestments(useRecordFilters){
+  var list=baseLinked();
+  [["regioes","siopRegiao"],["ufs","siopUF"],["municipios","siopMunicipio"],["hidrovias","siopHidrovia"],["tipo","siopTipo"]].forEach(function(pair){
+    var v=val(pair[1]); if(v!==ALL)list=list.filter(function(inv){return hasMeta(inv,pair[0],v)});
+  });
+  if(useRecordFilters){
+    var ac=val("siopAcao"),po=val("siopPO"),g=val("siopGND"),yr=val("siopAno");
+    list=list.filter(function(inv){
+      return flatRecords(inv).some(function(r){
+        return (ac===ALL||String(r.acaoCodigo)===String(ac)) &&
+               (po===ALL||String(r.poCodigo)===String(po)) &&
+               (g===ALL||String(r.grupoDespesa)===String(g)) &&
+               (yr===ALL||String(r.ano)===String(yr));
+      });
+    });
+  }
+  return list;
+}
+function currentRecords(){
+  var list=filteredInvestments(false),iv=val("siopInv"),ac=val("siopAcao"),po=val("siopPO"),g=val("siopGND"),yr=val("siopAno");
+  if(iv!==ALL)list=list.filter(function(i){return i.investimento===iv});
+  var out=[];
+  list.forEach(function(i){flatRecords(i).forEach(function(r){
+    if(ac!==ALL&&String(r.acaoCodigo)!==String(ac))return;
+    if(po!==ALL&&String(r.poCodigo)!==String(po))return;
+    if(g!==ALL&&String(r.grupoDespesa)!==String(g))return;
+    if(yr!==ALL&&String(r.ano)!==String(yr))return;
+    out.push(r);
+  })});
+  return out;
 }
 
-var originalRender=window.render;
-window.render=function(){
- var rs=typeof set==='function'?set():(window.DATA||[]),p=document.getElementById('panel');
- if(!p)return originalRender&&originalRender();
- enrichFromSiop();
- document.getElementById('kc').textContent=rs.length;
- document.getElementById('ku').textContent=uniq([].concat.apply([],rs.map(function(r){return r.ufs||[]}))).length;
- document.getElementById('km').textContent=uniq([].concat.apply([],rs.map(function(r){return r.municipios||[]}))).length;
- document.getElementById('kp').textContent=rs.filter(function(r){return /SIM|ATENÇÃO|RISCO|PEND/i.test(r.problema||'')}).length;
- var h='';
- if(rs.length===1){
-   var r=rs[0],b=budgetInfo(r);
-   document.getElementById('pt').textContent='Ficha executiva — '+r.nome;
-   h+='<div class="compact-grid">'+
-      '<div class="compact-card"><b>Situação</b><strong>'+xesc(safe(r.situacao))+'</strong></div>'+
-      '<div class="compact-card"><b>Contrato / instrumento</b><strong>'+xesc(safe(r.instrumento))+'</strong></div>'+
-      '<div class="compact-card"><b>Valor do instrumento</b><strong>'+xesc(safe(r.valor))+'</strong></div>'+
-      '<div class="compact-card"><b>Ação / PO</b><strong>'+xesc(b.ap.acao)+'</strong><div>'+xesc(b.ap.po)+'</div></div>'+
-      '</div>'+
-      budgetStrip(r)+
-      '<div class="compact-grid">'+
-      '<div class="compact-card"><b>LOA '+MAIN_YEAR+'</b><strong>'+xesc(b.loa)+'</strong></div>'+
-      '<div class="compact-card"><b>PLOA '+PLOA_YEAR+'</b><strong>'+xesc(b.ploa)+'</strong></div>'+
-      '<div class="compact-card"><b>Próximo marco</b><strong>'+xesc(safe(r.proximoMarco))+'</strong></div>'+
-      '<div class="compact-card"><b>Risco / gargalo</b><strong>'+xesc(safe(r.gargalo))+'</strong></div>'+
-      '</div>'+
-      '<details class="compact-details"><summary>Detalhes técnicos, financeiros e rastreabilidade</summary><div class="grid">'+
-      F('Nome',r.nome,1)+F('Região',(r.regioes||[]).join(', '))+F('UF',(r.ufs||[]).join(', '))+F('Município / abrangência',(r.municipios||[]).join(' • '),1)+
-      F('Hidrovia / rio',(r.hidrovias||[]).join(', '))+F('Tipo',r.tipo)+F('Objeto',r.objeto,1)+F('Fase',r.fase,1)+
-      F('Execução física',r.execFisica,1,'warn')+F('Execução orçamentária',r.execOrcamentaria,1,'warn')+F('Execução financeira',r.execFinanceira,1,'warn')+
-      F('Empenhado / liquidado / pago',r.empenhadoPago,1,'warn')+F('PPA',b.ppa,1,'warn')+
-      F('Executor',r.executor)+F('Unidade responsável',r.unidade)+F('Marco alcançado',r.marco,1)+F('Providência DPP',r.providencia,1)+
-      F('Evidência pendente',r.pendencia,1,'warn')+F('Fonte',r.fonte,1,'src')+F('Data da fonte/corte',r.dataFonte,1,'src')+
-      '</div></details>';
- }else{
-   document.getElementById('pt').textContent='Painel consolidado — '+rs.length+' investimentos';
-   var names=new Set(rs.map(function(r){return r.nome})), d=siopData();
-   var linked=d?d.investimentos.filter(function(i){return names.has(i.investimento)}):[];
-   var rec=[];linked.forEach(function(i){var ex=exOf(i,MAIN_YEAR);if(ex)(ex.registros||[]).forEach(function(r){rec.push(r)})});
-   var t=sumRecords(rec);
-   h+='<div class="compact-grid">'+
-     '<div class="compact-card"><b>Investimentos no recorte</b><strong>'+rs.length+'</strong></div>'+
-     '<div class="compact-card"><b>Com SIOP homologado</b><strong>'+linked.length+'</strong></div>'+
-     '<div class="compact-card"><b>LOA '+MAIN_YEAR+' relacionada</b><strong>'+xbrl(t.dotacaoAtual)+'</strong></div>'+
-     '<div class="compact-card"><b>Pago '+MAIN_YEAR+'</b><strong>'+xbrl(t.pago)+'</strong></div>'+
-     '</div>'+
-     F('Investimentos',rs.map(function(r){return '• '+r.nome}).join('\n'),1)+
-     F('UFs',ag(rs,'uf'))+F('Hidrovias / rios',typeof hidroviasRelacionadasV72==='function'?hidroviasRelacionadasV72(rs):ag(rs,'hidrovia'))+
-     F('Situações',uniq(rs.map(function(r){return r.situacao})).join(' • '),1)+
-     '<details class="compact-details"><summary>Próximos marcos, riscos e providências</summary><div class="grid">'+
-     F('Próximos marcos',rs.map(function(r){return '• '+r.nome+': '+safe(r.proximoMarco)}).join('\n'),1)+
-     F('Riscos / gargalos',rs.map(function(r){return '• '+r.nome+': '+safe(r.gargalo)}).join('\n'),1)+
-     F('Providências DPP',rs.map(function(r){return '• '+r.nome+': '+safe(r.providencia)}).join('\n'),1)+
-     '</div></details>';
- }
- p.innerHTML=h;
- setTimeout(syncSiopWithMainFilters,0);
-};
+function rebuildBudgetFilters(preserve){
+  var linked=baseLinked(), work=linked.slice();
+
+  options(el("siopRegiao"),uniq(work.flatMap(function(i){return meta(i).regioes})).sort().map(function(x){return{value:x,label:x}}),"TODAS",preserve);
+  if(val("siopRegiao")!==ALL)work=work.filter(function(i){return hasMeta(i,"regioes",val("siopRegiao"))});
+
+  options(el("siopUF"),uniq(work.flatMap(function(i){return meta(i).ufs})).sort().map(function(x){return{value:x,label:x}}),"TODAS",preserve);
+  if(val("siopUF")!==ALL)work=work.filter(function(i){return hasMeta(i,"ufs",val("siopUF"))});
+
+  options(el("siopMunicipio"),uniq(work.flatMap(function(i){return meta(i).municipios})).sort().map(function(x){return{value:x,label:x}}),"TODOS",preserve);
+  if(val("siopMunicipio")!==ALL)work=work.filter(function(i){return hasMeta(i,"municipios",val("siopMunicipio"))});
+
+  options(el("siopHidrovia"),uniq(work.flatMap(function(i){return meta(i).hidrovias})).sort().map(function(x){return{value:x,label:x}}),"TODAS",preserve);
+  if(val("siopHidrovia")!==ALL)work=work.filter(function(i){return hasMeta(i,"hidrovias",val("siopHidrovia"))});
+
+  options(el("siopTipo"),uniq(work.map(function(i){return meta(i).tipo})).sort().map(function(x){return{value:x,label:x}}),"TODOS",preserve);
+  if(val("siopTipo")!==ALL)work=work.filter(function(i){return hasMeta(i,"tipo",val("siopTipo"))});
+
+  var recs=[];work.forEach(function(i){recs=recs.concat(flatRecords(i))});
+  var actions={};recs.forEach(function(r){actions[r.acaoCodigo||"—"]=r.acaoDescricao||""});
+  options(el("siopAcao"),Object.keys(actions).sort().map(function(k){return{value:k,label:k+(actions[k]?" — "+actions[k]:"")}}),"TODAS",preserve);
+  if(val("siopAcao")!==ALL)recs=recs.filter(function(r){return String(r.acaoCodigo)===String(val("siopAcao"))});
+
+  var pos={};recs.forEach(function(r){pos[r.poCodigo||"—"]=r.poDescricao||""});
+  options(el("siopPO"),Object.keys(pos).sort().map(function(k){return{value:k,label:k+(pos[k]?" — "+pos[k]:"")}}),"TODOS",preserve);
+  if(val("siopPO")!==ALL)recs=recs.filter(function(r){return String(r.poCodigo)===String(val("siopPO"))});
+
+  var groups=uniq(recs.map(function(r){return r.grupoDespesa||"—"})).sort();
+  options(el("siopGND"),groups.map(function(x){return{value:x,label:x}}),"TODOS",preserve);
+  if(val("siopGND")!==ALL)recs=recs.filter(function(r){return String(r.grupoDespesa)===String(val("siopGND"))});
+
+  var names=new Set(recs.map(function(r){return r.investimento}));
+  var invItems=work.filter(function(i){return names.has(i.investimento)}).map(function(i){return{value:i.investimento,label:i.investimento}});
+  var invPlaceholder=invItems.length?"TODOS OS RELACIONADOS ("+invItems.length+")":"NENHUM VÍNCULO NO RECORTE";
+  options(el("siopInv"),invItems,invPlaceholder,preserve);
+  if(val("siopInv")!==ALL)recs=recs.filter(function(r){return r.investimento===val("siopInv")});
+
+  var years=uniq(recs.map(function(r){return String(r.ano)})).sort().reverse();
+  options(el("siopAno"),years.map(function(y){return{value:y,label:y}}),"Todos os exercícios",preserve);
+}
+window.rebuildBudgetFilters=rebuildBudgetFilters;
+
+function syncBudgetWithMain(){
+  rebuildBudgetFilters(false);
+  var mapping=[
+    ["regiao","siopRegiao"],["uf","siopUF"],["municipio","siopMunicipio"],["hidrovia","siopHidrovia"],["tipo","siopTipo"],["empreendimento","siopInv"]
+  ];
+  mapping.forEach(function(pair){
+    var src=el(pair[0]),dst=el(pair[1]);
+    if(src&&dst&&src.value&&src.value!==ALL&&Array.from(dst.options).some(function(o){return o.value===src.value})){
+      dst.value=src.value;
+      rebuildBudgetFilters(true);
+    }
+  });
+  if(el("siopAno")&&Array.from(el("siopAno").options).some(function(o){return o.value===String(MAIN_YEAR)})){
+    el("siopAno").value=String(MAIN_YEAR);
+  }
+  renderBudget();
+}
+window.syncSiopWithMainFilters=syncBudgetWithMain;
+
+function renderBudget(){
+  var d=sdata(),ctx=el("siopContext"),cards=el("siopCards"),detail=el("siopDetail"),status=el("siopTestStatus"),badge=el("siopStatusBadge");
+  if(!d||!ctx||!cards||!detail)return;
+  var linked=filteredInvestments(false), recs=currentRecords();
+  ctx.innerHTML="<b>Recorte da carteira:</b> "+mainRows().length+" investimento(s) · <b>com vínculo SIOP habilitado:</b> "+linked.length+
+    " · <b>linhas no recorte orçamentário:</b> "+recs.length+".";
+  if(!linked.length||!recs.length){
+    cards.innerHTML="";
+    detail.innerHTML='<div class="empty-state">Não existe relacionamento SIOP habilitado para o recorte atual. Nenhum valor de outro empreendimento será utilizado por aproximação.</div>';
+    status.textContent="Base SIOP disponível · recorte atual sem vínculo habilitado.";
+    if(badge){badge.textContent="Sem vínculo no recorte";badge.style.background="#fff8e5";badge.style.color="#845d00";}
+    return;
+  }
+  if(badge){badge.textContent="Base homologada";badge.removeAttribute("style")}
+  var t=total(recs);
+  var vals=[
+    ["Dotação atual",money(t.dotacaoAtual)],
+    ["Empenhado",money(t.empenhado)+" · "+pct(t.pctEmpenhadoDotacao)],
+    ["Liquidado",money(t.liquidado)+" · "+pct(t.pctLiquidadoEmpenhado)],
+    ["Pago",money(t.pago)+" · "+pct(t.pctPagoLiquidado)],
+    ["Saldo a empenhar",money(t.saldoEmpenhar)],
+    ["Liquidado a pagar",money(t.liquidadoPagar)]
+  ];
+  cards.innerHTML=vals.map(function(x){return '<div class="siop-card"><b>'+escx(x[0])+'</b><span>'+escx(x[1])+'</span></div>'}).join("");
+  var alerts=[];
+  if(t.saldoEmpenhar<0)alerts.push("Empenhado superior à dotação no recorte.");
+  if(t.empenhado>0&&t.pctLiquidadoEmpenhado<10)alerts.push("Liquidação inferior a 10% do empenhado.");
+  if(t.liquidadoPagar>0)alerts.push("Há valor liquidado ainda não pago.");
+  detail.innerHTML=(alerts.length?'<div class="system-note"><b>Atenção:</b> '+alerts.map(escx).join(" · ")+'</div>':"")+
+    '<table><thead><tr><th>Investimento</th><th>Ano</th><th>Ação</th><th>PO</th><th>Grupo</th><th>Dotação</th><th>Empenhado</th><th>Liquidado</th><th>Pago</th></tr></thead><tbody>'+
+    recs.map(function(r){return '<tr><td>'+escx(r.investimento)+'</td><td>'+escx(r.ano)+'</td><td><b>'+escx(r.acaoCodigo)+'</b><br><small>'+escx(r.acaoDescricao)+'</small></td><td><b>'+escx(r.poCodigo)+'</b><br><small>'+escx(r.poDescricao)+'</small></td><td>'+escx(r.grupoDespesa)+'</td><td>'+money(r.dotacaoAtual)+'</td><td>'+money(r.empenhado)+'</td><td>'+money(r.liquidado)+'</td><td>'+money(r.pago)+'</td></tr>'}).join("")+
+    '</tbody></table><p class="system-note"><b>Fonte:</b> SIOP + Matriz de Relacionamento. Relações marcadas “SIM - PROVISÓRIO” permanecem sujeitas à validação documental.</p>';
+  status.textContent="Base SIOP OK · "+((d.metadata&&d.metadata.registrosSIOP)||156)+" registros de origem · "+((d.metadata&&d.metadata.relacionamentosHabilitados)||11)+" relações habilitadas.";
+}
+window.renderSiopTest=renderBudget;
 
 function reportBudgetRows(r,row){
- var b=budgetInfo(r),t=b.ex&&b.ex.totais;
- return row('Ação',b.ap.acao)+row('Plano Orçamentário (PO)',b.ap.po)+
-        row('LOA '+MAIN_YEAR,b.loa)+row('PLOA '+PLOA_YEAR,b.ploa)+
-        row('Dotação atual '+MAIN_YEAR,t?xbrl(t.dotacaoAtual):'DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO')+
-        row('Empenhado '+MAIN_YEAR,t?xbrl(t.empenhado)+' — '+xpct(t.pctEmpenhadoDotacao):'DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO')+
-        row('Liquidado '+MAIN_YEAR,t?xbrl(t.liquidado)+' — '+xpct(t.pctLiquidadoEmpenhado)+' do empenhado':'DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO')+
-        row('Pago '+MAIN_YEAR,t?xbrl(t.pago)+' — '+xpct(t.pctPagoLiquidado)+' do liquidado':'DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO')+
-        row('Saldo a empenhar '+MAIN_YEAR,t?xbrl(t.saldoEmpenhar):'DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO');
+  var b=budgetInfo(r),t=b.ex&&b.ex.totais;
+  return row("Ação",b.acao)+row("Plano Orçamentário (PO)",b.po)+
+    row("LOA "+MAIN_YEAR,b.loa)+row("PLOA "+PLOA_YEAR,b.ploa)+
+    row("Dotação atual "+MAIN_YEAR,t?money(t.dotacaoAtual):"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO")+
+    row("Empenhado "+MAIN_YEAR,t?money(t.empenhado)+" — "+pct(t.pctEmpenhadoDotacao):"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO")+
+    row("Liquidado "+MAIN_YEAR,t?money(t.liquidado)+" — "+pct(t.pctLiquidadoEmpenhado)+" do empenhado":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO")+
+    row("Pago "+MAIN_YEAR,t?money(t.pago)+" — "+pct(t.pctPagoLiquidado)+" do liquidado":"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO")+
+    row("Saldo a empenhar "+MAIN_YEAR,t?money(t.saldoEmpenhar):"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO");
 }
 
 window.doc=function(tipo){
- enrichFromSiop();
- var a=typeof currentSet==='function'?currentSet():(typeof set==='function'?set():DATA),d=document.getElementById('doc');
- if(!d)return;
- if(!a.length){d.innerHTML='<div class="siop-empty">Nenhum investimento corresponde aos filtros atuais.</div>';return}
- function row(k,v){return '<tr><th>'+xesc(k)+'</th><td>'+xesc(safe(v))+'</td></tr>'}
- function ficha(r,brief){
-   var b=budgetInfo(r),t=b.ex&&b.ex.totais;
-   if(brief){
-     return '<div class="reporthead"><h2>BRIEFING — '+xesc(r.nome)+'</h2><div class="reportmeta">DPP/SNHN · base dinâmica · '+xesc(r.dataFonte||'data a validar')+'</div></div>'+
-       '<div class="compact-grid"><div class="compact-card"><b>Situação</b><strong>'+xesc(safe(r.situacao))+'</strong></div>'+
-       '<div class="compact-card"><b>LOA '+MAIN_YEAR+'</b><strong>'+xesc(b.loa)+'</strong></div>'+
-       '<div class="compact-card"><b>Empenhado</b><strong>'+(t?xesc(xbrl(t.empenhado)):'A VALIDAR')+'</strong></div>'+
-       '<div class="compact-card"><b>Pago</b><strong>'+(t?xesc(xbrl(t.pago)):'A VALIDAR')+'</strong></div></div>'+
-       '<table class="rtable report-budget-table">'+row('Contrato / instrumento',r.instrumento)+row('Empresa / executor',r.executor)+row('Valor',r.valor)+
-       reportBudgetRows(r,row)+row('Próximo marco',r.proximoMarco)+row('Risco / gargalo',r.gargalo)+row('Providência DPP',r.providencia)+'</table>'+
-       '<p class="reportmeta"><b>Fonte:</b> '+xesc(safe(r.fonteExecOrcamentaria||r.fonte))+' · vínculo SIOP somente quando habilitado.</p>';
-   }
-   return '<div class="reporthead"><h2>RELATÓRIO EXECUTIVO — '+xesc(r.nome)+'</h2><div class="reportmeta">DPP/SNHN · base dinâmica · origem '+xesc(safe(r.origem))+'</div></div>'+
-     '<div class="reportsection"><h3>1. Síntese executiva</h3><p>'+xesc(safe(r.objeto))+'</p><p><b>Situação:</b> '+xesc(safe(r.situacao))+' &nbsp; <b>Fase:</b> '+xesc(safe(r.fase))+'</p></div>'+
-     budgetStrip(r)+
-     '<div class="reportsection"><h3>2. Quadro contratual</h3><table class="rtable">'+
-       row('Contrato / instrumento',r.instrumento)+row('Empresa / executor',r.executor)+row('Valor do instrumento',r.valor)+row('Prazo / próximo marco',r.proximoMarco)+
-     '</table></div>'+
-     '<div class="reportsection"><h3>3. Orçamento e execução</h3><table class="rtable report-budget-table">'+
-       reportBudgetRows(r,row)+row('Execução física',r.execFisica)+
-     '</table></div>'+
-     '<details class="report-more"><summary>4. Marcos, riscos, controle e fontes</summary>'+
-       '<table class="rtable">'+row('Marco alcançado',r.marco)+row('Risco / gargalo',r.gargalo)+row('Problema confirmado?',r.problema)+row('Providência DPP',r.providencia)+row('Evidência pendente',r.pendencia)+row('PPA',b.ppa)+row('Fonte principal',r.fonte)+row('Fonte orçamentária',r.fonteExecOrcamentaria)+row('Data da fonte/corte',r.dataFonte)+'</table>'+
-     '</details>';
- }
- d.innerHTML=a.map(function(r){return ficha(r,tipo==='brief')}).join('<hr style="margin:24px 0">');
- d.scrollIntoView({behavior:'smooth',block:'start'});
+  enrich();
+  var rows=mainRows(),out=el("doc");
+  if(!out)return;
+  if(!rows.length){out.innerHTML='<div class="empty-state">Nenhum investimento corresponde aos filtros atuais.</div>';out.style.display="block";return}
+  function row(k,v){return "<tr><th>"+escx(k)+"</th><td>"+escx(typeof safe==="function"?safe(v):v)+"</td></tr>"}
+  out.innerHTML=rows.map(function(r){
+    var b=budgetInfo(r),t=b.ex&&b.ex.totais;
+    if(tipo==="brief"){
+      return '<div class="reporthead"><h2>Briefing Executivo — '+escx(r.nome)+'</h2><div class="reportmeta">DPP/SNHN · base dinâmica</div></div>'+
+        '<div class="compact-grid"><div class="compact-card"><b>Situação</b><strong>'+escx(r.situacao)+'</strong></div><div class="compact-card"><b>LOA '+MAIN_YEAR+'</b><strong>'+escx(b.loa)+'</strong></div><div class="compact-card"><b>Empenhado</b><strong>'+(t?money(t.empenhado):"A VALIDAR")+'</strong></div><div class="compact-card"><b>Pago</b><strong>'+(t?money(t.pago):"A VALIDAR")+'</strong></div></div>'+
+        '<table class="rtable">'+row("Contrato / instrumento",r.instrumento)+row("Empresa / executor",r.executor)+row("Valor",r.valor)+reportBudgetRows(r,row)+row("Próximo marco",r.proximoMarco)+row("Risco / gargalo",r.gargalo)+row("Providência DPP",r.providencia)+'</table>';
+    }
+    return '<div class="reporthead"><h2>Relatório Executivo — '+escx(r.nome)+'</h2><div class="reportmeta">DPP/SNHN · base dinâmica · origem '+escx(r.origem||"base integrada")+'</div></div>'+
+      '<div class="reportsection"><h3>1. Síntese executiva</h3><p>'+escx(r.objeto)+'</p><p><b>Situação:</b> '+escx(r.situacao)+' &nbsp; <b>Fase:</b> '+escx(r.fase)+'</p></div>'+
+      '<div class="reportsection"><h3>2. Quadro contratual</h3><table class="rtable">'+row("Contrato / instrumento",r.instrumento)+row("Empresa / executor",r.executor)+row("Valor do instrumento",r.valor)+row("Próximo marco",r.proximoMarco)+'</table></div>'+
+      '<div class="reportsection"><h3>3. Orçamento e execução</h3><table class="rtable">'+reportBudgetRows(r,row)+row("Execução física",r.execFisica)+'</table></div>'+
+      '<details class="report-more"><summary>4. Riscos, controle e fontes</summary><table class="rtable">'+row("Marco alcançado",r.marco)+row("Risco / gargalo",r.gargalo)+row("Providência DPP",r.providencia)+row("Evidência pendente",r.pendencia)+row("Fonte principal",r.fonte)+row("Fonte orçamentária",r.fonteExecOrcamentaria)+row("Data da fonte/corte",r.dataFonte)+'</table></details>';
+  }).join('<hr style="margin:26px 0">');
+  out.style.display="block";
+  out.scrollIntoView({behavior:"smooth",block:"start"});
 };
 
 window.gerarProdutoV51=function(tipo){
- var r=(typeof selectedV51==='function'?selectedV51():(typeof set==='function'?set()[0]:DATA[0]));
- var out=document.getElementById('produtoV51');if(!out||!r)return;
- var b=budgetInfo(r),t=b.ex&&b.ex.totais;
- out.innerHTML='<div class="doc-v51"><h2>'+xesc(tipo==='briefing'?'BRIEFING EXECUTIVO':'QUADRO EXECUTIVO')+' — '+xesc(r.nome)+'</h2>'+
-  budgetStrip(r)+'<div class="compact-grid">'+
-  '<div class="compact-card"><b>Ação / PO</b><strong>'+xesc(b.ap.acao)+'</strong><div>'+xesc(b.ap.po)+'</div></div>'+
-  '<div class="compact-card"><b>LOA '+MAIN_YEAR+'</b><strong>'+xesc(b.loa)+'</strong></div>'+
-  '<div class="compact-card"><b>PLOA '+PLOA_YEAR+'</b><strong>'+xesc(b.ploa)+'</strong></div>'+
-  '<div class="compact-card"><b>Próximo marco</b><strong>'+xesc(safe(r.proximoMarco))+'</strong></div>'+
-  '</div><details class="compact-details"><summary>Contrato, risco e fonte</summary><div class="grid">'+
-  F('Contrato / instrumento',r.instrumento,1)+F('Empresa / executor',r.executor,1)+F('Valor',r.valor,1)+F('Risco / gargalo',r.gargalo,1)+F('Fonte',r.fonte,1,'src')+
-  '</div></details></div>';
- out.scrollIntoView({behavior:'smooth',block:'start'});
+  var r=mainRows()[0],out=el("produtoV51"); if(!r||!out)return;
+  var b=budgetInfo(r),t=b.ex&&b.ex.totais;
+  out.innerHTML='<div class="doc-v51"><h2>'+escx(tipo==="briefing"?"Briefing Executivo":"Quadro Executivo")+' — '+escx(r.nome)+'</h2>'+
+    '<div class="compact-grid"><div class="compact-card"><b>Ação</b><strong>'+escx(b.acao)+'</strong></div><div class="compact-card"><b>PO</b><strong>'+escx(b.po)+'</strong></div><div class="compact-card"><b>LOA '+MAIN_YEAR+'</b><strong>'+escx(b.loa)+'</strong></div><div class="compact-card"><b>PLOA '+PLOA_YEAR+'</b><strong>'+escx(b.ploa)+'</strong></div></div>'+
+    (t?'<div class="budget-strip"><div class="budget-pill"><b>Empenhado</b><span>'+money(t.empenhado)+'</span></div><div class="budget-pill"><b>Liquidado</b><span>'+money(t.liquidado)+'</span></div><div class="budget-pill"><b>Pago</b><span>'+money(t.pago)+'</span></div><div class="budget-pill"><b>Saldo a empenhar</b><span>'+money(t.saldoEmpenhar)+'</span></div></div>':"")+
+    '<details class="compact-details"><summary>Contrato, risco e fonte</summary><div class="grid">'+F("Contrato / instrumento",r.instrumento,1)+F("Empresa / executor",r.executor,1)+F("Valor",r.valor,1)+F("Risco / gargalo",r.gargalo,1)+F("Fonte",r.fonte,1,"src")+'</div></details></div>';
+  out.scrollIntoView({behavior:"smooth",block:"start"});
 };
 
-function sumRecords(recs){
- var t={dotacaoAtual:0,empenhado:0,liquidado:0,pago:0,saldoEmpenhar:0,saldoLiquidar:0,empenhadoNaoPago:0,liquidadoPagar:0};
- (recs||[]).forEach(function(r){['dotacaoAtual','empenhado','liquidado','pago'].forEach(function(k){t[k]+=Number(r[k]||0)})});
- t.saldoEmpenhar=t.dotacaoAtual-t.empenhado;t.saldoLiquidar=t.empenhado-t.liquidado;t.empenhadoNaoPago=t.empenhado-t.pago;t.liquidadoPagar=t.liquidado-t.pago;
- t.pctEmpenhadoDotacao=t.dotacaoAtual?100*t.empenhado/t.dotacaoAtual:null;
- t.pctLiquidadoEmpenhado=t.empenhado?100*t.liquidado/t.empenhado:null;
- t.pctPagoLiquidado=t.liquidado?100*t.pago/t.liquidado:null;
- t.pctPagoDotacao=t.dotacaoAtual?100*t.pago/t.dotacaoAtual:null;
- return t;
+function showSections(ids){
+  document.querySelectorAll("main.wrap > section.box").forEach(function(s){s.classList.add("home-hidden")});
+  ids.forEach(function(id){var x=el(id);if(x)x.classList.remove("home-hidden")});
+  var back=el("homeBack");if(back)back.style.display="block";
 }
-window.sumSiopRecords=sumRecords;
-
-function mainFilteredNames(){
- try{return new Set((typeof set==='function'?set():DATA).map(function(r){return r.nome}))}catch(e){return new Set((DATA||[]).map(function(r){return r.nome}))}
+function quickTable(title,rows,cols){
+  var q=el("quickResult");if(!q)return;
+  q.hidden=false;
+  q.innerHTML='<div class="section-heading"><div><h2>'+escx(title)+'</h2><p>'+rows.length+' registro(s) no recorte.</p></div></div><div class="table-scroll"><table class="quick-table"><thead><tr>'+cols.map(function(c){return "<th>"+escx(c[0])+"</th>"}).join("")+'</tr></thead><tbody>'+
+    rows.map(function(r){return "<tr>"+cols.map(function(c){var v=r[c[1]];if(Array.isArray(v))v=v.join(", ");return "<td>"+escx(v||"—")+"</td>"}).join("")+"</tr>"}).join("")+
+    '</tbody></table></div>';
+  q.scrollIntoView({behavior:"smooth",block:"start"});
 }
-function recordsForCandidates(cands){
- var out=[];(cands||[]).forEach(function(inv){allRecords(inv).forEach(function(r){out.push(r)})});return out
+function setActive(t){
+  document.querySelectorAll(".cmd").forEach(function(b){b.classList.remove("active");b.setAttribute("aria-pressed","false")});
+  var btn=Array.from(document.querySelectorAll(".cmd")).find(function(b){return (b.getAttribute("onclick")||"").indexOf("'"+t+"'")>=0});
+  if(btn){btn.classList.add("active");btn.setAttribute("aria-pressed","true")}
 }
-function fillSelect(el,items,label,keep){
- if(!el)return;var old=keep?el.value:ALLV;el.innerHTML='<option value="'+ALLV+'">'+label+'</option>'+items.map(function(x){return '<option value="'+xesc(x.value)+'">'+xesc(x.label)+'</option>'}).join('');
- if(items.some(function(x){return String(x.value)===String(old)}))el.value=old;else el.value=ALLV;
-}
-function filteredSiopInvestments(){
- var d=siopData();if(!d)return[];
- var names=mainFilteredNames(),reg=document.getElementById('siopRegiao');
- return d.investimentos.filter(function(inv){
-   if(!names.has(inv.investimento))return false;
-   if(reg&&reg.value!==ALLV&&regiaoOf(inv.investimento).indexOf(reg.value)<0)return false;
-   return true;
- });
-}
-function refreshSiopOptions(preserve){
- var d=siopData();if(!d)return;
- var reg=document.getElementById('siopRegiao'),acao=document.getElementById('siopAcao'),po=document.getElementById('siopPO'),invSel=document.getElementById('siopInv'),ano=document.getElementById('siopAno');
- var allRegs=uniq(d.investimentos.reduce(function(a,i){return a.concat(regiaoOf(i.investimento))},[])).sort();
- fillSelect(reg,allRegs.map(function(x){return{value:x,label:x}}),'TODAS',preserve);
- var cands=filteredSiopInvestments(),recs=recordsForCandidates(cands);
- var actions={};recs.forEach(function(r){actions[r.acaoCodigo||'—']=r.acaoDescricao||''});
- fillSelect(acao,Object.keys(actions).sort().map(function(k){return{value:k,label:k+(actions[k]?' — '+actions[k]:'')}}),'TODAS',preserve);
- var act=acao&&acao.value;
- var poMap={};recs.filter(function(r){return !act||act===ALLV||String(r.acaoCodigo)===String(act)}).forEach(function(r){poMap[r.poCodigo||'—']=r.poDescricao||''});
- fillSelect(po,Object.keys(poMap).sort().map(function(k){return{value:k,label:k+(poMap[k]?' — '+poMap[k]:'')}}),'TODOS',preserve);
- fillSelect(invSel,cands.map(function(i){return{value:i.investimento,label:i.investimento}}),'TODOS OS RELACIONADOS ('+cands.length+')',preserve);
- var selectedInv=invSel&&invSel.value!==ALLV?cands.filter(function(i){return i.investimento===invSel.value}):cands;
- var years=uniq(recordsForCandidates(selectedInv).map(function(r){return String(r.ano)})).sort().reverse();
- fillSelect(ano,years.map(function(y){return{value:y,label:y}}),'Todos os exercícios',preserve);
-}
-function filteredSiopRecords(){
- var cands=filteredSiopInvestments(),invSel=document.getElementById('siopInv'),ano=document.getElementById('siopAno'),acao=document.getElementById('siopAcao'),po=document.getElementById('siopPO');
- if(invSel&&invSel.value!==ALLV)cands=cands.filter(function(i){return i.investimento===invSel.value});
- var recs=recordsForCandidates(cands);
- return recs.filter(function(r){
-   if(ano&&ano.value!==ALLV&&String(r.ano)!==String(ano.value))return false;
-   if(acao&&acao.value!==ALLV&&String(r.acaoCodigo)!==String(acao.value))return false;
-   if(po&&po.value!==ALLV&&String(r.poCodigo)!==String(po.value))return false;
-   return true;
- });
-}
-window.renderSiopTest=function(){
- var d=siopData(),cards=document.getElementById('siopCards'),detail=document.getElementById('siopDetail'),ctx=document.getElementById('siopContext'),st=document.getElementById('siopTestStatus');
- if(!d||!cards||!detail)return;
- var cands=filteredSiopInvestments(),recs=filteredSiopRecords(),t=sumRecords(recs);
- var mainRs=typeof set==='function'?set():DATA;
- if(ctx)ctx.innerHTML='<b>Recorte do BI:</b> '+xesc(mainRs.length+' investimento(s) após Região → UF → Município/Hidrovia → Tipo → Empreendimento')+' · <b>SIOP relacionado:</b> '+cands.length+' investimento(s).';
- if(!cands.length){
-   cards.innerHTML='';detail.innerHTML='<div class="siop-empty">Nenhum investimento com relacionamento SIOP habilitado corresponde aos filtros atuais do BI. O sistema não exibe valores de outro empreendimento por aproximação.</div>';
-   if(st)st.textContent='SIOP OK · recorte atual sem vínculo homologado.';
-   return;
- }
- var vals=[['Dotação',xbrl(t.dotacaoAtual)],['Empenhado',xbrl(t.empenhado)+' · '+xpct(t.pctEmpenhadoDotacao)],['Liquidado',xbrl(t.liquidado)+' · '+xpct(t.pctLiquidadoEmpenhado)],['Pago',xbrl(t.pago)+' · '+xpct(t.pctPagoLiquidado)],['Saldo a empenhar',xbrl(t.saldoEmpenhar)],['Liquidado a pagar',xbrl(t.liquidadoPagar)]];
- cards.innerHTML=vals.map(function(x){return '<div class="siop-card"><b>'+x[0]+'</b><span>'+x[1]+'</span></div>'}).join('');
- var warn=[];if(t.saldoEmpenhar<0)warn.push('⚠️ Empenhado superior à dotação.');if(t.empenhado>0&&t.pctLiquidadoEmpenhado<10)warn.push('⚠️ Liquidação inferior a 10% do empenhado.');if(t.liquidadoPagar>0)warn.push('ℹ️ Há valor liquidado ainda não pago.');
- detail.innerHTML=(warn.length?'<p class="siop-alert">'+warn.join('<br>')+'</p>':'')+
- '<table><thead><tr><th>Investimento</th><th>Ano</th><th>Ação</th><th>PO</th><th>Grupo</th><th>Dotação</th><th>Empenhado</th><th>Liquidado</th><th>Pago</th></tr></thead><tbody>'+
- recs.map(function(r){return '<tr><td>'+xesc(r.investimento)+'</td><td>'+xesc(r.ano)+'</td><td>'+xesc(r.acaoCodigo)+'<br><small>'+xesc(r.acaoDescricao)+'</small></td><td>'+xesc(r.poCodigo)+'<br><small>'+xesc(r.poDescricao)+'</small></td><td>'+xesc(r.grupoDespesa)+'</td><td>'+xbrl(r.dotacaoAtual)+'</td><td>'+xbrl(r.empenhado)+'</td><td>'+xbrl(r.liquidado)+'</td><td>'+xbrl(r.pago)+'</td></tr>'}).join('')+'</tbody></table>'+
- '<p class="siop-note"><b>Fonte:</b> SIOP + Matriz de Relacionamento · '+recs.length+' linha(s) integrada(s) no recorte. Exercícios não são misturados por padrão quando um ano é selecionado.</p>';
- if(st)st.textContent='BASE SIOP OK · '+((d.metadata&&d.metadata.registrosSIOP)||156)+' registros de origem · '+((d.metadata&&d.metadata.relacionamentosHabilitados)||11)+' relações habilitadas.';
+window.quickView=function(t){
+  setActive(t);
+  var rs=mainRows(),q=el("quickResult");if(q)q.hidden=true;
+  if(t==="territorio"||t==="hidrovias"){showSections(["filtros","kpiView","painelView"]);el("filtros").scrollIntoView({behavior:"smooth",block:"start"});return}
+  if(t==="orc"){showSections(["filtros","siop-test"]);syncBudgetWithMain();el("siop-test").scrollIntoView({behavior:"smooth",block:"start"});return}
+  if(t==="contratos"){showSections(["especial"]);if(typeof showContracts==="function")showContracts();return}
+  if(t==="concessoes"){showSections(["especial"]);if(typeof showConcessions==="function")showConcessions();return}
+  if(t==="controle"){showSections(["especial","v73-auditorias-publicas"]);if(typeof showControl==="function")showControl();return}
+  if(t==="relatorio"){showSections(["filtros","docs"]);el("docs").scrollIntoView({behavior:"smooth",block:"start"});return}
+  if(t==="briefing"){showSections(["filtros","docs"]);el("docs").scrollIntoView({behavior:"smooth",block:"start"});return}
+  if(t==="fontes"){showSections(["fontesView","atualizacao"]);el("fontesView").scrollIntoView({behavior:"smooth",block:"start"});return}
+  if(t==="fisica"){showSections(["comando"]);quickTable("Execução Física",rs,[["Investimento","nome"],["Execução física","execFisica"],["Fonte","fonteExecFisica"],["Data-base","dataFonte"]]);return}
+  if(t==="fin"){showSections(["comando"]);quickTable("Execução Financeira",rs,[["Investimento","nome"],["Execução financeira","execFinanceira"],["Empenhado / liquidado / pago","empenhadoPago"],["Fonte","fonteExecFinanceira"]]);return}
+  showSections(["comando"]);
+  quickTable("Carteira de Investimentos",rs,[["Investimento","nome"],["UF","ufs"],["Hidrovia / rio","hidrovias"],["Situação","situacao"],["Valor","valor"],["Fonte","fonte"]]);
+};
+window.showHome=function(){
+  document.querySelectorAll("main.wrap > section.box").forEach(function(s){if(s.id!=="comando")s.classList.add("home-hidden")});
+  var q=el("quickResult");if(q)q.hidden=true;
+  var back=el("homeBack");if(back)back.style.display="none";
+  setActive("");
+  el("comando").scrollIntoView({behavior:"smooth",block:"start"});
 };
 
-function syncSiopWithMainFilters(){
- if(!siopData())return;
- var reg=document.getElementById('siopRegiao'),invSel=document.getElementById('siopInv');
- var mainReg=document.getElementById('regiao'),mainInv=document.getElementById('empreendimento');
- refreshSiopOptions(false);
- if(reg&&mainReg&&mainReg.value&&mainReg.value!==ALLV&&Array.from(reg.options).some(function(o){return o.value===mainReg.value}))reg.value=mainReg.value;
- refreshSiopOptions(true);
- if(invSel&&mainInv&&mainInv.value&&mainInv.value!==ALLV&&Array.from(invSel.options).some(function(o){return o.value===mainInv.value}))invSel.value=mainInv.value;
- refreshSiopOptions(true);renderSiopTest();
+function installSourceLinks(){
+  var box=el("sourceLinks");if(!box)return;
+  box.className="source-links";
+  box.innerHTML=SOURCE_LINKS.map(function(s){return '<a href="'+escx(s[1])+'" target="_blank" rel="noopener noreferrer">'+escx(s[0])+' ↗</a>'}).join("");
 }
-window.syncSiopWithMainFilters=syncSiopWithMainFilters;
-
-function compactStaticSections(){
- var a=document.getElementById('atualizacao');
- if(a)a.innerHTML='<h2>Atualização e fontes</h2><p class="siop-note">Fontes organizadas por função. Abra somente o que precisar.</p><div class="source-compact">'+
-   '<span class="source-chip">SIOP · orçamento</span><span class="source-chip">SIAFI · execução financeira</span><span class="source-chip">DNIT · infraestrutura</span><span class="source-chip">ANTAQ · concessões</span><span class="source-chip">PNCP · contratos</span><span class="source-chip">TCU/CGU/TCE · controle</span>'+
-   '</div><details class="compact-details"><summary>Regras de atualização e demais fontes</summary><p>ObrasGov, Transferegov, Infra S.A. e Administrações Hidroviárias são fontes complementares quando houver correspondência inequívoca. Cada valor mantém sistema de origem e data-base; divergências são sinalizadas e não há substituição silenciosa.</p></details>';
- var docs=document.getElementById('docs');
- if(docs){var p=docs.querySelector('p');if(p)p.innerHTML='<b>Saídas executivas:</b> contrato, executor, valor, LOA, PLOA e execução orçamentária/financeira são apresentados separadamente; ausência de vínculo permanece explicitamente em validação.'}
+function formalizeText(){
+  var cmd=el("comando");if(cmd){
+    var h=cmd.querySelector("h2");if(h)h.textContent="Navegação Executiva";
+    var sub=cmd.querySelector(".command-sub");if(sub)sub.textContent="Selecione uma área para abrir a visão correspondente e refine a análise pelos filtros disponíveis.";
+  }
+  var fh=el("filtros")&&el("filtros").querySelector("h2");if(fh)fh.textContent="Filtros de Análise";
+  var ph=el("produtos-executivos")&&el("produtos-executivos").querySelector("h2");if(ph)ph.textContent="Produtos para Assessoramento";
+  var dh=el("docs")&&el("docs").querySelector("h2");if(dh)dh.textContent="Relatórios e Documentos Executivos";
+  var sh=el("especial")&&el("especial").querySelector("h2");if(sh)sh.textContent="Visões Analíticas";
+  var src=el("fontesView")&&el("fontesView").querySelector("h2");if(src)src.textContent="Fontes Oficiais e Rastreabilidade";
+  var labels={
+    territorio:["Recorte Territorial","Região, UF e abrangência"],
+    hidrovias:["Hidrovias e Rios","Recorte por via navegável"],
+    controle:["Auditorias e Controle","TCU, CGU e TCEs"],
+    fontes:["Fontes e Atualização","Rastreabilidade e data-base"]
+  };
+  Object.keys(labels).forEach(function(k){
+    var b=Array.from(document.querySelectorAll(".cmd")).find(function(x){return (x.getAttribute("onclick")||"").indexOf("'"+k+"'")>=0});
+    if(b){var bb=b.querySelector("b"),sm=b.querySelector("small");if(bb)bb.textContent=labels[k][0];if(sm)sm.textContent=labels[k][1]}
+  });
 }
-
-function bindRefined(){
- ['regiao','uf','municipio','hidrovia','tipo','empreendimento'].forEach(function(id){var e=document.getElementById(id);if(e)e.addEventListener('change',function(){setTimeout(syncSiopWithMainFilters,0)})});
- ['siopRegiao','siopAcao','siopPO','siopInv','siopAno'].forEach(function(id){var e=document.getElementById(id);if(e)e.addEventListener('change',function(){refreshSiopOptions(true);renderSiopTest()})});
- var clear=document.getElementById('siopClearBtn');if(clear)clear.onclick=function(){['siopRegiao','siopAcao','siopPO','siopInv','siopAno'].forEach(function(id){var e=document.getElementById(id);if(e)e.value=ALLV});refreshSiopOptions(false);renderSiopTest()};
- window.addEventListener('bi:data-updated',function(){setTimeout(function(){enrichFromSiop();syncSiopWithMainFilters();window.render()},50)});
- window.addEventListener('bi:siop-updated',function(){setTimeout(function(){enrichFromSiop();syncSiopWithMainFilters();window.render()},50)});
+function installFooter(){
+  var old=el("biFooter");if(old)old.remove();
+  var f=document.createElement("footer");f.id="biFooter";f.className="app-footer";
+  f.innerHTML='<div class="app-footer-inner"><div><strong>BI Executivo de Hidrovias e Navegação Interior</strong><br>DPP/SNHN · apoio ao acompanhamento executivo</div><div class="app-footer-meta"><span id="footerSync">Base integrada</span><br>Base técnica v74 · revisão 02/10/2026 · dados sujeitos à validação das fontes oficiais</div></div>';
+  document.body.appendChild(f);
 }
-
-function startRefined(){
- compactStaticSections();enrichFromSiop();refreshSiopOptions(false);bindRefined();syncSiopWithMainFilters();window.render();
- var p=document.querySelector('header p');if(p)p.textContent='Base dinâmica · 19 investimentos · execução SIOP relacionada · LOA/PLOA separados · interface refinada';
+function updateFooter(text){
+  var x=el("footerSync");if(x)x.textContent=text||"Base integrada";
 }
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',startRefined);else startRefined();
+function bind(){
+  ["regiao","uf","municipio","hidrovia","tipo","empreendimento"].forEach(function(id){
+    var x=el(id);if(x)x.addEventListener("change",function(){setTimeout(function(){enrich();syncBudgetWithMain()},0)});
+  });
+  ["siopRegiao","siopUF","siopMunicipio","siopHidrovia","siopTipo","siopAcao","siopPO","siopGND","siopInv","siopAno"].forEach(function(id){
+    var x=el(id);if(x)x.addEventListener("change",function(){rebuildBudgetFilters(true);renderBudget()});
+  });
+  var clear=el("siopClearBtn");if(clear)clear.addEventListener("click",function(){
+    ["siopRegiao","siopUF","siopMunicipio","siopHidrovia","siopTipo","siopAcao","siopPO","siopGND","siopInv","siopAno"].forEach(function(id){var x=el(id);if(x)x.value=ALL});
+    rebuildBudgetFilters(false);renderBudget();
+  });
+  var apply=el("siopApplyMainBtn");if(apply)apply.addEventListener("click",syncBudgetWithMain);
+  document.querySelectorAll("button").forEach(function(b){if(!b.getAttribute("type"))b.setAttribute("type","button")});
+  document.querySelectorAll('a[target="_blank"]').forEach(function(a){a.setAttribute("rel","noopener noreferrer")});
+  window.addEventListener("bi:data-updated",function(ev){enrich();syncBudgetWithMain();updateFooter("Base principal sincronizada · "+new Date(ev.detail.syncedAt||Date.now()).toLocaleString("pt-BR"))});
+  window.addEventListener("bi:siop-updated",function(ev){enrich();syncBudgetWithMain();updateFooter("Base SIOP "+(ev.detail&&ev.detail.source==="online"?"online":"homologada embarcada"))});
+}
+function start(){
+  formalizeText();installSourceLinks();installFooter();enrich();rebuildBudgetFilters(false);bind();syncBudgetWithMain();
+  var p=document.querySelector(".bi-header p");if(p)p.textContent="Painel de acompanhamento da carteira de investimentos, execução físico-orçamentária e apoio ao assessoramento executivo — DPP/SNHN";
+  document.title="BI Executivo de Hidrovias e Navegação Interior — DPP/SNHN";
+}
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",start,{once:true});else start();
 })();
 </script>
-</body></html>
+<footer id="biFooter" class="app-footer">
+  <div class="app-footer-inner">
+    <div><strong>BI Executivo de Hidrovias e Navegação Interior</strong><br>DPP/SNHN · apoio ao acompanhamento executivo</div>
+    <div class="app-footer-meta"><span id="footerSync">Base integrada</span><br>Base técnica v74 · revisão 02/10/2026 · dados sujeitos à validação das fontes oficiais</div>
+  </div>
+</footer></body></html>

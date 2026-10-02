@@ -1,0 +1,88 @@
+name: Atualizar bases do BI Hidrovias
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '15 9 * * *'
+  push:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/update-data.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  atualizar-bases:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+
+      - name: Extrair bases autorizadas
+        shell: bash
+        run: |
+          set -euo pipefail
+          MAIN='https://script.google.com/macros/s/AKfycbyUCnZm3VwmEivBW04wXSP8bPONg4Cv00acK7MaxZ_54jRMzgdwyIPUDmYnm3pasMLnvw/exec'
+          SIOP='https://script.google.com/macros/s/AKfycbyBOezMVBXAnk1ZMI0fzYoWzHR_Fn37pdoQR3UUkYqM8cCDbUPzUBzCO-23iwmBVJYvnw/exec'
+          curl -A "Mozilla/5.0" -H "Accept: application/json,text/plain,*/*" -L --fail --retry 3 --retry-delay 3 --connect-timeout 30 --max-time 180 "$MAIN" -o /tmp/main.raw
+          curl -A "Mozilla/5.0" -H "Accept: application/json,text/plain,*/*" -L --fail --retry 3 --retry-delay 3 --connect-timeout 30 --max-time 180 "$SIOP" -o /tmp/siop.raw || true
+
+      - name: Validar e gerar snapshots
+        shell: python
+        run: |
+          import json, pathlib
+          pathlib.Path('data').mkdir(exist_ok=True)
+
+          def parse_json(path, label):
+              text = pathlib.Path(path).read_text(encoding='utf-8', errors='replace')
+              clean = text.lstrip('\ufeff \t\r\n')
+              return json.loads(clean)
+
+          main = parse_json('/tmp/main.raw','MAIN')
+          rows = main.get('investments') or main.get('data')
+          if not isinstance(rows,list) or len(rows) != 19:
+              raise SystemExit('Base principal inválida: esperado 19 investimentos')
+          ids=[str(x.get('id')) for x in rows]
+          if len(ids)!=len(set(ids)) or any(not x.get('nome') for x in rows):
+              raise SystemExit('Base principal inválida: ID duplicado ou investimento sem nome')
+          pathlib.Path('data/bi_hidrovias_public.json').write_text(
+              json.dumps(main,ensure_ascii=False,separators=(',',':')),encoding='utf-8'
+          )
+          print(f'MAIN OK: {len(rows)} investimentos')
+
+          # O endpoint SIOP pode exigir autenticação em chamadas servidor-servidor.
+          # Quando isso ocorrer, preserva-se o último snapshot homologado no repositório.
+          try:
+              siop=parse_json('/tmp/siop.raw','SIOP')
+              inv=siop.get('investimentos')
+              if siop.get('ok') is not True or not isinstance(inv,list) or not inv:
+                  raise ValueError('snapshot SIOP inválido')
+              for item in inv:
+                  for ex in item.get('exercicios',[]):
+                      for r in ex.get('registros',[]):
+                          st=str(r.get('statusValidacao','')).upper()
+                          if st and not st.startswith('SIM'):
+                              raise ValueError('relação não habilitada: '+st)
+              pathlib.Path('data/siop_hidrovias_public.json').write_text(
+                  json.dumps(siop,ensure_ascii=False,separators=(',',':')),encoding='utf-8'
+              )
+              print(f'SIOP OK: {len(inv)} investimentos relacionados')
+          except Exception as exc:
+              if not pathlib.Path('data/siop_hidrovias_public.json').exists():
+                  raise
+              print('SIOP remoto indisponível; snapshot homologado preservado:',repr(exc))
+
+      - name: Publicar somente se houver alteração
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -z "$(git status --porcelain -- data/bi_hidrovias_public.json data/siop_hidrovias_public.json)" ]; then
+            echo "Sem alteração nas bases."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/bi_hidrovias_public.json data/siop_hidrovias_public.json
+          git commit -m "Atualiza snapshots das bases do BI"
+          git push
