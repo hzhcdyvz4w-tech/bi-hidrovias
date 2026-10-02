@@ -1,22 +1,50 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "modulo": "Janela Orçamentária",
-  "dataBase": "2026-10-02",
-  "origemExecucaoFisica": "Base SEI local (IndexedDB)",
-  "origemExecucaoFinanceira": "Consulta SIOP BI",
-  "definicaoExecucaoFinanceira": "Pago / Dotação Atual",
-  "regraExcedente": {
-    "preferencia": "Valor de execução física monetário explícito no SEI",
-    "fallback": "Valor de repasse × percentual de execução física",
-    "calculo": "Excedente = max(0, valor de repasse - valor físico considerado)"
+  "versao": "v87",
+  "finalidade": "Emitir relatório comparativo entre execução física e financeira e propor remanejamento com percentuais definidos pela demanda.",
+  "fontes": {
+    "fisica": "Base SEI local",
+    "repasse": "Base SEI local",
+    "termino": "Base SEI local",
+    "financeira": "Consulta SIOP BI — Pago / Dotação Atual",
+    "cadastral": "Carteira principal do BI"
   },
-  "regraDestino": {
-    "condicao": "Execução física (%) >= execução financeira (%)",
-    "data": "Data de término conhecida e futura",
+  "parametrosDemanda": {
+    "percentualPadraoExcedente": {
+      "default": 100,
+      "min": 0,
+      "max": 100
+    },
+    "execucaoFisicaMinimaDestino": {
+      "default": 0,
+      "min": 0,
+      "max": 100
+    },
+    "margemFisicaFinanceiraPP": {
+      "default": 0,
+      "min": 0,
+      "max": 100
+    },
+    "percentualIndividualPorOrigem": true
+  },
+  "calculo": {
+    "valorFisico": "Valor físico explícito no SEI; na ausência, Repasse × % execução física",
+    "excedente": "max(0, Repasse - valor físico considerado)",
+    "valorProposto": "Excedente × percentual demandado / 100"
+  },
+  "destino": {
+    "elegibilidade": "Físico destino >= mínimo físico informado e (Físico - Financeiro) >= margem em p.p.; término futuro conhecido",
     "prioridade": [
-      "Data de término futura mais próxima",
-      "Maior diferença execução física - execução financeira"
+      "Término futuro mais próximo",
+      "Maior diferença físico-financeira"
     ]
   },
-  "seguranca": "Sem físico, repasse ou término confirmados no SEI não há proposta automática. O módulo não executa remanejamento."
+  "saidas": [
+    "Análise comparativa físico × financeiro",
+    "Propostas de remanejamento",
+    "Relatório em tela",
+    "Impressão/PDF"
+  ],
+  "seguranca": "Módulo analítico. Não executa alteração orçamentária automaticamente."
 }
