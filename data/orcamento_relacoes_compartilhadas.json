@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "projeto": "Projeto BI - Hidrovias",
+  "regra": "Relações compartilhadas só podem ser usadas quando o empreendimento alvo está no recorte dos filtros e o empreendimento-fonte pertence ao mesmo recorte até a categoria TIPO. O valor nunca entra duas vezes nos totais consolidados.",
+  "relacoes": [
+    {
+      "id": "SHARED-IP4-SUPERVISAO-001",
+      "alvo": "Supervisão das 54 IP4",
+      "fonte": "Operação e manutenção de 54 IP4",
+      "natureza": "COMPARTILHADO",
+      "nivelAtribuicao": "AÇÃO / PO / CARTEIRA IP4",
+      "filtros": [
+        "regiao",
+        "uf",
+        "municipio",
+        "hidrovia",
+        "tipo"
+      ],
+      "siop": {
+        "acaoCodigo": "20LN",
+        "poCodigo": "0002",
+        "grupos": [
+          "3"
+        ],
+        "exercicios": [
+          2025,
+          2026
+        ]
+      },
+      "ploa2027": {
+        "recordId": "PLOA27-20LN-0001",
+        "natureza": "COMPATÍVEL / COMPARTILHADO",
+        "exclusivo": false
+      },
+      "observacao": "Os valores pertencem à ação/PO da operação e manutenção das IP4 e são exibidos na Supervisão somente como orçamento relacionado/compartilhado, nunca como orçamento exclusivo do contrato de supervisão."
+    }
+  ]
+}
