@@ -602,7 +602,7 @@ function auditCascadeV76(){
 function fill(k,keep){var old=keep?v(k):ALL,a=opts(k),s=E[k];s.options.length=0;s.add(new Option(a.length>1?"TODOS ("+a.length+")":"TODOS",ALL));for(var i=0;i<a.length;i++)s.add(new Option(a[i],a[i]));if(a.indexOf(old)>=0)s.value=old;else if(a.length===1)s.value=a[0];else s.value=ALL}
 function cascade(k){var n=ORD.indexOf(k);for(var i=n+1;i<ORD.length;i++)fill(ORD[i],true);render()}
 function aplicarFiltrosMainV78(){render()}
-function limparFiltrosMainV78(){for(var i=0;i<ORD.length;i++){if(E[ORD[i]])E[ORD[i]].value=ALL}for(var j=0;j<ORD.length;j++)fill(ORD[j],false);render()}
+function limparFiltrosMainV78(){for(var i=0;i<ORD.length;i++){if(E[ORD[i]])E[ORD[i]].value=ALL}for(var j=0;j<ORD.length;j++){fill(ORD[j],true);if(E[ORD[j]])E[ORD[j]].value=ALL}render()}
 function set(){return DATA.filter(function(r){return match(r,ORD.length-1)})}function safe(x){return x===null||x===undefined||String(x).trim()===""?"DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO":String(x)}
 function F(l,x,w,c){return'<div class="field '+(w?'w ':'')+(c||'')+'"><b>'+l+'</b><div>'+safe(x)+'</div></div>'}
 function ag(rs,k){var a=[];for(var i=0;i<rs.length;i++)a=a.concat(arr(rs[i],k));a=u(a);return a.length<=6?a.join(" • "):a.length+" valores distintos — refine os filtros"}
@@ -869,7 +869,7 @@ function openQuickProject(i){var r=DATA[i];if(!r)return;var s=document.querySele
 function hideViews(){document.querySelectorAll('main.wrap > section.box').forEach(function(x){if(x.id!=='comando')x.classList.add('home-hidden')});document.getElementById('homeBack').style.display='none'}
 function reveal(ids){ids.forEach(function(id){var x=document.getElementById(id);if(x)x.classList.remove('home-hidden')});document.getElementById('homeBack').style.display='block'}
 function showHome(){document.getElementById('quickResult').hidden=true;hideViews();document.getElementById('comando').scrollIntoView({behavior:'smooth',block:'start'})}
-function openConcessoesBI(){window.location.href='./concessoes/'}
+function openConcessoesBI(){window.location.href='./concessoes-v10/'}
 function quickView(t){var el=document.getElementById('quickResult');if(!el)return;el.hidden=false;var rows=DATA.slice(),title='',cols=[];
  if(t==='contratos' && BI_CONTRATOS_FILHOS.length){
    title='📑 Contratos e instrumentos';
