@@ -1,0 +1,10 @@
+{
+  "name": "Concessões de Hidrovias",
+  "short_name": "Concessões",
+  "description": "BI Executivo de Concessões Hidroviárias",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f3f7fa",
+  "theme_color": "#173f67"
+}
