@@ -1,0 +1,16 @@
+{
+  "metadata":{"versao":"7.0","referencial":"SIRGAS 2000","data_corte":"03/10/2026","regra":"Geometria detalhada deve vir de camada oficial DNIT/ANTAQ; não inferir traçado."},
+  "fontes":[
+    {"orgao":"DNIT","base":"SNV / VGeo","uso":"Traçado oficial das hidrovias e rios","formatos":"SHP/KML"},
+    {"orgao":"ANTAQ","base":"Informações Geográficas / VEN","uso":"Validação e contexto de navegação","formatos":"SHP/KML"}
+  ],
+  "projetos":[
+    {"id":"HID-PARAGUAI","bacia":"Paraguai","regiao":"Centro-Oeste"},
+    {"id":"HID-MADEIRA","bacia":"Madeira","regiao":"Norte"},
+    {"id":"HID-TAPAJOS","bacia":"Tapajós","regiao":"Norte"},
+    {"id":"HID-TOCANTINS","bacia":"Tocantins-Araguaia","regiao":"Norte"},
+    {"id":"HID-BARRA-NORTE","bacia":"Amazonas / Foz","regiao":"Norte"},
+    {"id":"HID-SUL-MIRIM","bacia":"Lagoa Mirim","regiao":"Sul"},
+    {"id":"HID-VERDE","bacia":"Amazonas","regiao":"Norte","classificacao":"complementar"}
+  ]
+}
