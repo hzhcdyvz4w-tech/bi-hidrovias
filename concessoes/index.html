@@ -20,7 +20,7 @@ section{display:none;background:#fff;border:1px solid var(--line);border-radius:
 .drop{border:2px dashed #9db4c8;border-radius:18px;padding:24px 14px;text-align:center;background:#f8fbfd}.drop .big{font-size:40px}.primary,.secondary{border:0;border-radius:13px;padding:12px 15px;font-weight:750;margin-top:10px}.primary{background:var(--azul);color:#fff}.secondary{background:#eaf1f6;color:var(--azul)}
 .status{margin-top:12px;padding:11px;border-radius:12px;background:#f5f8fa;color:#38546a;font-size:13px}.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:13px 0}.kpi{border:1px solid #d8e1ea;border-radius:12px;padding:10px;text-align:center}.kpi b{display:block;font-size:19px;color:var(--azul)}input[type=search]{width:100%;padding:12px;border:1px solid #c9d6e0;border-radius:12px;font-size:15px;margin:8px 0 12px}
 .proc{border-top:1px solid #e2e9ef;padding:12px 0}.proc:first-child{border-top:0}.proc strong{color:var(--azul)}.chip{display:inline-block;background:#edf3f7;border-radius:999px;padding:4px 8px;font-size:11px;margin:4px 4px 0 0}.docs{font-size:12px;color:#526b7e;margin:8px 0 0;padding-left:18px}.empty{padding:16px;text-align:center;color:#667e91}
-.card{border:1px solid #d8e1ea;border-radius:15px;padding:13px;margin:10px 0}.card b{color:var(--azul)}.filters{border:1px solid #d8e1ea;border-radius:15px;padding:14px;margin:0 0 14px;background:#fff;display:grid;position:relative;grid-template-columns:1fr;gap:10px}.filters h3{margin:0;grid-column:1/-1}.filters label{font-size:11px;font-weight:800;color:#244b6d}.filters select{width:100%;margin-top:5px;padding:10px;border:1px solid #a9bdca;border-radius:10px;background:#fff}.filter-summary{grid-column:1/-1;font-size:12px;color:#526b7e}.filter-reset{grid-column:1/-1;width:max-content}@media(min-width:720px){.filters{grid-template-columns:repeat(2,1fr)}}
+.card{border:1px solid #d8e1ea;border-radius:15px;padding:13px;margin:10px 0}.card b{color:var(--azul)}.filters{border:1px solid #d8e1ea;border-radius:15px;padding:14px;margin:0 0 14px;background:#fff;display:grid;position:relative;grid-template-columns:1fr;gap:10px}.filters h3{margin:0;grid-column:1/-1}.filters label{font-size:11px;font-weight:800;color:#244b6d}.filters select{width:100%;margin-top:5px;padding:10px;border:1px solid #a9bdca;border-radius:10px;background:#fff}.filter-summary{grid-column:1/-1;font-size:12px;color:#526b7e}.filter-actions{grid-column:1/-1;display:flex;gap:10px;flex-wrap:wrap}.filter-actions button{margin-top:0}@media(min-width:720px){.filters{grid-template-columns:repeat(2,1fr)}}
 footer{text-align:center;color:#708597;font-size:11px;padding:18px}
 @media(min-width:720px){.nav{grid-template-columns:repeat(4,1fr)}}
 </style>
@@ -28,7 +28,7 @@ footer{text-align:center;color:#708597;font-size:11px;padding:18px}
 <body>
 <header><div style="max-width:980px;margin:auto"><h1>BI Executivo de Concessões Hidroviárias</h1><p>Navegação Executiva • concessões, estudos, marcha processual e assessoramento</p></div></header>
 <main><div class="persistent-return"><a class="main-return" href="../">← Voltar ao BI Hidrovias</a></div>
-<div class="filters" id="concessionFilters"><h3>Filtros de Análise</h3><label>REGIÃO<select id="cfRegion"></select></label><label>HIDROVIA / PROJETO<select id="cfProject"></select></label><label>FASE<select id="cfPhase"></select></label><label>RESPONSÁVEL<select id="cfResponsible"></select></label><div class="filter-summary" id="cfSummary">Carregando carteira...</div><button class="secondary filter-reset" type="button" onclick="resetConcessionFilters()">Limpar filtros</button></div><div class="notice"><b>Camada SEI protegida:</b> os pacotes ZIP são processados e armazenados somente neste navegador. O conteúdo importado não é gravado no repositório GitHub nem no JSON público do BI.</div>
+<div class="filters" id="concessionFilters"><h3>Filtros de Análise</h3><label>REGIÃO<select id="cfRegion"></select></label><label>HIDROVIA / PROJETO<select id="cfProject"></select></label><label>FASE<select id="cfPhase"></select></label><label>RESPONSÁVEL<select id="cfResponsible"></select></label><div class="filter-summary" id="cfSummary">Carregando carteira...</div><div class="filter-actions"><button class="primary" type="button" onclick="applyConcessionFilters()">FILTRAR</button><button class="secondary" type="button" onclick="resetConcessionFilters()">LIMPAR FILTROS</button></div></div><div class="notice"><b>Camada SEI protegida:</b> os pacotes ZIP são processados e armazenados somente neste navegador. O conteúdo importado não é gravado no repositório GitHub nem no JSON público do BI.</div>
 <div id="home">
   <div class="nav">
     <button onclick="openView('carteira')"><span class="ico">🧭</span><b>Carteira de Concessões</b><small>Região, hidrovia, fase e responsável</small></button>
@@ -61,29 +61,34 @@ footer{text-align:center;color:#708597;font-size:11px;padding:18px}
 <script src="jszip.min.js"></script>
 <script>
 let PROJECTS=[];
-fetch('dados_concessoes.json',{cache:'no-store'}).then(r=>r.json()).then(j=>{PROJECTS=j.projetos||[];rebuildConcessionFilters()}).catch(()=>{});
+fetch('dados_concessoes.json?v=20261005-1857',{cache:'no-store'}).then(r=>r.json()).then(j=>{PROJECTS=j.projetos||[];initConcessionFilters()}).catch(e=>{let s=document.getElementById('cfSummary');if(s)s.textContent='Falha ao carregar a base pública de concessões.'});
 function openView(id){document.getElementById('home').style.display='none';document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');scrollTo(0,0)}
 function home(){document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));document.getElementById('home').style.display='block';scrollTo(0,0)}
 function esc(v){return String(v??'—').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
-const CF_ALL='TODOS';
+const CF_ALL='TODOS';let CF_APPLIED={region:CF_ALL,project:CF_ALL,phase:CF_ALL,responsible:CF_ALL};
 function cfUniq(a){return [...new Set(a.filter(Boolean))].sort((x,y)=>String(x).localeCompare(String(y),'pt-BR'))}
-function cfVal(id){let e=document.getElementById(id);return e?e.value:CF_ALL}
-function cfOptions(id,vals,keep){let e=document.getElementById(id);if(!e)return;let v=keep?e.value:CF_ALL;e.innerHTML='<option value="'+CF_ALL+'">'+CF_ALL+'</option>'+cfUniq(vals).map(x=>'<option value="'+esc(x)+'">'+esc(x)+'</option>').join('');if([...e.options].some(o=>o.value===v))e.value=v}
-function filteredProjects(){return PROJECTS.filter(p=>(cfVal('cfRegion')===CF_ALL||p.regiao===cfVal('cfRegion'))&&(cfVal('cfProject')===CF_ALL||p.nome===cfVal('cfProject'))&&(cfVal('cfPhase')===CF_ALL||p.fase===cfVal('cfPhase'))&&(cfVal('cfResponsible')===CF_ALL||p.responsavel===cfVal('cfResponsible')))}
-function rebuildConcessionFilters(changed){
- let base=PROJECTS;
- cfOptions('cfRegion',base.map(p=>p.regiao),changed!=='region');
- let r=base.filter(p=>cfVal('cfRegion')===CF_ALL||p.regiao===cfVal('cfRegion'));
- cfOptions('cfProject',r.map(p=>p.nome),changed!=='region'&&changed!=='project');
- let q=r.filter(p=>cfVal('cfProject')===CF_ALL||p.nome===cfVal('cfProject'));
- cfOptions('cfPhase',q.map(p=>p.fase),changed!=='region'&&changed!=='project'&&changed!=='phase');
- let z=q.filter(p=>cfVal('cfPhase')===CF_ALL||p.fase===cfVal('cfPhase'));
- cfOptions('cfResponsible',z.map(p=>p.responsavel),changed!=='region'&&changed!=='project'&&changed!=='phase'&&changed!=='responsible');
- renderPublic();
+function cfSel(id){let e=document.getElementById(id);return e?e.value:CF_ALL}
+function cfSetOptions(id,vals,preserve){let e=document.getElementById(id);if(!e)return;let old=preserve?e.value:CF_ALL;e.innerHTML='';e.add(new Option('TODOS',CF_ALL));cfUniq(vals).forEach(x=>e.add(new Option(x,x)));e.value=[...e.options].some(o=>o.value===old)?old:CF_ALL}
+function refreshDraftFilters(changed){
+ let r=PROJECTS;
+ if(changed==='region'){cfSetOptions('cfProject',r.filter(p=>cfSel('cfRegion')===CF_ALL||p.regiao===cfSel('cfRegion')).map(p=>p.nome),false);cfSetOptions('cfPhase',[],false);cfSetOptions('cfResponsible',[],false)}
+ let q=r.filter(p=>(cfSel('cfRegion')===CF_ALL||p.regiao===cfSel('cfRegion'))&&(cfSel('cfProject')===CF_ALL||p.nome===cfSel('cfProject')));
+ if(changed==='region'||changed==='project'){cfSetOptions('cfPhase',q.map(p=>p.fase),false);cfSetOptions('cfResponsible',[],false)}
+ let z=q.filter(p=>cfSel('cfPhase')===CF_ALL||p.fase===cfSel('cfPhase'));
+ if(changed==='region'||changed==='project'||changed==='phase')cfSetOptions('cfResponsible',z.map(p=>p.responsavel),false);
 }
-function resetConcessionFilters(){['cfRegion','cfProject','cfPhase','cfResponsible'].forEach(id=>{let e=document.getElementById(id);if(e)e.value=CF_ALL});rebuildConcessionFilters()}
-function renderPublic(){let rows=filteredProjects();let cards=rows.map(p=>'<div class="card"><b>'+esc(p.nome)+'</b><br><small>'+esc(p.regiao)+' • '+esc(p.fase)+'</small><p>'+esc(p.avanco)+'</p><small><b>Responsável:</b> '+esc(p.responsavel)+'<br><b>Próximo:</b> '+esc(p.proximo)+'</small></div>').join('')||'<div class="empty">Nenhum projeto para o recorte selecionado.</div>';['portfolio','brief','report','decision','march'].forEach(id=>{let e=document.getElementById(id);if(e)e.innerHTML=cards});let s=document.getElementById('cfSummary');if(s)s.textContent=rows.length+' projeto(s) no recorte atual.'}
-document.addEventListener('change',e=>{let m={cfRegion:'region',cfProject:'project',cfPhase:'phase',cfResponsible:'responsible'};if(m[e.target.id])rebuildConcessionFilters(m[e.target.id])});
+function initConcessionFilters(){
+ cfSetOptions('cfRegion',PROJECTS.map(p=>p.regiao),false);
+ cfSetOptions('cfProject',PROJECTS.map(p=>p.nome),false);
+ cfSetOptions('cfPhase',PROJECTS.map(p=>p.fase),false);
+ cfSetOptions('cfResponsible',PROJECTS.map(p=>p.responsavel),false);
+ CF_APPLIED={region:CF_ALL,project:CF_ALL,phase:CF_ALL,responsible:CF_ALL};renderPublic();
+}
+function applyConcessionFilters(){CF_APPLIED={region:cfSel('cfRegion'),project:cfSel('cfProject'),phase:cfSel('cfPhase'),responsible:cfSel('cfResponsible')};renderPublic()}
+function resetConcessionFilters(){['cfRegion','cfProject','cfPhase','cfResponsible'].forEach(id=>{let e=document.getElementById(id);if(e)e.value=CF_ALL});initConcessionFilters()}
+function filteredProjects(){return PROJECTS.filter(p=>(CF_APPLIED.region===CF_ALL||p.regiao===CF_APPLIED.region)&&(CF_APPLIED.project===CF_ALL||p.nome===CF_APPLIED.project)&&(CF_APPLIED.phase===CF_ALL||p.fase===CF_APPLIED.phase)&&(CF_APPLIED.responsible===CF_ALL||p.responsavel===CF_APPLIED.responsible))}
+function renderPublic(){let rows=filteredProjects();let cards=rows.map(p=>'<div class="card"><b>'+esc(p.nome)+'</b><br><small>'+esc(p.regiao)+' • '+esc(p.fase)+'</small><p>'+esc(p.avanco)+'</p><small><b>Responsável:</b> '+esc(p.responsavel)+'<br><b>Próximo:</b> '+esc(p.proximo)+'</small></div>').join('')||'<div class="empty">Nenhum projeto para o recorte selecionado.</div>';['portfolio','brief','report','decision','march'].forEach(id=>{let e=document.getElementById(id);if(e)e.innerHTML=cards});let s=document.getElementById('cfSummary');if(s)s.textContent=rows.length+' projeto(s) no recorte aplicado.'}
+document.addEventListener('change',e=>{let m={cfRegion:'region',cfProject:'project',cfPhase:'phase'};if(m[e.target.id])refreshDraftFilters(m[e.target.id])});
 if('serviceWorker'in navigator){navigator.serviceWorker.getRegistrations().then(rs=>rs.forEach(r=>r.unregister())).catch(()=>{});('caches'in window)&&caches.keys().then(ks=>ks.forEach(k=>caches.delete(k))).catch(()=>{})}
 const DB='BI_Concessoes_SEI',VER=1,SP='processes',SI='imports',TEXT=new Set(['txt','html','htm','xml','csv','json','md','log']);let dbp;
 function db(){if(dbp)return dbp;dbp=new Promise((res,rej)=>{let q=indexedDB.open(DB,VER);q.onupgradeneeded=()=>{let d=q.result;if(!d.objectStoreNames.contains(SP))d.createObjectStore(SP,{keyPath:'id'});if(!d.objectStoreNames.contains(SI))d.createObjectStore(SI,{keyPath:'hash'})};q.onsuccess=()=>res(q.result);q.onerror=()=>rej(q.error)});return dbp}
