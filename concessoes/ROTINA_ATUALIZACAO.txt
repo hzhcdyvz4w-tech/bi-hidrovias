@@ -1,0 +1,22 @@
+ROTINA DE ATUALIZAÇÃO — BI CONCESSÕES HIDROVIÁRIAS v8
+
+1. COLETA
+Consultar apenas fontes oficiais cadastradas em fontes_oficiais.csv.
+
+2. EVIDÊNCIA
+Toda alteração candidata deve carregar ID do projeto, campo alterado, novo valor, fonte/URL, data e tipo de evidência.
+
+3. COMPARAÇÃO
+A rotina compara candidatos com a base pública.
+
+4. VALIDAÇÃO
+Diferenças entram em fila_validacao.csv como PENDENTE. Nada é publicado automaticamente.
+
+5. PUBLICAÇÃO
+Somente registros validados devem alterar a base pública. Registrar histórico e snapshot.
+
+6. CAMADA PRIVADA
+SEI e outros documentos internos não devem ser coletados pela rotina pública. Armazenamento e autenticação devem ser separados.
+
+7. AGENDAMENTO
+Coleta pública: diária. Publicação: somente após validação de alteração material.
