@@ -21,3 +21,9 @@ Painel executivo da DPP/SNHN para acompanhamento da carteira de investimentos, e
 A aplicação não associa valores orçamentários por semelhança nominal. Somente relacionamentos habilitados entram na execução SIOP. Ausências permanecem identificadas como **DADO NÃO LOCALIZADO / NECESSITA VALIDAÇÃO**.
 
 A interface possui snapshot embarcado para contingência local; no ambiente online, os snapshots em `data/` são consultados no mesmo domínio do GitHub Pages.
+
+
+## Módulo integrado — Concessões Hidroviárias
+O BI Executivo de Concessões Hidroviárias foi incorporado a este repositório em `/concessoes/`. O botão **Concessões** da Navegação Executiva abre o módulo internamente, mantendo este repositório como projeto principal.
+
+**Segurança:** este repositório é público. Não versionar documentos SEI, dados pessoais, credenciais ou informação interna/restrita. O importador SEI do módulo processa os arquivos localmente no navegador; os documentos importados não devem ser enviados ao GitHub.
