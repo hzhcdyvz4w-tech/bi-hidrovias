@@ -388,7 +388,7 @@ button:focus-visible,.cmd:focus-visible,.exec-action:focus-visible,.secondary-bt
 <button class="cmd" onclick="quickView('fisica')"><span class="ico">🏗️</span><b>Execução Física</b><small>Percentual, medição e fonte</small></button>
 <button class="cmd" onclick="quickView('orc')"><span class="ico">💰</span><b>Execução Orçamentária</b><small>Dotação, empenho, RAP e saldo</small></button>
 <button class="cmd" onclick="quickView('fin')"><span class="ico">💳</span><b>Execução Financeira</b><small>Liquidado, pago e fonte</small></button>
-<button class="cmd" onclick="quickView('concessoes')"><span class="ico">⚓</span><b>Concessões</b><small>Estudos, consulta, edital e leilão</small></button>
+<button class="cmd" onclick="openConcessoesBI()"><span class="ico">⚓</span><b>Concessões</b><small>Abrir BI Executivo de Concessões Hidroviárias</small></button>
 <button class="cmd" onclick="quickView('controle')"><span class="ico">🔎</span><b>Auditorias e Controle</b><small>TCU, CGU e TCEs</small></button>
 <button class="cmd" onclick="quickView('relatorio')"><span class="ico">📊</span><b>Relatório Executivo</b><small>Gerar relatório da seleção</small></button>
 <button class="cmd" onclick="quickView('briefing')"><span class="ico">🎯</span><b>Briefing</b><small>Síntese para autoridade</small></button>
@@ -860,6 +860,7 @@ function openQuickProject(i){var r=DATA[i];if(!r)return;var s=document.querySele
 function hideViews(){document.querySelectorAll('main.wrap > section.box').forEach(function(x){if(x.id!=='comando')x.classList.add('home-hidden')});document.getElementById('homeBack').style.display='none'}
 function reveal(ids){ids.forEach(function(id){var x=document.getElementById(id);if(x)x.classList.remove('home-hidden')});document.getElementById('homeBack').style.display='block'}
 function showHome(){document.getElementById('quickResult').hidden=true;hideViews();document.getElementById('comando').scrollIntoView({behavior:'smooth',block:'start'})}
+function openConcessoesBI(){window.open('https://github.com/hzhcdyvz4w-tech/bi-concessoes-hidroviarias','_blank','noopener,noreferrer')}
 function quickView(t){var el=document.getElementById('quickResult');if(!el)return;el.hidden=false;var rows=DATA.slice(),title='',cols=[];
  if(t==='contratos' && BI_CONTRATOS_FILHOS.length){
    title='📑 Contratos e instrumentos';
