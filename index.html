@@ -860,7 +860,7 @@ function openQuickProject(i){var r=DATA[i];if(!r)return;var s=document.querySele
 function hideViews(){document.querySelectorAll('main.wrap > section.box').forEach(function(x){if(x.id!=='comando')x.classList.add('home-hidden')});document.getElementById('homeBack').style.display='none'}
 function reveal(ids){ids.forEach(function(id){var x=document.getElementById(id);if(x)x.classList.remove('home-hidden')});document.getElementById('homeBack').style.display='block'}
 function showHome(){document.getElementById('quickResult').hidden=true;hideViews();document.getElementById('comando').scrollIntoView({behavior:'smooth',block:'start'})}
-function openConcessoesBI(){window.open('https://github.com/hzhcdyvz4w-tech/bi-concessoes-hidroviarias','_blank','noopener,noreferrer')}
+function openConcessoesBI(){window.location.href='./concessoes/'}
 function quickView(t){var el=document.getElementById('quickResult');if(!el)return;el.hidden=false;var rows=DATA.slice(),title='',cols=[];
  if(t==='contratos' && BI_CONTRATOS_FILHOS.length){
    title='📑 Contratos e instrumentos';
