@@ -61,34 +61,37 @@ footer{text-align:center;color:#708597;font-size:11px;padding:18px}
 <script src="jszip.min.js"></script>
 <script>
 let PROJECTS=[];
-fetch('dados_concessoes.json?v=20261005-1857',{cache:'no-store'}).then(r=>r.json()).then(j=>{PROJECTS=j.projetos||[];initConcessionFilters()}).catch(e=>{let s=document.getElementById('cfSummary');if(s)s.textContent='Falha ao carregar a base pública de concessões.'});
+fetch('dados_concessoes.json?v=20261005-1904',{cache:'no-store'}).then(r=>r.json()).then(j=>{PROJECTS=j.projetos||[];initConcessionFilters()}).catch(e=>{let s=document.getElementById('cfSummary');if(s)s.textContent='Falha ao carregar a base pública de concessões.'});
 function openView(id){document.getElementById('home').style.display='none';document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');scrollTo(0,0)}
 function home(){document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));document.getElementById('home').style.display='block';scrollTo(0,0)}
 function esc(v){return String(v??'—').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
 const CF_ALL='TODOS';let CF_APPLIED={region:CF_ALL,project:CF_ALL,phase:CF_ALL,responsible:CF_ALL};
-function cfUniq(a){return [...new Set(a.filter(Boolean))].sort((x,y)=>String(x).localeCompare(String(y),'pt-BR'))}
-function cfSel(id){let e=document.getElementById(id);return e?e.value:CF_ALL}
-function cfSetOptions(id,vals,preserve){let e=document.getElementById(id);if(!e)return;let old=preserve?e.value:CF_ALL;e.innerHTML='';e.add(new Option('TODOS',CF_ALL));cfUniq(vals).forEach(x=>e.add(new Option(x,x)));e.value=[...e.options].some(o=>o.value===old)?old:CF_ALL}
-function refreshDraftFilters(changed){
- let r=PROJECTS;
- if(changed==='region'){cfSetOptions('cfProject',r.filter(p=>cfSel('cfRegion')===CF_ALL||p.regiao===cfSel('cfRegion')).map(p=>p.nome),false);cfSetOptions('cfPhase',[],false);cfSetOptions('cfResponsible',[],false)}
- let q=r.filter(p=>(cfSel('cfRegion')===CF_ALL||p.regiao===cfSel('cfRegion'))&&(cfSel('cfProject')===CF_ALL||p.nome===cfSel('cfProject')));
- if(changed==='region'||changed==='project'){cfSetOptions('cfPhase',q.map(p=>p.fase),false);cfSetOptions('cfResponsible',[],false)}
- let z=q.filter(p=>cfSel('cfPhase')===CF_ALL||p.fase===cfSel('cfPhase'));
- if(changed==='region'||changed==='project'||changed==='phase')cfSetOptions('cfResponsible',z.map(p=>p.responsavel),false);
+function cfUniq(a){return [...new Set((a||[]).filter(Boolean))].sort((x,y)=>String(x).localeCompare(String(y),'pt-BR'))}
+function cfSel(id){const e=document.getElementById(id);return e?e.value:CF_ALL}
+function cfSetOptions(id,vals,value){const e=document.getElementById(id);if(!e)return;e.innerHTML='';e.add(new Option('TODOS',CF_ALL));cfUniq(vals).forEach(x=>e.add(new Option(x,x)));e.value=[...e.options].some(o=>o.value===value)?value:CF_ALL}
+function refreshDraftFilters(){
+ const region=cfSel('cfRegion'),project=cfSel('cfProject'),phase=cfSel('cfPhase'),responsible=cfSel('cfResponsible');
+ const r1=PROJECTS.filter(p=>region===CF_ALL||p.regiao===region);
+ cfSetOptions('cfProject',r1.map(p=>p.nome),project);
+ const project2=cfSel('cfProject');
+ const r2=r1.filter(p=>project2===CF_ALL||p.nome===project2);
+ cfSetOptions('cfPhase',r2.map(p=>p.fase),phase);
+ const phase2=cfSel('cfPhase');
+ const r3=r2.filter(p=>phase2===CF_ALL||p.fase===phase2);
+ cfSetOptions('cfResponsible',r3.map(p=>p.responsavel),responsible);
 }
 function initConcessionFilters(){
- cfSetOptions('cfRegion',PROJECTS.map(p=>p.regiao),false);
- cfSetOptions('cfProject',PROJECTS.map(p=>p.nome),false);
- cfSetOptions('cfPhase',PROJECTS.map(p=>p.fase),false);
- cfSetOptions('cfResponsible',PROJECTS.map(p=>p.responsavel),false);
+ cfSetOptions('cfRegion',PROJECTS.map(p=>p.regiao),CF_ALL);
+ cfSetOptions('cfProject',PROJECTS.map(p=>p.nome),CF_ALL);
+ cfSetOptions('cfPhase',PROJECTS.map(p=>p.fase),CF_ALL);
+ cfSetOptions('cfResponsible',PROJECTS.map(p=>p.responsavel),CF_ALL);
  CF_APPLIED={region:CF_ALL,project:CF_ALL,phase:CF_ALL,responsible:CF_ALL};renderPublic();
 }
-function applyConcessionFilters(){CF_APPLIED={region:cfSel('cfRegion'),project:cfSel('cfProject'),phase:cfSel('cfPhase'),responsible:cfSel('cfResponsible')};renderPublic()}
-function resetConcessionFilters(){['cfRegion','cfProject','cfPhase','cfResponsible'].forEach(id=>{let e=document.getElementById(id);if(e)e.value=CF_ALL});initConcessionFilters()}
+function applyConcessionFilters(){refreshDraftFilters();CF_APPLIED={region:cfSel('cfRegion'),project:cfSel('cfProject'),phase:cfSel('cfPhase'),responsible:cfSel('cfResponsible')};renderPublic()}
+function resetConcessionFilters(){initConcessionFilters()}
 function filteredProjects(){return PROJECTS.filter(p=>(CF_APPLIED.region===CF_ALL||p.regiao===CF_APPLIED.region)&&(CF_APPLIED.project===CF_ALL||p.nome===CF_APPLIED.project)&&(CF_APPLIED.phase===CF_ALL||p.fase===CF_APPLIED.phase)&&(CF_APPLIED.responsible===CF_ALL||p.responsavel===CF_APPLIED.responsible))}
-function renderPublic(){let rows=filteredProjects();let cards=rows.map(p=>'<div class="card"><b>'+esc(p.nome)+'</b><br><small>'+esc(p.regiao)+' • '+esc(p.fase)+'</small><p>'+esc(p.avanco)+'</p><small><b>Responsável:</b> '+esc(p.responsavel)+'<br><b>Próximo:</b> '+esc(p.proximo)+'</small></div>').join('')||'<div class="empty">Nenhum projeto para o recorte selecionado.</div>';['portfolio','brief','report','decision','march'].forEach(id=>{let e=document.getElementById(id);if(e)e.innerHTML=cards});let s=document.getElementById('cfSummary');if(s)s.textContent=rows.length+' projeto(s) no recorte aplicado.'}
-document.addEventListener('change',e=>{let m={cfRegion:'region',cfProject:'project',cfPhase:'phase'};if(m[e.target.id])refreshDraftFilters(m[e.target.id])});
+function renderPublic(){const rows=filteredProjects();const cards=rows.map(p=>'<div class="card"><b>'+esc(p.nome)+'</b><br><small>'+esc(p.regiao)+' • '+esc(p.fase)+'</small><p>'+esc(p.avanco)+'</p><small><b>Responsável:</b> '+esc(p.responsavel)+'<br><b>Próximo:</b> '+esc(p.proximo)+'</small></div>').join('')||'<div class="empty">Nenhum projeto para o recorte selecionado.</div>';['portfolio','brief','report','decision','march'].forEach(id=>{const e=document.getElementById(id);if(e)e.innerHTML=cards});const s=document.getElementById('cfSummary');if(s)s.textContent=rows.length+' projeto(s) no recorte aplicado.'}
+document.addEventListener('change',e=>{if(['cfRegion','cfProject','cfPhase'].includes(e.target.id))refreshDraftFilters()});
 if('serviceWorker'in navigator){navigator.serviceWorker.getRegistrations().then(rs=>rs.forEach(r=>r.unregister())).catch(()=>{});('caches'in window)&&caches.keys().then(ks=>ks.forEach(k=>caches.delete(k))).catch(()=>{})}
 const DB='BI_Concessoes_SEI',VER=1,SP='processes',SI='imports',TEXT=new Set(['txt','html','htm','xml','csv','json','md','log']);let dbp;
 function db(){if(dbp)return dbp;dbp=new Promise((res,rej)=>{let q=indexedDB.open(DB,VER);q.onupgradeneeded=()=>{let d=q.result;if(!d.objectStoreNames.contains(SP))d.createObjectStore(SP,{keyPath:'id'});if(!d.objectStoreNames.contains(SI))d.createObjectStore(SI,{keyPath:'hash'})};q.onsuccess=()=>res(q.result);q.onerror=()=>rej(q.error)});return dbp}
