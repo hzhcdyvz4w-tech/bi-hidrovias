@@ -1,7 +1,7 @@
 {
   "metadata": {
     "nome": "Base integrada 2026 — concessões, hidrovias, localidades e consultas",
-    "origem": "Planilha_IBGE_Hidrovias_Comunidades_Atuacao_Consultas_2026",
+    "origem": "Planilha_Hidrovias_Consultas_Povos_Originarios_2026 + base territorial integrada",
     "abas": [
       "Base_Integrada_2026",
       "Atuacao_Consultas",
@@ -9,7 +9,9 @@
     ],
     "data_corte": "06/10/2026",
     "registros_localidade": 58,
-    "regra": "Base de referência. Participação social no sistema não equivale automaticamente a consulta comunitária/tradicional específica em cada localidade."
+    "regra": "Participação social geral, AIR, EVTEA/modelagem, consulta pública, audiência pública e consulta às comunidades/CLPI são campos distintos. Presença territorial de povos originários não implica consulta realizada nem impacto confirmado.",
+    "versao": "10.4",
+    "matriz_complementar": "concessoes_matriz_consultas_povos_2026.json"
   },
   "projetos": [
     {
@@ -71,7 +73,69 @@
         "dnit": "https://www.gov.br/dnit/pt-br/assuntos/aquaviario/intervencao-em-hidrovias/hidrovias-1/copy_of_hidrovia-do-amazonas",
         "antaq_ven": "https://sophia.antaq.gov.br/Terminal/Busca/Download?codigoArquivo=51506&tipoMidia=0"
       },
-      "nota_mapeamento": "A planilha relaciona a HN-100 Amazonas ao projeto correlato Barra Norte/Hidrovia Verde apenas parcialmente; não equivale a toda a extensão da HN-100."
+      "nota_mapeamento": "A planilha relaciona a HN-100 Amazonas ao projeto correlato Barra Norte/Hidrovia Verde apenas parcialmente; não equivale a toda a extensão da HN-100.",
+      "etapas_regulatorias_participativas": {
+        "air": {
+          "situacao": "Não localizada AIR específica do empreendimento; AIR não é etapa obrigatória de cada concessão",
+          "fonte": "https://www.gov.br/antaq/pt-br/acesso-a-informacao/acoes-e-programas/governanca-regulatoria/analise-de-impacto-regulatorio-air-3/analises-de-impacto-regulatorio-elaboradas-pela-antaq-1"
+        },
+        "evtea_modelagem": {
+          "situacao": "Modelagem/diagnóstico preliminar em elaboração; reuniões participativas iniciadas em 2026. EVTEA formal específico ainda não localizado como documento publicado",
+          "fonte": "https://www.gov.br/antaq/pt-br/noticias/2026/antaq-inicia-ciclo-de-reunioes-participativas-para-discutir-concessao-da-hidrovia-verde"
+        },
+        "tomada_reuniao": {
+          "situacao": "Reuniões participativas preliminares: 14/08/2026; reunião socioambiental prevista para 20/10/2026; devolutiva prevista para 12/11/2026",
+          "fonte": "https://www.gov.br/antaq/pt-br/noticias/2026/antaq-inicia-ciclo-de-reunioes-participativas-para-discutir-concessao-da-hidrovia-verde"
+        },
+        "consulta_publica": {
+          "situacao": "Prevista para 2027, segundo cronograma apresentado nas reuniões participativas",
+          "data": "Ainda não aberta em 06/10/2026",
+          "fonte": "https://www.gov.br/antaq/pt-br/noticias/2026/antaq-inicia-ciclo-de-reunioes-participativas-para-discutir-concessao-da-hidrovia-verde"
+        },
+        "audiencia_publica": {
+          "situacao": "Ainda não realizada; prevista após a etapa preliminar e consulta pública",
+          "data_local": "Sem data na data de corte",
+          "fonte": "https://www.gov.br/antaq/pt-br/noticias/2026/antaq-inicia-ciclo-de-reunioes-participativas-para-discutir-concessao-da-hidrovia-verde"
+        },
+        "consulta_comunidades_clpi": {
+          "situacao": "Não localizada CLPI concluída. A reunião socioambiental prevista não equivale, por si só, a CLPI",
+          "publico": "Comunidades e partes interessadas ainda em fase preliminar de participação",
+          "local_data": "—",
+          "fonte": "https://www.gov.br/antaq/pt-br/noticias/2026/antaq-inicia-ciclo-de-reunioes-participativas-para-discutir-concessao-da-hidrovia-verde"
+        }
+      },
+      "povos_originarios": {
+        "identificados": "Sim",
+        "resumo": "Mura; Sateré-Mawé",
+        "vinculo": "Mura com vínculo direto documentado em Itacoatiara; Sateré-Mawé no corredor regional do Baixo Amazonas.",
+        "consulta_empreendimento": "Não localizada consulta indígena específica do empreendimento Hidrovia Verde até a data de corte.",
+        "fonte": "https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2004/dnn/Dnn10334.htm | https://www.gov.br/saude/pt-br/composicao/sesai/planos-distritais-2024-2027/plano-distrital-parintins",
+        "nota_validacao": "Lista não exaustiva; recomenda-se cruzar o traçado final da concessão com a base geoespacial da Funai.",
+        "registros": [
+          {
+            "trecho_territorio": "Rio Amazonas / Itacoatiara-AM",
+            "povo": "Mura",
+            "etnia_autodenominacao": "Mura",
+            "classificacao_vinculo": "Direto ao corredor",
+            "evidencia_territorial": "TI Paraná do Arauató, em Itacoatiara, alcança a margem do Rio Amazonas; território destinado ao povo Mura.",
+            "situacao_consulta": "Não localizada consulta específica do empreendimento Hidrovia Verde aos Mura até a data de corte.",
+            "fonte": "https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2004/dnn/Dnn10334.htm",
+            "data_corte": "06/10/2026"
+          },
+          {
+            "trecho_territorio": "Baixo Amazonas / Parintins-AM",
+            "povo": "Sateré-Mawé",
+            "etnia_autodenominacao": "Sateré-Mawé",
+            "classificacao_vinculo": "Bacia/corredor regional",
+            "evidencia_territorial": "DSEI Parintins atende Sateré-Mawé na região do Baixo Amazonas e municípios do corredor.",
+            "situacao_consulta": "Participação preliminar do projeto Hidrovia Verde não individualiza, na fonte consultada, etnias consultadas.",
+            "fonte": "https://www.gov.br/saude/pt-br/composicao/sesai/planos-distritais-2024-2027/plano-distrital-parintins",
+            "data_corte": "06/10/2026"
+          }
+        ]
+      },
+      "observacao_matriz_consultas": "Usar no BI como 'participação preliminar/modelagem', não como consulta pública concluída.",
+      "data_corte": "06/10/2026"
     },
     {
       "id": "HID-MADEIRA",
@@ -125,7 +189,149 @@
         "ibge": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/estrutura-territorial/27385-localidades.html",
         "dnit": "https://www.gov.br/dnit/pt-br/assuntos/aquaviario/intervencao-em-hidrovias/hidrovias-1/hidrovia-do-madeira",
         "antaq_ven": "https://sophia.antaq.gov.br/Terminal/Busca/Download?codigoArquivo=51506&tipoMidia=0"
-      }
+      },
+      "etapas_regulatorias_participativas": {
+        "air": {
+          "situacao": "Não localizada AIR específica do empreendimento",
+          "fonte": "https://www.gov.br/antaq/pt-br/acesso-a-informacao/acoes-e-programas/governanca-regulatoria/analise-de-impacto-regulatorio-air-3/analises-de-impacto-regulatorio-elaboradas-pela-antaq-1"
+        },
+        "evtea_modelagem": {
+          "situacao": "EVTEA elaborado no processo de estruturação; documentação técnica da concessão divulgada",
+          "fonte": "https://web.antaq.gov.br/Sistemas/WebServiceLeilao/DocumentoUpload/Audiencia%20153/SEI_8258159_Nota_Tecnica_6.pdf"
+        },
+        "tomada_reuniao": {
+          "situacao": "Tomada de Subsídios nº 01/2024-SEPH encerrada em 04/04/2025",
+          "fonte": "https://www.gov.br/antaq/pt-br/assuntos/projetos-de-concessao/novas-concessoes-hidroviarias/madeira"
+        },
+        "consulta_publica": {
+          "situacao": "Ainda não aberta; página oficial atualizada em 24/09/2026 indica audiência pública 'em breve'",
+          "data": "Não realizada até 06/10/2026",
+          "fonte": "https://www.gov.br/antaq/pt-br/assuntos/projetos-de-concessao/novas-concessoes-hidroviarias/madeira"
+        },
+        "audiencia_publica": {
+          "situacao": "Em breve",
+          "data_local": "Sem data publicada na data de corte",
+          "fonte": "https://www.gov.br/antaq/pt-br/assuntos/projetos-de-concessao/novas-concessoes-hidroviarias/madeira"
+        },
+        "consulta_comunidades_clpi": {
+          "situacao": "Não localizada CLPI/consulta comunitária específica concluída",
+          "publico": "Usuários e agentes do setor participaram da tomada de subsídios; isso não equivale a consulta comunitária",
+          "local_data": "Contribuições eletrônicas",
+          "fonte": "https://www.gov.br/antaq/pt-br/assuntos/projetos-de-concessao/novas-concessoes-hidroviarias/madeira"
+        }
+      },
+      "povos_originarios": {
+        "identificados": "Sim",
+        "resumo": "Parintintin; Pirahã; Jiahui; Tenharim; Juma; Mura; Apurinã; Miranha; Munduruku; Torá",
+        "vinculo": "Povos atendidos pela CR Madeira/Funai na região do Rio Madeira.",
+        "consulta_empreendimento": "Não localizada consulta comunitária/CLPI específica da concessão.",
+        "fonte": "https://www.gov.br/funai/pt-br/acesso-a-informacao/institucional/coordenacoes-regionais-funai/cr-madeira",
+        "nota_validacao": "A presença regional não significa, automaticamente, área diretamente afetada pela futura concessão.",
+        "registros": [
+          {
+            "trecho_territorio": "Região do Rio Madeira-AM",
+            "povo": "Parintintin",
+            "etnia_autodenominacao": "Parintintin",
+            "classificacao_vinculo": "Bacia/corredor",
+            "evidencia_territorial": "A Coordenação Regional Madeira da Funai atua junto ao povo Parintintin na região do Rio Madeira.",
+            "situacao_consulta": "Não localizada consulta comunitária/CLPI específica da concessão.",
+            "fonte": "https://www.gov.br/funai/pt-br/acesso-a-informacao/institucional/coordenacoes-regionais-funai/cr-madeira",
+            "data_corte": "06/10/2026"
+          },
+          {
+            "trecho_territorio": "Região do Rio Madeira-AM",
+            "povo": "Pirahã",
+            "etnia_autodenominacao": "Pirahã",
+            "classificacao_vinculo": "Bacia/corredor",
+            "evidencia_territorial": "A Coordenação Regional Madeira da Funai atua junto ao povo Pirahã na região do Rio Madeira.",
+            "situacao_consulta": "Não localizada consulta comunitária/CLPI específica da concessão.",
+            "fonte": "https://www.gov.br/funai/pt-br/acesso-a-informacao/institucional/coordenacoes-regionais-funai/cr-madeira",
+            "data_corte": "06/10/2026"
+          },
+          {
+            "trecho_territorio": "Região do Rio Madeira-AM",
+            "povo": "Jiahui",
+            "etnia_autodenominacao": "Jiahui",
+            "classificacao_vinculo": "Bacia/corredor",
+            "evidencia_territorial": "A Coordenação Regional Madeira da Funai atua junto ao povo Jiahui na região do Rio Madeira.",
+            "situacao_consulta": "Não localizada consulta comunitária/CLPI específica da concessão.",
+            "fonte": "https://www.gov.br/funai/pt-br/acesso-a-informacao/institucional/coordenacoes-regionais-funai/cr-madeira",
+            "data_corte": "06/10/2026"
+          },
+          {
+            "trecho_territorio": "Região do Rio Madeira-AM",
+            "povo": "Tenharim",
+            "etnia_autodenominacao": "Tenharim",
+            "classificacao_vinculo": "Bacia/corredor",
+            "evidencia_territorial": "A Coordenação Regional Madeira da Funai atua junto ao povo Tenharim na região do Rio Madeira.",
+            "situacao_consulta": "Não localizada consulta comunitária/CLPI específica da concessão.",
+            "fonte": "https://www.gov.br/funai/pt-br/acesso-a-informacao/institucional/coordenacoes-regionais-funai/cr-madeira",
+            "data_corte": "06/10/2026"
+          },
+          {
+            "trecho_territorio": "Região do Rio Madeira-AM",
+            "povo": "Juma",
+            "etnia_autodenominacao": "Juma",
+            "classificacao_vinculo": "Bacia/corredor",
+            "evidencia_territorial": "A Coordenação Regional Madeira da Funai atua junto ao povo Juma na região do Rio Madeira.",
+            "situacao_consulta": "Não localizada consulta comunitária/CLPI específica da concessão.",
+            "fonte": "https://www.gov.br/funai/pt-br/acesso-a-informacao/institucional/coordenacoes-regionais-funai/cr-madeira",
+            "data_corte": "06/10/2026"
+          },
+          {
+            "trecho_territorio": "Região do Rio Madeira-AM",
+            "povo": "Mura",
+            "etnia_autodenominacao": "Mura",
+            "classificacao_vinculo": "Bacia/corredor",
+            "evidencia_territorial": "A Coordenação Regional Madeira da Funai atua junto ao povo Mura na região do Rio Madeira.",
+            "situacao_consulta": "Não localizada consulta comunitária/CLPI específica da concessão.",
+            "fonte": "https://www.gov.br/funai/pt-br/acesso-a-informacao/institucional/coordenacoes-regionais-funai/cr-madeira",
+            "data_corte": "06/10/2026"
+          },
+          {
+            "trecho_territorio": "Região do Rio Madeira-AM",
+            "povo": "Apurinã",
+            "etnia_autodenominacao": "Apurinã",
+            "classificacao_vinculo": "Bacia/região",
+            "evidencia_territorial": "A Coordenação Regional Madeira da Funai atua junto ao povo Apurinã na área regional sob sua jurisdição.",
+            "situacao_consulta": "Não localizada consulta comunitária/CLPI específica da concessão.",
+            "fonte": "https://www.gov.br/funai/pt-br/acesso-a-informacao/institucional/coordenacoes-regionais-funai/cr-madeira",
+            "data_corte": "06/10/2026"
+          },
+          {
+            "trecho_territorio": "Região do Rio Madeira-AM",
+            "povo": "Miranha",
+            "etnia_autodenominacao": "Miranha",
+            "classificacao_vinculo": "Bacia/região",
+            "evidencia_territorial": "A Coordenação Regional Madeira da Funai atua junto ao povo Miranha na área regional sob sua jurisdição.",
+            "situacao_consulta": "Não localizada consulta comunitária/CLPI específica da concessão.",
+            "fonte": "https://www.gov.br/funai/pt-br/acesso-a-informacao/institucional/coordenacoes-regionais-funai/cr-madeira",
+            "data_corte": "06/10/2026"
+          },
+          {
+            "trecho_territorio": "Região do Rio Madeira-AM",
+            "povo": "Munduruku",
+            "etnia_autodenominacao": "Munduruku",
+            "classificacao_vinculo": "Bacia/região",
+            "evidencia_territorial": "A Coordenação Regional Madeira da Funai atua junto ao povo Munduruku na área regional sob sua jurisdição.",
+            "situacao_consulta": "Não localizada consulta comunitária/CLPI específica da concessão.",
+            "fonte": "https://www.gov.br/funai/pt-br/acesso-a-informacao/institucional/coordenacoes-regionais-funai/cr-madeira",
+            "data_corte": "06/10/2026"
+          },
+          {
+            "trecho_territorio": "Região do Rio Madeira-AM",
+            "povo": "Torá",
+            "etnia_autodenominacao": "Torá",
+            "classificacao_vinculo": "Bacia/corredor",
+            "evidencia_territorial": "A Coordenação Regional Madeira da Funai atua junto ao povo Torá na região do Rio Madeira.",
+            "situacao_consulta": "Não localizada consulta comunitária/CLPI específica da concessão.",
+            "fonte": "https://www.gov.br/funai/pt-br/acesso-a-informacao/institucional/coordenacoes-regionais-funai/cr-madeira",
+            "data_corte": "06/10/2026"
+          }
+        ]
+      },
+      "observacao_matriz_consultas": "Distinguir tomada de subsídios de consulta pública e de consulta às comunidades.",
+      "data_corte": "06/10/2026"
     },
     {
       "id": "HID-PARAGUAI",
@@ -189,7 +395,59 @@
         "ibge": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/estrutura-territorial/27385-localidades.html",
         "dnit": "https://www.gov.br/dnit/pt-br/assuntos/aquaviario/intervencao-em-hidrovias/hidrovias-1/hidrovia-do-paraguai",
         "antaq_ven": "https://sophia.antaq.gov.br/Terminal/Busca/Download?codigoArquivo=51506&tipoMidia=0"
-      }
+      },
+      "etapas_regulatorias_participativas": {
+        "air": {
+          "situacao": "Não localizada AIR específica do empreendimento",
+          "fonte": "https://www.gov.br/antaq/pt-br/acesso-a-informacao/acoes-e-programas/governanca-regulatoria/analise-de-impacto-regulatorio-air-3/analises-de-impacto-regulatorio-elaboradas-pela-antaq-1"
+        },
+        "evtea_modelagem": {
+          "situacao": "EVTEA finalizado; estudos disponíveis no Data Room e utilizados na modelagem submetida à participação pública",
+          "fonte": "https://www.gov.br/antaq/pt-br/acesso-a-informacao/prestacao_de_contas/relatorio-de-gestao/RelatrioVERSAO_FINAL____RGI_2025__1__compressed1.pdf"
+        },
+        "tomada_reuniao": {
+          "situacao": "Não localizada tomada de subsídios específica anterior; a participação formal ocorreu por consulta/audiência pública",
+          "fonte": ""
+        },
+        "consulta_publica": {
+          "situacao": "Consulta pública concluída",
+          "data": "26/12/2024 a 23/02/2025",
+          "fonte": "https://www.gov.br/antaq/pt-br/antaq-inicia-processo-de-consulta-publica-para-a-concessao-da-hidrovia-do-rio-paraguai"
+        },
+        "audiencia_publica": {
+          "situacao": "Audiências realizadas",
+          "data_local": "06/02/2025; 10/04/2025, sendo a segunda presencial/virtual em Corumbá/MS",
+          "fonte": "https://www.gov.br/antaq/pt-br/assuntos/projetos-de-concessao/novas-concessoes-hidroviarias/paraguai"
+        },
+        "consulta_comunidades_clpi": {
+          "situacao": "Não comprovada, nas fontes consultadas, consulta específica a comunidade tradicional",
+          "publico": "Cidadãos, empresas, entidades e interessados; houve participação local em Corumbá",
+          "local_data": "Corumbá/MS e ambiente virtual",
+          "fonte": "https://www.gov.br/antaq/pt-br/antaq-inicia-processo-de-consulta-publica-para-a-concessao-da-hidrovia-do-rio-paraguai"
+        }
+      },
+      "povos_originarios": {
+        "identificados": "Sim",
+        "resumo": "Guató",
+        "vinculo": "Povo Guató com território documentado diretamente no Rio Paraguai, em Corumbá/MS.",
+        "consulta_empreendimento": "Consulta/audiência da concessão foi pública e geral; não comprovada consulta específica ao povo Guató.",
+        "fonte": "https://www.gov.br/icmbio/pt-br/assuntos/biodiversidade/unidade-de-conservacao/unidades-de-biomas/pantanal/lista-de-ucs/parna-do-pantanal-mato-grossense/arquivos/parna_matogrossensee.pdf",
+        "nota_validacao": "A existência de território indígena no corredor exige atenção específica na análise socioambiental.",
+        "registros": [
+          {
+            "trecho_territorio": "Pantanal / Rio Paraguai - Corumbá-MS",
+            "povo": "Guató",
+            "etnia_autodenominacao": "Guató",
+            "classificacao_vinculo": "Direto ao Rio Paraguai",
+            "evidencia_territorial": "Aldeia Uberaba/Ilha Ínsua é contornada a leste pelo Rio Paraguai; fonte oficial identifica o povo Guató.",
+            "situacao_consulta": "A consulta/audiência da concessão foi pública e geral; não foi comprovada consulta específica ao povo Guató.",
+            "fonte": "https://www.gov.br/icmbio/pt-br/assuntos/biodiversidade/unidade-de-conservacao/unidades-de-biomas/pantanal/lista-de-ucs/parna-do-pantanal-mato-grossense/arquivos/parna_matogrossensee.pdf",
+            "data_corte": "06/10/2026"
+          }
+        ]
+      },
+      "observacao_matriz_consultas": "É participação social formal da concessão, mas não deve ser rotulada automaticamente como CLPI.",
+      "data_corte": "06/10/2026"
     },
     {
       "id": "HID-TAPAJOS",
@@ -246,7 +504,189 @@
         "ibge": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/estrutura-territorial/27385-localidades.html",
         "dnit": "https://www.gov.br/dnit/pt-br/assuntos/aquaviario/intervencao-em-hidrovias/hidrovias-1/hidrovia-do-tapajos-teles-pires",
         "antaq_ven": "https://sophia.antaq.gov.br/Terminal/Busca/Download?codigoArquivo=51506&tipoMidia=0"
-      }
+      },
+      "etapas_regulatorias_participativas": {
+        "air": {
+          "situacao": "Não localizada AIR específica do empreendimento",
+          "fonte": "https://www.gov.br/antaq/pt-br/acesso-a-informacao/acoes-e-programas/governanca-regulatoria/analise-de-impacto-regulatorio-air-3/analises-de-impacto-regulatorio-elaboradas-pela-antaq-1"
+        },
+        "evtea_modelagem": {
+          "situacao": "Estudos em elaboração; PGA 2026 prevê consolidação do Relatório de EVTEA no 2º semestre de 2026",
+          "fonte": "https://www.gov.br/antaq/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/pga-2026.pdf"
+        },
+        "tomada_reuniao": {
+          "situacao": "Participação social da concessão prevista no planejamento da ANTAQ; não localizada tomada de subsídios formal concluída até a data de corte",
+          "fonte": "https://www.gov.br/antaq/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/pga-2026.pdf"
+        },
+        "consulta_publica": {
+          "situacao": "Não localizada consulta pública formal da concessão concluída até 06/10/2026",
+          "data": "Projeto ANTAQ ainda indicava etapas em elaboração / em breve",
+          "fonte": "https://www.gov.br/antaq/pt-br/assuntos/projetos-de-concessao/novas-concessoes-hidroviarias/tapajos"
+        },
+        "audiencia_publica": {
+          "situacao": "Não localizada audiência pública formal da concessão concluída",
+          "data_local": "—",
+          "fonte": "https://www.gov.br/antaq/pt-br/assuntos/projetos-de-concessao/novas-concessoes-hidroviarias/tapajos"
+        },
+        "consulta_comunidades_clpi": {
+          "situacao": "Há negociação com povos indígenas e compromisso formal de realizar consulta livre, prévia e informada antes de novos empreendimentos; CLPI não deve ser marcada como concluída",
+          "publico": "Povos indígenas e outros segmentos sociais mobilizados",
+          "local_data": "Santarém/PA; negociação registrada em fevereiro de 2026",
+          "fonte": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/02/nota-publica-sobre-a-dragagem-no-rio-tapajos"
+        }
+      },
+      "povos_originarios": {
+        "identificados": "Sim",
+        "resumo": "Arapyun; Arara-Vermelha; Borari; Jaraki; Tapajó; Tapayú; Apiaká; Kumaruara; Maytapu; Munduruku; Munduruku Cara Preta; Sateré-Mawé; Tapuia; Tupinambá",
+        "vinculo": "14 povos identificados oficialmente no Fórum Regional Territórios Ancestrais do Baixo Tapajós.",
+        "consulta_empreendimento": "Houve audiências e diálogo territorial em 2026; a CLPI do empreendimento hidroviário não deve ser marcada como concluída.",
+        "fonte": "https://www.gov.br/povosindigenas/pt-br/assuntos/noticias/2026/05/ministro-eloy-terena-assina-portaria-que-cria-o-forum-regional-territorios-ancestrais-do-tapajos-em-brasilia",
+        "nota_validacao": "É a hidrovia com identificação pública mais detalhada nesta atualização.",
+        "registros": [
+          {
+            "trecho_territorio": "Baixo Tapajós-PA",
+            "povo": "Arapyun",
+            "etnia_autodenominacao": "Arapyun / Arapiuns",
+            "classificacao_vinculo": "Direto à região do Baixo Tapajós",
+            "evidencia_territorial": "Povo integrante das audiências de maio de 2026 e do Fórum Regional Territórios Ancestrais do Baixo Tapajós.",
+            "situacao_consulta": "Sim – participou de audiências territoriais do MPI/Funai; isso não equivale à CLPI do empreendimento hidroviário.",
+            "fonte": "https://www.gov.br/povosindigenas/pt-br/assuntos/noticias/2026/05/mpi-anuncia-forum-territorial-do-baixo-tapajos-em-resposta-as-demandas-da-regiao",
+            "data_corte": "06/10/2026"
+          },
+          {
+            "trecho_territorio": "Baixo Tapajós-PA",
+            "povo": "Arara-Vermelha",
+            "etnia_autodenominacao": "Arara-Vermelha",
+            "classificacao_vinculo": "Direto à região do Baixo Tapajós",
+            "evidencia_territorial": "Povo integrante das audiências e do Fórum Regional do Baixo Tapajós.",
+            "situacao_consulta": "Sim – audiência territorial; CLPI do empreendimento permanece distinta.",
+            "fonte": "https://www.gov.br/povosindigenas/pt-br/assuntos/noticias/2026/05/mpi-anuncia-forum-territorial-do-baixo-tapajos-em-resposta-as-demandas-da-regiao",
+            "data_corte": "06/10/2026"
+          },
+          {
+            "trecho_territorio": "Baixo Tapajós-PA",
+            "povo": "Borari",
+            "etnia_autodenominacao": "Borari",
+            "classificacao_vinculo": "Direto à região do Baixo Tapajós",
+            "evidencia_territorial": "Povo integrante das audiências e do Fórum Regional do Baixo Tapajós.",
+            "situacao_consulta": "Sim – audiência territorial; CLPI do empreendimento permanece distinta.",
+            "fonte": "https://www.gov.br/povosindigenas/pt-br/assuntos/noticias/2026/05/mpi-anuncia-forum-territorial-do-baixo-tapajos-em-resposta-as-demandas-da-regiao",
+            "data_corte": "06/10/2026"
+          },
+          {
+            "trecho_territorio": "Baixo Tapajós-PA",
+            "povo": "Jaraki",
+            "etnia_autodenominacao": "Jaraki / Jaraqui",
+            "classificacao_vinculo": "Direto à região do Baixo Tapajós",
+            "evidencia_territorial": "Povo integrante das audiências e do Fórum Regional do Baixo Tapajós.",
+            "situacao_consulta": "Sim – audiência territorial; CLPI do empreendimento permanece distinta.",
+            "fonte": "https://www.gov.br/povosindigenas/pt-br/assuntos/noticias/2026/05/mpi-anuncia-forum-territorial-do-baixo-tapajos-em-resposta-as-demandas-da-regiao",
+            "data_corte": "06/10/2026"
+          },
+          {
+            "trecho_territorio": "Baixo Tapajós-PA",
+            "povo": "Tapajó",
+            "etnia_autodenominacao": "Tapajó",
+            "classificacao_vinculo": "Direto à região do Baixo Tapajós",
+            "evidencia_territorial": "Povo integrante das audiências e do Fórum Regional do Baixo Tapajós.",
+            "situacao_consulta": "Sim – audiência territorial; CLPI do empreendimento permanece distinta.",
+            "fonte": "https://www.gov.br/povosindigenas/pt-br/assuntos/noticias/2026/05/mpi-anuncia-forum-territorial-do-baixo-tapajos-em-resposta-as-demandas-da-regiao",
+            "data_corte": "06/10/2026"
+          },
+          {
+            "trecho_territorio": "Baixo Tapajós-PA",
+            "povo": "Tapayú",
+            "etnia_autodenominacao": "Tapayú / Tupaiú",
+            "classificacao_vinculo": "Direto à região do Baixo Tapajós",
+            "evidencia_territorial": "Povo integrante das audiências e do Fórum Regional do Baixo Tapajós.",
+            "situacao_consulta": "Sim – audiência territorial; CLPI do empreendimento permanece distinta.",
+            "fonte": "https://www.gov.br/povosindigenas/pt-br/assuntos/noticias/2026/05/mpi-anuncia-forum-territorial-do-baixo-tapajos-em-resposta-as-demandas-da-regiao",
+            "data_corte": "06/10/2026"
+          },
+          {
+            "trecho_territorio": "Baixo Tapajós-PA",
+            "povo": "Apiaká",
+            "etnia_autodenominacao": "Apiaká",
+            "classificacao_vinculo": "Direto à região/bacia do Tapajós",
+            "evidencia_territorial": "Povo integrante das audiências e do Fórum Regional do Baixo Tapajós.",
+            "situacao_consulta": "Sim – audiência territorial; CLPI do empreendimento permanece distinta.",
+            "fonte": "https://www.gov.br/povosindigenas/pt-br/assuntos/noticias/2026/05/mpi-anuncia-forum-territorial-do-baixo-tapajos-em-resposta-as-demandas-da-regiao",
+            "data_corte": "06/10/2026"
+          },
+          {
+            "trecho_territorio": "Baixo Tapajós-PA",
+            "povo": "Kumaruara",
+            "etnia_autodenominacao": "Kumaruara / Cumaruara",
+            "classificacao_vinculo": "Direto à região do Baixo Tapajós",
+            "evidencia_territorial": "Povo integrante das audiências e do Fórum Regional do Baixo Tapajós.",
+            "situacao_consulta": "Sim – audiência territorial; CLPI do empreendimento permanece distinta.",
+            "fonte": "https://www.gov.br/povosindigenas/pt-br/assuntos/noticias/2026/05/mpi-anuncia-forum-territorial-do-baixo-tapajos-em-resposta-as-demandas-da-regiao",
+            "data_corte": "06/10/2026"
+          },
+          {
+            "trecho_territorio": "Baixo Tapajós-PA",
+            "povo": "Maytapu",
+            "etnia_autodenominacao": "Maytapu / Maitapu",
+            "classificacao_vinculo": "Direto à região do Baixo Tapajós",
+            "evidencia_territorial": "Povo integrante das audiências e do Fórum Regional do Baixo Tapajós.",
+            "situacao_consulta": "Sim – audiência territorial; CLPI do empreendimento permanece distinta.",
+            "fonte": "https://www.gov.br/povosindigenas/pt-br/assuntos/noticias/2026/05/mpi-anuncia-forum-territorial-do-baixo-tapajos-em-resposta-as-demandas-da-regiao",
+            "data_corte": "06/10/2026"
+          },
+          {
+            "trecho_territorio": "Tapajós-PA",
+            "povo": "Munduruku",
+            "etnia_autodenominacao": "Munduruku",
+            "classificacao_vinculo": "Direto ao Tapajós",
+            "evidencia_territorial": "Povo com territórios e comunidades diretamente associados ao Rio Tapajós e integrante das audiências de 2026.",
+            "situacao_consulta": "Sim – diálogo/audiências territoriais; a CLPI do empreendimento não deve ser marcada como concluída.",
+            "fonte": "https://www.gov.br/povosindigenas/pt-br/assuntos/noticias/2026/05/ministro-eloy-terena-assina-portaria-que-cria-o-forum-regional-territorios-ancestrais-do-tapajos-em-brasilia",
+            "data_corte": "06/10/2026"
+          },
+          {
+            "trecho_territorio": "Baixo Tapajós-PA",
+            "povo": "Munduruku Cara Preta",
+            "etnia_autodenominacao": "Munduruku Cara Preta",
+            "classificacao_vinculo": "Direto à região do Baixo Tapajós",
+            "evidencia_territorial": "Povo integrante do Fórum Regional Territórios Ancestrais do Baixo Tapajós.",
+            "situacao_consulta": "Sim – diálogo territorial; CLPI do empreendimento permanece pendente.",
+            "fonte": "https://www.gov.br/povosindigenas/pt-br/assuntos/noticias/2026/05/ministro-eloy-terena-assina-portaria-que-cria-o-forum-regional-territorios-ancestrais-do-tapajos-em-brasilia",
+            "data_corte": "06/10/2026"
+          },
+          {
+            "trecho_territorio": "Baixo Tapajós-PA",
+            "povo": "Sateré-Mawé",
+            "etnia_autodenominacao": "Sateré-Mawé",
+            "classificacao_vinculo": "Bacia/região do Baixo Tapajós",
+            "evidencia_territorial": "Povo integrante do Fórum Regional Territórios Ancestrais do Baixo Tapajós.",
+            "situacao_consulta": "Sim – diálogo territorial; CLPI do empreendimento permanece pendente.",
+            "fonte": "https://www.gov.br/povosindigenas/pt-br/assuntos/noticias/2026/05/ministro-eloy-terena-assina-portaria-que-cria-o-forum-regional-territorios-ancestrais-do-tapajos-em-brasilia",
+            "data_corte": "06/10/2026"
+          },
+          {
+            "trecho_territorio": "Baixo Tapajós-PA",
+            "povo": "Tapuia",
+            "etnia_autodenominacao": "Tapuia",
+            "classificacao_vinculo": "Bacia/região do Baixo Tapajós",
+            "evidencia_territorial": "Povo integrante do Fórum Regional Territórios Ancestrais do Baixo Tapajós.",
+            "situacao_consulta": "Sim – diálogo territorial; CLPI do empreendimento permanece pendente.",
+            "fonte": "https://www.gov.br/povosindigenas/pt-br/assuntos/noticias/2026/05/ministro-eloy-terena-assina-portaria-que-cria-o-forum-regional-territorios-ancestrais-do-tapajos-em-brasilia",
+            "data_corte": "06/10/2026"
+          },
+          {
+            "trecho_territorio": "Baixo Tapajós-PA",
+            "povo": "Tupinambá",
+            "etnia_autodenominacao": "Tupinambá",
+            "classificacao_vinculo": "Direto à região do Baixo Tapajós",
+            "evidencia_territorial": "Povo integrante do Fórum Regional Territórios Ancestrais do Baixo Tapajós.",
+            "situacao_consulta": "Sim – diálogo territorial; CLPI do empreendimento permanece pendente.",
+            "fonte": "https://www.gov.br/povosindigenas/pt-br/assuntos/noticias/2026/05/ministro-eloy-terena-assina-portaria-que-cria-o-forum-regional-territorios-ancestrais-do-tapajos-em-brasilia",
+            "data_corte": "06/10/2026"
+          }
+        ]
+      },
+      "observacao_matriz_consultas": "O Governo instituiu encaminhamentos para organizar a CLPI. Registrar no BI como 'CLPI pendente/em estruturação'.",
+      "data_corte": "06/10/2026"
     },
     {
       "id": "HID-TOCANTINS",
@@ -329,7 +769,149 @@
         "ibge": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/estrutura-territorial/27385-localidades.html",
         "dnit": "https://www.gov.br/dnit/pt-br/assuntos/aquaviario/intervencao-em-hidrovias/hidrovias-1/hidrovia-do-tocantins-araguaia",
         "antaq_ven": "https://sophia.antaq.gov.br/Terminal/Busca/Download?codigoArquivo=51506&tipoMidia=0"
-      }
+      },
+      "etapas_regulatorias_participativas": {
+        "air": {
+          "situacao": "Não localizada AIR específica do empreendimento",
+          "fonte": "https://www.gov.br/antaq/pt-br/acesso-a-informacao/acoes-e-programas/governanca-regulatoria/analise-de-impacto-regulatorio-air-3/analises-de-impacto-regulatorio-elaboradas-pela-antaq-1"
+        },
+        "evtea_modelagem": {
+          "situacao": "Estudos em elaboração na página do projeto; PGA 2026 previa consolidação do EVTEA e dos documentos da concessão",
+          "fonte": "https://www.gov.br/antaq/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/pga-2026.pdf"
+        },
+        "tomada_reuniao": {
+          "situacao": "Não localizada tomada de subsídios formal da concessão concluída até a data de corte",
+          "fonte": ""
+        },
+        "consulta_publica": {
+          "situacao": "Não localizada consulta pública formal da concessão concluída até 06/10/2026",
+          "data": "Página do projeto ainda indicava 'em breve'",
+          "fonte": "https://www.gov.br/antaq/pt-br/assuntos/projetos-de-concessao/novas-concessoes-hidroviarias/tocantins"
+        },
+        "audiencia_publica": {
+          "situacao": "Não localizada audiência pública ANTAQ da concessão concluída",
+          "data_local": "—",
+          "fonte": "https://www.gov.br/antaq/pt-br/assuntos/projetos-de-concessao/novas-concessoes-hidroviarias/tocantins"
+        },
+        "consulta_comunidades_clpi": {
+          "situacao": "Participação comunitária documentada no Pedral do Lourenço: DSAP, reuniões com moradores/ribeirinhos/pescadores e audiência pública com lideranças comunitárias. Isso não é automaticamente CLPI OIT 169",
+          "publico": "Lideranças comunitárias, associações de moradores, pescadores e comunidades locais",
+          "local_data": "Vila Tauiry, Itupiranga/PA; audiência em 29 e 30/09/2025",
+          "fonte": "https://www.gov.br/dnit/pt-br/assuntos/noticias/dnit-acompanha-vistoria-no-rio-tocantins-no-para"
+        }
+      },
+      "povos_originarios": {
+        "identificados": "Sim",
+        "resumo": "Karajá/Iny; Javaé; Xambioá; Apinajé; Assurini do Tocantins; Parakanã/Awaeté; Gavião (Parkatêjê, Kyikatêjê, Akrãtikatêjê); Suruí-Aikewara; Tembé; Xikrin do Rio Cateté",
+        "vinculo": "Povos identificados pela Funai nas regiões Araguaia-Tocantins e Baixo Tocantins.",
+        "consulta_empreendimento": "Há audiência comunitária no Pedral do Lourenço, mas a fonte do DNIT não individualiza quais povos indígenas/etnias participaram.",
+        "fonte": "https://www.gov.br/funai/pt-br/acesso-a-informacao/institucional/coordenacoes-regionais-funai/cr-araguaia-tocantins | https://www.gov.br/funai/pt-br/acesso-a-informacao/institucional/coordenacoes-regionais-funai/cr-baixo-tocantins | https://www.gov.br/dnit/pt-br/assuntos/noticias/dnit-acompanha-vistoria-no-rio-tocantins-no-para",
+        "nota_validacao": "Não atribuir a audiência do Pedral a etnia específica sem ata/lista de participantes ou documento oficial equivalente.",
+        "registros": [
+          {
+            "trecho_territorio": "Bacia do Rio Araguaia / Ilha do Bananal",
+            "povo": "Karajá",
+            "etnia_autodenominacao": "Karajá / Iny",
+            "classificacao_vinculo": "Direto ao Rio Araguaia",
+            "evidencia_territorial": "Museu do Índio/Funai registra os Karajá como habitantes imemoriais da bacia do Araguaia.",
+            "situacao_consulta": "Não foi comprovado, na fonte da audiência do Pedral do Lourenço, que este povo tenha sido consultado especificamente.",
+            "fonte": "https://prodoclin.museudoindio.gov.br/index.php/etnias/karaja",
+            "data_corte": "06/10/2026"
+          },
+          {
+            "trecho_territorio": "Bacia do Rio Araguaia / Ilha do Bananal",
+            "povo": "Javaé",
+            "etnia_autodenominacao": "Javaé / Iny",
+            "classificacao_vinculo": "Direto à bacia do Araguaia/Javaés",
+            "evidencia_territorial": "Os Javaé integram o conjunto Iny e habitam a região do Araguaia/Ilha do Bananal.",
+            "situacao_consulta": "Não foi comprovado, na fonte da audiência do Pedral do Lourenço, que este povo tenha sido consultado especificamente.",
+            "fonte": "https://prodoclin.museudoindio.gov.br/index.php/etnias/karaja",
+            "data_corte": "06/10/2026"
+          },
+          {
+            "trecho_territorio": "Rio Araguaia / norte de TO",
+            "povo": "Xambioá",
+            "etnia_autodenominacao": "Karajá Xambioá / Iny",
+            "classificacao_vinculo": "Direto ao Rio Araguaia",
+            "evidencia_territorial": "A Funai registra Karajá Xambioá na região Araguaia-Tocantins.",
+            "situacao_consulta": "Não foi comprovado, na fonte da audiência do Pedral do Lourenço, que este povo tenha sido consultado especificamente.",
+            "fonte": "https://www.gov.br/funai/pt-br/acesso-a-informacao/institucional/coordenacoes-regionais-funai/cr-araguaia-tocantins",
+            "data_corte": "06/10/2026"
+          },
+          {
+            "trecho_territorio": "Norte do Tocantins / Tocantinópolis e entorno",
+            "povo": "Apinajé",
+            "etnia_autodenominacao": "Apinajé",
+            "classificacao_vinculo": "Bacia/corredor Tocantins",
+            "evidencia_territorial": "A Funai registra o povo Apinajé entre as etnias atendidas pela CR Araguaia-Tocantins.",
+            "situacao_consulta": "Não foi comprovado, na fonte da audiência do Pedral do Lourenço, que este povo tenha sido consultado especificamente.",
+            "fonte": "https://www.gov.br/funai/pt-br/acesso-a-informacao/institucional/coordenacoes-regionais-funai/cr-araguaia-tocantins",
+            "data_corte": "06/10/2026"
+          },
+          {
+            "trecho_territorio": "Baixo Tocantins-PA",
+            "povo": "Assurini do Tocantins",
+            "etnia_autodenominacao": "Assurini do Tocantins",
+            "classificacao_vinculo": "Bacia/corredor Tocantins",
+            "evidencia_territorial": "A CR Baixo Tocantins da Funai atua junto ao povo Assurini do Tocantins.",
+            "situacao_consulta": "A audiência do Pedral registrou comunidades locais, mas a fonte do DNIT não individualiza esta etnia.",
+            "fonte": "https://www.gov.br/funai/pt-br/acesso-a-informacao/institucional/coordenacoes-regionais-funai/cr-baixo-tocantins",
+            "data_corte": "06/10/2026"
+          },
+          {
+            "trecho_territorio": "Baixo Tocantins-PA",
+            "povo": "Parakanã",
+            "etnia_autodenominacao": "Parakanã / Awaeté",
+            "classificacao_vinculo": "Bacia/corredor Tocantins",
+            "evidencia_territorial": "A CR Baixo Tocantins da Funai atua junto ao povo Parakanã (Awaeté).",
+            "situacao_consulta": "A audiência do Pedral registrou comunidades locais, mas a fonte do DNIT não individualiza esta etnia.",
+            "fonte": "https://www.gov.br/funai/pt-br/acesso-a-informacao/institucional/coordenacoes-regionais-funai/cr-baixo-tocantins",
+            "data_corte": "06/10/2026"
+          },
+          {
+            "trecho_territorio": "Baixo Tocantins-PA",
+            "povo": "Gavião",
+            "etnia_autodenominacao": "Gavião: Parkatêjê, Kyikatêjê e Akrãtikatêjê",
+            "classificacao_vinculo": "Bacia/corredor Tocantins",
+            "evidencia_territorial": "A CR Baixo Tocantins da Funai atua junto aos grupos Gavião Parkatêjê, Kyikatêjê e Akrãtikatêjê.",
+            "situacao_consulta": "A audiência do Pedral registrou comunidades locais, mas a fonte do DNIT não individualiza estes povos.",
+            "fonte": "https://www.gov.br/funai/pt-br/acesso-a-informacao/institucional/coordenacoes-regionais-funai/cr-baixo-tocantins",
+            "data_corte": "06/10/2026"
+          },
+          {
+            "trecho_territorio": "Baixo Tocantins-PA",
+            "povo": "Suruí-Aikewara",
+            "etnia_autodenominacao": "Suruí-Aikewara",
+            "classificacao_vinculo": "Bacia/região",
+            "evidencia_territorial": "A CR Baixo Tocantins da Funai atua junto ao povo Suruí-Aikewara.",
+            "situacao_consulta": "A audiência do Pedral registrou comunidades locais, mas a fonte do DNIT não individualiza esta etnia.",
+            "fonte": "https://www.gov.br/funai/pt-br/acesso-a-informacao/institucional/coordenacoes-regionais-funai/cr-baixo-tocantins",
+            "data_corte": "06/10/2026"
+          },
+          {
+            "trecho_territorio": "Baixo Tocantins-PA",
+            "povo": "Tembé",
+            "etnia_autodenominacao": "Tembé",
+            "classificacao_vinculo": "Bacia/região",
+            "evidencia_territorial": "A CR Baixo Tocantins da Funai atua junto ao povo Tembé.",
+            "situacao_consulta": "A audiência do Pedral registrou comunidades locais, mas a fonte do DNIT não individualiza esta etnia.",
+            "fonte": "https://www.gov.br/funai/pt-br/acesso-a-informacao/institucional/coordenacoes-regionais-funai/cr-baixo-tocantins",
+            "data_corte": "06/10/2026"
+          },
+          {
+            "trecho_territorio": "Baixo Tocantins-PA",
+            "povo": "Xikrin do Rio Cateté",
+            "etnia_autodenominacao": "Xikrin do Rio Cateté",
+            "classificacao_vinculo": "Bacia/região",
+            "evidencia_territorial": "A CR Baixo Tocantins da Funai atua junto ao povo Xikrin do Rio Cateté.",
+            "situacao_consulta": "A audiência do Pedral registrou comunidades locais, mas a fonte do DNIT não individualiza esta etnia.",
+            "fonte": "https://www.gov.br/funai/pt-br/acesso-a-informacao/institucional/coordenacoes-regionais-funai/cr-baixo-tocantins",
+            "data_corte": "06/10/2026"
+          }
+        ]
+      },
+      "observacao_matriz_consultas": "Há registro claro de participação comunitária vinculada à intervenção hidroviária. Separar de consulta pública da concessão.",
+      "data_corte": "06/10/2026"
     },
     {
       "id": "HID-SUL-MIRIM",
@@ -396,7 +978,59 @@
         "dnit": "https://www.gov.br/dnit/pt-br/assuntos/aquaviario/intervencao-em-hidrovias/hidrovias-1/hidrovia-do-mercosul",
         "antaq_ven": "https://sophia.antaq.gov.br/Terminal/Busca/Download?codigoArquivo=51506&tipoMidia=0"
       },
-      "nota_mapeamento": "A base usa o sistema DNIT Mercosul para representar o contexto territorial do SAIP Sul-Mirim/Lagoa Mirim."
+      "nota_mapeamento": "A base usa o sistema DNIT Mercosul para representar o contexto territorial do SAIP Sul-Mirim/Lagoa Mirim.",
+      "etapas_regulatorias_participativas": {
+        "air": {
+          "situacao": "Não localizada AIR específica do empreendimento",
+          "fonte": "https://www.gov.br/antaq/pt-br/acesso-a-informacao/acoes-e-programas/governanca-regulatoria/analise-de-impacto-regulatorio-air-3/analises-de-impacto-regulatorio-elaboradas-pela-antaq-1"
+        },
+        "evtea_modelagem": {
+          "situacao": "EVTEA publicado na Audiência Pública nº 06/2026, com estudos de mercado, engenharia, operação, finanças e ambiente",
+          "fonte": "https://www.gov.br/antaq/pt-br/acesso-a-informacao/participacao-social/audiencias-e-consultas-publicas/audiencias/audiencia-publica-no-6-2026-antaq/audiencia-publica-ndeg-06-2026-evtea"
+        },
+        "tomada_reuniao": {
+          "situacao": "Houve Tomada de Subsídios nº 01/2025-DG para Brasil–Uruguai/Lagoa Mirim e, depois, participação formal do SAIP Sul-Mirim",
+          "fonte": "https://www.gov.br/antaq/pt-br/acesso-a-informacao/participacao-social/tomada-de-subsidio-1/tomada-de-subsidios-encerradas"
+        },
+        "consulta_publica": {
+          "situacao": "Consulta Pública nº 06/2026 em andamento",
+          "data": "01/07/2026 a 14/10/2026",
+          "fonte": "https://www.gov.br/antaq/pt-br/acesso-a-informacao/participacao-social/audiencias-e-consultas-publicas/audiencias/audiencia-publica-no-06-2026-antaq"
+        },
+        "audiencia_publica": {
+          "situacao": "Audiência virtual realizada em 11/08/2026; sessão presencial marcada para 07/10/2026",
+          "data_local": "11/08/2026 (virtual); 07/10/2026 (Rio Grande/RS, futura na data de corte)",
+          "fonte": "https://www.gov.br/antaq/pt-br/noticias/2026/audiencia-publica-do-saip-sul-mirim-tem-data-definida-07-de-outubro"
+        },
+        "consulta_comunidades_clpi": {
+          "situacao": "Não localizada consulta específica a povo/comunidade tradicional como etapa separada",
+          "publico": "Participação social ampla: usuários, operadores, setor produtivo, especialistas, entidades e interessados",
+          "local_data": "Virtual e Rio Grande/RS",
+          "fonte": "https://www.gov.br/antaq/pt-br/acesso-a-informacao/participacao-social/audiencias-e-consultas-publicas/audiencias/audiencia-publica-no-06-2026-antaq"
+        }
+      },
+      "povos_originarios": {
+        "identificados": "Sim",
+        "resumo": "Guarani Mbyá",
+        "vinculo": "Presença documentada nas bacias do Jacuí, margens do Guaíba e complexo da Lagoa dos Patos.",
+        "consulta_empreendimento": "Consulta pública do SAIP Sul-Mirim é geral; não localizada consulta indígena específica.",
+        "fonte": "https://www.gov.br/icmbio/pt-br/assuntos/biodiversidade/pan/pan-lagoas-do-sul/1-ciclo/produtos/2024-pan-lagoas-do-sul-acao3-14-restauracao-ecologica-territorios-indigenas.pdf",
+        "nota_validacao": "Validar aldeias e terras indígenas por geoprocessamento antes de inferir impacto.",
+        "registros": [
+          {
+            "trecho_territorio": "Bacias do Jacuí, Guaíba e complexo Lagoa dos Patos-RS",
+            "povo": "Mbyá Guarani",
+            "etnia_autodenominacao": "Guarani Mbyá",
+            "classificacao_vinculo": "Direto à bacia/corredor",
+            "evidencia_territorial": "Documento do ICMBio registra presença Mbyá Guarani nas bacias do Jacuí, margens do Lago Guaíba e complexo da Lagoa dos Patos.",
+            "situacao_consulta": "A consulta pública do SAIP Sul-Mirim é geral; não foi localizada consulta específica a povo indígena.",
+            "fonte": "https://www.gov.br/icmbio/pt-br/assuntos/biodiversidade/pan/pan-lagoas-do-sul/1-ciclo/produtos/2024-pan-lagoas-do-sul-acao3-14-restauracao-ecologica-territorios-indigenas.pdf",
+            "data_corte": "06/10/2026"
+          }
+        ]
+      },
+      "observacao_matriz_consultas": "Em 06/10/2026, a sessão presencial de 07/10 ainda não havia ocorrido.",
+      "data_corte": "06/10/2026"
     }
   ]
 }
