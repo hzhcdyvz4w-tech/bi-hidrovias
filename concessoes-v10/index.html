@@ -75,6 +75,10 @@ footer{padding-bottom:calc(18px + var(--safe-bottom))}
 .stage-chip.missing{background:#f5f6f7;color:#5f6a73;border-color:#d9dfe4}
 @media(max-width:1050px){.stage-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:700px){.stage-grid,.people-summary{grid-template-columns:1fr}.people-table{min-width:840px}}
+.report-export-actions{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 14px;padding:10px;border:1px solid #d8e1ea;border-radius:12px;background:#f8fbfd}
+.report-export-actions button{margin:0;min-height:42px}
+.report-export-note{font-size:11px;color:#60788b;align-self:center}
+@media(max-width:600px){.report-export-actions{display:grid;grid-template-columns:1fr}.report-export-actions button{width:100%}}
 </style></head>
 <body>
 <header><div style="max-width:1440px;margin:auto;padding:0 4px"><h1>BI Executivo de Concessões Hidroviárias</h1><p>Navegação Executiva • concessões, estudos, marcha processual e assessoramento</p></div></header>
@@ -113,7 +117,7 @@ footer{padding-bottom:calc(18px + var(--safe-bottom))}
 </section>
 <section id="carteira"><button class="back" onclick="home()">← Navegação Executiva</button><h2>🧭 Carteira de Concessões</h2><div id="portfolio"></div></section>
 <section id="briefing"><button class="back" onclick="home()">← Navegação Executiva</button><h2>📄 Briefing Executivo</h2><p class="sub">Visão sintética da carteira. A camada SEI local complementará a análise quando houver processos importados.</p><div id="brief"></div></section>
-<section id="relatorio"><button class="back" onclick="home()">← Navegação Executiva</button><h2>📊 Relatório Executivo</h2><p class="sub">Fase, avanço, responsável e próximo passo por projeto.</p><div id="report"></div></section>
+<section id="relatorio"><button class="back" onclick="home()">← Navegação Executiva</button><h2>📊 Relatório Executivo</h2><p class="sub">Fase, avanço, responsável e próximo passo por projeto.</p><div class="report-export-actions"><button class="primary" type="button" onclick="printConcessionReport()">🖨️ Imprimir / PDF</button><button class="secondary" type="button" onclick="exportConcessionReportHtml()">⬇️ Exportar relatório completo</button><button class="secondary" type="button" onclick="exportConcessionReportCsv()">📊 Exportar CSV</button><span class="report-export-note">As ações respeitam o recorte atualmente filtrado.</span></div><div id="report"></div></section>
 <section id="consultas"><button class="back" onclick="home()">← Navegação Executiva</button><h2>👥 Consultas e Comunidades</h2><p class="sub">Participação social, consulta específica às comunidades e comunidades/territórios individualizados nas fontes documentais do painel. Audiência pública geral e consulta específica são tratadas separadamente.</p><div id="community"></div></section>
 <section id="decisoes"><button class="back" onclick="home()">← Navegação Executiva</button><h2>🎯 Decisões</h2><p class="sub">Apoio à decisão: responsável atual, próximo passo e pendências confirmadas.</p><div id="decision"></div></section>
 <section id="marcha"><button class="back" onclick="home()">← Navegação Executiva</button><h2>🧩 Marcha Processual</h2><p class="sub">A evolução processual será cruzada com documentos oficiais e, quando importada, com a base SEI local.</p><div id="march"></div></section>
@@ -281,6 +285,73 @@ function matrixSourcesBlock(p){
   const unique=[...new Set(urls)].filter(Boolean);
   return unique.length?'<div class="card"><b>Base complementar — '+esc(p.nome)+'</b><div class="base-note">AIR, EVTEA, participação social, consultas e povos originários • corte '+esc(e.data_corte||"06/10/2026")+'</div><ul class="docs">'+unique.map((u,i)=>'<li>'+extLink(u,"Fonte complementar "+(i+1))+'</li>').join("")+'</ul></div>':"";
 }
+
+
+function concessionExportRows(){
+ return filteredProjects().map(p=>{
+   const b=baseFor(p)||{},a=b.atuacao||{},m=matrixFor(p)||{},x=m.etapas||{},g=m.povos_originarios||{},regs=projectRegions(p),ufs=projectUFs(p),locs=filteredLocalities(p);
+   const povos=(g.registros||[]).map(r=>[r.povo,r.etnia_autodenominacao].filter(Boolean).join(" — ")).join(" | ");
+   const fontes=[p.fonte_oficial,a.fonte_participacao,...Object.values(x).map(o=>o&&o.fonte)].filter(Boolean);
+   return {
+     "Hidrovia / Projeto":p.nome,
+     "Região":regs.join(" | "),
+     "UF":ufs.join(" | "),
+     "Localidades":locs.map(v=>v.l+" / "+v.u).join(" | "),
+     "Fase":p.fase,
+     "CAPEX":p.capex,
+     "Prazo":p.prazo,
+     "Extensão":p.extensao,
+     "Avanço":p.avanco,
+     "Próximo passo":p.proximo,
+     "Responsável":p.responsavel,
+     "Referência":p.ref,
+     "AIR":(x.air||{}).situacao,
+     "EVTEA / Modelagem":(x.evtea_modelagem||{}).situacao,
+     "Tomada de Subsídios / Reunião":(x.tomada_reuniao||{}).situacao,
+     "Consulta Pública":(x.consulta_publica||{}).situacao,
+     "Audiência Pública":(x.audiencia_publica||{}).situacao,
+     "Comunidades / CLPI":(x.consulta_comunidades_clpi||{}).situacao,
+     "Povos originários / etnias":povos||g.resumo||"",
+     "Participação social":a.participacao||"",
+     "Consulta comunitária específica":a.consulta_especifica||"",
+     "Data de corte":m.data_corte||INTEGRATED_BASE.metadata.data_corte||"06/10/2026",
+     "Fontes": [...new Set(fontes)].join(" | ")
+   };
+ });
+}
+function concessionReportHtml(){
+ const report=document.getElementById("report");
+ const body=(report?report.innerHTML:"").replace(/<details class="governance-details"/g,'<details class="governance-details" open');
+ const summary=document.getElementById("cfSummary");
+ return '<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Relatório Executivo de Concessões Hidroviárias</title><style>'+
+ '@page{size:A4;margin:12mm}body{font-family:Arial,sans-serif;color:#172331;line-height:1.4}h1{font-size:21px;color:#173f67;margin:0 0 5px}h2{font-size:16px;color:#173f67}h3{font-size:13px}.meta{font-size:11px;color:#587083;margin-bottom:14px}.card{border:1px solid #ccd9e4;border-radius:10px;padding:11px;margin:0 0 10px;break-inside:avoid}.base-grid,.stage-grid,.people-summary{display:grid;grid-template-columns:repeat(2,1fr);gap:6px}.base-box,.stage-card{border:1px solid #d8e1ea;border-radius:7px;padding:7px;font-size:10px}.status-line,.base-note,.enrich-note{font-size:10px;margin:5px 0}.status-tag,.stage-chip{display:inline-block;border:1px solid #ccc;border-radius:999px;padding:2px 5px;font-size:8px}.table-wrap{overflow:visible}table{width:100%;border-collapse:collapse;font-size:8px}th,td{border:1px solid #ccc;padding:4px;text-align:left;vertical-align:top}th{background:#eef4f8}details{display:block}details summary{font-weight:bold;margin:7px 0}a{color:#173f67;text-decoration:none}@media print{.card{break-inside:avoid}}</style></head><body>'+
+ '<h1>Relatório Executivo de Concessões Hidroviárias</h1><div class="meta">Recorte: '+esc(summary?summary.textContent:"carteira atual")+' • Data de corte: 06/10/2026</div>'+body+'</body></html>';
+}
+window.printConcessionReport=function(){
+ const iframe=document.createElement("iframe");
+ iframe.style.cssText="position:fixed;right:0;bottom:0;width:0;height:0;border:0;visibility:hidden";
+ document.body.appendChild(iframe);
+ const d=iframe.contentDocument||iframe.contentWindow.document;
+ d.open();d.write(concessionReportHtml());d.close();
+ setTimeout(()=>{try{iframe.contentWindow.focus();iframe.contentWindow.print()}finally{setTimeout(()=>iframe.remove(),1500)}},250);
+};
+window.exportConcessionReportHtml=function(){
+ const blob=new Blob([concessionReportHtml()],{type:"text/html;charset=utf-8"});
+ const a=document.createElement("a"),url=URL.createObjectURL(blob);
+ a.href=url;a.download="Relatorio_Executivo_Concessoes_Hidroviarias_2026-10-06.html";
+ document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+};
+window.exportConcessionReportCsv=function(){
+ const rows=concessionExportRows();
+ if(!rows.length){alert("Nenhum projeto no recorte atual.");return}
+ const headers=Object.keys(rows[0]);
+ const q=v=>'"'+String(v??"").replace(/"/g,'""').replace(/\r?\n/g," ")+'"';
+ const csv="\ufeff"+headers.map(q).join(";")+"\r\n"+rows.map(r=>headers.map(h=>q(r[h])).join(";")).join("\r\n");
+ const blob=new Blob([csv],{type:"text/csv;charset=utf-8"});
+ const a=document.createElement("a"),url=URL.createObjectURL(blob);
+ a.href=url;a.download="Relatorio_Executivo_Concessoes_Hidroviarias_2026-10-06.csv";
+ document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+};
 
 function renderPublic(){
  const rows=filteredProjects(),empty='<div class="empty">Nenhum projeto para o recorte selecionado.</div>';
