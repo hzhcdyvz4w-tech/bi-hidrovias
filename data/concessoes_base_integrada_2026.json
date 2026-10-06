@@ -1,0 +1,402 @@
+{
+  "metadata": {
+    "nome": "Base integrada 2026 — concessões, hidrovias, localidades e consultas",
+    "origem": "Planilha_IBGE_Hidrovias_Comunidades_Atuacao_Consultas_2026",
+    "abas": [
+      "Base_Integrada_2026",
+      "Atuacao_Consultas",
+      "Fontes_Atuacao_2026"
+    ],
+    "data_corte": "06/10/2026",
+    "registros_localidade": 58,
+    "regra": "Base de referência. Participação social no sistema não equivale automaticamente a consulta comunitária/tradicional específica em cada localidade."
+  },
+  "projetos": [
+    {
+      "id": "HID-BARRA-NORTE",
+      "sistema": "Amazonas",
+      "regioes": [
+        "Norte"
+      ],
+      "ufs": [
+        "AM",
+        "AP",
+        "PA"
+      ],
+      "localidades_por_uf": {
+        "AM": [
+          "Manaus",
+          "Itacoatiara",
+          "Parintins"
+        ],
+        "AP": [
+          "Santana"
+        ],
+        "PA": [
+          "Óbidos",
+          "Santarém",
+          "Almeirim",
+          "Gurupá"
+        ]
+      },
+      "consulta_localidade_padrao": "Não localizada especificamente",
+      "detalhe_localidade_padrao": "Há informação apenas no nível do sistema hidroviário, sem comprovação de consulta nesta localidade.",
+      "atuacao": {
+        "snhn": {
+          "status": "Sim",
+          "atividade": "Agenda da SNHN/MPor inclui estudos de concessão da rota entre Manaus e a foz do Amazonas; o PNL 2050 também contempla o Amazonas em corredor intermodal.",
+          "fonte": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/03/comissao-da-camara-ouve-secretario-nacional-de-hidrovias-e-navegacao-sobre-agenda-de-concessoes"
+        },
+        "antaq": {
+          "status": "Parcial",
+          "atividade": "Há projeto prioritário correlato na Barra Norte/Hidrovia Verde, associado à foz do Amazonas; não é equivalente, em toda a extensão, à HN-100.",
+          "fonte": "https://www.gov.br/antaq/pt-br/assuntos/projetos-de-concessao/novas-concessoes-hidroviarias"
+        },
+        "dnit": {
+          "status": "Sim",
+          "atividade": "HN-100 integra a relação de hidrovias administradas pela Diretoria de Infraestrutura Aquaviária do DNIT.",
+          "fonte": "https://www.gov.br/dnit/pt-br/assuntos/aquaviario/intervencao-em-hidrovias/hidrovias-1/hidrovias"
+        },
+        "participacao": "Não localizado",
+        "tipo": "Sem consulta comunitária específica localizada",
+        "situacao": "Sem registro específico localizado nas fontes oficiais verificadas",
+        "publico": "—",
+        "local_data": "—",
+        "consulta_especifica": "Não",
+        "fonte_participacao": null,
+        "observacao": "A atuação institucional existe; a pesquisa não encontrou processo específico de consulta comunitária vinculado à HN-100 até a data de corte."
+      },
+      "fontes_base": {
+        "ibge": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/estrutura-territorial/27385-localidades.html",
+        "dnit": "https://www.gov.br/dnit/pt-br/assuntos/aquaviario/intervencao-em-hidrovias/hidrovias-1/copy_of_hidrovia-do-amazonas",
+        "antaq_ven": "https://sophia.antaq.gov.br/Terminal/Busca/Download?codigoArquivo=51506&tipoMidia=0"
+      },
+      "nota_mapeamento": "A planilha relaciona a HN-100 Amazonas ao projeto correlato Barra Norte/Hidrovia Verde apenas parcialmente; não equivale a toda a extensão da HN-100."
+    },
+    {
+      "id": "HID-MADEIRA",
+      "sistema": "Madeira",
+      "regioes": [
+        "Norte"
+      ],
+      "ufs": [
+        "AM",
+        "RO"
+      ],
+      "localidades_por_uf": {
+        "AM": [
+          "Humaitá",
+          "Manicoré",
+          "Novo Aripuanã",
+          "Borba"
+        ],
+        "RO": [
+          "Porto Velho"
+        ]
+      },
+      "consulta_localidade_padrao": "Participação no sistema, não comprovada nesta localidade",
+      "detalhe_localidade_padrao": "Concluída a etapa de Tomada de Subsídios; audiência pública de concessão ainda não indicada como realizada na página do projeto",
+      "atuacao": {
+        "snhn": {
+          "status": "Sim",
+          "atividade": "Hidrovia prioritária na agenda federal de concessões da SNHN/MPor; estudos e estruturação de concessão em andamento.",
+          "fonte": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/05/mpor-faz-balanco-do-primeiro-bienio-da-secretaria-nacional-de-hidrovias-e-navegacao"
+        },
+        "antaq": {
+          "status": "Sim",
+          "atividade": "Projeto de concessão do Rio Madeira; ANTAQ realizou Tomada de Subsídios nº 01/2024-SEPH, com contribuições até 04/04/2025.",
+          "fonte": "https://www.gov.br/antaq/pt-br/assuntos/projetos-de-concessao/novas-concessoes-hidroviarias/hidrovia-do-rio-madeira"
+        },
+        "dnit": {
+          "status": "Sim",
+          "atividade": "DNIT executa manutenção/dragagem e monitoramento da hidrovia do Madeira; há ordens de serviço e PMH específico.",
+          "fonte": "https://www.gov.br/dnit/pt-br/assuntos/noticias/dnit-assina-ordem-de-servico-para-dragagem-no-rio-madeira"
+        },
+        "participacao": "Sim - tomada de subsídios",
+        "tipo": "Participação pública técnica",
+        "situacao": "Concluída a etapa de Tomada de Subsídios; audiência pública de concessão ainda não indicada como realizada na página do projeto",
+        "publico": "Usuários, agentes do setor aquaviário e interessados em geral",
+        "local_data": "Contribuições eletrônicas; encerramento 04/04/2025",
+        "consulta_especifica": "Não",
+        "fonte_participacao": "https://www.gov.br/antaq/pt-br/assuntos/projetos-de-concessao/novas-concessoes-hidroviarias/hidrovia-do-rio-madeira",
+        "observacao": "A Tomada de Subsídios é participação social, mas não comprova consulta específica a comunidades ribeirinhas ou tradicionais."
+      },
+      "fontes_base": {
+        "ibge": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/estrutura-territorial/27385-localidades.html",
+        "dnit": "https://www.gov.br/dnit/pt-br/assuntos/aquaviario/intervencao-em-hidrovias/hidrovias-1/hidrovia-do-madeira",
+        "antaq_ven": "https://sophia.antaq.gov.br/Terminal/Busca/Download?codigoArquivo=51506&tipoMidia=0"
+      }
+    },
+    {
+      "id": "HID-PARAGUAI",
+      "sistema": "Paraguai",
+      "regioes": [
+        "Centro-Oeste"
+      ],
+      "ufs": [
+        "MS",
+        "MT"
+      ],
+      "localidades_por_uf": {
+        "MS": [
+          "Corumbá",
+          "Ladário",
+          "Porto Murtinho",
+          "Aquidauana",
+          "Miranda"
+        ],
+        "MT": [
+          "Cáceres",
+          "Cuiabá",
+          "Santo Antônio do Leverger",
+          "Barão de Melgaço"
+        ]
+      },
+      "consulta_localidade_padrao": "Participação no sistema, não comprovada nesta localidade",
+      "detalhe_localidade_padrao": "Consulta pública realizada de 26/12/2024 a 23/02/2025; audiências em 06/02/2025 e 10/04/2025, sendo a segunda em Corumbá/MS",
+      "excecoes_localidade": {
+        "Corumbá": {
+          "consulta": "Sim - audiência pública local",
+          "detalhe": "Audiência pública da concessão realizada em Corumbá/MS em 10/04/2025."
+        }
+      },
+      "atuacao": {
+        "snhn": {
+          "status": "Sim",
+          "atividade": "Projeto prioritário da agenda federal de concessões hidroviárias; é o projeto mais avançado entre os principais eixos.",
+          "fonte": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/05/mpor-faz-balanco-do-primeiro-bienio-da-secretaria-nacional-de-hidrovias-e-navegacao"
+        },
+        "antaq": {
+          "status": "Sim",
+          "atividade": "Concessão da Hidrovia do Paraguai com processo próprio, consulta pública e Audiência Pública nº 18/2024.",
+          "fonte": "https://www.gov.br/antaq/pt-br/assuntos/projetos-de-concessao/novas-concessoes-hidroviarias/paraguai"
+        },
+        "dnit": {
+          "status": "Sim",
+          "atividade": "Hidrovia do Paraguai integra a relação oficial administrada pela DAQ/DNIT.",
+          "fonte": "https://www.gov.br/dnit/pt-br/assuntos/aquaviario/intervencao-em-hidrovias/hidrovias-1/hidrovias"
+        },
+        "participacao": "Sim - consulta/audiência pública",
+        "tipo": "Consulta pública + audiências públicas",
+        "situacao": "Consulta pública realizada de 26/12/2024 a 23/02/2025; audiências em 06/02/2025 e 10/04/2025, sendo a segunda em Corumbá/MS",
+        "publico": "Cidadãos, empresas, entidades e interessados; participação local na audiência de Corumbá",
+        "local_data": "Virtual e Corumbá/MS; 06/02/2025 e 10/04/2025",
+        "consulta_especifica": "Não comprovada como específica",
+        "fonte_participacao": "https://www.gov.br/antaq/pt-br/antaq-inicia-processo-de-consulta-publica-para-a-concessao-da-hidrovia-do-rio-paraguai",
+        "observacao": "Há participação social formal e uma sessão presencial em Corumbá, mas a fonte não a classifica como consulta específica de comunidade tradicional."
+      },
+      "fontes_base": {
+        "ibge": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/estrutura-territorial/27385-localidades.html",
+        "dnit": "https://www.gov.br/dnit/pt-br/assuntos/aquaviario/intervencao-em-hidrovias/hidrovias-1/hidrovia-do-paraguai",
+        "antaq_ven": "https://sophia.antaq.gov.br/Terminal/Busca/Download?codigoArquivo=51506&tipoMidia=0"
+      }
+    },
+    {
+      "id": "HID-TAPAJOS",
+      "sistema": "Tapajós - Teles Pires",
+      "regioes": [
+        "Norte"
+      ],
+      "ufs": [
+        "PA"
+      ],
+      "localidades_por_uf": {
+        "PA": [
+          "Santarém",
+          "Belterra",
+          "Aveiro",
+          "Itaituba",
+          "Jacareacanga"
+        ]
+      },
+      "consulta_localidade_padrao": "Participação no sistema, não comprovada nesta localidade",
+      "detalhe_localidade_padrao": "Em fevereiro de 2026 houve negociação em Santarém; Governo Federal reafirmou que novos empreendimentos vinculados à hidrovia serão precedidos de consulta livre, prévia e informada (OIT 169)",
+      "excecoes_localidade": {
+        "Santarém": {
+          "consulta": "Diálogo/negociação - não CLPI concluída",
+          "detalhe": "Em fevereiro de 2026 houve negociação com povos indígenas e outros segmentos sociais em Santarém; Governo reafirmou obrigação de CLPI antes de novos empreendimentos."
+        }
+      },
+      "atuacao": {
+        "snhn": {
+          "status": "Sim",
+          "atividade": "Tapajós é prioritário para estudos de concessão; o MPor também mantém ações de dragagem para garantir tráfego em períodos de baixa das águas.",
+          "fonte": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/02/nota-publica-sobre-a-dragagem-no-rio-tapajos"
+        },
+        "antaq": {
+          "status": "Sim",
+          "atividade": "Projeto de concessão da Hidrovia do Tapajós com estudos em elaboração na carteira da ANTAQ.",
+          "fonte": "https://www.gov.br/antaq/pt-br/assuntos/projetos-de-concessao/novas-concessoes-hidroviarias/tapajos"
+        },
+        "dnit": {
+          "status": "Sim",
+          "atividade": "HN-106 Tapajós e HN-110 Teles Pires integram a relação oficial administrada pela DAQ/DNIT.",
+          "fonte": "https://www.gov.br/dnit/pt-br/assuntos/aquaviario/intervencao-em-hidrovias/hidrovias-1/hidrovias"
+        },
+        "participacao": "Sim - diálogo/negociação",
+        "tipo": "Diálogo com povos indígenas e segmentos sociais; CLPI formal ainda não registrada como concluída",
+        "situacao": "Em fevereiro de 2026 houve negociação em Santarém; Governo Federal reafirmou que novos empreendimentos vinculados à hidrovia serão precedidos de consulta livre, prévia e informada (OIT 169)",
+        "publico": "Povos indígenas e outros segmentos sociais mobilizados",
+        "local_data": "Santarém/PA, fevereiro de 2026",
+        "consulta_especifica": "Diálogo - CLPI pendente",
+        "fonte_participacao": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/02/nota-publica-sobre-a-dragagem-no-rio-tapajos",
+        "observacao": "Não registrar como “consulta prévia concluída”. A fonte registra negociação e compromisso de realização de CLPI antes de empreendimentos."
+      },
+      "fontes_base": {
+        "ibge": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/estrutura-territorial/27385-localidades.html",
+        "dnit": "https://www.gov.br/dnit/pt-br/assuntos/aquaviario/intervencao-em-hidrovias/hidrovias-1/hidrovia-do-tapajos-teles-pires",
+        "antaq_ven": "https://sophia.antaq.gov.br/Terminal/Busca/Download?codigoArquivo=51506&tipoMidia=0"
+      }
+    },
+    {
+      "id": "HID-TOCANTINS",
+      "sistema": "Tocantins - Araguaia",
+      "regioes": [
+        "Norte",
+        "Nordeste",
+        "Centro-Oeste"
+      ],
+      "ufs": [
+        "TO",
+        "PA",
+        "MA",
+        "MT",
+        "GO"
+      ],
+      "localidades_por_uf": {
+        "TO": [
+          "Peixe",
+          "Lajeado",
+          "Palmas",
+          "Tocantinópolis",
+          "Xambioá"
+        ],
+        "PA": [
+          "Marabá",
+          "Itupiranga",
+          "Tucuruí",
+          "Cametá",
+          "Conceição do Araguaia"
+        ],
+        "MA": [
+          "Estreito",
+          "Imperatriz",
+          "Porto Franco"
+        ],
+        "MT": [
+          "São Félix do Araguaia",
+          "Barra do Garças"
+        ],
+        "GO": [
+          "Aruanã",
+          "Aragarças"
+        ]
+      },
+      "consulta_localidade_padrao": "Participação no sistema, não comprovada nesta localidade",
+      "detalhe_localidade_padrao": "Realizada em 29 e 30/09/2025 no contexto de inspeção judicial do Pedral do Lourenço",
+      "excecoes_localidade": {
+        "Itupiranga": {
+          "consulta": "Sim - participação comunitária",
+          "detalhe": "Audiência pública no Ginásio da Vila Tauiry, em Itupiranga/PA, em 29-30/09/2025, com lideranças comunitárias, moradores e pescadores."
+        }
+      },
+      "atuacao": {
+        "snhn": {
+          "status": "Sim",
+          "atividade": "Tocantins integra a agenda federal de concessões; o sistema também concentra o projeto de melhoramento da navegabilidade no Pedral do Lourenço.",
+          "fonte": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/05/mpor-faz-balanco-do-primeiro-bienio-da-secretaria-nacional-de-hidrovias-e-navegacao"
+        },
+        "antaq": {
+          "status": "Sim",
+          "atividade": "Projeto de concessão da Hidrovia do Tocantins com estudos em elaboração; a carteira da ANTAQ não equivale a todo o sistema Tocantins-Araguaia.",
+          "fonte": "https://www.gov.br/antaq/pt-br/assuntos/projetos-de-concessao/novas-concessoes-hidroviarias/tocantins"
+        },
+        "dnit": {
+          "status": "Sim",
+          "atividade": "DNIT conduz estudos e ações do Pedral do Lourenço e administra o sistema Tocantins-Araguaia.",
+          "fonte": "https://www.gov.br/dnit/pt-br/assuntos/noticias/dnit-realiza-visita-ao-inph-para-acompanhar-estudos-do-pedral-do-lourenco"
+        },
+        "participacao": "Sim - audiência comunitária",
+        "tipo": "Audiência pública com participação comunitária",
+        "situacao": "Realizada em 29 e 30/09/2025 no contexto de inspeção judicial do Pedral do Lourenço",
+        "publico": "Lideranças comunitárias, associações de moradores e de pescadores, além de órgãos públicos",
+        "local_data": "Ginásio da Vila Tauiry, Itupiranga/PA",
+        "consulta_especifica": "Sim",
+        "fonte_participacao": "https://www.gov.br/dnit/pt-br/assuntos/noticias/dnit-acompanha-vistoria-no-rio-tocantins-no-para",
+        "observacao": "É o registro mais claro, entre as fontes pesquisadas, de participação de comunidades locais diretamente associada a intervenção hidroviária."
+      },
+      "fontes_base": {
+        "ibge": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/estrutura-territorial/27385-localidades.html",
+        "dnit": "https://www.gov.br/dnit/pt-br/assuntos/aquaviario/intervencao-em-hidrovias/hidrovias-1/hidrovia-do-tocantins-araguaia",
+        "antaq_ven": "https://sophia.antaq.gov.br/Terminal/Busca/Download?codigoArquivo=51506&tipoMidia=0"
+      }
+    },
+    {
+      "id": "HID-SUL-MIRIM",
+      "sistema": "Mercosul",
+      "regioes": [
+        "Sul"
+      ],
+      "ufs": [
+        "RS"
+      ],
+      "localidades_por_uf": {
+        "RS": [
+          "Rio Grande",
+          "São Lourenço do Sul",
+          "Pelotas",
+          "Porto Alegre",
+          "Guaíba",
+          "Cachoeira do Sul",
+          "Rio Pardo",
+          "General Câmara",
+          "São Jerônimo",
+          "Triunfo",
+          "Estrela",
+          "Bom Retiro do Sul",
+          "Jaguarão",
+          "Santa Vitória do Palmar"
+        ]
+      },
+      "consulta_localidade_padrao": "Participação no sistema, não comprovada nesta localidade",
+      "detalhe_localidade_padrao": "Consulta pública em andamento até 14/10/2026; audiência virtual realizada em 11/08/2026; audiência presencial em Rio Grande marcada para 07/10/2026 (futura na data de corte)",
+      "excecoes_localidade": {
+        "Rio Grande": {
+          "consulta": "Consulta pública do sistema; audiência local agendada",
+          "detalhe": "Consulta pública está em andamento até 14/10/2026; audiência virtual ocorreu em 11/08/2026. Sessão presencial em Rio Grande está marcada para 07/10/2026 e ainda não havia ocorrido na data de corte."
+        }
+      },
+      "atuacao": {
+        "snhn": {
+          "status": "Sim",
+          "atividade": "SNHN/MPor conduz a política de concessão do Sistema Aquaviário Integrado do Sul e Lagoa Mirim, além de investimentos federais em dragagem da Lagoa Mirim.",
+          "fonte": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/09/consulta-publica-sobre-concessao-do-sai-sul-mirim-e-prorrogada-ate-14-de-outubro"
+        },
+        "antaq": {
+          "status": "Sim",
+          "atividade": "Consulta e Audiência Pública nº 06/2026 para o SAIP Sul-Mirim, abrangendo Lagoa dos Patos, Guaíba, Jacuí, Caí, Sinos e Gravataí, além da Lagoa Mirim.",
+          "fonte": "https://www.gov.br/antaq/pt-br/acesso-a-informacao/participacao-social/audiencias-e-consultas-publicas/audiencias/audiencia-publica-no-06-2026-antaq"
+        },
+        "dnit": {
+          "status": "Sim",
+          "atividade": "Hidrovia do Mercosul integra a relação oficial de hidrovias administradas pela DAQ/DNIT; o PNMH orienta manutenção das infraestruturas sob responsabilidade da autarquia.",
+          "fonte": "https://www.gov.br/dnit/pt-br/assuntos/aquaviario/intervencao-em-hidrovias/hidrovias-1/hidrovias"
+        },
+        "participacao": "Sim - consulta/audiência pública",
+        "tipo": "Consulta pública + audiência pública",
+        "situacao": "Consulta pública em andamento até 14/10/2026; audiência virtual realizada em 11/08/2026; audiência presencial em Rio Grande marcada para 07/10/2026 (futura na data de corte)",
+        "publico": "Usuários, operadores, setor produtivo, especialistas, entidades e demais interessados",
+        "local_data": "Virtual em 11/08/2026; Rio Grande/RS agendada para 07/10/2026",
+        "consulta_especifica": "Não comprovada como específica",
+        "fonte_participacao": "https://www.gov.br/antaq/pt-br/acesso-a-informacao/participacao-social/audiencias-e-consultas-publicas/audiencias/audiencia-publica-no-06-2026-antaq",
+        "observacao": "Participação social ampla e formal. A fonte não caracteriza o processo como consulta específica a comunidade tradicional."
+      },
+      "fontes_base": {
+        "ibge": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/estrutura-territorial/27385-localidades.html",
+        "dnit": "https://www.gov.br/dnit/pt-br/assuntos/aquaviario/intervencao-em-hidrovias/hidrovias-1/hidrovia-do-mercosul",
+        "antaq_ven": "https://sophia.antaq.gov.br/Terminal/Busca/Download?codigoArquivo=51506&tipoMidia=0"
+      },
+      "nota_mapeamento": "A base usa o sistema DNIT Mercosul para representar o contexto territorial do SAIP Sul-Mirim/Lagoa Mirim."
+    }
+  ]
+}
