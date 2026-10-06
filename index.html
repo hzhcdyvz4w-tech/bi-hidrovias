@@ -1887,6 +1887,27 @@ function reportBudgetRows(r,row){
     row("Atualização Consulta SIOP BI",b.siopLinked?b.siopUpdated:"Não aplicável ao valor monetário sem vínculo SIOP habilitado");
 }
 
+function reportFilterValue(id,fallback){
+  var s=el(id),val=s&&s.value;
+  return val&&val!==ALL?val:(fallback||"—");
+}
+function reportMunicipioAbrangencia(r){
+  var s=el("municipio"),val=s&&s.value;
+  if(val&&val!==ALL)return val;
+  var m=Array.isArray(r&&r.municipios)?r.municipios.filter(Boolean):[];
+  if(m.length&&m.length<=6)return m.join(" • ");
+  if(r&&r.localExato&&String(r.localExato).trim())return r.localExato;
+  return m.length?m.length+" localidades — refine o filtro para individualizar":"—";
+}
+function reportContextRows(r,row){
+  return row("REGIÃO",reportFilterValue("regiao",(r.regioes||[]).join(" • ")))+
+    row("UF",reportFilterValue("uf",(r.ufs||[]).join(" • ")))+
+    row("MUNICÍPIO / ABRANGÊNCIA",reportMunicipioAbrangencia(r))+
+    row("HIDROVIA / RIO",reportFilterValue("hidrovia",(r.hidrovias||[]).join(" • ")))+
+    row("TIPO",reportFilterValue("tipo",r.tipo||"—"))+
+    row("EMPREENDIMENTO",r.nome||reportFilterValue("empreendimento","—"));
+}
+
 window.doc=function(tipo){
   window.__lastDocType=tipo;
   enrich();
@@ -1898,14 +1919,16 @@ window.doc=function(tipo){
     var b=budgetInfo(r),t=b.ex&&b.ex.totais;
     if(tipo==="brief"){
       return '<div class="reporthead"><h2>Briefing Executivo — '+escx(r.nome)+'</h2><div class="reportmeta">DPP/SNHN · base dinâmica</div></div>'+
+        '<div class="reportsection"><h3>Identificação do recorte</h3><table class="rtable">'+reportContextRows(r,row)+'</table></div>'+
         '<div class="compact-grid"><div class="compact-card"><b>Situação</b><strong>'+escx(r.situacao)+'</strong></div><div class="compact-card"><b>LOA '+MAIN_YEAR+'</b><strong>'+escx(b.loa)+'</strong></div><div class="compact-card"><b>Empenhado</b><strong>'+(t?money(t.empenhado):(b.v36?escx(b.v36.empenhado):"Não individualizado"))+'</strong></div><div class="compact-card"><b>Pago</b><strong>'+(t?money(t.pago):(b.v36?escx(b.v36.pago):"Não individualizado"))+'</strong></div></div>'+
         '<table class="rtable">'+row("Contrato / instrumento",r.instrumento)+row("Empresa / executor",r.executor)+row("Valor",r.valor)+reportBudgetRows(r,row)+row("Próximo marco",r.proximoMarco)+row("Risco / gargalo",r.gargalo)+row("Providência DPP",r.providencia)+'</table>';
     }
     return '<div class="reporthead"><h2>Relatório Executivo — '+escx(r.nome)+'</h2><div class="reportmeta">DPP/SNHN · base v36 (carteira) + SIOP/PLOA quando houver vínculo validado</div></div>'+
-      '<div class="reportsection"><h3>1. Síntese executiva</h3><p>'+escx(r.objeto)+'</p><p><b>Situação:</b> '+escx(r.situacao)+' &nbsp; <b>Fase:</b> '+escx(r.fase)+'</p></div>'+
-      '<div class="reportsection"><h3>2. Quadro contratual</h3><table class="rtable">'+row("Contrato / instrumento",r.instrumento)+row("Empresa / executor",r.executor)+row("Valor do instrumento",r.valor)+row("Próximo marco",r.proximoMarco)+'</table></div>'+
-      '<div class="reportsection"><h3>3. Orçamento e execução</h3><table class="rtable">'+reportBudgetRows(r,row)+row("Execução física",v36Meaningful(r.execFisica)?r.execFisica:(budgetInfo(r).v36?budgetInfo(r).v36.execFisica:"Não individualizada"))+'</table></div>'+
-      '<details class="report-more"><summary>4. Riscos, controle e fontes</summary><table class="rtable">'+row("Marco alcançado",r.marco)+row("Risco / gargalo",r.gargalo)+row("Providência DPP",r.providencia)+row("Evidência pendente",r.pendencia)+row("Fonte principal",r.fonte)+row("Fonte orçamentária",r.fonteExecOrcamentaria)+row("Data da fonte/corte",r.dataFonte)+'</table></details>';
+      '<div class="reportsection"><h3>1. Identificação territorial e do empreendimento</h3><table class="rtable">'+reportContextRows(r,row)+'</table></div>'+
+      '<div class="reportsection"><h3>2. Síntese executiva</h3><p>'+escx(r.objeto)+'</p><p><b>Situação:</b> '+escx(r.situacao)+' &nbsp; <b>Fase:</b> '+escx(r.fase)+'</p></div>'+
+      '<div class="reportsection"><h3>3. Quadro contratual</h3><table class="rtable">'+row("Contrato / instrumento",r.instrumento)+row("Empresa / executor",r.executor)+row("Valor do instrumento",r.valor)+row("Próximo marco",r.proximoMarco)+'</table></div>'+
+      '<div class="reportsection"><h3>4. Orçamento e execução</h3><table class="rtable">'+reportBudgetRows(r,row)+row("Execução física",v36Meaningful(r.execFisica)?r.execFisica:(budgetInfo(r).v36?budgetInfo(r).v36.execFisica:"Não individualizada"))+'</table></div>'+
+      '<details class="report-more"><summary>5. Riscos, controle e fontes</summary><table class="rtable">'+row("Marco alcançado",r.marco)+row("Risco / gargalo",r.gargalo)+row("Providência DPP",r.providencia)+row("Evidência pendente",r.pendencia)+row("Fonte principal",r.fonte)+row("Fonte orçamentária",r.fonteExecOrcamentaria)+row("Data da fonte/corte",r.dataFonte)+'</table></details>';
   }).join('<hr style="margin:26px 0">');
   out.style.display="block";
   out.scrollIntoView({behavior:"smooth",block:"start"});
@@ -1915,6 +1938,7 @@ window.gerarProdutoV51=function(tipo){
   var r=mainRows()[0],out=el("produtoV51"); if(!r||!out)return;
   var b=budgetInfo(r),t=b.ex&&b.ex.totais;
   out.innerHTML='<div class="doc-v51"><h2>'+escx(tipo==="briefing"?"Briefing Executivo":"Quadro Executivo")+' — '+escx(r.nome)+'</h2>'+
+    '<div class="reportsection"><h3>Identificação do recorte</h3><table class="rtable">'+reportContextRows(r,function(k,v){return "<tr><th>"+escx(k)+"</th><td>"+escx(v)+"</td></tr>"})+'</table></div>'+
     '<div class="compact-grid"><div class="compact-card"><b>Ação</b><strong>'+escx(b.acao)+'</strong></div><div class="compact-card"><b>PO</b><strong>'+escx(b.po)+'</strong></div><div class="compact-card"><b>LOA '+MAIN_YEAR+'</b><strong>'+escx(b.loa)+'</strong></div><div class="compact-card"><b>PLOA '+PLOA_YEAR+'</b><strong>'+escx(b.ploa)+'</strong></div></div>'+
     (t?'<div class="budget-strip"><div class="budget-pill"><b>Empenhado</b><span>'+money(t.empenhado)+'</span></div><div class="budget-pill"><b>Liquidado</b><span>'+money(t.liquidado)+'</span></div><div class="budget-pill"><b>Pago</b><span>'+money(t.pago)+'</span></div><div class="budget-pill"><b>Saldo a empenhar</b><span>'+money(t.saldoEmpenhar)+'</span></div></div>':"")+
     '<details class="compact-details"><summary>Contrato, risco e fonte</summary><div class="grid">'+F("Contrato / instrumento",r.instrumento,1)+F("Empresa / executor",r.executor,1)+F("Valor",r.valor,1)+F("Risco / gargalo",r.gargalo,1)+F("Fonte",r.fonte,1,"src")+'</div></details></div>';
