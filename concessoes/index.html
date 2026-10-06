@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#173f67"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Concessões Hidroviárias"><meta name="format-detection" content="telephone=no"><link rel="manifest" href="./manifest.webmanifest"><link rel="apple-touch-icon" sizes="180x180" href="../assets/app-icon-180.png"><link rel="icon" type="image/png" sizes="192x192" href="../assets/app-icon-192.png">
 <title>Concessões de Hidrovias</title>
 <meta name="theme-color" content="#173f67">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -23,7 +23,30 @@ section{display:none;background:#fff;border:1px solid var(--line);border-radius:
 footer{text-align:center;color:#708597;font-size:11px;padding:18px}
 @media(min-width:720px){.nav{grid-template-columns:repeat(4,1fr)}}
 </style>
-</head>
+<style id="apple-mobile-concessoes">
+:root{--safe-top:env(safe-area-inset-top,0px);--safe-right:env(safe-area-inset-right,0px);--safe-bottom:env(safe-area-inset-bottom,0px);--safe-left:env(safe-area-inset-left,0px)}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;background:#f3f7fa}
+body{min-height:100dvh;padding-left:var(--safe-left);padding-right:var(--safe-right);padding-bottom:var(--safe-bottom);overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent}
+header{padding-top:calc(16px + var(--safe-top));padding-left:max(14px,var(--safe-left));padding-right:max(14px,var(--safe-right))}
+button,a,select,input{-webkit-touch-callout:none;touch-action:manipulation}
+select,input,textarea{font-size:max(16px,1em)}
+.nav,.table-wrap,.filters{-webkit-overflow-scrolling:touch}
+footer{padding-bottom:calc(18px + var(--safe-bottom))}
+#iosInstallHint{display:none;position:sticky;top:calc(8px + var(--safe-top));z-index:10000;margin:8px 0 12px;background:#fff;border:1px solid #b9ccd8;border-radius:14px;padding:10px 44px 10px 12px;box-shadow:0 8px 24px rgba(23,63,103,.12);font-size:13px;line-height:1.4;color:#173f67}
+#iosInstallHint button{position:absolute;right:8px;top:7px;min-width:36px;min-height:36px;padding:6px;border-radius:9px;background:#eef4f7;color:#173f67}
+@media(max-width:700px){
+ main{padding-left:max(10px,var(--safe-left));padding-right:max(10px,var(--safe-right))}
+ .filters{grid-template-columns:1fr!important;gap:8px}
+ .filter-actions{position:sticky;bottom:calc(6px + var(--safe-bottom));z-index:20;background:rgba(255,255,255,.96);padding:8px;border-radius:12px;box-shadow:0 6px 20px rgba(23,63,103,.12)}
+ .filter-actions button{flex:1 1 120px;min-height:44px}
+ .nav{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px}
+ .nav button{min-height:108px;padding:12px 9px}
+ .card{padding:11px;border-radius:12px}
+ .community-table,.locality-table{min-width:720px}
+}
+@media(max-width:420px){.nav{grid-template-columns:1fr!important}header h1{font-size:21px!important;line-height:1.18}}
+@media(display-mode:standalone){#iosInstallHint{display:none!important}}
+</style></head>
 <body>
 <header><div style="max-width:980px;margin:auto"><h1>BI Executivo de Concessões Hidroviárias</h1><p>Navegação Executiva • concessões, estudos, marcha processual e assessoramento</p></div></header>
 <main><div class="persistent-return"><a class="main-return" href="../">← Voltar ao BI Hidrovias</a></div>
@@ -66,7 +89,7 @@ footer{text-align:center;color:#708597;font-size:11px;padding:18px}
 <section id="decisoes"><button class="back" onclick="home()">← Navegação Executiva</button><h2>🎯 Decisões</h2><p class="sub">Apoio à decisão: responsável atual, próximo passo e pendências confirmadas.</p><div id="decision"></div></section>
 <section id="marcha"><button class="back" onclick="home()">← Navegação Executiva</button><h2>🧩 Marcha Processual</h2><p class="sub">A evolução processual será cruzada com documentos oficiais e, quando importada, com a base SEI local.</p><div id="march"></div></section>
 <section id="fontes"><button class="back" onclick="home()">← Navegação Executiva</button><h2>🔎 Fontes e Evidências</h2><p class="sub">Governança: marco só é tratado como concluído mediante evidência documental oficial. Dados SEI permanecem locais.</p><div id="sources"></div></section>
-</main><footer>BI Executivo de Concessões Hidroviárias • camada pública + base SEI local protegida</footer>
+</main><footer>BI Executivo de Concessões Hidroviárias • versão 10.3 • base integrada com 58 localidades • revisão 06/10/2026 • dados sujeitos à validação das fontes oficiais</footer>
 <script src="../concessoes/jszip.min.js"></script>
 <script>
 let PROJECTS=[{"id":"HID-PARAGUAI","regiao":"Centro-Oeste","nome":"Hidrovia do Rio Paraguai","fase":"Controle externo / pré-licitação","capex":"R$ 63,7 milhões","prazo":"15 anos","extensao":"600 km","avanco":"Audiências públicas realizadas; estudos e documentos de modelagem consolidados; POE entregue ao MPOR.","proximo":"Prosseguimento da análise de controle externo e preparação dos atos subsequentes após saneamento documental.","responsavel":"MPOR / ANTAQ / TCU","ref":"TC 016.699/2025-4","oficial":true,"fonte_oficial":"ANTAQ — Hidrovia do Paraguai","fonte_atualizada_em":"05/05/2026","data_corte":"05/10/2026","nivel_confianca":"Confirmado em fonte oficial"},{"id":"HID-MADEIRA","regiao":"Norte","nome":"Hidrovia do Rio Madeira","fase":"Estruturação / tomada de subsídios","capex":"R$ 109.035.320,84","prazo":"12 anos","extensao":"1.075 km","avanco":"EVTEA/modelagem e minutas de edital e anexos disponibilizados; documentação atualizada em setembro de 2026.","proximo":"Consolidar contribuições e avançar para os atos subsequentes da modelagem.","responsavel":"ANTAQ / MPOR","ref":"Processo 50300.017021/2023-52","oficial":true,"fonte_oficial":"ANTAQ — Hidrovia do Rio Madeira","fonte_atualizada_em":"24/09/2026","data_corte":"05/10/2026","nivel_confianca":"Confirmado em fonte oficial"},{"id":"HID-TAPAJOS","regiao":"Norte","nome":"Hidrovia do Tapajós","fase":"Estudos / modelagem","capex":"A divulgar","prazo":"A definir","extensao":"A definir","avanco":"Projeto integrante da carteira oficial de novas concessões hidroviárias da ANTAQ; estudos/modelagem em desenvolvimento.","proximo":"Concluir e validar os estudos e avançar para a etapa formal subsequente conforme publicação oficial.","responsavel":"ANTAQ / MPOR","ref":"Carteira oficial ANTAQ","oficial":true,"fonte_oficial":"ANTAQ — Hidrovia do Tapajós","fonte_atualizada_em":"12/12/2024","data_corte":"05/10/2026","nivel_confianca":"Confirmado em fonte oficial"},{"id":"HID-TOCANTINS","regiao":"Norte","nome":"Hidrovia do Tocantins","fase":"Estudos / modelagem","capex":"A divulgar","prazo":"A definir","extensao":"A definir","avanco":"Projeto integrante da carteira oficial de novas concessões hidroviárias da ANTAQ; estudos/modelagem em desenvolvimento.","proximo":"Concluir e validar os estudos e avançar para a etapa formal subsequente conforme publicação oficial.","responsavel":"ANTAQ / MPOR","ref":"Carteira oficial ANTAQ","oficial":true,"fonte_oficial":"ANTAQ — Hidrovia do Tocantins","fonte_atualizada_em":"A confirmar","data_corte":"05/10/2026","nivel_confianca":"Confirmado em fonte oficial"},{"id":"HID-BARRA-NORTE","regiao":"Norte","nome":"Barra Norte / Foz do Amazonas","fase":"Estudos / estruturação","capex":"R$ 12.641.060,00","prazo":"25 anos","extensao":"150 km","avanco":"Modelagem preliminar com parâmetros econômicos e operacionais já divulgados.","proximo":"Atualizar/consolidar a modelagem e definir os atos de participação social.","responsavel":"ANTAQ / MPOR","ref":"Processo 50300.014424/2022-69","oficial":true,"fonte_oficial":"ANTAQ — Barra Norte","fonte_atualizada_em":"27/03/2025","data_corte":"05/10/2026","nivel_confianca":"Confirmado em fonte oficial"},{"id":"HID-SUL-MIRIM","regiao":"Sul","nome":"SAIP Sul-Mirim / Lagoa Mirim","fase":"Participação social","capex":"Conforme EVTEA","prazo":"Conforme modelagem","extensao":"Sistema integrado","avanco":"Consulta e Audiência Públicas nº 06/2026 abertas para aprimoramento dos documentos técnicos e jurídicos da concessão do SAIP Sul-Mirim; audiência pública realizada em 11/08/2026.","proximo":"Consolidar as contribuições da participação social e atualizar a modelagem/documentos do certame conforme atos oficiais.","responsavel":"ANTAQ / MPOR / Portos RS","ref":"Audiência Pública nº 06/2026","oficial":true,"fonte_oficial":"ANTAQ — Audiência Pública nº 06/2026","fonte_atualizada_em":"13/08/2026","data_corte":"05/10/2026","nivel_confianca":"Confirmado em fonte oficial"}];
@@ -238,4 +261,18 @@ exportBtn.onclick=async()=>{let p={schemaVersion:1,exportedAt:new Date().toISOSt
 restoreBtn.onclick=()=>jsonInput.click();jsonInput.onchange=async()=>{try{let p=JSON.parse(await jsonInput.files[0].text());for(let x of p.processes||[])await put(SP,x);for(let x of p.imports||[])await put(SI,x);setStatus('Base restaurada.');renderSei()}catch(e){setStatus('Falha ao restaurar: '+e.message,1)}jsonInput.value=''};
 if(window.indexedDB)renderSei();
 </script>
-</body></html>
+<script id="apple-mobile-concessoes-runtime">
+(function(){
+ "use strict";
+ function isIOS(){return /iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1)}
+ function standalone(){return window.matchMedia&&window.matchMedia("(display-mode: standalone)").matches||window.navigator.standalone===true}
+ function hint(){
+   if(!isIOS()||standalone()||localStorage.getItem("bi_concessoes_ios_hint_closed")==="1")return;
+   var h=document.createElement("div");h.id="iosInstallHint";h.innerHTML='<b>Usar como app no iPhone/iPad:</b> no Safari, toque em <b>Compartilhar</b> → <b>Adicionar à Tela de Início</b>.<button type="button" aria-label="Fechar aviso">✕</button>';
+   var main=document.querySelector("main")||document.body;main.insertBefore(h,main.firstChild);h.style.display="block";
+   h.querySelector("button").onclick=function(){localStorage.setItem("bi_concessoes_ios_hint_closed","1");h.remove()};
+ }
+ function reg(){if("serviceWorker" in navigator)window.addEventListener("load",function(){navigator.serviceWorker.register("./sw.js").catch(function(e){console.warn("SW concessões:",e)})})}
+ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",hint,{once:true});else hint();reg();
+})();
+</script></body></html>
