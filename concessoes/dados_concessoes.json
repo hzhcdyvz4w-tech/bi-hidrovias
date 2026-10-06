@@ -1,12 +1,12 @@
 {
   "metadata": {
     "nome": "BI Executivo — Concessões Hidroviárias",
-    "versao": "10.1",
+    "versao": "10.2",
     "data_corte": "06/10/2026",
     "governanca": "Marcos concluídos exigem evidência documental oficial.",
     "camada": "Pública",
     "ultima_verificacao": "06/10/2026",
-    "regra_comunidades": "Não inferir comunidades nem consulta específica; ausências permanecem como NÃO LOCALIZADA NO GIT."
+    "regra_comunidades": "Participação social geral e consulta específica às comunidades são campos distintos; nomes só são publicados quando apoiados por fonte documental."
   },
   "projetos": [
     {
@@ -26,12 +26,33 @@
       "fonte_atualizada_em": "05/05/2026",
       "data_corte": "05/10/2026",
       "nivel_confianca": "Confirmado em fonte oficial",
-      "participacao_social_status": "REALIZADA",
-      "participacao_social_evidencia": "Audiências públicas realizadas, conforme base Git.",
-      "consulta_comunidades_status": "NÃO LOCALIZADA NO GIT",
-      "consulta_comunidades_evidencia": "Não há registro nominal no repositório de consulta específica a comunidades locais, tradicionais, indígenas, quilombolas ou ribeirinhas.",
-      "comunidades_identificadas": [],
-      "comunidades_status": "NÃO CADASTRADAS NO GIT"
+      "participacao_social_status": "REALIZADA — CONSULTA/AUDIÊNCIAS PÚBLICAS",
+      "participacao_social_evidencia": "Consulta pública aberta de 26/12/2024 a 23/02/2025; Audiência Pública nº 18/2024 com sessões em 06/02/2025 e 10/04/2025.",
+      "consulta_comunidades_status": "PARTICIPAÇÃO ESPECÍFICA IDENTIFICADA / CONSULTA PRÉVIA NÃO COMPROVADA",
+      "consulta_comunidades_evidencia": "Relatório técnico da audiência registra manifestação de representante do povo Guató e menção expressa a povos e comunidades tradicionais ribeirinhas. A evidência é de participação em audiência, não de consulta prévia específica.",
+      "comunidades_identificadas": [
+        "Povo Guató",
+        "Povos e comunidades tradicionais ribeirinhas"
+      ],
+      "comunidades_status": "NÃO CADASTRADAS NO GIT",
+      "territorios_comunidades": [
+        {
+          "nome": "Povo Guató",
+          "tipo": "Povo indígena",
+          "localizacao": "Pantanal / área de influência do Rio Paraguai",
+          "relacao": "Representante do povo Guató participou da audiência pública da concessão.",
+          "consulta": "Participação em audiência pública; consulta prévia específica não comprovada.",
+          "fonte": "https://web.antaq.gov.br/Sistemas/WebServiceLeilao/DocumentoUpload/Audiencia%20161/SEI_ANTAQ%20-%202614468%20-%20Relat%C3%B3rio%20T%C3%A9cnico.pdf"
+        },
+        {
+          "nome": "Povos e comunidades tradicionais ribeirinhas",
+          "tipo": "Comunidades tradicionais — não individualizadas nominalmente",
+          "localizacao": "Área de influência e territórios de pesca do Rio Paraguai",
+          "relacao": "Citados em contribuição sobre possíveis impactos nos 33 pontos de dragagem.",
+          "consulta": "Necessidade de estudo/participação apontada; consulta específica não comprovada.",
+          "fonte": "https://web.antaq.gov.br/Sistemas/WebServiceLeilao/DocumentoUpload/Audiencia%20161/SEI_ANTAQ%20-%202614468%20-%20Relat%C3%B3rio%20T%C3%A9cnico.pdf"
+        }
+      ]
     },
     {
       "id": "HID-MADEIRA",
@@ -50,12 +71,195 @@
       "fonte_atualizada_em": "24/09/2026",
       "data_corte": "05/10/2026",
       "nivel_confianca": "Confirmado em fonte oficial",
-      "participacao_social_status": "EM ANDAMENTO / TOMADA DE SUBSÍDIOS",
-      "participacao_social_evidencia": "Fase cadastrada como Estruturação / tomada de subsídios; próximo passo prevê consolidar contribuições.",
-      "consulta_comunidades_status": "NÃO LOCALIZADA NO GIT",
-      "consulta_comunidades_evidencia": "Não há registro nominal no repositório de consulta específica a comunidades locais, tradicionais, indígenas, quilombolas ou ribeirinhas.",
-      "comunidades_identificadas": [],
-      "comunidades_status": "NÃO CADASTRADAS NO GIT"
+      "participacao_social_status": "TOMADA DE SUBSÍDIOS REALIZADA; AUDIÊNCIA PÚBLICA EM BREVE",
+      "participacao_social_evidencia": "Tomada de Subsídios nº 01/2024-SEPH com recebimento de contribuições até 04/04/2025. A página da concessão ainda indica audiência pública 'em breve'.",
+      "consulta_comunidades_status": "NÃO LOCALIZADA CONSULTA ESPECÍFICA ÀS COMUNIDADES",
+      "consulta_comunidades_evidencia": "A Seção F Ambiental individualiza localidades e Terras Indígenas no entorno da hidrovia, mas a fonte analisada não comprova consulta específica a cada comunidade/território.",
+      "comunidades_identificadas": [
+        "Vila Aliança",
+        "São Carlos",
+        "Calama",
+        "Nazaré",
+        "Auxiliadora",
+        "Axinim",
+        "Urucurituba",
+        "Ariramba",
+        "Lago Jauari",
+        "Setemã",
+        "Arary",
+        "Nove de Janeiro",
+        "Ipixuna",
+        "Torá",
+        "Pinatuba",
+        "Cunhã-Sapucaia",
+        "Coata-Laranjal",
+        "Miguel/Josefa",
+        "Padre",
+        "Paracuhuba"
+      ],
+      "comunidades_status": "NÃO CADASTRADAS NO GIT",
+      "territorios_comunidades": [
+        {
+          "nome": "Vila Aliança",
+          "tipo": "Localidade / área urbanizada no entorno da hidrovia",
+          "localizacao": "Rio Madeira",
+          "relacao": "Citada na Seção F Ambiental entre áreas urbanizadas densas do IBGE no entorno da hidrovia.",
+          "consulta": "Não localizada consulta específica na fonte analisada.",
+          "fonte": "https://web.antaq.gov.br/Sistemas/WebServiceLeilao/DocumentoUpload/Audiencia%20153/HMD___Secao_F___Ambiental_rev1.pdf"
+        },
+        {
+          "nome": "São Carlos",
+          "tipo": "Localidade / área urbanizada no entorno da hidrovia",
+          "localizacao": "Rio Madeira",
+          "relacao": "Citada na Seção F Ambiental entre áreas urbanizadas densas do IBGE no entorno da hidrovia.",
+          "consulta": "Não localizada consulta específica na fonte analisada.",
+          "fonte": "https://web.antaq.gov.br/Sistemas/WebServiceLeilao/DocumentoUpload/Audiencia%20153/HMD___Secao_F___Ambiental_rev1.pdf"
+        },
+        {
+          "nome": "Calama",
+          "tipo": "Localidade / área urbanizada no entorno da hidrovia",
+          "localizacao": "Rio Madeira",
+          "relacao": "Citada na Seção F Ambiental entre áreas urbanizadas densas do IBGE no entorno da hidrovia.",
+          "consulta": "Não localizada consulta específica na fonte analisada.",
+          "fonte": "https://web.antaq.gov.br/Sistemas/WebServiceLeilao/DocumentoUpload/Audiencia%20153/HMD___Secao_F___Ambiental_rev1.pdf"
+        },
+        {
+          "nome": "Nazaré",
+          "tipo": "Localidade / área urbanizada no entorno da hidrovia",
+          "localizacao": "Rio Madeira",
+          "relacao": "Citada na Seção F Ambiental entre áreas urbanizadas densas do IBGE no entorno da hidrovia.",
+          "consulta": "Não localizada consulta específica na fonte analisada.",
+          "fonte": "https://web.antaq.gov.br/Sistemas/WebServiceLeilao/DocumentoUpload/Audiencia%20153/HMD___Secao_F___Ambiental_rev1.pdf"
+        },
+        {
+          "nome": "Auxiliadora",
+          "tipo": "Localidade / área urbanizada no entorno da hidrovia",
+          "localizacao": "Rio Madeira",
+          "relacao": "Citada na Seção F Ambiental entre áreas urbanizadas densas do IBGE no entorno da hidrovia.",
+          "consulta": "Não localizada consulta específica na fonte analisada.",
+          "fonte": "https://web.antaq.gov.br/Sistemas/WebServiceLeilao/DocumentoUpload/Audiencia%20153/HMD___Secao_F___Ambiental_rev1.pdf"
+        },
+        {
+          "nome": "Axinim",
+          "tipo": "Localidade / área urbanizada no entorno da hidrovia",
+          "localizacao": "Rio Madeira",
+          "relacao": "Citada na Seção F Ambiental entre áreas urbanizadas densas do IBGE no entorno da hidrovia.",
+          "consulta": "Não localizada consulta específica na fonte analisada.",
+          "fonte": "https://web.antaq.gov.br/Sistemas/WebServiceLeilao/DocumentoUpload/Audiencia%20153/HMD___Secao_F___Ambiental_rev1.pdf"
+        },
+        {
+          "nome": "Urucurituba",
+          "tipo": "Localidade / área urbanizada no entorno da hidrovia",
+          "localizacao": "Rio Madeira",
+          "relacao": "Citada na Seção F Ambiental entre áreas urbanizadas densas do IBGE no entorno da hidrovia.",
+          "consulta": "Não localizada consulta específica na fonte analisada.",
+          "fonte": "https://web.antaq.gov.br/Sistemas/WebServiceLeilao/DocumentoUpload/Audiencia%20153/HMD___Secao_F___Ambiental_rev1.pdf"
+        },
+        {
+          "nome": "Ariramba",
+          "tipo": "Terra Indígena — Múra",
+          "localizacao": "0 km do Rio Madeira",
+          "relacao": "TI regularizada e margeante ao rio.",
+          "consulta": "Não localizada consulta específica na fonte analisada.",
+          "fonte": "https://web.antaq.gov.br/Sistemas/WebServiceLeilao/DocumentoUpload/Audiencia%20153/HMD___Secao_F___Ambiental_rev1.pdf"
+        },
+        {
+          "nome": "Lago Jauari",
+          "tipo": "Terra Indígena — Múra",
+          "localizacao": "0 km do Rio Madeira",
+          "relacao": "TI regularizada e margeante ao rio.",
+          "consulta": "Não localizada consulta específica na fonte analisada.",
+          "fonte": "https://web.antaq.gov.br/Sistemas/WebServiceLeilao/DocumentoUpload/Audiencia%20153/HMD___Secao_F___Ambiental_rev1.pdf"
+        },
+        {
+          "nome": "Setemã",
+          "tipo": "Terra Indígena — Múra",
+          "localizacao": "0 km do Rio Madeira",
+          "relacao": "TI regularizada e margeante ao rio.",
+          "consulta": "Não localizada consulta específica na fonte analisada.",
+          "fonte": "https://web.antaq.gov.br/Sistemas/WebServiceLeilao/DocumentoUpload/Audiencia%20153/HMD___Secao_F___Ambiental_rev1.pdf"
+        },
+        {
+          "nome": "Arary",
+          "tipo": "Terra Indígena — Múra",
+          "localizacao": "0 km do Rio Madeira",
+          "relacao": "TI regularizada e margeante ao rio.",
+          "consulta": "Não localizada consulta específica na fonte analisada.",
+          "fonte": "https://web.antaq.gov.br/Sistemas/WebServiceLeilao/DocumentoUpload/Audiencia%20153/HMD___Secao_F___Ambiental_rev1.pdf"
+        },
+        {
+          "nome": "Nove de Janeiro",
+          "tipo": "Terra Indígena — Diahói",
+          "localizacao": "8 km do Rio Madeira; menos de 10 km da IP4 Humaitá/AM",
+          "relacao": "TI regularizada próxima à hidrovia e à IP4.",
+          "consulta": "Não localizada consulta específica na fonte analisada.",
+          "fonte": "https://web.antaq.gov.br/Sistemas/WebServiceLeilao/DocumentoUpload/Audiencia%20153/HMD___Secao_F___Ambiental_rev1.pdf"
+        },
+        {
+          "nome": "Ipixuna",
+          "tipo": "Terra Indígena — Diahói",
+          "localizacao": "10 km do Rio Madeira",
+          "relacao": "TI regularizada no buffer de 10 km.",
+          "consulta": "Não localizada consulta específica na fonte analisada.",
+          "fonte": "https://web.antaq.gov.br/Sistemas/WebServiceLeilao/DocumentoUpload/Audiencia%20153/HMD___Secao_F___Ambiental_rev1.pdf"
+        },
+        {
+          "nome": "Torá",
+          "tipo": "Terra Indígena — Torá / Apurinã",
+          "localizacao": "1,5 km do Rio Madeira",
+          "relacao": "TI regularizada próxima à hidrovia.",
+          "consulta": "Não localizada consulta específica na fonte analisada.",
+          "fonte": "https://web.antaq.gov.br/Sistemas/WebServiceLeilao/DocumentoUpload/Audiencia%20153/HMD___Secao_F___Ambiental_rev1.pdf"
+        },
+        {
+          "nome": "Pinatuba",
+          "tipo": "Terra Indígena — Múra",
+          "localizacao": "3 km do Rio Madeira",
+          "relacao": "TI regularizada próxima à hidrovia.",
+          "consulta": "Não localizada consulta específica na fonte analisada.",
+          "fonte": "https://web.antaq.gov.br/Sistemas/WebServiceLeilao/DocumentoUpload/Audiencia%20153/HMD___Secao_F___Ambiental_rev1.pdf"
+        },
+        {
+          "nome": "Cunhã-Sapucaia",
+          "tipo": "Terra Indígena — Múra",
+          "localizacao": "10 km do Rio Madeira",
+          "relacao": "TI regularizada no buffer de 10 km.",
+          "consulta": "Não localizada consulta específica na fonte analisada.",
+          "fonte": "https://web.antaq.gov.br/Sistemas/WebServiceLeilao/DocumentoUpload/Audiencia%20153/HMD___Secao_F___Ambiental_rev1.pdf"
+        },
+        {
+          "nome": "Coata-Laranjal",
+          "tipo": "Terra Indígena — Mundurukú",
+          "localizacao": "1,5 km do Rio Madeira",
+          "relacao": "TI regularizada próxima à hidrovia.",
+          "consulta": "Não localizada consulta específica na fonte analisada.",
+          "fonte": "https://web.antaq.gov.br/Sistemas/WebServiceLeilao/DocumentoUpload/Audiencia%20153/HMD___Secao_F___Ambiental_rev1.pdf"
+        },
+        {
+          "nome": "Miguel/Josefa",
+          "tipo": "Terra Indígena — Múra",
+          "localizacao": "7 km do Rio Madeira; menos de 10 km da IP4 Nova Olinda do Norte/AM",
+          "relacao": "TI regularizada próxima à hidrovia e à IP4.",
+          "consulta": "Não localizada consulta específica na fonte analisada.",
+          "fonte": "https://web.antaq.gov.br/Sistemas/WebServiceLeilao/DocumentoUpload/Audiencia%20153/HMD___Secao_F___Ambiental_rev1.pdf"
+        },
+        {
+          "nome": "Padre",
+          "tipo": "Terra Indígena — Múra",
+          "localizacao": "8 km do Rio Madeira",
+          "relacao": "TI regularizada próxima à hidrovia.",
+          "consulta": "Não localizada consulta específica na fonte analisada.",
+          "fonte": "https://web.antaq.gov.br/Sistemas/WebServiceLeilao/DocumentoUpload/Audiencia%20153/HMD___Secao_F___Ambiental_rev1.pdf"
+        },
+        {
+          "nome": "Paracuhuba",
+          "tipo": "Terra Indígena — Múra",
+          "localizacao": "7 km do Rio Madeira",
+          "relacao": "TI regularizada próxima à hidrovia.",
+          "consulta": "Não localizada consulta específica na fonte analisada.",
+          "fonte": "https://web.antaq.gov.br/Sistemas/WebServiceLeilao/DocumentoUpload/Audiencia%20153/HMD___Secao_F___Ambiental_rev1.pdf"
+        }
+      ]
     },
     {
       "id": "HID-TAPAJOS",
@@ -74,12 +278,24 @@
       "fonte_atualizada_em": "12/12/2024",
       "data_corte": "05/10/2026",
       "nivel_confianca": "Confirmado em fonte oficial",
-      "participacao_social_status": "NÃO LOCALIZADA NO GIT",
-      "participacao_social_evidencia": "A base Git registra estudos/modelagem em desenvolvimento, sem evidência versionada de consulta ou audiência pública.",
-      "consulta_comunidades_status": "NÃO LOCALIZADA NO GIT",
-      "consulta_comunidades_evidencia": "Não há registro nominal no repositório de consulta específica a comunidades locais, tradicionais, indígenas, quilombolas ou ribeirinhas.",
-      "comunidades_identificadas": [],
-      "comunidades_status": "NÃO CADASTRADAS NO GIT"
+      "participacao_social_status": "AINDA NÃO REALIZADA NA FICHA DA CONCESSÃO",
+      "participacao_social_evidencia": "A página oficial mantém Estudos, Audiência Pública e Leilão como 'em breve'.",
+      "consulta_comunidades_status": "NÃO LOCALIZADA CONSULTA ESPECÍFICA",
+      "consulta_comunidades_evidencia": "A descrição oficial reconhece a presença de várias reservas indígenas e unidades de conservação, mas não individualiza as comunidades na ficha da concessão.",
+      "comunidades_identificadas": [
+        "Reservas indígenas na área de influência"
+      ],
+      "comunidades_status": "NÃO CADASTRADAS NO GIT",
+      "territorios_comunidades": [
+        {
+          "nome": "Reservas indígenas na área de influência",
+          "tipo": "Contexto territorial — não individualizado na ficha da concessão",
+          "localizacao": "Bacia/Trecho do Tapajós",
+          "relacao": "A própria ANTAQ registra a presença de várias reservas indígenas na região.",
+          "consulta": "Sem consulta da concessão registrada na fonte; estudos/audiência ainda 'em breve'.",
+          "fonte": "https://www.gov.br/antaq/pt-br/assuntos/projetos-de-concessao/novas-concessoes-hidroviarias/tapajos"
+        }
+      ]
     },
     {
       "id": "HID-TOCANTINS",
@@ -98,12 +314,13 @@
       "fonte_atualizada_em": "A confirmar",
       "data_corte": "05/10/2026",
       "nivel_confianca": "Confirmado em fonte oficial",
-      "participacao_social_status": "NÃO LOCALIZADA NO GIT",
-      "participacao_social_evidencia": "A base Git registra estudos/modelagem em desenvolvimento, sem evidência versionada de consulta ou audiência pública.",
-      "consulta_comunidades_status": "NÃO LOCALIZADA NO GIT",
-      "consulta_comunidades_evidencia": "Não há registro nominal no repositório de consulta específica a comunidades locais, tradicionais, indígenas, quilombolas ou ribeirinhas.",
+      "participacao_social_status": "AINDA NÃO REALIZADA NA FICHA DA CONCESSÃO",
+      "participacao_social_evidencia": "A página oficial mantém Estudos, Audiência Pública e Leilão como 'em breve'.",
+      "consulta_comunidades_status": "NÃO LOCALIZADA CONSULTA ESPECÍFICA",
+      "consulta_comunidades_evidencia": "Não foi localizada, nas fontes do painel revisadas, relação nominal de comunidades vinculada à modelagem da concessão.",
       "comunidades_identificadas": [],
-      "comunidades_status": "NÃO CADASTRADAS NO GIT"
+      "comunidades_status": "NÃO CADASTRADAS NO GIT",
+      "territorios_comunidades": []
     },
     {
       "id": "HID-BARRA-NORTE",
@@ -122,12 +339,13 @@
       "fonte_atualizada_em": "27/03/2025",
       "data_corte": "05/10/2026",
       "nivel_confianca": "Confirmado em fonte oficial",
-      "participacao_social_status": "A DEFINIR",
-      "participacao_social_evidencia": "O próximo marco cadastrado é definir os atos de participação social; não há comprovação no Git de realização até a data de corte.",
-      "consulta_comunidades_status": "NÃO LOCALIZADA NO GIT",
-      "consulta_comunidades_evidencia": "Não há registro nominal no repositório de consulta específica a comunidades locais, tradicionais, indígenas, quilombolas ou ribeirinhas.",
+      "participacao_social_status": "AINDA NÃO REALIZADA NA FICHA DA CONCESSÃO",
+      "participacao_social_evidencia": "A página oficial mantém Estudos, Audiência Pública e Leilão como 'em breve'.",
+      "consulta_comunidades_status": "NÃO LOCALIZADA CONSULTA ESPECÍFICA",
+      "consulta_comunidades_evidencia": "Não foi localizada, nas fontes do painel revisadas, relação nominal de comunidades vinculada à modelagem da concessão.",
       "comunidades_identificadas": [],
-      "comunidades_status": "NÃO CADASTRADAS NO GIT"
+      "comunidades_status": "NÃO CADASTRADAS NO GIT",
+      "territorios_comunidades": []
     },
     {
       "id": "HID-SUL-MIRIM",
@@ -146,12 +364,13 @@
       "fonte_atualizada_em": "13/08/2026",
       "data_corte": "05/10/2026",
       "nivel_confianca": "Confirmado em fonte oficial",
-      "participacao_social_status": "REALIZADA",
-      "participacao_social_evidencia": "Consulta e Audiência Públicas nº 06/2026 registradas; audiência pública realizada em 11/08/2026.",
-      "consulta_comunidades_status": "NÃO LOCALIZADA NO GIT",
-      "consulta_comunidades_evidencia": "O Git comprova participação social geral, mas não individualiza consulta específica a comunidades locais/tradicionais nem lista comunidades consultadas.",
+      "participacao_social_status": "EM ANDAMENTO",
+      "participacao_social_evidencia": "Consulta Pública nº 06/2026 permanece aberta até 14/10/2026; houve sessão virtual em 11/08/2026 e há sessão presencial marcada para 07/10/2026 em Rio Grande/RS.",
+      "consulta_comunidades_status": "NÃO LOCALIZADA CONSULTA ESPECÍFICA ÀS COMUNIDADES",
+      "consulta_comunidades_evidencia": "Há participação social geral comprovada, mas as fontes revisadas não individualizam comunidades tradicionais/originárias consultadas especificamente.",
       "comunidades_identificadas": [],
-      "comunidades_status": "NÃO CADASTRADAS NO GIT"
+      "comunidades_status": "NÃO CADASTRADAS NO GIT",
+      "territorios_comunidades": []
     }
   ]
 }
