@@ -1,0 +1,100 @@
+{
+  "metadata": {
+    "versao": "10.1",
+    "data_corte": "06/10/2026",
+    "escopo": "Evidências existentes no GitHub sobre participação social, consultas e comunidades vinculadas às seis concessões prioritárias.",
+    "regra": "Não inferir comunidade nem consulta específica. Quando o Git não individualiza comunidades ou não comprova consulta específica, registrar NÃO LOCALIZADA NO GIT."
+  },
+  "projetos": [
+    {
+      "id": "HID-PARAGUAI",
+      "nome": "Hidrovia do Rio Paraguai",
+      "participacao_social": {
+        "status": "REALIZADA",
+        "evidencia": "A base Git registra: “Audiências públicas realizadas”.",
+        "referencia": "TC 016.699/2025-4 / ANTAQ — Hidrovia do Paraguai"
+      },
+      "consulta_comunidades": {
+        "status": "NÃO LOCALIZADA NO GIT",
+        "evidencia": "Não foi localizado no repositório registro nominal de consulta específica a comunidades locais, tradicionais, indígenas, quilombolas ou ribeirinhas."
+      },
+      "comunidades_identificadas": [],
+      "comunidades_status": "NÃO CADASTRADAS NO GIT"
+    },
+    {
+      "id": "HID-MADEIRA",
+      "nome": "Hidrovia do Rio Madeira",
+      "participacao_social": {
+        "status": "EM ANDAMENTO / TOMADA DE SUBSÍDIOS",
+        "evidencia": "A fase cadastrada é “Estruturação / tomada de subsídios” e o próximo passo é consolidar contribuições.",
+        "referencia": "Processo 50300.017021/2023-52 / ANTAQ — Hidrovia do Rio Madeira"
+      },
+      "consulta_comunidades": {
+        "status": "NÃO LOCALIZADA NO GIT",
+        "evidencia": "Não foi localizado no repositório registro nominal de consulta específica a comunidades locais, tradicionais, indígenas, quilombolas ou ribeirinhas."
+      },
+      "comunidades_identificadas": [],
+      "comunidades_status": "NÃO CADASTRADAS NO GIT"
+    },
+    {
+      "id": "HID-TAPAJOS",
+      "nome": "Hidrovia do Tapajós",
+      "participacao_social": {
+        "status": "NÃO LOCALIZADA NO GIT",
+        "evidencia": "A base registra estudos/modelagem em desenvolvimento, sem evidência de consulta ou audiência pública no conteúdo versionado.",
+        "referencia": "Carteira oficial ANTAQ"
+      },
+      "consulta_comunidades": {
+        "status": "NÃO LOCALIZADA NO GIT",
+        "evidencia": "Não foi localizado no repositório registro nominal de consulta específica a comunidades locais, tradicionais, indígenas, quilombolas ou ribeirinhas."
+      },
+      "comunidades_identificadas": [],
+      "comunidades_status": "NÃO CADASTRADAS NO GIT"
+    },
+    {
+      "id": "HID-TOCANTINS",
+      "nome": "Hidrovia do Tocantins",
+      "participacao_social": {
+        "status": "NÃO LOCALIZADA NO GIT",
+        "evidencia": "A base registra estudos/modelagem em desenvolvimento, sem evidência de consulta ou audiência pública no conteúdo versionado.",
+        "referencia": "Carteira oficial ANTAQ"
+      },
+      "consulta_comunidades": {
+        "status": "NÃO LOCALIZADA NO GIT",
+        "evidencia": "Não foi localizado no repositório registro nominal de consulta específica a comunidades locais, tradicionais, indígenas, quilombolas ou ribeirinhas."
+      },
+      "comunidades_identificadas": [],
+      "comunidades_status": "NÃO CADASTRADAS NO GIT"
+    },
+    {
+      "id": "HID-BARRA-NORTE",
+      "nome": "Barra Norte / Foz do Amazonas",
+      "participacao_social": {
+        "status": "A DEFINIR",
+        "evidencia": "O próximo marco cadastrado é “definir os atos de participação social”, sem comprovação no Git de realização até a data de corte.",
+        "referencia": "Processo 50300.014424/2022-69 / ANTAQ — Barra Norte"
+      },
+      "consulta_comunidades": {
+        "status": "NÃO LOCALIZADA NO GIT",
+        "evidencia": "Não foi localizado no repositório registro nominal de consulta específica a comunidades locais, tradicionais, indígenas, quilombolas ou ribeirinhas."
+      },
+      "comunidades_identificadas": [],
+      "comunidades_status": "NÃO CADASTRADAS NO GIT"
+    },
+    {
+      "id": "HID-SUL-MIRIM",
+      "nome": "SAIP Sul-Mirim / Lagoa Mirim",
+      "participacao_social": {
+        "status": "REALIZADA",
+        "evidencia": "A base registra Consulta e Audiência Públicas nº 06/2026 e audiência pública realizada em 11/08/2026.",
+        "referencia": "ANTAQ — Audiência Pública nº 06/2026"
+      },
+      "consulta_comunidades": {
+        "status": "NÃO LOCALIZADA NO GIT",
+        "evidencia": "O Git comprova participação social geral, mas não individualiza consulta específica a comunidades locais/tradicionais nem lista comunidades consultadas."
+      },
+      "comunidades_identificadas": [],
+      "comunidades_status": "NÃO CADASTRADAS NO GIT"
+    }
+  ]
+}
