@@ -146,7 +146,7 @@ select{min-height:46px;margin-top:5px;padding:10px 12px;font-size:15px;border:1p
 .app-footer{border-top:1px solid #d7e0e6;background:#fff;color:#506779}
 .app-footer-inner{max-width:1440px;margin:0 auto;padding:16px 24px;display:flex;justify-content:space-between;gap:18px;align-items:center;font-size:11px}
 .app-footer strong{color:#173d63}
-.app-footer-meta{text-align:right}
+.app-footer-meta{text-align:right}.app-footer-devs{margin-top:8px;padding-top:8px;border-top:1px solid #e3e9ee;color:#5b7183}.app-footer-devs b{color:#173d63}.app-footer-devs span{display:inline-block;margin-right:10px}
 .empty-state{padding:18px;border:1px dashed #bdcbd6;background:#fbfcfd;border-radius:10px;color:#5a7082;font-weight:700}
 @media(max-width:1100px){
   .budget-filter-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
@@ -2206,7 +2206,7 @@ function formalizeText(){
 function installFooter(){
   var old=el("biFooter");if(old)old.remove();
   var f=document.createElement("footer");f.id="biFooter";f.className="app-footer";
-  f.innerHTML='<div class="app-footer-inner"><div><strong>BI Executivo de Hidrovias e Navegação Interior</strong><br>DPP/SNHN · apoio ao acompanhamento executivo<div class="app-footer-rights">© 2026 BI Executivo de Hidrovias e Navegação Interior. Todos os direitos reservados.</div></div><div class="app-footer-meta"><span id="footerSync">Base integrada</span><br>Base técnica: Hidrovias v88 · Concessões v10.4 · Sugestões de Investimentos Hidroviários 2026 · base integrada 07/10/2026 · dados sujeitos à validação das fontes oficiais</div></div>';
+  f.innerHTML='<div class="app-footer-inner"><div><strong>BI Executivo de Hidrovias e Navegação Interior</strong><br>DPP/SNHN · apoio ao acompanhamento executivo<div class="app-footer-rights">© 2026 BI Executivo de Hidrovias e Navegação Interior. Todos os direitos reservados.</div><div class="app-footer-devs"><b>Desenvolvedores do sistema:</b><br><span>Francisco Dias Nascimento Filho - SNPTA</span><span>Laércio Matheus - COOAD</span><span>Victor Prijopranoto - COOAD</span></div></div><div class="app-footer-meta"><span id="footerSync">Base integrada</span><br>Base técnica: Hidrovias v88 · Concessões v10.4 · Sugestões de Investimentos Hidroviários 2026 · base integrada 07/10/2026 · dados sujeitos à validação das fontes oficiais</div></div>';
   document.body.appendChild(f);
 }
 function updateFooter(text){
@@ -2254,7 +2254,7 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
 </script>
 <footer id="biFooter" class="app-footer">
   <div class="app-footer-inner">
-    <div><strong>BI Executivo de Hidrovias e Navegação Interior</strong><br>DPP/SNHN · apoio ao acompanhamento executivo</div>
+    <div><strong>BI Executivo de Hidrovias e Navegação Interior</strong><br>DPP/SNHN · apoio ao acompanhamento executivo<div class="app-footer-devs"><b>Desenvolvedores do sistema:</b><br><span>Francisco Dias Nascimento Filho - SNPTA</span><span>Laércio Matheus - COOAD</span><span>Victor Prijopranoto - COOAD</span></div></div>
     <div class="app-footer-meta"><span id="footerSync">Base integrada</span><br>Base técnica: Hidrovias v88 · Concessões v10.4 · Sugestões de Investimentos Hidroviários 2026 · base integrada 07/10/2026 · dados sujeitos à validação das fontes oficiais</div>
   </div>
 </footer><script id="v77-fin-nav-script">
