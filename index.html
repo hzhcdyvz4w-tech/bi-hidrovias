@@ -408,7 +408,7 @@ select,input,textarea{font-size:max(16px,1em)}
   input,textarea,select,[contenteditable="true"]{user-select:text}
   #iosInstallHint{display:none!important}
 }
-</style><style id="v89-policy-portfolio-style">
+</style><style id="v90-policy-portfolio-style">
 .policy-note{padding:10px 12px;border:1px solid #d6e2ea;border-radius:10px;background:#eef7ff;color:#264862;font-size:12px;line-height:1.45;margin:8px 0 12px}
 .policy-filters{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:12px 0}
 .policy-filters label{font-size:11px}
@@ -417,13 +417,19 @@ select,input,textarea{font-size:max(16px,1em)}
 .policy-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:10px 0}
 .policy-kpi{border:1px solid #d8e1ea;border-radius:10px;background:#f8fafb;padding:9px}
 .policy-kpi b{display:block;font-size:17px;color:#173d63}.policy-kpi span{font-size:10px;color:#60788a}
-.policy-table{width:100%;border-collapse:collapse;font-size:11px;min-width:1180px}
+.policy-table{width:100%;border-collapse:collapse;font-size:11px;min-width:1540px}
 .policy-table th,.policy-table td{border:1px solid #d8e1ea;padding:7px 8px;text-align:left;vertical-align:top}
 .policy-table th{background:#eef4f8;color:#244b6d;position:sticky;top:0}
 .policy-table a{color:#173d63;font-weight:800;overflow-wrap:anywhere}
 .policy-priority{display:inline-flex;border:1px solid #d5e0e8;border-radius:999px;padding:3px 7px;font-size:9px;font-weight:900;background:#fff6df;color:#775716}
+.policy-evidence{display:inline-flex;align-items:center;border:1px solid #cbd9e4;border-radius:999px;padding:3px 6px;margin:0 3px 3px 0;font-size:9px;font-weight:900;background:#f8fafc;color:#4b6478}
+.policy-evidence.ok{background:#eaf8ef;border-color:#b9dfc7;color:#23643a}
+.policy-evidence.off{background:#f4f5f7;color:#75808a}
+.policy-doc-value{font-weight:900;color:#173d63;margin-bottom:5px}
+.policy-doc{display:block;margin:0 0 5px}
+.policy-social{display:block;margin-top:6px;padding-top:6px;border-top:1px dashed #cbd8e2;color:#5a6d7c;font-size:10px}
 @media(max-width:1050px){.policy-filters{grid-template-columns:repeat(3,minmax(0,1fr))}.policy-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:650px){.policy-filters{grid-template-columns:1fr}.policy-kpis{grid-template-columns:1fr 1fr}.policy-table{min-width:1000px}}
+@media(max-width:650px){.policy-filters{grid-template-columns:1fr}.policy-kpis{grid-template-columns:1fr 1fr}.policy-table{min-width:1350px}}
 </style></head><body><header class="bi-header">
   <div class="bi-header-inner">
     <div>
@@ -2200,7 +2206,7 @@ function formalizeText(){
 function installFooter(){
   var old=el("biFooter");if(old)old.remove();
   var f=document.createElement("footer");f.id="biFooter";f.className="app-footer";
-  f.innerHTML='<div class="app-footer-inner"><div><strong>BI Executivo de Hidrovias e Navegação Interior</strong><br>DPP/SNHN · apoio ao acompanhamento executivo<div class="app-footer-rights">© 2026 BI Executivo de Hidrovias e Navegação Interior. Todos os direitos reservados.</div></div><div class="app-footer-meta"><span id="footerSync">Base integrada</span><br>Base técnica: Hidrovias v88 · Concessões v10.4 · Sugestões de Investimentos Hidroviários 2026 · base integrada 06/10/2026 · dados sujeitos à validação das fontes oficiais</div></div>';
+  f.innerHTML='<div class="app-footer-inner"><div><strong>BI Executivo de Hidrovias e Navegação Interior</strong><br>DPP/SNHN · apoio ao acompanhamento executivo<div class="app-footer-rights">© 2026 BI Executivo de Hidrovias e Navegação Interior. Todos os direitos reservados.</div></div><div class="app-footer-meta"><span id="footerSync">Base integrada</span><br>Base técnica: Hidrovias v88 · Concessões v10.4 · Sugestões de Investimentos Hidroviários 2026 · base integrada 07/10/2026 · dados sujeitos à validação das fontes oficiais</div></div>';
   document.body.appendChild(f);
 }
 function updateFooter(text){
@@ -2249,7 +2255,7 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
 <footer id="biFooter" class="app-footer">
   <div class="app-footer-inner">
     <div><strong>BI Executivo de Hidrovias e Navegação Interior</strong><br>DPP/SNHN · apoio ao acompanhamento executivo</div>
-    <div class="app-footer-meta"><span id="footerSync">Base integrada</span><br>Base técnica: Hidrovias v88 · Concessões v10.4 · Sugestões de Investimentos Hidroviários 2026 · base integrada 06/10/2026 · dados sujeitos à validação das fontes oficiais</div>
+    <div class="app-footer-meta"><span id="footerSync">Base integrada</span><br>Base técnica: Hidrovias v88 · Concessões v10.4 · Sugestões de Investimentos Hidroviários 2026 · base integrada 07/10/2026 · dados sujeitos à validação das fontes oficiais</div>
   </div>
 </footer><script id="v77-fin-nav-script">
 (function(){
@@ -3350,54 +3356,90 @@ setTimeout(function(){try{auditCascadeV76()}catch(e){console.warn("Auditoria de 
  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",function(){installHint();iosViewport()},{once:true});else{installHint();iosViewport()}
  registerSW();
 })();
-</script><script id="v89-policy-portfolio-script">
+</script><script id="v90-policy-portfolio-script">
 (function(){
 "use strict";
 var POLICY_DATA=null;
 function pe(v){return String(v==null?"—":v).replace(/[&<>"']/g,function(m){return({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[m]})}
 function pu(a){return Array.from(new Set((a||[]).filter(Boolean))).sort(function(x,y){return String(x).localeCompare(String(y),"pt-BR")})}
 function psel(id,vals){var e=document.getElementById(id);if(!e)return;var old=e.value||"TODOS";e.innerHTML='<option value="TODOS">TODOS</option>'+pu(vals).map(function(x){return'<option value="'+pe(x)+'">'+pe(x)+'</option>'}).join("");e.value=Array.from(e.options).some(function(o){return o.value===old})?old:"TODOS"}
-function pdata(){return POLICY_DATA&&Array.isArray(POLICY_DATA.policyPortfolio)?POLICY_DATA.policyPortfolio:[]}
+function pall(){return POLICY_DATA&&Array.isArray(POLICY_DATA.policyPortfolio)?POLICY_DATA.policyPortfolio:[]}
+function pev(r){return r&&r.evidenciasSugestao?r.evidenciasSugestao:{}}
+function qualifies(r){
+ var e=pev(r);
+ return !!(e.planejamentoValido&&(e.temPadmaPnmh||e.temCandidatoPAC||e.temVinculoPAC)&&!e.consolidarEm);
+}
+function pdata(){return pall().filter(qualifies)}
 function pfiltered(){
  var rows=pdata().slice(),region=(document.getElementById("polRegiao")||{}).value||"TODOS",rh=(document.getElementById("polRH")||{}).value||"TODOS",intv=(document.getElementById("polInterv")||{}).value||"TODOS",prio=(document.getElementById("polPrio")||{}).value||"TODOS",q=((document.getElementById("polBusca")||{}).value||"").trim().toLowerCase();
  return rows.filter(function(r){
-   return (region==="TODOS"||String(r.regioes||"").split(";").map(x=>x.trim()).includes(region))&&
+   return (region==="TODOS"||String(r.regioes||"").split(";").map(function(x){return x.trim()}).includes(region))&&
           (rh==="TODOS"||r.regiaoHidrograficaIBGE===rh)&&
           (intv==="TODOS"||r.intervencaoPrincipal===intv)&&
           (prio==="TODOS"||r.prioridade===prio)&&
           (!q||JSON.stringify(r).toLowerCase().includes(q));
  });
 }
+function badge(label,on){return'<span class="policy-evidence '+(on?'ok':'off')+'">'+pe(label)+' '+(on?'✓':'—')+'</span>'}
+function evidenceHtml(r){
+ var e=pev(r);
+ var ids=e.evidenciasIds||{};
+ var idText=[];
+ if(ids.padmaPnmh&&ids.padmaPnmh.length)idText.push("PADMA/PNMH: "+ids.padmaPnmh.join(", "));
+ if(ids.candidatosPAC&&ids.candidatosPAC.length)idText.push("Candidatos PAC: "+ids.candidatosPAC.join(", "));
+ if(ids.vinculosPAC&&ids.vinculosPAC.length)idText.push("PAC: "+ids.vinculosPAC.join(", "));
+ return badge("Planejamento",!!e.planejamentoValido)+badge("PADMA/PNMH",!!e.temPadmaPnmh)+badge("Candidato PAC",!!e.temCandidatoPAC)+badge("Vínculo PAC",!!e.temVinculoPAC)+
+   '<div><small>'+pe(e.planejamentoResumo||"—")+'</small></div>'+
+   (idText.length?'<div><small>'+pe(idText.join(" · "))+'</small></div>':'');
+}
+function docsHtml(r){
+ var e=pev(r),docs=Array.isArray(e.documentosProbatorios)?e.documentosProbatorios:[];
+ var out=e.valorReferencia?'<div class="policy-doc-value">'+pe(e.valorReferencia)+'</div>':'';
+ if(!docs.length&&r.fonte)docs=[{titulo:"Fonte oficial",url:r.fonte,data:r.dataFonte}];
+ out+=docs.map(function(d){
+   return d&&d.url?'<a class="policy-doc" href="'+pe(d.url)+'" target="_blank" rel="noopener noreferrer">'+pe(d.titulo||d.categoria||"Documento oficial")+' ↗</a>'+
+     (d.valor?'<small>'+pe(d.valor)+(d.data?' · '+pe(d.data):'')+'</small><br>':(d.data?'<small>'+pe(d.data)+'</small><br>':'')):'';
+ }).join("");
+ return out||"—";
+}
+function socialHtml(r){
+ var e=pev(r);
+ if(!e.condicionanteSocial&&!e.povosEtnias)return"";
+ var source=(e.fontesSociais&&e.fontesSociais[0])?'<a href="'+pe(e.fontesSociais[0])+'" target="_blank" rel="noopener noreferrer">fonte social ↗</a>':'';
+ return'<span class="policy-social"><b>Condicionante socioambiental:</b> '+pe(e.condicionanteSocial||"Não informado")+
+   (e.povosEtnias?'<br><b>Povos/etnias relacionados:</b> '+pe(e.povosEtnias):'')+
+   (source?'<br>'+source+(e.dataCorteSocial?' · '+pe(e.dataCorteSocial):''):'')+'</span>';
+}
 function renderPolicy(){
  var out=document.getElementById("polResults");if(!out)return;
- var rows=pfiltered(),counts={p1:0,conc:0,evtea:0,ip4:0};
- rows.forEach(function(r){if(String(r.prioridade).startsWith("P1"))counts.p1++;if(/concess/i.test(r.intervencaoPrincipal||r.tipo||""))counts.conc++;if(/EVTEA/i.test(r.intervencaoPrincipal||r.tipo||""))counts.evtea++;if(/IP4/i.test(r.intervencaoPrincipal||r.tipo||""))counts.ip4++});
- var k='<div class="policy-kpis"><div class="policy-kpi"><b>'+rows.length+'</b><span>registros no recorte</span></div><div class="policy-kpi"><b>'+counts.p1+'</b><span>prioridade P1</span></div><div class="policy-kpi"><b>'+counts.conc+'</b><span>com componente de concessão</span></div><div class="policy-kpi"><b>'+counts.evtea+'</b><span>com EVTEA/estudo</span></div></div>';
- var table='<div class="table-scroll"><table class="policy-table"><thead><tr><th>Política / eixo</th><th>Região / UF</th><th>Região hidrográfica</th><th>Classificação / intervenção</th><th>Situação oficial/evidência</th><th>Próximo marco</th><th>Instrumento / executor</th><th>Prioridade</th><th>Fonte</th></tr></thead><tbody>'+
- rows.map(function(r){return'<tr><td><b>'+pe(r.nome)+'</b><br><small>'+pe(r.hidrovia)+'</small></td><td>'+pe(r.regioes)+'<br><small>'+pe(r.ufs)+'</small></td><td>'+pe(r.regiaoHidrograficaIBGE)+'</td><td><b>'+pe(r.intervencaoPrincipal)+'</b><br><small>'+pe(r.classificacao)+'</small></td><td>'+pe(r.situacao)+'</td><td>'+pe(r.proximoMarco)+'</td><td>'+pe(r.instrumento)+'<br><small>'+pe(r.executor)+'</small></td><td><span class="policy-priority">'+pe(r.prioridade)+'</span><br><small>'+pe(r.statusRecomendacao)+'</small></td><td>'+(r.fonte?'<a href="'+pe(r.fonte)+'" target="_blank" rel="noopener noreferrer">Fonte oficial ↗</a>':'—')+'<br><small>'+pe(r.dataFonte)+'</small></td></tr>'}).join("")+
+ var rows=pfiltered(),counts={padma:0,cand:0,pac:0,p1:0};
+ rows.forEach(function(r){var e=pev(r);if(e.temPadmaPnmh)counts.padma++;if(e.temCandidatoPAC)counts.cand++;if(e.temVinculoPAC)counts.pac++;if(String(r.prioridade||"").startsWith("P1"))counts.p1++});
+ var k='<div class="policy-kpis"><div class="policy-kpi"><b>'+rows.length+'</b><span>sugestões elegíveis no recorte</span></div><div class="policy-kpi"><b>'+counts.padma+'</b><span>com ação PADMA/PNMH</span></div><div class="policy-kpi"><b>'+counts.cand+'</b><span>candidatas ao PAC</span></div><div class="policy-kpi"><b>'+counts.pac+'</b><span>com vínculo PAC</span></div></div>';
+ var table='<div class="table-scroll"><table class="policy-table"><thead><tr><th>Política / eixo</th><th>Região / UF</th><th>Região hidrográfica</th><th>Classificação / intervenção</th><th>Critério da proposta</th><th>Situação oficial / condicionante</th><th>Próximo marco</th><th>Instrumento / executor</th><th>Prioridade</th><th>Documento Probatório</th></tr></thead><tbody>'+
+ rows.map(function(r){return'<tr><td><b>'+pe(r.nome)+'</b><br><small>'+pe(r.hidrovia)+'</small></td><td>'+pe(r.regioes)+'<br><small>'+pe(r.ufs)+'</small></td><td>'+pe(r.regiaoHidrograficaIBGE)+'</td><td><b>'+pe(r.intervencaoPrincipal)+'</b><br><small>'+pe(r.classificacao)+'</small></td><td>'+evidenceHtml(r)+'</td><td>'+pe(r.situacao)+socialHtml(r)+'</td><td>'+pe(r.proximoMarco)+'</td><td>'+pe(r.instrumento)+'<br><small>'+pe(r.executor)+'</small></td><td><span class="policy-priority">'+pe(r.prioridade)+'</span><br><small>REGRA ATENDIDA · '+pe(r.statusRecomendacao)+'</small></td><td>'+docsHtml(r)+'</td></tr>'}).join("")+
  '</tbody></table></div>';
- out.innerHTML=k+(rows.length?table:'<div class="empty-state">Nenhum registro para o recorte selecionado.</div>');
+ out.innerHTML=k+(rows.length?table:'<div class="empty-state">Nenhuma sugestão atende à regra no recorte selecionado.</div>');
 }
 function installFilters(){
  var rows=pdata();
- psel("polRegiao",rows.flatMap(function(r){return String(r.regioes||"").split(";").map(x=>x.trim()).filter(Boolean)}));
- psel("polRH",rows.map(r=>r.regiaoHidrograficaIBGE));
- psel("polInterv",rows.map(r=>r.intervencaoPrincipal));
- psel("polPrio",rows.map(r=>r.prioridade));
+ psel("polRegiao",rows.flatMap(function(r){return String(r.regioes||"").split(";").map(function(x){return x.trim()}).filter(Boolean)}));
+ psel("polRH",rows.map(function(r){return r.regiaoHidrograficaIBGE}));
+ psel("polInterv",rows.map(function(r){return r.intervencaoPrincipal}));
+ psel("polPrio",rows.map(function(r){return r.prioridade}));
  ["polRegiao","polRH","polInterv","polPrio"].forEach(function(id){var e=document.getElementById(id);if(e)e.addEventListener("change",renderPolicy)});
  var q=document.getElementById("polBusca");if(q)q.addEventListener("input",renderPolicy);
  var clear=document.getElementById("polClear");if(clear)clear.addEventListener("click",function(){["polRegiao","polRH","polInterv","polPrio"].forEach(function(id){var e=document.getElementById(id);if(e)e.value="TODOS"});if(q)q.value="";renderPolicy()});
 }
 async function openPolicyPortfolio(){
  var el=document.getElementById("quickResult");if(!el)return;
- el.hidden=false;el.innerHTML='<h3>🧭 Sugestões de Investimentos Hidroviários</h3><div class="policy-note">Carregando base pública de planejamento...</div>';
+ el.hidden=false;el.innerHTML='<h3>🧭 Sugestões de Investimentos Hidroviários</h3><div class="policy-note">Carregando bases de planejamento, PADMA/PNMH, PAC e condicionantes socioambientais...</div>';
  el.scrollIntoView({behavior:"smooth",block:"start"});
  try{
-   if(!POLICY_DATA){var r=await fetch("./data/politica_hidroviaria_regional_2026.json?corte=20261006",{cache:"no-store"});if(!r.ok)throw Error("HTTP "+r.status);POLICY_DATA=await r.json()}
+   if(!POLICY_DATA){var r=await fetch("./data/politica_hidroviaria_regional_2026.json?corte=20261007",{cache:"no-store"});if(!r.ok)throw Error("HTTP "+r.status);POLICY_DATA=await r.json()}
    el.innerHTML='<h3>🧭 Sugestões de Investimentos Hidroviários <small>('+pdata().length+')</small></h3>'+
-   '<div class="policy-note"><b>Governança:</b> estas são sugestões técnicas de investimentos e instrumentos de política pública. As recomendações de EVTEA, IP4, obra, manutenção ou concessão não são apresentadas como empreendimento contratado nem como execução financeira. Corte: '+pe(POLICY_DATA.metadata&&POLICY_DATA.metadata.data_corte)+'</div>'+
-   '<div class="policy-filters"><label>REGIÃO<select id="polRegiao"></select></label><label>REGIÃO HIDROGRÁFICA<select id="polRH"></select></label><label>INTERVENÇÃO<select id="polInterv"></select></label><label>PRIORIDADE<select id="polPrio"></select></label><label>BUSCAR<input id="polBusca" type="search" placeholder="rio, UF, instrumento..."></label></div>'+
-   '<div class="policy-actions"><button id="polClear" type="button" class="secondary-btn">Limpar filtros</button><a class="source-chip" href="./data/politica_hidroviaria_regional_2026.json" target="_blank" rel="noopener noreferrer">Base JSON ↗</a></div><div id="polResults"></div>';
+   '<div class="policy-note"><b>Regra de exibição:</b> o investimento só aparece como sugestão quando possui vínculo comprovado com planejamento hidroviário <b>vigente/aprovado</b> e, cumulativamente, ao menos uma evidência entre <b>PADMA/PNMH</b>, <b>candidatura ao PAC</b> ou <b>vínculo PAC</b>. A base de consultas e povos originários não cria sugestão sozinha; ela atua como condicionante socioambiental e de participação. Corte: '+pe(POLICY_DATA.metadata&&POLICY_DATA.metadata.data_corte)+'</div>'+
+   '<div class="policy-filters"><label>REGIÃO<select id="polRegiao"></select></label><label>REGIÃO HIDROGRÁFICA<select id="polRH"></select></label><label>INTERVENÇÃO<select id="polInterv"></select></label><label>PRIORIDADE<select id="polPrio"></select></label><label>BUSCAR<input id="polBusca" type="search" placeholder="rio, UF, PAC, PADMA..."></label></div>'+
+   '<div class="policy-actions"><button id="polClear" type="button" class="secondary-btn">Limpar filtros</button><a class="source-chip" href="./data/politica_hidroviaria_regional_2026.json" target="_blank" rel="noopener noreferrer">Base auditável JSON ↗</a></div><div id="polResults"></div>';
    installFilters();renderPolicy();
  }catch(err){el.innerHTML='<h3>🧭 Sugestões de Investimentos Hidroviários</h3><div class="alertbox">Não foi possível carregar a base: '+pe(err&&err.message||err)+'</div>'}
 }
