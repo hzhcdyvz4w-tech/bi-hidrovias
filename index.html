@@ -1655,6 +1655,34 @@ function v36BudgetFallback(nome){
     data:v.dataFonte||"28/09/2026"
   };
 }
+function currentBudgetFallback(r){
+  r=r||{};
+  var sys=r.sistema||"SIAFI / SIOP / Obrasgov / SEI";
+  function meaningful(v){
+    if(v===null||v===undefined)return false;
+    var s=String(v).trim();
+    return !!s&&!/^DADO NÃO LOCALIZADO/i.test(s)&&!/NECESSITA VALIDAÇÃO/i.test(s);
+  }
+  var notConfirmed="Não confirmado na data de corte";
+  var source=r.fonteExecOrcamentaria||r.fonte||"Base dinâmica publicada do BI";
+  var date=r.dataFonte||notConfirmed;
+  return {
+    source:r,
+    acao: meaningful(r.acao) ? r.acao : notConfirmed+" — consultar "+sys,
+    po: meaningful(r.po) ? r.po : notConfirmed+" — consultar SIOP/SIAFI conforme o empreendimento",
+    loa: meaningful(r.loa) ? r.loa : notConfirmed,
+    ploa: meaningful(r.ploa2027) ? r.ploa2027 : notConfirmed,
+    dotacao: meaningful(r.execOrcamentaria) ? r.execOrcamentaria : notConfirmed,
+    empenhado: meaningful(r.empenhadoPago) ? r.empenhadoPago : notConfirmed,
+    liquidado: meaningful(r.execFinanceira) ? r.execFinanceira : notConfirmed,
+    pago: meaningful(r.execFinanceira) ? r.execFinanceira : notConfirmed,
+    saldo: meaningful(r.execOrcamentaria) ? r.execOrcamentaria : notConfirmed,
+    execFinanceira: meaningful(r.execFinanceira) ? r.execFinanceira : notConfirmed,
+    execFisica: meaningful(r.execFisica) ? r.execFisica : notConfirmed,
+    fonte: source,
+    data: date
+  };
+}
 function mergeV36IntoMainData(){
   (window.DATA||[]).forEach(function(r){
     var v=v36Info(r.nome);if(!v)return;
@@ -1695,8 +1723,8 @@ function budgetInfo(r){
   var sd=sdata();
   var updated=(sd&&(sd.generatedAt||sd.dataBase||(sd.metadata&&sd.metadata.generatedAt)))||"data não informada";
   var source="Consulta SIOP BI (Google Drive/Sheets) + Matriz de Relacionamento";
-  var fb=v36BudgetFallback(nome);
-  var nature=directInv?"DIRETO / HABILITADO":(shared?"COMPARTILHADO / NÃO EXCLUSIVO":"BASE V36 / SEM VÍNCULO SIOP");
+  var fb=currentBudgetFallback(r);
+  var nature=directInv?"DIRETO / HABILITADO":(shared?"COMPARTILHADO / NÃO EXCLUSIVO":"BASE DINÂMICA ATUAL / SEM VÍNCULO SIOP");
   var sharedNote=shared?" · origem orçamentária: "+shared.rule.fonte:"";
   var ploaText=(p27&&p27.linked)?p27.text:(fb?fb.ploa:"PLOA 2027 não individualizado");
   return {
@@ -1717,7 +1745,6 @@ function budgetInfo(r){
 window.biBudgetInfo=budgetInfo;
 
 function enrich(){
-  mergeV36IntoMainData();
   (window.DATA||[]).forEach(function(r){
     var b=budgetInfo(r),fb=b.v36;
     r.fonteExecOrcamentaria=b.siopSource;
@@ -1921,8 +1948,8 @@ function reportBudgetRows(r,row){
   var pago=t?money(t.pago)+" — "+pct(t.pctPagoLiquidado)+" do liquidado":(fb?fb.pago:"Não individualizado");
   var saldo=t?money(t.saldoEmpenhar):(fb?fb.saldo:"Não individualizado");
   var sourceBase=b.siopLinked
-    ? "Consulta SIOP BI (Google Drive/Sheets) para valores orçamentários; base v36 para dados cadastrais/contratuais."
-    : "BI_DPP_SNHN_v36_ATUALIZACAO_DIARIA_28-09-2026.xlsx — fallback integral do relatório; sem atribuição monetária SIOP não habilitada.";
+    ? "Consulta SIOP BI (Google Drive/Sheets) para valores orçamentários; base dinâmica atual para dados cadastrais/contratuais."
+    : "Base dinâmica atual do BI — sem atribuição monetária SIOP individualizada para este empreendimento.";
   return row("Ação",b.acao)+row("Plano Orçamentário (PO)",b.po)+
     row("Natureza do vínculo orçamentário",b.siopNatureza+(b.siopShared?" · valores relacionados à ação/PO; não exclusivos do empreendimento":""))+
     (b.siopShared?row("Origem do orçamento compartilhado",b.siopSourceInvestment):"")+
@@ -1932,12 +1959,12 @@ function reportBudgetRows(r,row){
     row("Liquidado "+MAIN_YEAR,liq)+
     row("Pago "+MAIN_YEAR,pago)+
     row("Saldo a empenhar "+MAIN_YEAR,saldo)+
-    (!b.siopLinked&&fb?row("Execução financeira — referência v36",fb.execFinanceira):"")+
+    (!b.siopLinked&&fb?row("Execução financeira — base atual",fb.execFinanceira):"")+
     row("Fonte dos valores orçamentários",b.siopSource)+
     row("Base do Relatório Executivo",sourceBase)+
-    row("Referência base v36",fb?"04_Carteira_Atual_2026 · linha "+fb.source.sourceRow:"04_Carteira_Atual_2026")+
-    row("Sistema-chave base v36",fb?fb.source.sistema:(r.sistema||"—"))+
-    row("Data-base v36",fb?fb.source.dataFonte:(r.dataFonte||"—"))+
+    row("Referência da base", "Base dinâmica publicada do BI")+
+    row("Sistema-chave",r.sistema||"—")+
+    row("Data da fonte / corte",r.dataFonte||"Não confirmado na data de corte")+
     row("Atualização Consulta SIOP BI",b.siopLinked?b.siopUpdated:"Não aplicável ao valor monetário sem vínculo SIOP habilitado");
 }
 
@@ -1977,7 +2004,7 @@ window.doc=function(tipo){
         '<div class="compact-grid"><div class="compact-card"><b>Situação</b><strong>'+escx(r.situacao)+'</strong></div><div class="compact-card"><b>LOA '+MAIN_YEAR+'</b><strong>'+escx(b.loa)+'</strong></div><div class="compact-card"><b>Empenhado</b><strong>'+(t?money(t.empenhado):(b.v36?escx(b.v36.empenhado):"Não individualizado"))+'</strong></div><div class="compact-card"><b>Pago</b><strong>'+(t?money(t.pago):(b.v36?escx(b.v36.pago):"Não individualizado"))+'</strong></div></div>'+
         '<table class="rtable">'+row("Contrato / instrumento",r.instrumento)+row("Empresa / executor",r.executor)+row("Valor",r.valor)+reportBudgetRows(r,row)+row("Próximo marco",r.proximoMarco)+row("Risco / gargalo",r.gargalo)+row("Providência DPP",r.providencia)+'</table>';
     }
-    return '<div class="reporthead"><h2>Relatório Executivo — '+escx(r.nome)+'</h2><div class="reportmeta">DPP/SNHN · base v36 (carteira) + SIOP/PLOA quando houver vínculo validado</div></div>'+
+    return '<div class="reporthead"><h2>Relatório Executivo — '+escx(r.nome)+'</h2><div class="reportmeta">DPP/SNHN · base dinâmica atual + SIOP/PLOA quando houver vínculo validado</div></div>'+
       '<div class="reportsection"><h3>1. Identificação territorial e do empreendimento</h3><table class="rtable">'+reportContextRows(r,row)+'</table></div>'+
       '<div class="reportsection"><h3>2. Síntese executiva</h3><p>'+escx(r.objeto)+'</p><p><b>Situação:</b> '+escx(r.situacao)+' &nbsp; <b>Fase:</b> '+escx(r.fase)+'</p></div>'+
       '<div class="reportsection"><h3>3. Quadro contratual</h3><table class="rtable">'+row("Contrato / instrumento",r.instrumento)+row("Empresa / executor",r.executor)+row("Valor do instrumento",r.valor)+row("Próximo marco",r.proximoMarco)+'</table></div>'+
@@ -3277,7 +3304,7 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
 (function(){
 "use strict";
 function applyV36Final(){
-  if(typeof window.mergeV36IntoMainData==="function")window.mergeV36IntoMainData();
+  /* v36 legado desativado: a base dinâmica atual é a fonte cadastral do relatório */
   try{
     if(typeof window.fill==="function"&&typeof window.ORD!=="undefined"){
       window.fill("regiao",true);
