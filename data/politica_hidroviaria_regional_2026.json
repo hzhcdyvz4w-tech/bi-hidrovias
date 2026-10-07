@@ -1,11 +1,17 @@
 {
   "metadata": {
     "nome": "Política Pública Hidroviária Regional — Base 2026",
-    "versao": "2026.10.06",
-    "data_corte": "06/10/2026",
+    "versao": "2026.10.07",
+    "data_corte": "07/10/2026",
     "fonte_mestra": "Politica_Publica_Hidrovias_Brasil_2026_GitHub.xlsx",
     "total_registros": 20,
-    "regra_governanca": "Carteira de política pública e planejamento. Não incorporar automaticamente como empreendimento contratado ou execução financeira."
+    "regra_governanca": "Carteira de política pública e planejamento. Não incorporar automaticamente como empreendimento contratado ou execução financeira.",
+    "fontes_mestres": [
+      "Plano_Hidroviario_PADMA_PAC_Realizacoes_2026(1).xlsx",
+      "Completa Planilha_Hidrovias_Consultas_Povos_Originarios_2026.xlsx"
+    ],
+    "regra_exibicao": "Exibir como sugestão somente quando houver planejamento hidroviário vigente/aprovado E pelo menos uma evidência entre: ação PADMA/PNMH, candidatura ao PAC ou vínculo PAC registrado. Eixos duplicados são consolidados no eixo principal.",
+    "total_sugestoes_elegiveis": 10
   },
   "policyPortfolio": [
     {
@@ -32,7 +38,58 @@
       "classificacao": "Hidrovia oficial DNIT",
       "intervencaoPrincipal": "IP4 + manutenção permanente",
       "prioridade": "P1 — Muito alta",
-      "statusRecomendacao": "PROPOSTA TÉCNICA"
+      "statusRecomendacao": "PROPOSTA TÉCNICA",
+      "evidenciasSugestao": {
+        "planejamentoValido": true,
+        "planejamentoResumo": "PNL 2050 (VIGENTE / PRIORIDADES PUBLICADAS); PNMH (VIGENTE); PADMA (VIGENTE — IN DNIT 10/2026); PROIP4 / carteira de IP4 (VIGENTE)",
+        "temPadmaPnmh": true,
+        "temCandidatoPAC": true,
+        "temVinculoPAC": true,
+        "consolidarEm": null,
+        "motivoNaoExibicao": "",
+        "evidenciasIds": {
+          "padmaPnmh": [
+            "M-001",
+            "M-002",
+            "M-003",
+            "M-004"
+          ],
+          "candidatosPAC": [
+            "C-005"
+          ],
+          "vinculosPAC": [
+            "PAC-004",
+            "PAC-006",
+            "PAC-007"
+          ]
+        },
+        "valorReferencia": "R$ 466,75 mi em quatro ações PNMH correlatas identificadas (Amazonas/Solimões); valores PAC/IP4 adicionais não agregados para evitar dupla contagem.",
+        "documentosProbatorios": [
+          {
+            "titulo": "PAC-004 — Terminal Manaus Moderna",
+            "url": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/05/terminal-manaus-moderna-no-amazonas-vai-receber-r-875-9-milhoes-em-investimentos",
+            "categoria": "PAC / execução",
+            "valor": "R$ 875.9 mi",
+            "contexto": "Recursos do Novo PAC",
+            "data": "27/05/2026"
+          },
+          {
+            "titulo": "PAC-006 — Revitalização da IP4 de Coari",
+            "url": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/03/com-investimentos-de-r-7-milhoes-governo-entrega-obras-de-revitalizacao-da-ip4-de-coari-am",
+            "categoria": "PAC / execução",
+            "valor": "R$ 7.0 mi",
+            "contexto": "Recursos do Novo PAC",
+            "data": "26/03/2026"
+          }
+        ],
+        "condicionanteSocial": "Amazonas: Não localizada CLPI concluída. A reunião socioambiental prevista não equivale, por si só, a CLPI | Solimões: Não localizada consulta comunitária/CLPI específica vinculada a projeto de concessão",
+        "povosEtnias": "Mura; Sateré-Mawé; Tikuna; Kokama; Kambeba (Omágua); Kaixana",
+        "fontesSociais": [
+          "https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2004/dnn/Dnn10334.htm"
+        ],
+        "dataCorteSocial": "06/10/2026"
+      },
+      "exibirComoSugestao": true
     },
     {
       "id": "POL-002",
@@ -58,7 +115,41 @@
       "classificacao": "Projeto federal de concessão em estruturação",
       "intervencaoPrincipal": "Concessão",
       "prioridade": "P1 — Muito alta",
-      "statusRecomendacao": "ALINHADA À AGENDA FEDERAL"
+      "statusRecomendacao": "ALINHADA À AGENDA FEDERAL",
+      "evidenciasSugestao": {
+        "planejamentoValido": true,
+        "planejamentoResumo": "PNL 2050 (VIGENTE / PRIORIDADES PUBLICADAS)",
+        "temPadmaPnmh": false,
+        "temCandidatoPAC": true,
+        "temVinculoPAC": false,
+        "consolidarEm": null,
+        "motivoNaoExibicao": "",
+        "evidenciasIds": {
+          "padmaPnmh": [],
+          "candidatosPAC": [
+            "C-005"
+          ],
+          "vinculosPAC": []
+        },
+        "valorReferencia": "Sem valor público consolidado na base fornecida; a evidência é de planejamento/candidatura e modelagem.",
+        "documentosProbatorios": [
+          {
+            "titulo": "C-005 — PNL 2050 / candidato PAC — Amazonas / Estreito de Breves",
+            "url": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/09/plano-nacional-de-logistica-aponta-papel-das-hidrovias-no-desenvolvimento-regional",
+            "categoria": "Candidato PAC",
+            "valor": null,
+            "contexto": "Alinhado a abastecimento e integração; obras específicas precisam ser individualizadas.",
+            "data": "07/10/2026"
+          }
+        ],
+        "condicionanteSocial": "Amazonas: Não localizada CLPI concluída. A reunião socioambiental prevista não equivale, por si só, a CLPI",
+        "povosEtnias": "Mura; Sateré-Mawé",
+        "fontesSociais": [
+          "https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2004/dnn/Dnn10334.htm"
+        ],
+        "dataCorteSocial": "06/10/2026"
+      },
+      "exibirComoSugestao": true
     },
     {
       "id": "POL-003",
@@ -84,7 +175,53 @@
       "classificacao": "Hidrovia oficial / concessão prioritária ANTAQ",
       "intervencaoPrincipal": "Concessão",
       "prioridade": "P1 — Muito alta",
-      "statusRecomendacao": "ALINHADA À AGENDA FEDERAL"
+      "statusRecomendacao": "ALINHADA À AGENDA FEDERAL",
+      "evidenciasSugestao": {
+        "planejamentoValido": true,
+        "planejamentoResumo": "PNL 2050 (VIGENTE / PRIORIDADES PUBLICADAS); PNMH (VIGENTE); PADMA (VIGENTE — IN DNIT 10/2026)",
+        "temPadmaPnmh": true,
+        "temCandidatoPAC": true,
+        "temVinculoPAC": true,
+        "consolidarEm": null,
+        "motivoNaoExibicao": "",
+        "evidenciasIds": {
+          "padmaPnmh": [
+            "M-005"
+          ],
+          "candidatosPAC": [
+            "C-006"
+          ],
+          "vinculosPAC": [
+            "PAC-008"
+          ]
+        },
+        "valorReferencia": "R$ 123,6 mi — PADMA Rio Madeira / Contrato nº 323/2026, vigência até nov/2029.",
+        "documentosProbatorios": [
+          {
+            "titulo": "PAC-008 — PADMA Rio Madeira",
+            "url": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/05/governo-federal-assina-contrato-de-r-123-6-milhoes-para-garantir-navegabilidade-no-rio-madeira",
+            "categoria": "PAC / execução",
+            "valor": "R$ 123.6 mi",
+            "contexto": "Contrato nº 323/2026; vigência até nov/2029",
+            "data": "29/05/2026"
+          },
+          {
+            "titulo": "PAC-008 — fonte complementar",
+            "url": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/01/governo-publica-edital-para-dragagem-de-manutencao-da-hidrovia-do-rio-madeira",
+            "categoria": "PAC / complementar",
+            "valor": null,
+            "contexto": null,
+            "data": null
+          }
+        ],
+        "condicionanteSocial": "Madeira: Não localizada CLPI/consulta comunitária específica concluída",
+        "povosEtnias": "Parintintin; Pirahã; Jiahui; Tenharim; Juma; Mura; Apurinã; Miranha; Munduruku; Torá",
+        "fontesSociais": [
+          "https://www.gov.br/funai/pt-br/acesso-a-informacao/institucional/coordenacoes-regionais-funai/cr-madeira"
+        ],
+        "dataCorteSocial": "06/10/2026"
+      },
+      "exibirComoSugestao": true
     },
     {
       "id": "POL-004",
@@ -110,7 +247,53 @@
       "classificacao": "Projeto de concessão + eixo potencial a montante",
       "intervencaoPrincipal": "Concessão no trecho maduro + EVTEA nos trechos de expansão",
       "prioridade": "P1 — Muito alta",
-      "statusRecomendacao": "PROPOSTA TÉCNICA COMPATÍVEL COM AGENDA FEDERAL"
+      "statusRecomendacao": "PROPOSTA TÉCNICA COMPATÍVEL COM AGENDA FEDERAL",
+      "evidenciasSugestao": {
+        "planejamentoValido": true,
+        "planejamentoResumo": "PNL 2050 (VIGENTE / PRIORIDADES PUBLICADAS); PNMH (VIGENTE); PADMA (VIGENTE — IN DNIT 10/2026)",
+        "temPadmaPnmh": true,
+        "temCandidatoPAC": true,
+        "temVinculoPAC": true,
+        "consolidarEm": null,
+        "motivoNaoExibicao": "",
+        "evidenciasIds": {
+          "padmaPnmh": [
+            "M-006"
+          ],
+          "candidatosPAC": [
+            "C-008"
+          ],
+          "vinculosPAC": [
+            "PAC-009"
+          ]
+        },
+        "valorReferencia": "R$ 74,8 mi — valor previsto no edital PADMA Tapajós; certame suspenso para diálogo/consulta.",
+        "documentosProbatorios": [
+          {
+            "titulo": "PAC-009 — PADMA Tapajós — Santarém/Itaituba",
+            "url": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/02/nota-publica-sobre-a-dragagem-no-rio-tapajos",
+            "categoria": "PAC / execução",
+            "valor": "R$ 74.8 mi",
+            "contexto": "Valor previsto no edital",
+            "data": "06/02/2026"
+          },
+          {
+            "titulo": "PAC-009 — fonte complementar",
+            "url": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/01/edital-para-dragagem-no-rio-tapajos-pa-preve-r-74-8-milhoes-de-investimentos",
+            "categoria": "PAC / complementar",
+            "valor": null,
+            "contexto": null,
+            "data": null
+          }
+        ],
+        "condicionanteSocial": "Tapajós - Teles Pires: Há negociação com povos indígenas e compromisso formal de realizar consulta livre, prévia e informada antes de novos empreendimentos; CLPI não deve ser marcada como concluída",
+        "povosEtnias": "Arapyun; Arara-Vermelha; Borari; Jaraki; Tapajó; Tapayú; Apiaká; Kumaruara; Maytapu; Munduruku; Munduruku Cara Preta; Sateré-Mawé; Tapuia; Tupinambá",
+        "fontesSociais": [
+          "https://www.gov.br/povosindigenas/pt-br/assuntos/noticias/2026/05/ministro-eloy-terena-assina-portaria-que-cria-o-forum-regional-territorios-ancestrais-do-tapajos-em-brasilia"
+        ],
+        "dataCorteSocial": "06/10/2026"
+      },
+      "exibirComoSugestao": true
     },
     {
       "id": "POL-005",
@@ -136,7 +319,52 @@
       "classificacao": "Hidrovia oficial / concessão prioritária ANTAQ",
       "intervencaoPrincipal": "Obra estruturante + concessão",
       "prioridade": "P1 — Muito alta",
-      "statusRecomendacao": "ALINHADA À AGENDA FEDERAL"
+      "statusRecomendacao": "ALINHADA À AGENDA FEDERAL",
+      "evidenciasSugestao": {
+        "planejamentoValido": true,
+        "planejamentoResumo": "PNL 2050 (VIGENTE / PRIORIDADES PUBLICADAS); PSH 2035 (APROVADO)",
+        "temPadmaPnmh": false,
+        "temCandidatoPAC": true,
+        "temVinculoPAC": true,
+        "consolidarEm": null,
+        "motivoNaoExibicao": "",
+        "evidenciasIds": {
+          "padmaPnmh": [],
+          "candidatosPAC": [
+            "C-001",
+            "C-002"
+          ],
+          "vinculosPAC": [
+            "PAC-001"
+          ]
+        },
+        "valorReferencia": "Valor global não consolidado na pesquisa; Pedral do Lourenço possui vínculo PAC confirmado.",
+        "documentosProbatorios": [
+          {
+            "titulo": "PAC-001 — Pedral do Lourenço",
+            "url": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2025/12/projeto-de-obras-no-pedral-do-lourenco-avanca-no-rio-tocantins-e-amplia-beneficios-para-a-populacao-da-regiao",
+            "categoria": "PAC / execução",
+            "valor": null,
+            "contexto": "Valor global não consolidado nesta pesquisa",
+            "data": "26/12/2025"
+          },
+          {
+            "titulo": "PAC-001 — fonte complementar",
+            "url": "https://www.gov.br/dnit/pt-br/assuntos/noticias/dnit-realiza-visita-ao-inph-para-acompanhar-estudos-do-pedral-do-lourenco",
+            "categoria": "PAC / complementar",
+            "valor": null,
+            "contexto": null,
+            "data": null
+          }
+        ],
+        "condicionanteSocial": "Tocantins - Araguaia: Participação comunitária documentada no Pedral do Lourenço: DSAP, reuniões com moradores/ribeirinhos/pescadores e audiência pública com lideranças comunitárias. Isso não é automaticamente CLPI OIT 169",
+        "povosEtnias": "Karajá/Iny; Javaé; Xambioá; Apinajé; Assurini do Tocantins; Parakanã/Awaeté; Gavião (Parkatêjê, Kyikatêjê, Akrãtikatêjê); Suruí-Aikewara; Tembé; Xikrin do Rio Cateté",
+        "fontesSociais": [
+          "https://www.gov.br/funai/pt-br/acesso-a-informacao/institucional/coordenacoes-regionais-funai/cr-araguaia-tocantins"
+        ],
+        "dataCorteSocial": "06/10/2026"
+      },
+      "exibirComoSugestao": true
     },
     {
       "id": "POL-006",
@@ -162,7 +390,22 @@
       "classificacao": "Hidrovia oficial DNIT com limitações relevantes",
       "intervencaoPrincipal": "EVTEA/atualização de estudos",
       "prioridade": "P2 — Alta",
-      "statusRecomendacao": "PROPOSTA TÉCNICA"
+      "statusRecomendacao": "PROPOSTA TÉCNICA",
+      "evidenciasSugestao": {
+        "planejamentoValido": true,
+        "planejamentoResumo": "PSH 2035 (APROVADO)",
+        "temPadmaPnmh": false,
+        "temCandidatoPAC": false,
+        "temVinculoPAC": false,
+        "consolidarEm": null,
+        "motivoNaoExibicao": "Sem ação PADMA/PNMH específica e sem candidatura PAC individualizada na base fornecida.",
+        "evidenciasIds": {
+          "padmaPnmh": [],
+          "candidatosPAC": [],
+          "vinculosPAC": []
+        }
+      },
+      "exibirComoSugestao": false
     },
     {
       "id": "POL-007",
@@ -188,7 +431,22 @@
       "classificacao": "Eixo de navegação regional com necessidade de validação de projeto",
       "intervencaoPrincipal": "EVTEA + manutenção/monitoramento",
       "prioridade": "P1 — Muito alta",
-      "statusRecomendacao": "PROPOSTA TÉCNICA — VALIDAR PROJETO ATUAL"
+      "statusRecomendacao": "PROPOSTA TÉCNICA — VALIDAR PROJETO ATUAL",
+      "evidenciasSugestao": {
+        "planejamentoValido": false,
+        "planejamentoResumo": "Não localizado nas bases fornecidas",
+        "temPadmaPnmh": false,
+        "temCandidatoPAC": false,
+        "temVinculoPAC": false,
+        "consolidarEm": null,
+        "motivoNaoExibicao": "Não localizado vínculo suficiente nas bases de planejamento/PADMA-PNMH/candidatos ao PAC fornecidas.",
+        "evidenciasIds": {
+          "padmaPnmh": [],
+          "candidatosPAC": [],
+          "vinculosPAC": []
+        }
+      },
+      "exibirComoSugestao": false
     },
     {
       "id": "POL-008",
@@ -214,7 +472,22 @@
       "classificacao": "Vias navegáveis interiores / eixos sociais",
       "intervencaoPrincipal": "IP4",
       "prioridade": "P1 — Muito alta",
-      "statusRecomendacao": "PROPOSTA TÉCNICA"
+      "statusRecomendacao": "PROPOSTA TÉCNICA",
+      "evidenciasSugestao": {
+        "planejamentoValido": true,
+        "planejamentoResumo": "PNMH (VIGENTE)",
+        "temPadmaPnmh": false,
+        "temCandidatoPAC": false,
+        "temVinculoPAC": false,
+        "consolidarEm": null,
+        "motivoNaoExibicao": "Plano operacional genérico não basta: falta ação específica PADMA/PNMH ou candidatura/vínculo PAC.",
+        "evidenciasIds": {
+          "padmaPnmh": [],
+          "candidatosPAC": [],
+          "vinculosPAC": []
+        }
+      },
+      "exibirComoSugestao": false
     },
     {
       "id": "POL-009",
@@ -240,7 +513,51 @@
       "classificacao": "Hidrovia oficial DNIT",
       "intervencaoPrincipal": "EVTEA atualizado + obras de revitalização",
       "prioridade": "P1 — Muito alta",
-      "statusRecomendacao": "PROPOSTA TÉCNICA COMPATÍVEL COM AGENDA FEDERAL"
+      "statusRecomendacao": "PROPOSTA TÉCNICA COMPATÍVEL COM AGENDA FEDERAL",
+      "evidenciasSugestao": {
+        "planejamentoValido": true,
+        "planejamentoResumo": "PNL 2050 (VIGENTE / PRIORIDADES PUBLICADAS); PSH 2035 (APROVADO)",
+        "temPadmaPnmh": false,
+        "temCandidatoPAC": true,
+        "temVinculoPAC": true,
+        "consolidarEm": null,
+        "motivoNaoExibicao": "",
+        "evidenciasIds": {
+          "padmaPnmh": [],
+          "candidatosPAC": [
+            "C-007"
+          ],
+          "vinculosPAC": [
+            "PAC-014"
+          ]
+        },
+        "valorReferencia": "Sem valor consolidado; corredor priorizado no PNL 2050 e classificado como candidato à futura inclusão no PAC.",
+        "documentosProbatorios": [
+          {
+            "titulo": "PAC-014 — Reativação e modernização da navegação",
+            "url": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/09/plano-nacional-de-logistica-aponta-papel-das-hidrovias-no-desenvolvimento-regional",
+            "categoria": "PAC / execução",
+            "valor": null,
+            "contexto": "Sem valor consolidado nesta pesquisa",
+            "data": "15/09/2026"
+          },
+          {
+            "titulo": "PAC-014 — fonte complementar",
+            "url": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/setor-hidroviario/plano-setorial-hidroviario-1/plano-setorial-hidroviario-2035-ciclo-2020-2023",
+            "categoria": "PAC / complementar",
+            "valor": null,
+            "contexto": null,
+            "data": null
+          }
+        ],
+        "condicionanteSocial": "São Francisco: Não localizada consulta comunitária/CLPI específica",
+        "povosEtnias": "Truká; Tuxá; Tumbalalá",
+        "fontesSociais": [
+          "https://www.gov.br/saude/pt-br/composicao/sesai/planos-distritais-2024-2027/plano-distrital-pernambuco/%40%40download/file"
+        ],
+        "dataCorteSocial": "06/10/2026"
+      },
+      "exibirComoSugestao": true
     },
     {
       "id": "POL-010",
@@ -266,7 +583,51 @@
       "classificacao": "Hidrovia oficial DNIT",
       "intervencaoPrincipal": "Obra/manutenção + EVTEA atualizado",
       "prioridade": "P1 — Muito alta",
-      "statusRecomendacao": "PROPOSTA TÉCNICA COMPATÍVEL COM AGENDA FEDERAL"
+      "statusRecomendacao": "PROPOSTA TÉCNICA COMPATÍVEL COM AGENDA FEDERAL",
+      "evidenciasSugestao": {
+        "planejamentoValido": true,
+        "planejamentoResumo": "PNL 2050 (VIGENTE / PRIORIDADES PUBLICADAS)",
+        "temPadmaPnmh": false,
+        "temCandidatoPAC": true,
+        "temVinculoPAC": true,
+        "consolidarEm": null,
+        "motivoNaoExibicao": "",
+        "evidenciasIds": {
+          "padmaPnmh": [],
+          "candidatosPAC": [
+            "C-004"
+          ],
+          "vinculosPAC": [
+            "PAC-013"
+          ]
+        },
+        "valorReferencia": "Valor não divulgado na fonte consultada; corredor priorizado no PNL 2050 e candidato à futura inclusão no PAC.",
+        "documentosProbatorios": [
+          {
+            "titulo": "PAC-013 — Melhorias e desobstrução da Hidrovia do Parnaíba",
+            "url": "https://www.gov.br/dnit/pt-br/assuntos/noticias/dnit-executa-175-km-de-melhorias-na-hidrovia-do-parnaiba/",
+            "categoria": "PAC / execução",
+            "valor": null,
+            "contexto": "Valor não divulgado na notícia consultada",
+            "data": "19/03/2026"
+          },
+          {
+            "titulo": "PAC-013 — fonte complementar",
+            "url": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/09/plano-nacional-de-logistica-aponta-papel-das-hidrovias-no-desenvolvimento-regional",
+            "categoria": "PAC / complementar",
+            "valor": null,
+            "contexto": null,
+            "data": null
+          }
+        ],
+        "condicionanteSocial": "Parnaíba: Não localizada consulta comunitária/CLPI específica",
+        "povosEtnias": "Tabajara; Akroá-Gamela; Kariri; Gueguê",
+        "fontesSociais": [
+          "https://www.gov.br/funai/pt-br/assuntos/noticias/2025/funai-se-reune-com-povos-indigenas-de-alagoas-santa-catarina-e-piaui"
+        ],
+        "dataCorteSocial": "06/10/2026"
+      },
+      "exibirComoSugestao": true
     },
     {
       "id": "POL-011",
@@ -292,7 +653,22 @@
       "classificacao": "Hidrovia/via interior com intervenção DNIT",
       "intervencaoPrincipal": "Desobstrução/manutenção",
       "prioridade": "P2 — Alta",
-      "statusRecomendacao": "PROPOSTA TÉCNICA"
+      "statusRecomendacao": "PROPOSTA TÉCNICA",
+      "evidenciasSugestao": {
+        "planejamentoValido": false,
+        "planejamentoResumo": "Não localizado nas bases fornecidas",
+        "temPadmaPnmh": false,
+        "temCandidatoPAC": false,
+        "temVinculoPAC": false,
+        "consolidarEm": null,
+        "motivoNaoExibicao": "Intervenção DNIT citada, mas sem candidatura PAC ou ação específica da base PADMA/PNMH fornecida.",
+        "evidenciasIds": {
+          "padmaPnmh": [],
+          "candidatosPAC": [],
+          "vinculosPAC": []
+        }
+      },
+      "exibirComoSugestao": false
     },
     {
       "id": "POL-012",
@@ -318,7 +694,22 @@
       "classificacao": "Eixo potencial/local — não tratar como concessão sem validação",
       "intervencaoPrincipal": "EVTEA simplificado/estudo de demanda",
       "prioridade": "P3 — Média",
-      "statusRecomendacao": "PROPOSTA TÉCNICA — NECESSITA VALIDAÇÃO"
+      "statusRecomendacao": "PROPOSTA TÉCNICA — NECESSITA VALIDAÇÃO",
+      "evidenciasSugestao": {
+        "planejamentoValido": false,
+        "planejamentoResumo": "Não localizado nas bases fornecidas",
+        "temPadmaPnmh": false,
+        "temCandidatoPAC": false,
+        "temVinculoPAC": false,
+        "consolidarEm": null,
+        "motivoNaoExibicao": "Eixo potencial; não há evidência suficiente nas bases fornecidas para exibição como sugestão.",
+        "evidenciasIds": {
+          "padmaPnmh": [],
+          "candidatosPAC": [],
+          "vinculosPAC": []
+        }
+      },
+      "exibirComoSugestao": false
     },
     {
       "id": "POL-013",
@@ -344,7 +735,51 @@
       "classificacao": "Concessão prioritária ANTAQ",
       "intervencaoPrincipal": "Concessão",
       "prioridade": "P1 — Muito alta",
-      "statusRecomendacao": "ALINHADA À AGENDA FEDERAL"
+      "statusRecomendacao": "ALINHADA À AGENDA FEDERAL",
+      "evidenciasSugestao": {
+        "planejamentoValido": true,
+        "planejamentoResumo": "PNL 2050 (VIGENTE / PRIORIDADES PUBLICADAS); PSH 2035 (APROVADO)",
+        "temPadmaPnmh": false,
+        "temCandidatoPAC": true,
+        "temVinculoPAC": true,
+        "consolidarEm": null,
+        "motivoNaoExibicao": "",
+        "evidenciasIds": {
+          "padmaPnmh": [],
+          "candidatosPAC": [
+            "C-003"
+          ],
+          "vinculosPAC": [
+            "PAC-015"
+          ]
+        },
+        "valorReferencia": "R$ 63,7 mi de CAPEX até o 5º ano + R$ 14,1 mi/ano de OPEX — referência da modelagem da concessão.",
+        "documentosProbatorios": [
+          {
+            "titulo": "PAC-015 — Concessão da Hidrovia do Paraguai",
+            "url": "https://www.gov.br/antaq/pt-br/assuntos/projetos-de-concessao/novas-concessoes-hidroviarias/paraguai",
+            "categoria": "PAC / execução",
+            "valor": "R$ 63.7 mi",
+            "contexto": "CAPEX até o 5º ano; OPEX R$ 14,1 mi/ano; prazo 15 anos",
+            "data": "05/05/2026"
+          },
+          {
+            "titulo": "PAC-015 — fonte complementar",
+            "url": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/09/pnl-2050-conheca-os-caminhos-prioritarios-para-a-navegacao-brasileira",
+            "categoria": "PAC / complementar",
+            "valor": null,
+            "contexto": null,
+            "data": null
+          }
+        ],
+        "condicionanteSocial": "Paraguai: Não comprovada, nas fontes consultadas, consulta específica a comunidade tradicional",
+        "povosEtnias": "Guató",
+        "fontesSociais": [
+          "https://www.gov.br/icmbio/pt-br/assuntos/biodiversidade/unidade-de-conservacao/unidades-de-biomas/pantanal/lista-de-ucs/parna-do-pantanal-mato-grossense/arquivos/parna_matogrossensee.pdf"
+        ],
+        "dataCorteSocial": "06/10/2026"
+      },
+      "exibirComoSugestao": true
     },
     {
       "id": "POL-014",
@@ -370,7 +805,22 @@
       "classificacao": "Hidrovia oficial DNIT com maiores restrições",
       "intervencaoPrincipal": "PMH/PNMH + EVTEA ambiental/operacional",
       "prioridade": "P2 — Alta",
-      "statusRecomendacao": "PROPOSTA TÉCNICA"
+      "statusRecomendacao": "PROPOSTA TÉCNICA",
+      "evidenciasSugestao": {
+        "planejamentoValido": true,
+        "planejamentoResumo": "PNL 2050 (VIGENTE / PRIORIDADES PUBLICADAS)",
+        "temPadmaPnmh": false,
+        "temCandidatoPAC": false,
+        "temVinculoPAC": false,
+        "consolidarEm": null,
+        "motivoNaoExibicao": "A candidatura/estruturação comprovada refere-se ao Tramo Sul Corumbá–Rio Apa, não ao Tramo Norte.",
+        "evidenciasIds": {
+          "padmaPnmh": [],
+          "candidatosPAC": [],
+          "vinculosPAC": []
+        }
+      },
+      "exibirComoSugestao": false
     },
     {
       "id": "POL-015",
@@ -396,7 +846,49 @@
       "classificacao": "Hidrovia oficial DNIT / sistema multirregional",
       "intervencaoPrincipal": "Obras de gargalo + modernização",
       "prioridade": "P1 — Muito alta",
-      "statusRecomendacao": "PROPOSTA TÉCNICA COMPATÍVEL COM OBRAS EM CURSO"
+      "statusRecomendacao": "PROPOSTA TÉCNICA COMPATÍVEL COM OBRAS EM CURSO",
+      "evidenciasSugestao": {
+        "planejamentoValido": true,
+        "planejamentoResumo": "PSH 2035 (APROVADO)",
+        "temPadmaPnmh": false,
+        "temCandidatoPAC": false,
+        "temVinculoPAC": true,
+        "consolidarEm": null,
+        "motivoNaoExibicao": "",
+        "evidenciasIds": {
+          "padmaPnmh": [],
+          "candidatosPAC": [],
+          "vinculosPAC": [
+            "PAC-002"
+          ]
+        },
+        "valorReferencia": "R$ 293,8 mi — ampliação do canal de Nova Avanhandava, investimento divulgado pelo MPor/DNIT.",
+        "documentosProbatorios": [
+          {
+            "titulo": "PAC-002 — Ampliação do canal de Nova Avanhandava",
+            "url": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/03-1/mpor-preve-entrega-das-obras-de-ampliacao-do-canal-de-nova-avanhandava-sp-para-junho",
+            "categoria": "PAC / execução",
+            "valor": "R$ 293.8 mi",
+            "contexto": "Investimento divulgado pelo MPor/DNIT",
+            "data": "08/04/2026"
+          },
+          {
+            "titulo": "PAC-002 — fonte complementar",
+            "url": "https://www.gov.br/dnit/pt-br/assuntos/noticias/em-2025-manter-a-qualidade-da-infraestrutura-foi-o-compromisso-do-dnit-na-regiao-sudeste/",
+            "categoria": "PAC / complementar",
+            "valor": null,
+            "contexto": null,
+            "data": null
+          }
+        ],
+        "condicionanteSocial": "Paraná - Tietê: Não localizada consulta comunitária/CLPI específica associada a concessão",
+        "povosEtnias": "Avá-Guarani",
+        "fontesSociais": [
+          "https://www.gov.br/povosindigenas/pt-br/assuntos/noticias/2025/07/uniao-adquire-primeiros-imoveis-aos-ava-guarani-no-parana-como-parte-de-acordo-de-reparacao"
+        ],
+        "dataCorteSocial": "06/10/2026"
+      },
+      "exibirComoSugestao": true
     },
     {
       "id": "POL-016",
@@ -422,7 +914,26 @@
       "classificacao": "Componente da Hidrovia do São Francisco",
       "intervencaoPrincipal": "EVTEA por trecho",
       "prioridade": "P2 — Alta",
-      "statusRecomendacao": "PROPOSTA TÉCNICA"
+      "statusRecomendacao": "PROPOSTA TÉCNICA",
+      "evidenciasSugestao": {
+        "planejamentoValido": true,
+        "planejamentoResumo": "PNL 2050 (VIGENTE / PRIORIDADES PUBLICADAS); PSH 2035 (APROVADO)",
+        "temPadmaPnmh": false,
+        "temCandidatoPAC": true,
+        "temVinculoPAC": true,
+        "consolidarEm": "POL-009",
+        "motivoNaoExibicao": "Duplicidade territorial da proposta do Rio São Francisco (POL-009); consolidado no eixo principal para evitar dupla contagem.",
+        "evidenciasIds": {
+          "padmaPnmh": [],
+          "candidatosPAC": [
+            "C-007"
+          ],
+          "vinculosPAC": [
+            "PAC-014"
+          ]
+        }
+      },
+      "exibirComoSugestao": false
     },
     {
       "id": "POL-017",
@@ -448,7 +959,22 @@
       "classificacao": "Projeto de estudo/implantação em cooperação",
       "intervencaoPrincipal": "EVTEA",
       "prioridade": "P2 — Alta",
-      "statusRecomendacao": "ALINHADA À AGENDA OFICIAL"
+      "statusRecomendacao": "ALINHADA À AGENDA OFICIAL",
+      "evidenciasSugestao": {
+        "planejamentoValido": false,
+        "planejamentoResumo": "Não localizado nas bases fornecidas",
+        "temPadmaPnmh": false,
+        "temCandidatoPAC": false,
+        "temVinculoPAC": false,
+        "consolidarEm": null,
+        "motivoNaoExibicao": "Não localizada evidência nas bases fornecidas que satisfaça a regra de exibição.",
+        "evidenciasIds": {
+          "padmaPnmh": [],
+          "candidatosPAC": [],
+          "vinculosPAC": []
+        }
+      },
+      "exibirComoSugestao": false
     },
     {
       "id": "POL-018",
@@ -474,7 +1000,41 @@
       "classificacao": "Concessão integrada em participação social",
       "intervencaoPrincipal": "Concessão integrada",
       "prioridade": "P1 — Muito alta",
-      "statusRecomendacao": "ALINHADA À AGENDA FEDERAL"
+      "statusRecomendacao": "ALINHADA À AGENDA FEDERAL",
+      "evidenciasSugestao": {
+        "planejamentoValido": true,
+        "planejamentoResumo": "PSH 2035 (APROVADO)",
+        "temPadmaPnmh": false,
+        "temCandidatoPAC": false,
+        "temVinculoPAC": true,
+        "consolidarEm": null,
+        "motivoNaoExibicao": "",
+        "evidenciasIds": {
+          "padmaPnmh": [],
+          "candidatosPAC": [],
+          "vinculosPAC": [
+            "PAC-003"
+          ]
+        },
+        "valorReferencia": "R$ 57,9 mi — dragagem e sinalização da Lagoa Mirim; inclui R$ 6,7 mi de supervisão.",
+        "documentosProbatorios": [
+          {
+            "titulo": "PAC-003 — Dragagem e sinalização da Lagoa Mirim",
+            "url": "https://www.gov.br/portos-e-aeroportos/pt-br/assuntos/noticias/2026/07/aberta-consulta-publica-sobre-concessao-do-sistema-aquaviario-integrado-do-sul-e-da-lagoa-mirim",
+            "categoria": "PAC / execução",
+            "valor": "R$ 57.9 mi",
+            "contexto": "Inclui R$ 6,7 mi de supervisão; aplicação prevista 2026–2028",
+            "data": "01/07/2026"
+          }
+        ],
+        "condicionanteSocial": "Mercosul: Não localizada consulta específica a povo/comunidade tradicional como etapa separada",
+        "povosEtnias": "Guarani Mbyá",
+        "fontesSociais": [
+          "https://www.gov.br/icmbio/pt-br/assuntos/biodiversidade/pan/pan-lagoas-do-sul/1-ciclo/produtos/2024-pan-lagoas-do-sul-acao3-14-restauracao-ecologica-territorios-indigenas.pdf"
+        ],
+        "dataCorteSocial": "06/10/2026"
+      },
+      "exibirComoSugestao": true
     },
     {
       "id": "POL-019",
@@ -500,7 +1060,22 @@
       "classificacao": "Hidrovia do Mercosul / obras e manutenção",
       "intervencaoPrincipal": "Obra + manutenção",
       "prioridade": "P1 — Muito alta",
-      "statusRecomendacao": "PROPOSTA TÉCNICA COMPATÍVEL COM AGENDA FEDERAL"
+      "statusRecomendacao": "PROPOSTA TÉCNICA COMPATÍVEL COM AGENDA FEDERAL",
+      "evidenciasSugestao": {
+        "planejamentoValido": true,
+        "planejamentoResumo": "PSH 2035 (APROVADO)",
+        "temPadmaPnmh": false,
+        "temCandidatoPAC": false,
+        "temVinculoPAC": false,
+        "consolidarEm": "POL-018",
+        "motivoNaoExibicao": "Componente absorvido pelo SAIP Sul-Mirim (POL-018) e sem candidatura/PAC própria na base fornecida.",
+        "evidenciasIds": {
+          "padmaPnmh": [],
+          "candidatosPAC": [],
+          "vinculosPAC": []
+        }
+      },
+      "exibirComoSugestao": false
     },
     {
       "id": "POL-020",
@@ -526,7 +1101,22 @@
       "classificacao": "Potencial regional / componente do sistema Mercosul",
       "intervencaoPrincipal": "EVTEA específico",
       "prioridade": "P3 — Média",
-      "statusRecomendacao": "PROPOSTA TÉCNICA"
+      "statusRecomendacao": "PROPOSTA TÉCNICA",
+      "evidenciasSugestao": {
+        "planejamentoValido": false,
+        "planejamentoResumo": "Não localizado nas bases fornecidas",
+        "temPadmaPnmh": false,
+        "temCandidatoPAC": false,
+        "temVinculoPAC": false,
+        "consolidarEm": null,
+        "motivoNaoExibicao": "Sem candidatura PAC, ação PADMA/PNMH específica ou vínculo PAC confirmado nas bases fornecidas.",
+        "evidenciasIds": {
+          "padmaPnmh": [],
+          "candidatosPAC": [],
+          "vinculosPAC": []
+        }
+      },
+      "exibirComoSugestao": false
     }
   ]
 }
