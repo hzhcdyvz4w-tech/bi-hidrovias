@@ -94,7 +94,7 @@
         '<button id="riBriefing" class="secondary">🎯 BRIEFING</button>',
         '<button id="riExportJson" class="secondary">⬇ Exportar base JSON</button>',
       '</div>',
-      '<div id="riResults"></div>'
+      '<div id="riIntegratedReportContext" class="sourcebar" aria-live="polite">Contexto territorial para o relatório: aguardando bases de investimentos e sugestões.</div><div id="riResults"></div>'
     ].join('');
     if(homeBack && homeBack.parentNode) homeBack.parentNode.insertBefore(section, homeBack.nextSibling);
     else document.querySelector('main.wrap').appendChild(section);
@@ -330,6 +330,21 @@
     updateMeta();
     renderResults();
     addMainReportIntegration();
+    window.BI_RI_PUBLIC={
+      allRows:function(){return DATA&&DATA.records?DATA.records.slice():[]},
+      filteredRows:filteredRows,
+      stats:summaryStats,
+      context:filterContext,
+      metadata:function(){return DATA&&DATA.metadata||{}},
+      getScope:function(){
+        var region=q("riRegiao"),uf=q("riUF");
+        var shared=window.BI_TERRITORIAL&&window.BI_TERRITORIAL.get()||{};
+        return {regiao:region&&region.value||shared.regiao||"TODOS",uf:uf&&uf.value||shared.uf||"TODOS",
+          municipio:shared.municipio||"TODOS",hidrovia:shared.hidrovia||"TODOS"};
+      },
+      refresh:renderResults
+    };
+    window.dispatchEvent(new CustomEvent("bi:ri-ready"));
   }
 
   window.openRepresentacaoInstitucional = function(){
