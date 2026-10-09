@@ -71,3 +71,20 @@ O relatório contextualiza também os investimentos da base principal e as suges
 - `index.html`: ponte pública para consultas territoriais à base da Carteira_Governadores.
 - `sw.js`: cache das duas novas extensões no modo aplicativo.
 
+
+## Página Executiva em janela integrada — atualização 09/10/2026
+
+O novo botão **📑 Abrir Página Executiva**, dentro de **Representação Institucional**, abre uma página em janela interna ao BI, com o mesmo padrão visual de relatório executivo usado no módulo **Sugestões de Investimentos Hidroviários**: cabeçalho azul, botão **Imprimir / PDF**, botão **Fechar**, síntese executiva e quadros de apoio à decisão.
+
+### Como utilizar
+1. Escolha Região e UF na faixa de **Recorte territorial integrado**, no Recorte Territorial ou na própria Representação Institucional.
+2. Entre em **Representação Institucional** e clique em **📑 Abrir Página Executiva**.
+3. Confira o cabeçalho com o recorte, a síntese de governadores, senadores e deputados, os pontos para acompanhamento, os mandatos e os registros hidroviários do território.
+4. Use **🖨 Imprimir / PDF** para abrir o diálogo de impressão do navegador e salvar em PDF; a saída está configurada em A4 paisagem com cores e tabelas.
+5. Use **Fechar ✕** ou a tecla **Esc** para voltar à tela anterior sem perder os filtros.
+
+O botão original **Relatório Executivo** (em nova aba), o **Briefing** e a **Prévia do Relatório** continuam disponíveis. A janela integrada responde a alterações dos filtros sincronizados enquanto estiver aberta.
+
+**Critério de integridade:** a composição parlamentar distingue eleitos em 2022 dos eleitos para 2027; não apresenta um eleito proporcional como substituto individual. A relação com investimentos e sugestões é apenas geográfica, sem atribuição de autoria, apoio ou destinação de recursos políticos. Quando a fonte de sugestões estiver indisponível, o relatório identifica essa limitação.
+
+**Arquivos:** \`assets/representacao_modal_executivo.js\` (janela visual), \`assets/representacao_relatorios.js\` (conteúdo do relatório), \`index.html\` (carregamento) e \`sw.js\` (cache atualizado).
