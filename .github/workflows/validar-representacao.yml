@@ -11,7 +11,7 @@ on:
       - .github/workflows/validar-representacao.yml
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   testar-chromium:
@@ -46,14 +46,8 @@ jobs:
           node tests/representacao-smoke.cjs > /tmp/bi-smoke.log 2>&1
           RESULT=$?
           cat /tmp/bi-smoke.log
-          if [ "$RESULT" -ne 0 ]; then
-            cp /tmp/bi-smoke.log docs/VALIDACAO_VISUAL_FALHA.txt
-            git config user.name "BI Smoke Validation"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add docs/VALIDACAO_VISUAL_FALHA.txt
-            git commit -m "Diagnóstico do teste visual do BI" || true
-            git push origin "HEAD:${GITHUB_REF_NAME}" || true
-          fi
+          mkdir -p e2e-artifacts
+          cp /tmp/bi-smoke.log e2e-artifacts/bi-smoke.log
           exit "$RESULT"
       - name: Publicar capturas visuais
         if: always()
