@@ -65,14 +65,14 @@ async function main() {
   check(!await page.locator('#representacaoInstitucionalView').isVisible(), 'Módulo permanece visível após voltar');
   // Filtros do Recorte Territorial principal sincronizam para os demais módulos.
   await page.locator('.command-grid > button.cmd').nth(1).click();
-  await page.locator('#regiao').selectOption('Nordeste');
-  await page.waitForFunction(() => document.querySelector('#biShareRegion')?.value === 'Nordeste');
-  await page.locator('#uf').selectOption('PE');
-  await page.waitForFunction(() => document.querySelector('#riUF')?.value === 'PE');
+  await page.locator('#regiao').selectOption('Sul');
+  await page.waitForFunction(() => document.querySelector('#biShareRegion')?.value === 'Sul');
+  await page.locator('#uf').selectOption('RS');
+  await page.waitForFunction(() => document.querySelector('#riUF')?.value === 'RS');
   await page.locator('#homeBack button').click();
   await page.locator('.cmd[onclick="openPolicyPortfolio()"]').click();
-  await page.waitForFunction(() => document.querySelector('#polUF')?.value === 'PE', { timeout: 30000 });
-  check(await page.locator('#polRegiao').inputValue() === 'Nordeste', 'A base de Sugestões não herdou a região');
+  await page.waitForFunction(() => document.querySelector('#polUF')?.value === 'RS', { timeout: 30000 });
+  check(await page.locator('#polRegiao').inputValue() === 'Sul', 'A base de Sugestões não herdou a região');
   await page.locator('#polRegiao').selectOption('Norte');
   await page.waitForFunction(() => document.querySelector('#regiao')?.value === 'Norte');
   await page.locator('#polUF').selectOption('AM');
