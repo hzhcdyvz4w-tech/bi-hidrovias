@@ -6,7 +6,7 @@ const OUT = path.resolve('e2e-artifacts');
 fs.mkdirSync(OUT, { recursive: true });
 function check(condition, message) { if (!condition) throw new Error(message); }
 async function main() {
-  const browser = await chromium.launch({ headless: true });
+  const browser = await chromium.launch({ headless: true, executablePath: process.env.BI_TEST_CHROME || undefined });
   const page = await browser.newPage({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1, acceptDownloads: true });
   const errors = [];
   page.on('pageerror', e => errors.push(e.stack || e.message));
