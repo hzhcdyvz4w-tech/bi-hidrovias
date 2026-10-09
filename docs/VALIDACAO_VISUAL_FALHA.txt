@@ -1,0 +1,3 @@
+FALHA E2E: Error: Investimentos não abriu
+    at check (/home/runner/work/bi-hidrovias/bi-hidrovias/tests/representacao-smoke.cjs:7:60)
+    at main (/home/runner/work/bi-hidrovias/bi-hidrovias/tests/representacao-smoke.cjs:47:3)
