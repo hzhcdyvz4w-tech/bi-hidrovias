@@ -1,0 +1,46 @@
+name: Conferencia visual BI Representacao Institucional
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - index.html
+      - assets/representacao_institucional.js
+      - data/representacao_institucional_v13.json.gz.b64
+      - tests/representacao-smoke.cjs
+      - .github/workflows/validar-representacao.yml
+
+permissions:
+  contents: read
+
+jobs:
+  testar-chromium:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Baixar repositorio
+        uses: actions/checkout@v4
+      - name: Preparar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Instalar navegador de teste
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.1
+          npx playwright install --with-deps chromium
+      - name: Validar navegacao, filtros, relatorios e impressao
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 > /tmp/bi-http.log 2>&1 &
+          for i in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:8765/index.html > /dev/null; then break; fi
+            sleep 1
+          done
+          node tests/representacao-smoke.cjs
+      - name: Publicar capturas visuais
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: capturas-bi-representacao-institucional
+          path: e2e-artifacts/
+          if-no-files-found: warn
+          retention-days: 7
