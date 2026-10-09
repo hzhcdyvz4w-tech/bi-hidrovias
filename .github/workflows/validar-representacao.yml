@@ -6,6 +6,8 @@ on:
     paths:
       - index.html
       - assets/representacao_institucional.js
+      - assets/representacao_relatorios.js
+      - assets/representacao_modal_executivo.js
       - data/representacao_institucional_v13.json.gz.b64
       - tests/representacao-smoke.cjs
       - .github/workflows/validar-representacao.yml

@@ -69,3 +69,10 @@ Os módulos **Recorte Territorial**, **Sugestões de Investimentos Hidroviários
 - As datas de corte e as fontes de cada base permanecem independentes.
 
 Teste visual: \`tests/representacao-smoke.cjs\`, via workflow \`.github/workflows/validar-representacao.yml\`.
+
+
+### Página Executiva de Representação Institucional
+
+O ícone **Representação Institucional** inclui o botão **📑 Abrir Página Executiva**. Ele abre uma janela sobre o BI no padrão visual dos relatórios do módulo **Sugestões de Investimentos Hidroviários**, com cabeçalho azul, síntese executiva, indicadores, pontos de acompanhamento, composição federativa e partidária, quadro de investimentos e propostas (apenas cruzamento geográfico) e botões **Imprimir / PDF** e **Fechar**. A janela preserva os filtros e é responsiva em dispositivos móveis.
+
+Arquivo: `assets/representacao_modal_executivo.js`. A janela usa as rotinas do relatório existente em `assets/representacao_relatorios.js`; não substitui o relatório em nova aba, briefing ou prévia anteriores. A impressão usa A4 paisagem.

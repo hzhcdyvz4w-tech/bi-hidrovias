@@ -160,6 +160,14 @@ function setup(){
  // Compartilhamento direto também após buscas e filtros específicos.
  ["riCargo","riGrupo","riSituacao","riVisao","riBusca"].forEach(function(id){var x=el(id);if(x)x.addEventListener(id==="riBusca"?"input":"change",function(){if(el("riExecutivePreview")&&!el("riExecutivePreview").hidden)preview("executivo")})});
  refreshContext();
+ window.BI_RI_EXECUTIVE={
+  build:async function(mode){
+   var s=scope(),ctx=await getContext(s),list=api.filteredRows();
+   return {html:printableHtml(mode||"executivo",ctx),context:ctx,rows:list,stats:api.stats(list),
+     scope:s,cut:api.metadata().data_corte||"09/10/2026"};
+  }
+ };
+ window.dispatchEvent(new CustomEvent("bi:ri-executive-ready"));
 }
 window.addEventListener("bi:ri-ready",setup);
 if(window.BI_RI_PUBLIC)setup();

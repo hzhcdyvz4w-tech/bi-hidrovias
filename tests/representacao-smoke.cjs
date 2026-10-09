@@ -54,6 +54,28 @@ async function main() {
   check(await page.locator('#riExecutivePreview').isVisible(), 'Prévia interna do relatório não abriu');
   await page.screenshot({ path: path.join(OUT, '05b-previa-institucional.png'), fullPage: true });
   await page.locator('#riPreviewClose').click();
+
+  // Nova página executiva no padrão modal de Sugestões de Investimentos.
+  await page.locator('#riModalOpenButton').click();
+  await page.waitForSelector('#riInstitutionalModal:not([hidden])');
+  await page.frameLocator('#riModalFrame').locator('h1').waitFor({ timeout: 30000 });
+  const modalReportText = await page.frameLocator('#riModalFrame').locator('body').innerText();
+  check(modalReportText.includes('SÍNTESE EXECUTIVA'), 'Página executiva não exibe a síntese');
+  check(modalReportText.includes('PONTOS PARA DECISÃO'), 'Página executiva não exibe os quadros para decisão');
+  check(modalReportText.includes('Marcos Jorge'), 'Página executiva perdeu o deputado de RR');
+  check(modalReportText.includes('Contexto hidroviário territorial'), 'Página executiva perdeu o cruzamento territorial');
+  await page.screenshot({ path: path.join(OUT, '05c-modal-executivo.png'), fullPage: true });
+  await page.evaluate(() => {
+    document.getElementById('riModalFrame').contentWindow.print = function() { window.__riModalPrintVerified = true; };
+  });
+  await page.locator('#riModalPrint').click();
+  check(await page.evaluate(() => window.__riModalPrintVerified === true), 'Botão imprimir/PDF não acionou a impressão do relatório');
+  await page.locator('#riModalClose').click();
+  check(!await page.locator('#riInstitutionalModal').isVisible(), 'Botão Fechar não fechou a página executiva');
+  await page.locator('#riModalOpenButton').click();
+  await page.waitForSelector('#riInstitutionalModal:not([hidden])');
+  await page.keyboard.press('Escape');
+  check(!await page.locator('#riInstitutionalModal').isVisible(), 'Tecla Escape não fechou a página executiva');
   // Filtro originado na representação deve chegar ao recorte territorial principal.
   await page.locator('#riUF').selectOption('AC');
   await page.waitForFunction(() => document.querySelector('#uf')?.value === 'AC');
@@ -101,6 +123,13 @@ async function main() {
   await mobile.locator('#cmdRepresentacaoInstitucional').click();
   await mobile.waitForSelector('#riResults table tbody tr');
   await mobile.screenshot({ path: path.join(OUT, '08-mobile-representacao.png'), fullPage: true });
+  await mobile.locator('#riModalOpenButton').click();
+  await mobile.waitForSelector('#riInstitutionalModal:not([hidden])');
+  await mobile.frameLocator('#riModalFrame').locator('h1').waitFor({ timeout: 30000 });
+  const mobileModal = await mobile.locator('.ri-modal-dialog').boundingBox();
+  check(mobileModal && mobileModal.width <= 391, 'Página executiva excede a largura de 390px no celular');
+  await mobile.screenshot({ path: path.join(OUT, '09-mobile-pagina-executiva.png'), fullPage: true });
+  await mobile.locator('#riModalClose').click();
   await mobile.close();
   check(errors.length === 0, 'Erros JavaScript: ' + errors.join(' | '));
   await browser.close();
