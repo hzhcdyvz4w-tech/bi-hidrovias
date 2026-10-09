@@ -105,6 +105,15 @@ function fromSource(source,id){
  if(!key)return;
  var node=el(id);if(!node)return;
  var p={},v=node.value||ALL;
+ if(source==="policy"&&(key==="regiao"||key==="uf")){
+  // A Carteira_Governadores original não encadeia os selects.
+  // Limpa dependentes antes de propagar o novo recorte a outras visões.
+  syncing=true;
+  try{
+   (key==="regiao"?["polUF","polMunicipio","polHidrovia"]:["polMunicipio","polHidrovia"])
+     .forEach(function(related){applyVal(related,ALL,true)});
+  }finally{syncing=false}
+ }
  p[key]=v;
  if(key==="regiao"){p.uf=ALL;p.municipio=ALL;p.hidrovia=ALL}
  else if(key==="uf"){p.municipio=ALL;p.hidrovia=ALL}
