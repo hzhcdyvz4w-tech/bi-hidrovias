@@ -43,3 +43,31 @@ Para atualizar a base sem modificar a interface: converter a nova planilha em JS
 4. Emitir briefing e relatório com UF específica e conferir partido em cada nome.
 5. Voltar à tela inicial e verificar os módulos Investimentos, Recorte Territorial, Concessões, Sugestões, Fontes e Atualização.
 6. Selecionar uma UF no painel principal e testar a marcação facultativa no Relatório Executivo e nos Produtos Executivos.
+
+
+## Evolução — recorte integrado e produtos executivos (09/10/2026)
+
+O painel inicial exibe uma faixa compacta **Recorte territorial integrado** com Região e UF. A seleção é compartilhada automaticamente com os módulos **Recorte Territorial**, **Sugestões de Investimentos Hidroviários** e **Representação Institucional**, sem exigir nova abertura de módulos.
+
+Além dos filtros da faixa, alterações nos selects Região/UF dos três módulos também são propagadas aos demais. Município e Hidrovia são compartilhados apenas entre as bases que possuem esses campos; políticos não são associados indevidamente a municípios, projetos ou rios. Filtros especializados (tipo, maturidade, prioridade, partido e cargo) continuam restritos à respectiva base.
+
+No ícone **Representação Institucional**, os botões **Relatório Executivo** e **Briefing** produzem documentos com identificação da UF/região, governadores, senadores, deputados federais, mandatos, comparação eleitoral para 2027, composição partidária, fonte e limites metodológicos. O botão **Prévia do Relatório** abre uma pré-visualização dentro do próprio ícone. O documento abre em nova janela com controle **Imprimir / salvar PDF** e folha A4 em orientação paisagem.
+
+O relatório contextualiza também os investimentos da base principal e as sugestões da `Carteira_Governadores`, acessada em segundo plano sem abrir manualmente o módulo. Os números são recortes geográficos independentes, sem inferir apoio, destinação de verbas ou autoria política de investimentos. Se não houver correspondência na base, o sistema registra o dado como não localizado no recorte, sem criar dados fictícios.
+
+### Teste prático
+1. Na página inicial, selecione Norte → RR na faixa integrada.
+2. Abra Representação Institucional e observe a seleção Norte → RR automaticamente ativa.
+3. Gere Relatório Executivo e confira Marcos Jorge (REPUBLICANOS) na relação da legislatura de 2027.
+4. Altere a UF para AC no próprio módulo; volte ao Recorte Territorial e verifique a atualização automática.
+5. Abra Sugestões de Investimentos Hidroviários e confira a UF herdada; escolha outra região/UF e verifique retorno ao recorte dos demais módulos.
+6. Abra a prévia, imprima e verifique as colunas, as fontes e a nota de não sucessão individual no sistema proporcional.
+7. Teste também em celular e com o botão Limpar Recorte.
+
+### Arquivos envolvidos
+- `assets/territorial_sync.js`: distribuição de filtros sem mudança automática de tela.
+- `assets/representacao_relatorios.js`: geração de relatórios, prévia e contexto hidroviário.
+- `assets/representacao_institucional.js`: interface da representação e API de leitura do recorte.
+- `index.html`: ponte pública para consultas territoriais à base da Carteira_Governadores.
+- `sw.js`: cache das duas novas extensões no modo aplicativo.
+
