@@ -32,6 +32,11 @@ O BI Executivo de Concessões Hidroviárias foi incorporado a este repositório 
 
 
 ## Sugestões de Investimentos Hidroviários\n\nA Central de Comando do BI principal carrega exclusivamente a aba `Carteira_Governadores` da planilha `Carteira_Propositiva_Hidrovias_Governadores_2026_FINAL_v3_SIOP_PO.xlsx`. A base vigente contém 63 propostas e 35 campos por registro, incluindo território, investimento, instrumento, factibilidade de celebração pela SNHN, valores estimados, situação de efetivação, ação SIOP e viabilidade de criação de PO. A antiga carteira de política pública não é mais usada por este módulo.\n
+
+### Camada de inteligência da Carteira_Governadores
+
+O módulo **Sugestões de Investimentos Hidroviários** preserva a base original e calcula dinamicamente indicadores de apoio à decisão: índice indicativo de prontidão (0–100), semáforo de decisão, classificação da proposta, trilha de estruturação, pendências para avanço, responsável pela próxima providência, prazo estimado de estruturação, matriz de riscos, ranking executivo e comparação entre até cinco investimentos. Esses indicadores são analíticos e não substituem análise técnica, jurídica, orçamentária ou decisão administrativa. Registros que deixem de ser classificados como não efetivados são automaticamente ocultados do módulo de Sugestões, sem exclusão da base histórica.
+
 ## Consultas, AIR/EVTEA e povos originários
 
 O módulo de Concessões v10.4 carrega `data/concessoes_matriz_consultas_povos_2026.json` e mantém separados: AIR, EVTEA/modelagem, tomada de subsídios/reunião participativa, consulta pública, audiência pública e consulta às comunidades/CLPI. A presença territorial de povos originários é exibida separadamente da comprovação de consulta específica ao empreendimento.
