@@ -155,8 +155,8 @@
     if(cargo !== ALL) rows = rows.filter(function(r){ return txt(r.cargo)===cargo; });
     if(grupo !== ALL) rows = rows.filter(function(r){ return txt(r.grupo)===grupo; });
     if(situacao !== ALL) rows = rows.filter(function(r){ return txt(r.situacao_comparativa||r.situacao_pos_2026||r.situacao_atual)===situacao; });
-    if(visao === 'ATUAL') rows = rows.filter(function(r){ return txt(r.atual_nome_partido); });
-    if(visao === '2027') rows = rows.filter(function(r){ return txt(r.substituto_2027_nome_partido); });
+    if(visao === 'ATUAL') rows = rows.filter(function(r){ return txt(r.atual_nome_partido) && !/^—/.test(txt(r.atual_nome_partido)); });
+    if(visao === '2027') rows = rows.filter(function(r){ return txt(r.substituto_2027_nome_partido) && !/^—/.test(txt(r.substituto_2027_nome_partido)); });
     if(visao === 'TRANSICAO') rows = rows.filter(function(r){ return txt(r.substituto_2027_nome_partido) && txt(r.substituto_2027_nome_partido) !== txt(r.atual_nome_partido); });
     if(busca){
       rows = rows.filter(function(r){
@@ -185,7 +185,7 @@
       card('UFs alcançadas', s.ufs),
       card('Governadores', s.gov),
       card('Senadores', s.sen),
-      card('Deputados federais', s.dep),
+      card('Deputados — registros comparativos', s.dep),
       card('Registros com diferença nominal', s.transicao)
     ].join('');
   }
@@ -272,7 +272,7 @@
         '<div class="card"><b>Senadores</b><span>'+esc(s.sen)+'</span></div>'+
       '</div>'+
       '<div class="grid">'+
-        '<div class="card"><b>Deputados federais</b><span>'+esc(s.dep)+'</span></div>'+
+        '<div class="card"><b>Registros comparativos de deputados</b><span>'+esc(s.dep)+'</span></div>'+
         '<div class="card"><b>Transições</b><span>'+esc(s.transicao)+'</span></div>'+
         '<div class="card"><b>Fonte-base</b><span>V13</span></div>'+
         '<div class="card"><b>Escopo</b><span>Região/UF</span></div>'+
