@@ -58,3 +58,14 @@ O ícone **Representação Institucional** da Navegação Executiva oferece filt
 
 Fontes de referência: [Câmara — eleitos em 2022](https://www.camara.leg.br/internet/agencia/infograficos-html5/tabelasEleicoes/deputados-eleitos-estado/index.html), [Câmara — eleitos em 2026](https://www.camara.leg.br/internet/agencia/infograficos-html5/eleicoes2026/deputados-eleitos-estado.html) e [Senado — senadores em exercício](https://www25.senado.leg.br/web/senadores/em-exercicio/-/e/por-nome).
 
+
+### Filtros territoriais compartilhados e Relatório Institucional V2
+
+Os módulos **Recorte Territorial**, **Sugestões de Investimentos Hidroviários** e **Representação Institucional** compartilham Região/UF de forma bidirecional. Um seletor compacto no topo permite modificar o recorte sem reabrir os módulos. Município e hidrovia são sincronizados somente entre bases que contêm essas dimensões; cargo, partido e prioridade continuam filtros específicos.
+
+- \`assets/territorial_sync.js\` — estado territorial compartilhado e faixa de seleção.
+- \`assets/representacao_relatorios.js\` — relatório executivo, briefing e prévia institucional com contexto de investimentos e sugestões consultadas em segundo plano.
+- A ligação geográfica **não** é evidência de responsabilidade política por investimentos, concessões ou dotações.
+- As datas de corte e as fontes de cada base permanecem independentes.
+
+Teste visual: \`tests/representacao-smoke.cjs\`, via workflow \`.github/workflows/validar-representacao.yml\`.
