@@ -44,7 +44,7 @@ async function main() {
   check(await page.locator('#cmdRepresentacaoInstitucional').isVisible(), 'Retorno à home falhou');
   check(!await page.locator('#representacaoInstitucionalView').isVisible(), 'Módulo permanece visível após voltar');
   await page.locator('.command-grid > button.cmd').first().click();
-  check(await page.locator('#painelView').isVisible(), 'Investimentos não abriu');
+  check(await page.locator('#quickResult').isVisible(), 'Investimentos não abriu na tabela rápida');
   await page.screenshot({ path: path.join(OUT, '06-investimentos.png'), fullPage: true });
   await page.locator('#homeBack button').click();
   await page.locator('.command-grid > button.cmd').nth(9).click();
