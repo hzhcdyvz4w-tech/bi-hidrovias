@@ -24,10 +24,17 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Instalar navegador de teste
+      - name: Instalar Playwright (Chromium pré-instalado no runner)
         run: |
           npm install --no-save --no-package-lock playwright@1.55.1
-          npx playwright install --with-deps chromium
+          test -x /usr/bin/google-chrome || test -x /usr/bin/google-chrome-stable
+      - name: Selecionar navegador do runner
+        run: |
+          if [ -x /usr/bin/google-chrome ]; then
+            echo "BI_TEST_CHROME=/usr/bin/google-chrome" >> "$GITHUB_ENV"
+          else
+            echo "BI_TEST_CHROME=/usr/bin/google-chrome-stable" >> "$GITHUB_ENV"
+          fi
       - name: Validar navegacao, filtros, relatorios e impressao
         run: |
           python3 -m http.server 8765 --bind 127.0.0.1 > /tmp/bi-http.log 2>&1 &
