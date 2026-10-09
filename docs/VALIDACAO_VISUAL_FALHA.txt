@@ -1,3 +1,3 @@
-FALHA E2E: Error: Investimentos não abriu
+FALHA E2E: Error: Erros JavaScript: DATA is not defined | DATA is not defined
     at check (/home/runner/work/bi-hidrovias/bi-hidrovias/tests/representacao-smoke.cjs:7:60)
-    at main (/home/runner/work/bi-hidrovias/bi-hidrovias/tests/representacao-smoke.cjs:47:3)
+    at main (/home/runner/work/bi-hidrovias/bi-hidrovias/tests/representacao-smoke.cjs:56:3)
