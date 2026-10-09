@@ -1,8 +1,0 @@
-FALHA E2E: Error: Erros JavaScript: ReferenceError: DATA is not defined
-    at g (http://127.0.0.1:8765/:801:16)
-    at http://127.0.0.1:8765/:802:8
-    at http://127.0.0.1:8765/:834:3 | ReferenceError: DATA is not defined
-    at http://127.0.0.1:8765/:1079:11
-    at http://127.0.0.1:8765/:1119:3
-    at check (/home/runner/work/bi-hidrovias/bi-hidrovias/tests/representacao-smoke.cjs:7:60)
-    at main (/home/runner/work/bi-hidrovias/bi-hidrovias/tests/representacao-smoke.cjs:56:3)
