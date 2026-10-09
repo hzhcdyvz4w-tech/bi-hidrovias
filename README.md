@@ -40,3 +40,21 @@ O módulo **Sugestões de Investimentos Hidroviários** preserva a base original
 ## Consultas, AIR/EVTEA e povos originários
 
 O módulo de Concessões v10.4 carrega `data/concessoes_matriz_consultas_povos_2026.json` e mantém separados: AIR, EVTEA/modelagem, tomada de subsídios/reunião participativa, consulta pública, audiência pública e consulta às comunidades/CLPI. A presença territorial de povos originários é exibida separadamente da comprovação de consulta específica ao empreendimento.
+
+
+## Representação Institucional — base político-federativa (V13, corte 09/10/2026)
+
+O ícone **Representação Institucional** da Navegação Executiva oferece filtros por região, UF, cargo e período eleitoral, além de relatório executivo e briefing para impressão. A base deriva da planilha `BI_Hidrovias_Base_Politico_Institucional_V13_Bancadas_Completas_2022_2027.xlsx`, com:
+
+- **27 governadores e 81 senadores** cadastrados no recorte de 09/10/2026;
+- **513 deputados federais eleitos em 2022** e **513 eleitos em 2026 para posse em 2027**, consolidados em 735 correspondências/registros comparativos;
+- recorte territorial por região e UF, sem atribuição automática de projetos ou recursos a autoridades.
+
+**Limites metodológicos:** a lista de eleitos em 2022 não representa necessariamente os 513 deputados em exercício na data de corte, devido a afastamentos, suplências e mudanças partidárias. A representação proporcional não tem sucessor individual por deputado. As correspondências nominais entre as duas eleições devem ser validadas com os identificadores oficiais; a classificação não deve ser usada como resultado definitivo de reeleição.
+
+**Arquivos:** `assets/representacao_institucional.js` (módulo), `data/representacao_institucional_v13.json.gz.b64` (snapshot público comprimido em gzip + base64), e `docs/REPRESENTACAO_INSTITUCIONAL.md` (documentação). O módulo exporta o JSON aberto pelo navegador. A aplicação requer navegador moderno com `DecompressionStream` para abrir a base compactada.
+
+**Integração facultativa nos relatórios tradicionais:** marque “Incluir representação institucional no relatório” nos painéis de documentos ou produtos executivos, selecione uma UF no filtro principal e gere o relatório. A inclusão é **contextual e territorial**, sem inferir apoio político ou vinculação a investimentos e concessões. As demais visões executivas permanecem independentes.
+
+Fontes de referência: [Câmara — eleitos em 2022](https://www.camara.leg.br/internet/agencia/infograficos-html5/tabelasEleicoes/deputados-eleitos-estado/index.html), [Câmara — eleitos em 2026](https://www.camara.leg.br/internet/agencia/infograficos-html5/eleicoes2026/deputados-eleitos-estado.html) e [Senado — senadores em exercício](https://www25.senado.leg.br/web/senadores/em-exercicio/-/e/por-nome).
+
