@@ -9,7 +9,7 @@ async function main() {
   const browser = await chromium.launch({ headless: true });
   const page = await browser.newPage({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1, acceptDownloads: true });
   const errors = [];
-  page.on('pageerror', e => errors.push(e.message));
+  page.on('pageerror', e => errors.push(e.stack || e.message));
   await page.goto(URL, { waitUntil: 'domcontentloaded', timeout: 60000 });
   await page.waitForSelector('#comando .cmd', { timeout: 30000 });
   await page.screenshot({ path: path.join(OUT, '01-home.png'), fullPage: true });
