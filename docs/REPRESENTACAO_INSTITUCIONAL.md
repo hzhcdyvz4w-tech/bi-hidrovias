@@ -88,3 +88,29 @@ O botão original **Relatório Executivo** (em nova aba), o **Briefing** e a **P
 **Critério de integridade:** a composição parlamentar distingue eleitos em 2022 dos eleitos para 2027; não apresenta um eleito proporcional como substituto individual. A relação com investimentos e sugestões é apenas geográfica, sem atribuição de autoria, apoio ou destinação de recursos políticos. Quando a fonte de sugestões estiver indisponível, o relatório identifica essa limitação.
 
 **Arquivos:** \`assets/representacao_modal_executivo.js\` (janela visual), \`assets/representacao_relatorios.js\` (conteúdo do relatório), \`index.html\` (carregamento) e \`sw.js\` (cache atualizado).
+
+## Distribuição partidária de deputados e senadores — atualização de 15/10/2026
+
+A própria página **Representação Institucional**, antes da tabela nominal, possui o quadro **Composição partidária — Câmara e Senado**. É alimentado pela mesma base pública V13 do módulo, sem consulta a dados pessoais externos nem associação de partidos a investimentos.
+
+### Como consultar
+1. Abrir o ícone **Representação Institucional**.
+2. Na faixa de filtros, selecionar **Região** e **UF**; a análise partidária acompanha automaticamente esse recorte. Filtros nominais (Cargo, Situação, Visão e Busca) permanecem específicos da lista individual e **não reduzem a distribuição partidária por território**.
+3. Ler os três indicadores separados: **eleitos à Câmara em 2022**, **eleitos à Câmara em 2026 (posse em 2027)** e **senadores registrados na base em 2026**.
+4. Alternar **Exibir barras da Câmara** entre 2022 e 2026 para comparar o ranking partidário com o Senado; a tabela completa apresenta, por sigla, os dois conjuntos da Câmara, Senado e seus percentuais.
+5. Usar **Exportar CSV** para salvar os números do recorte selecionado e anexá-los a análises técnicas.
+
+### Regras para interpretar
+- **Denominador:** total de pessoas distintas identificadas em cada universo, após o filtro territorial. Percentuais calculados separadamente. Não somar deputados de 2022 e 2026 nem confundir os 735 registros comparativos com 735 cadeiras.
+- **Deduplicação:** a chave UF + nome parlamentar é usada separadamente em cada conjunto; a pessoa não é contada duas vezes por reaparecer no recorte comparativo.
+- **Partido:** extraído preferencialmente dos campos `partido_atual` e `partido_2027` da base; valores faltantes são classificados em **NÃO INFORMADO**, sem inferência.
+- **Câmara 2022:** lista dos eleitos em 2022, não uma comprovação da composição efetiva em 15/10/2026. Mudanças partidárias, licenças e suplências não são automaticamente capturadas.
+- **Câmara 2026:** resultado da eleição de 2026 com posse em 2027, não necessariamente composição atual.
+- **Senado:** fotografia do conjunto registrado na base V13, com data de corte de 09/10/2026. Não é um dado de filiação em tempo real.
+- A contagem indica **representação partidária no recorte**, não preferência política, apoio ou autoria de obras, concessões ou recursos públicos.
+
+### Implementação e atualização
+- `assets/representacao_partidaria.js` calcula e renderiza os quadros na mesma página, utilizando `window.BI_RI_PUBLIC.allRows()`.
+- `index.html` carrega o módulo após o script principal da representação.
+- `sw.js` versiona o cache offline e inclui o novo ativo.
+- A base original `data/representacao_institucional_v13.json.gz.b64` permanece inalterada; futuras atualizações desta base passam a alimentar automaticamente as contagens.
