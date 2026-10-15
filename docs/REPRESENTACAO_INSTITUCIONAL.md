@@ -97,7 +97,7 @@ A própria página **Representação Institucional**, antes da tabela nominal, p
 1. Abrir o ícone **Representação Institucional**.
 2. Na faixa de filtros, selecionar **Região** e **UF**; a análise partidária acompanha automaticamente esse recorte. Filtros nominais (Cargo, Situação, Visão e Busca) permanecem específicos da lista individual e **não reduzem a distribuição partidária por território**.
 3. Ler os três indicadores separados: **eleitos à Câmara em 2022**, **eleitos à Câmara em 2026 (posse em 2027)** e **senadores registrados na base em 2026**.
-4. Alternar **Exibir barras da Câmara** entre 2022 e 2026 para comparar o ranking partidário com o Senado; a tabela completa apresenta, por sigla, os dois conjuntos da Câmara, Senado e seus percentuais.
+4. Alternar **Exibir barras da Câmara** entre 2022 e 2026 para comparar o ranking partidário com o Senado; a tabela completa apresenta, por sigla, os dois conjuntos da Câmara, a **variação numérica entre os pleitos**, o Senado e seus percentuais.
 5. Usar **Exportar CSV** para salvar os números do recorte selecionado e anexá-los a análises técnicas.
 
 ### Regras para interpretar
@@ -114,3 +114,7 @@ A própria página **Representação Institucional**, antes da tabela nominal, p
 - `index.html` carrega o módulo após o script principal da representação.
 - `sw.js` versiona o cache offline e inclui o novo ativo.
 - A base original `data/representacao_institucional_v13.json.gz.b64` permanece inalterada; futuras atualizações desta base passam a alimentar automaticamente as contagens.
+
+### Conferência de integridade da base V13 (15/10/2026)
+
+A extração e a contagem da base pública apontaram **513 deputados eleitos em 2022**, **513 deputados eleitos em 2026** e **81 senadores** (sem duplicações de pessoas dentro de cada universo, no recorte nacional). Como verificação de consistência, o **PL** aparece com **99 eleitos à Câmara em 2022**, **121 em 2026** e **15 senadores** na fotografia de 09/10/2026. Essa comparação eleitoral não indica migração individual de mandato. Há uma entrada do Senado com filiação informada como **S/PARTIDO**, apresentada no painel como **SEM PARTIDO**.
