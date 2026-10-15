@@ -6,7 +6,7 @@
   var ID='riPartyAnalysis', mounted=false, latest=null;
   function byId(id){return document.getElementById(id);}
   function str(x){return String(x==null?'':x).trim();}
-  function esc(x){return str(x).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','&#39;'}[c]||'&#39;';});}
+  function esc(x){return str(x).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[c]||'&#39;';});}
   function canon(x){return str(x).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toUpperCase().replace(/\s+/g,' ').trim();}
   function dateLabel(x){return str(x)||'09/10/2026';}
   function isDeputy(r){return canon(r.cargo).indexOf('DEPUTADO')===0;}
