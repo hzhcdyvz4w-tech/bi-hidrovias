@@ -23,7 +23,7 @@
       v=m?m[1]:'';
     }
     var n=canon(v).replace(/^\s*PARTIDO\s+(?=LIBERAL$|DOS TRABALHADORES$)/,'PARTIDO ');
-    var aliases={'UNIAO BRASIL':'UNIÃO','UNIAO':'UNIÃO','REPUBLICANOS':'REPUBLICANOS','PARTIDO LIBERAL':'PL','PARTIDO DOS TRABALHADORES':'PT','PROGRESSISTAS':'PP','PARTIDO PROGRESSISTA':'PP','SEM PARTIDO':'SEM PARTIDO','SEM FILIACAO':'SEM PARTIDO','PODEMOS':'PODE','AVANTE':'AVANTE','SOLIDARIEDADE':'SOLIDARIEDADE','CIDADANIA':'CIDADANIA'};
+    var aliases={'UNIAO BRASIL':'UNIÃO','UNIAO':'UNIÃO','REPUBLICANOS':'REPUBLICANOS','PARTIDO LIBERAL':'PL','PARTIDO DOS TRABALHADORES':'PT','PROGRESSISTAS':'PP','PARTIDO PROGRESSISTA':'PP','SEM PARTIDO':'SEM PARTIDO','S/PARTIDO':'SEM PARTIDO','SEM FILIACAO':'SEM PARTIDO','PODEMOS':'PODE','AVANTE':'AVANTE','SOLIDARIEDADE':'SOLIDARIEDADE','CIDADANIA':'CIDADANIA'};
     if(aliases[n])return aliases[n];
     if(!n||/^(?:N\/A|N\/D|NENHUM|—|-|NAO INFORMADO|A DEFINIR|DESCONHECIDO|PENDENTE|NAO LOCALIZADO)/.test(n))return 'NÃO INFORMADO';
     return n;
@@ -77,7 +77,7 @@
         '<div class="ri-party-scroll"><table class="ri-party-table"><thead><tr>',
         '<th scope="col">Partido</th><th scope="col">Deputados eleitos 2022</th><th scope="col">Participação 2022</th>',
         '<th scope="col">Deputados eleitos 2026</th><th scope="col">Participação 2026</th>',
-        '<th scope="col">Senadores da base 2026</th><th scope="col">Participação Senado</th>',
+        '<th scope="col">Variação na Câmara (2026 − 2022)</th><th scope="col">Senadores da base 2026</th><th scope="col">Participação Senado</th>',
         '</tr></thead><tbody id="riPartyRows"></tbody></table></div>',
         '<p id="riPartyMethod" class="ri-party-method"></p>'
       ].join('');
@@ -161,7 +161,7 @@
     byId('riPartyInsights').innerHTML=[
       '<div class="ri-party-insight"><strong>Câmara ('+(show==='dep22'?'eleitos 2022':'eleitos 2026')+'):</strong> '+(td?esc(td[0])+' lidera com '+intFmt(td[1])+' ('+percent(td[1],d.total)+')':'sem dados classificados')+'.</div>',
       '<div class="ri-party-insight"><strong>Senado (base 2026):</strong> '+(ts?esc(ts[0])+' tem '+intFmt(ts[1])+' ('+percent(ts[1],s.total)+')':'sem dados classificados')+'.</div>',
-      '<div class="ri-party-insight"><strong>Siglas no recorte:</strong> '+intFmt(parties.filter(function(p){return p!=='NÃO INFORMADO';}).length)+' sigla(s) distinta(s) somando os três universos, sem misturar os totais de cadeiras.</div>',
+      '<div class="ri-party-insight"><strong>Siglas no recorte:</strong> '+intFmt(parties.filter(function(p){return p!=='NÃO INFORMADO'&&p!=='SEM PARTIDO';}).length)+' sigla(s) distinta(s) somando os três universos, sem misturar os totais de cadeiras.</div>',
       '<div class="ri-party-insight"><strong>Sem partido identificado:</strong> '+intFmt(stats.dep22.unknown)+' (Câmara 2022), '+intFmt(stats.dep26.unknown)+' (Câmara 2026) e '+intFmt(s.unknown)+' (Senado).</div>',
       '<div class="ri-party-insight"><strong>Interpretação:</strong> a contagem descreve a filiação registrada no snapshot, não comprova posição partidária atualizada nem alinhamento com investimentos hidroviários.</div>'
     ].join('');
@@ -170,14 +170,14 @@
       var n22=stats.dep22.grouped[p]||0,n26=stats.dep26.grouped[p]||0,nSen=s.grouped[p]||0;
       return '<tr><td>'+esc(p)+'</td><td>'+intFmt(n22)+'</td><td>'+percent(n22,stats.dep22.total)+'</td><td>'+intFmt(n26)+'</td><td>'+percent(n26,stats.dep26.total)+'</td><td>'+intFmt(nSen)+'</td><td>'+percent(nSen,s.total)+'</td></tr>';
     }).join('')+'<tr><td><strong>TOTAL</strong></td><td><strong>'+intFmt(stats.dep22.total)+'</strong></td><td>100%*</td><td><strong>'+intFmt(stats.dep26.total)+'</strong></td><td>100%*</td><td><strong>'+intFmt(s.total)+'</strong></td><td>100%*</td></tr>';
-    byId('riPartyMethod').innerHTML='<b>Metodologia e ressalvas:</b> a base V13 reúne eleitos à Câmara em 2022, eleitos em 2026 e senadores na referência de '+esc(dateLabel(meta.data_corte))+'. Cada pessoa é contada uma vez por UF e por universo (remoção de duplicidades nominais). Siglas são lidas dos campos partidários da base, com identificação de ausências. A Câmara de 2022 <b>não representa necessariamente a bancada em exercício em outubro de 2026</b>; a Câmara de 2026 refere-se à <b>posse em 2027</b>. A composição do Senado pode variar após a data de corte. Os percentuais usam o total de pessoas identificadas em cada universo e podem apresentar diferenças de arredondamento (*). Não se atribui projeto, verba ou decisão a parlamentar. Fonte: <code>data/representacao_institucional_v13.json.gz.b64</code>.';
+    byId('riPartyMethod').innerHTML='<b>Metodologia e ressalvas:</b> a base V13 reúne eleitos à Câmara em 2022, eleitos em 2026 e senadores na referência de '+esc(dateLabel(meta.data_corte))+'. Cada pessoa é contada uma vez por UF e por universo (remoção de duplicidades nominais). Siglas são lidas dos campos partidários da base, com identificação de ausências. A Câmara de 2022 <b>não representa necessariamente a bancada em exercício em outubro de 2026</b>; a Câmara de 2026 refere-se à <b>posse em 2027</b>. A variação por partido compara dois pleitos e não representa transferência individual de cadeira. A composição do Senado pode variar após a data de corte. Os percentuais usam o total de pessoas identificadas em cada universo e podem apresentar diferenças de arredondamento (*). Não se atribui projeto, verba ou decisão a parlamentar. Fonte: <code>data/representacao_institucional_v13.json.gz.b64</code>.';
   }
   function exportCsv(){
     if(!latest)return;
     var stats=latest,parties=Array.from(new Set(Object.keys(stats.dep22.grouped).concat(Object.keys(stats.dep26.grouped),Object.keys(stats.sen.grouped)))).sort(function(a,b){return a.localeCompare(b,'pt-BR');});
-    var lines=[['Partido','Deputados eleitos 2022','Participação 2022','Deputados eleitos 2026','Participação 2026','Senadores base 2026','Participação Senado']];
-    parties.forEach(function(p){var a=stats.dep22.grouped[p]||0,b=stats.dep26.grouped[p]||0,c=stats.sen.grouped[p]||0;lines.push([p,a,percent(a,stats.dep22.total),b,percent(b,stats.dep26.total),c,percent(c,stats.sen.total)]);});
-    lines.push(['TOTAL',stats.dep22.total,'',stats.dep26.total,'',stats.sen.total,'']);
+    var lines=[['Partido','Deputados eleitos 2022','Participação 2022','Deputados eleitos 2026','Participação 2026','Variação Câmara 2026 - 2022','Senadores base 2026','Participação Senado']];
+    parties.forEach(function(p){var a=stats.dep22.grouped[p]||0,b=stats.dep26.grouped[p]||0,c=stats.sen.grouped[p]||0;lines.push([p,a,percent(a,stats.dep22.total),b,percent(b,stats.dep26.total),b-a,c,percent(c,stats.sen.total)]);});
+    lines.push(['TOTAL',stats.dep22.total,'',stats.dep26.total,'',0,stats.sen.total,'']);
     var csv='\ufeff'+lines.map(function(cols){return cols.map(function(v){var val=str(v);if(/^[=+\-@]/.test(val))val="'"+val;return '"'+val.replace(/"/g,'""')+'"';}).join(';');}).join('\r\n');
     var blob=new Blob([csv],{type:'text/csv;charset=utf-8;'}),url=URL.createObjectURL(blob),a=document.createElement('a');
     a.href=url;a.download='incidencia_partidaria_representacao_2026.csv';document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(url);},1000);
